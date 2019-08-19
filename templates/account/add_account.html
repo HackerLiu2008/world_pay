@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>添加订单界面</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <script src="/static/layui/layui.js"></script>
+    <script src="/static/layui/layui.all.js"></script>
+
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="details" style="padding: 20px;" lay-filter="detail">
+    <form class="layui-form" lay-filter="example" id="example" enctype="multipart/form-data">
+        <div class="layui-form-item">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-block">
+                <input type="text" name="account" required lay-verify="required" placeholder="*账号" autocomplete="off"
+                       class="layui-input"  id="account">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input type="text" id="password" name="password" required lay-verify="required" placeholder="*密码" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" id="email" name="email" placeholder="邮箱账号" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱密码</label>
+            <div class="layui-input-block">
+                <input type="text" id="email_pw" name="email_pw" placeholder="邮箱密码" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">总计金额</label>
+            <div class="layui-input-block">
+                <input type="text" id="pay_money" name="pay_money" placeholder="总计金额" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+              <label class="layui-form-label">注册时间</label>
+              <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="reg_time" name="reg_time" placeholder="yyyy-MM-dd">
+              </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">标签</label>
+            <div class="layui-input-block">
+                <input type="text" id="label" name="label" placeholder="标签" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">平台</label>
+            <div class="layui-input-block">
+                <input type="text" id="terrace" name="terrace" required lay-verify="required" placeholder="*平台" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">国家</label>
+            <div class="layui-input-block">
+                <input type="text" id="coun" name="coun" required lay-verify="required" placeholder="*国家" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">会员状态</label>
+            <div class="layui-input-block">
+                <input type="text" id="member_state" name="member_state" placeholder="会员状态" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" id="full_name" name="full_name" placeholder="收货人姓名" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" placeholder="手机电话" autocomplete="off"
+                       class="layui-input" id="phone">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">国家</label>
+            <div class="layui-input-block">
+                <input type="text" id="country" name="country" placeholder="国家" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">州/省</label>
+            <div class="layui-input-block">
+                <input type="text" name="province" placeholder="州/省" autocomplete="off"
+                       class="layui-input" id="province">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">城市</label>
+            <div class="layui-input-block">
+                <input type="text" id="city" name="city" placeholder="城市" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮编</label>
+            <div class="layui-input-block">
+                <input type="text" id="zip_num" name="zip_num" placeholder="邮编" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">详情地址</label>
+            <div class="layui-input-block">
+                <input type="text" id="detail_address" name="detail_address" placeholder="详情地址" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">信用卡</label>
+            <div class="layui-input-block">
+                <input type="text" id="card_num" name="card_num" placeholder="信用卡" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">有效期</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" id="sizeof" name="sizeof" placeholder="yyyy-MM-dd">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">验证码</label>
+            <div class="layui-input-block">
+                <input type="text" id="security_code" name="security_code" placeholder="验证码" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="formDemo" id="sub" type="submit">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form','laydate'], function(){
+        var form = layui.form;
+        var laydate = layui.laydate;
+
+
+      //监听提交
+        form.on('submit(formDemo)', function(data){
+            var data_info = {data:JSON.stringify(data.field)};
+            var $ = layui.jquery;
+
+            $.ajax({
+				type : 'POST',
+				url : '/account/add_acc_info/',
+				data : data_info,
+				dataType : 'json',
+				success : function(data) {
+				    {#var data1 = JSON.parse(data);#}
+			    	console.log(data.code);
+					// 成功提示框
+                    if (data.code == 0){
+                        parent.layer.msg('添加成功', {
+						icon : 6,
+					});
+					    parent.layer.closeAll('iframe'); //关闭弹框
+                        window.parent.location.reload()
+                    }else if(data.code == 502){
+                        parent.layer.msg('出现网络故障', {
+						icon : 5
+					});
+                    }
+
+				},
+				error : function(data) {
+					// 异常提示
+					parent.layer.msg('出现网络故障', {
+						icon : 5
+					});
+					parent.layer.closeAll('iframe'); //关闭弹框
+				}
+			});
+			return false;
+            });
+
+        laydate.render({
+            elem: '#reg_time',
+            trigger: 'click',
+            type: 'datetime',
+            theme: 'molv',
+            value: new Date(),
+        });
+
+        laydate.render({
+            elem: '#sizeof',
+            trigger: 'click',
+            type: 'datetime',
+            theme: 'molv',
+            value: new Date(),
+        });
+
+    });
+</script>
+</body>
+</html>

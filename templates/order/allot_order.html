@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>GUTE 账号管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <script src="/static/layui/layui.js"></script>
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+<body>
+<div class="layui-form-item" style="display: none">
+    <label class="layui-form-label">隐藏域</label>
+    <div class="layui-input-block">
+        <input type ="text" name="task_code"  id="task_code" value="{{ task_code }}">
+    </div>
+</div>
+
+<div class="layui-form-item" style="display: none">
+    <label class="layui-form-label">隐藏域</label>
+    <div class="layui-input-block">
+        <input type ="text" name="buy_account"  id="buy_account" value="{{ buy_account }}">
+    </div>
+</div>
+
+<form class="layui-form" action="" lay-filter="example" id="example">
+
+    <div class="layui-form-item">
+    <label class="layui-form-label">标  签:</label>
+    <div class="layui-input-block" id="label">
+        {%  for i in  label  %}
+        <input type="radio" name="label" value="{{ i }}" title="{{ i }}">
+        {%  endfor %}
+        <input type="radio" name="label" value="" title="无" checked="">
+    </div>
+  </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">买家账号:</label>
+        <div class="layui-input-inline">
+            <input type="text" name="account" placeholder="请输入买家账号" autocomplete="off"
+                   class="layui-input" id="account">
+        </div>
+
+        <div class="layui-inline">
+          <label class="layui-form-label">累计消费:</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="number" id="price_min" placeholder="$" autocomplete="off" class="layui-input">
+          </div>
+          <div class="layui-form-mid">-</div>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="number" id="price_max" placeholder="$" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="formDemo" id="sub" type="submit">立即搜索</button>
+        </div>
+    </div>
+
+</form>
+
+
+<table class="layui-hide" id="filter_order" lay-filter="filter_order"></table>
+
+<script src="/static/layui/layui.all.js"></script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="bind">绑定</a>
+</script>
+
+<script>
+    layui.config({
+        version: '1560414887305' //为了更新 js 缓存，可忽略
+    });
+
+    layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form'], function () {
+
+        var layer = layui.layer //弹层
+            , table = layui.table //表格
+            , element = layui.element //元素操作
+            , form = layer.form
+            , $ = layui.$;
+
+        //监听Tab切换
+        element.on('tab(demo)', function (data) {
+            layer.tips('切换了 ' + data.index + '：' + this.innerHTML, this, {
+                tips: 1
+            });
+        });
+
+        var task_code = $('#task_code'),
+            buy_account = $('#buy_account');
+
+        //执行一个 table 实例
+        table.render({
+            elem: '#filter_order'
+            , height: ''
+            , url: '/order/filter_order' //数据接口
+            , title: '过滤条件账号'
+            , limit:10
+            , area: ['1500px','900px']
+            {#, toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档#}
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'account', title: '账号', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'pay_money', title: '总计支付金额', align: 'center', sort: true, totalRow: true}
+                , {field: 'pay_num', title: '购买次数', align: 'center', sort: true, totalRow: true}
+                , {field: 'review_num', title: '留评次数', align: 'center', sort: true, totalRow: true}
+                , {field: 'label', title: '标签', align: 'center',sort: true}
+                , {field: 'member_state', title: '会员状态', align: 'center',sort: true}
+                , {field: 'last_buy_time', title: '最近购买时间', align: 'center',sort: true}
+                , {field: 'account_state', title: '账号状态', align: 'center',sort: true}
+                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+            ]]
+            , id: 'allot_order'
+            , page: true
+        });
+
+        var sub = $('#sub');
+        sub.on('click',function () {
+            var label = $('input:radio:checked').val();
+            var account = $('#account').val();
+            var price_min = $('#price_min').val();
+            var price_max = $('#price_max').val();
+            table.reload('allot_order', {
+                page: {
+                  curr: 1 //重新从第 1 页开始
+                },where: {
+                    label:label,
+                    account: account,
+                    price_min:price_min,
+                    price_max:price_max,
+                  }
+              }, '/order/filter_order');
+            return false
+        });
+
+        //监听行工具事件
+        table.on('tool(filter_order)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据
+                , layEvent = obj.event; //获得 lay-event 对应的值
+
+            if (layEvent === 'bind') {
+                    //向服务端发送删除指令
+                    $.ajax({
+                        type : 'GET',
+                        url : '/order/bind_account' + '?account=' + data.account + '&task_code=' + task_code.val() + '&buy_account=' + buy_account.val(),
+                        dataType : 'json',
+                        success : function(data) {
+                            {#var data1 = JSON.parse(data);#}
+                            {#console.log(data.code);#}
+                            // 成功提示框
+                            if (data.code == 0){
+                                parent.layer.msg('绑定成功!', {
+                                icon : 6,
+                            });
+                                parent.layer.closeAll('iframe');
+                                window.parent.location.reload()
+                            }else if(data.code == 502){
+                                parent.layer.msg('绑定失败!', {
+                                icon : 5
+                            });
+                            }
+
+                        },
+                        error : function(data) {
+                            // 异常提示
+                            parent.layer.msg('出现网络故障', {
+                                icon : 5
+                            });
+                        }
+                            });
+                return false
+            }
+        });
+
+
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>GUTE 账号管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <script src="/static/layui/layui.js"></script>
+    <script src="/static/layui/layui.all.js"></script>
+
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+<body>
+<div style="color: #180e15">
+    <h3>平台: {{ terrace }}</h3>
+    <h3>订单数量: {{ sum_num }}</h3>
+    <h3>服务费: {{ serve_money }}</h3>
+    <h3>商品总额: {{ good_money }}</h3>
+    <h3>合计: {{ sum_money }}</h3>
+</div>
+ <button type="button" class="layui-btn layui-btn-lg" id="cancel">取消任务</button>
+ <button type="button" class="layui-btn layui-btn-lg layui-btn-normal" id="sub">确认提交</button>
+<div class="layui-tab-content">
+<div class="layui-tab-item layui-show">
+<table class="layui-hide" id="task_preview" lay-filter="task_preview"></table>
+</div>
+</div>
+
+
+<script>
+    layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form'], function () {
+
+        var layer = layui.layer //弹层
+            , table = layui.table //表格
+            , element = layui.element //元素操作
+            , $ = layui.jquery;
+
+        var cancel = $('#cancel'),
+            sub = $("#sub");
+
+        sub.on('click', function(){
+            $.ajax({
+                type : 'POST',
+                url : '/customer/task_choose',
+                dataType : 'json',
+                success : function(data) {
+                    // 成功提示框
+                    if (data.code == 0){
+                        parent.layer.msg('导入成功!', {
+                        icon : 6,
+                    });
+                        {#window.parent.location.reload()#}
+                    }else if(data.code == 502){
+                        parent.layer.msg('提交失败!', {
+                        icon : 5
+                    });
+                    }
+
+                },
+                error : function(data) {
+                    // 异常提示
+                    parent.layer.msg('出现网络故障', {
+                        icon : 2
+                    });
+                }
+                    })
+            });
+
+
+
+        cancel.on('click', function(){
+            $.ajax({
+                type : 'GET',
+                url : '/customer/task_choose',
+                dataType : 'json',
+                success : function(data) {
+                    // 成功提示框
+                    if (data.code == 0){
+                        parent.layer.msg('取消成功!', {
+                        icon : 6,
+                    });
+                        window.parent.location.reload()
+                    }else if(data.code == 502){
+                        parent.layer.msg('删除失败!', {
+                        icon : 5
+                    });
+                    }
+
+                },
+                error : function(data) {
+                    // 异常提示
+                    parent.layer.msg('出现网络故障', {
+                        icon : 2
+                    });
+                }
+                    })
+            });
+
+        //执行一个 table 实例
+        table.render({
+            elem: '#task_preview'
+            , height: ''
+            , url: '/customer/preview' //数据接口
+            , title: '订单列表'
+            , limit:10
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'country', title: '国家', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'task_run_time', title: '下单时间', align: 'center',}
+                , {field: 'asin', title: 'ASIN', align: 'center', sort: true,}
+                , {field: 'key_word', title: '关键字', align: 'center', sort: true, }
+                , {field: 'kw_location', title: '关键字位置', align: 'center', sort: true}
+                , {field: 'store_name', title: '店铺名称', align: 'center'}
+                , {field: 'good_name', title: '产品名称', align: 'center'}
+                , {field: 'good_money', title: '产品金额', align: 'center',totalRow: true}
+                , {field: 'good_link', title: '产品链接', align: 'center'}
+                , {field: 'pay_method', title: '支付方式', align: 'center'}
+                , {field: 'serve_class', title: '服务类型', align: 'center'}
+                , {field: 'mail_method', title: 'FBA/FBM', align: 'center'}
+            ]]
+            , id: 'task_preview'
+            , page: true
+        });
+    });
+
+</script>
+</body>
+</html>
