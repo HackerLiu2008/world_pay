@@ -3,7 +3,8 @@ import json
 import logging
 import os
 import xlrd
-from tools_me.other_tools import customer_required, save_file, excel_to_data, asin_num, sum_code, xianzai_time
+from tools_me.other_tools import customer_required, save_file, excel_to_data, asin_num, sum_code, xianzai_time, \
+    date_to_week
 from tools_me.parameter import RET, MSG, TASK_DIR, PHOTO_DIR, PHOTO_LINK_2
 from tools_me.up_pic import up_photo
 from . import customer_blueprint
@@ -169,6 +170,181 @@ def preview_index():
     context['terrace'] = terrace
     context['sum_num'] = sum_num
     return render_template('customer/preview_task.html', **context)
+
+
+@customer_blueprint.route('/smt_preview', methods=['GET', 'POST'])
+@customer_required
+def preview_smt():
+    cus_id = g.cus_id
+    results = {'code': RET.OK, 'msg': MSG.OK}
+    if request.method == 'GET':
+        limit = request.args.get('limit')
+        page = request.args.get('page')
+        task_json = SqlData().search_cus_field('task_json', cus_id)
+        task_dict = json.loads(task_json)
+        task_list = task_dict.get('task_info')
+        data = list()
+        for i in task_list:
+            one_dict = dict()
+            one_dict['task_run_time'] = i[0]
+            one_dict['country'] = i[1]
+            one_dict['store_name'] = i[2]
+            one_dict['key_word'] = i[3]
+            one_dict['asin'] = i[4]
+            one_dict['good_search_money'] = i[5]
+            one_dict['good_link'] = i[6]
+            one_dict['mail_method'] = i[7]
+            one_dict['sku'] = i[8]
+            one_dict['good_money'] = i[9]
+            one_dict['mail_money'] = i[10]
+            one_dict['text_review'] = i[11]
+            one_dict['image_review'] = i[12]
+            data.append(one_dict)
+        page_list = list()
+        for i in range(0, len(data), int(limit)):
+            page_list.append(data[i:i + int(limit)])
+        results['data'] = page_list[int(page) - 1]
+        results['count'] = len(data)
+        return results
+
+
+@customer_blueprint.route('/smt_task', methods=['GET', 'POST'])
+@customer_required
+def smt_task():
+    if request.method == 'GET':
+        return render_template('customer/cus_smt_task.html')
+
+    # 预存表格数据到task_json字段中
+    if request.method == 'POST':
+        file = request.files.get('file')
+        filename = file.filename
+        file_path = save_file(file, filename, TASK_DIR)
+        results = {'code': RET.OK, 'data': MSG.OK}
+        user_id = g.cus_user_id
+        try:
+            if 'static' in file_path:
+                data = xlrd.open_workbook(file_path, encoding_override='utf-8')
+                table = data.sheets()[0]
+                nrows = table.nrows  # 行数
+                ncols = table.ncols  # 列数
+                row_list = [table.row_values(i) for i in range(0, nrows)]  # 所有行的数据
+                col_list = [table.col_values(i) for i in range(0, ncols)]  # 所有列的数
+                # 验证参数是否空缺
+                index = 1
+                err_list = list()
+                for i in row_list[1:]:
+                    index += 1
+                    if not all([i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10]]):
+                        err_list.append(str(index))
+                if len(err_list) != 0:
+                    results['code'] = RET.SERVERERROR
+                    m = ""
+                    for i in err_list:
+                        m = m + i + ','
+                    results['msg'] = "第" + m + "行缺少必填参数!"
+                    return jsonify(results)
+
+                # 以下是计算服务费
+                good_money = col_list[9][1:]
+                mail_money_list = col_list[10][1:]
+                # 计算全部商品本金
+                good_sum_money = 0
+                for i in good_money:
+                    good_sum_money += float(i)
+                #  计算邮费
+                mail_sum_money = 0
+                for n in mail_money_list:
+                    mail_sum_money += float(n)
+
+                # 计算文字留评数量
+                text_review = col_list[11][1:]
+                text_num = 0
+                for t in text_review:
+                    if t.upper() == 'T':
+                        text_num += 1
+
+                # 计算图片留评数量
+                image_review = col_list[12][1:]
+                image_num = 0
+                for i in image_review:
+                    if i == 'T':
+                        image_num += 1
+
+                time_list = col_list[0][1:]
+                sunday_num = 0
+                for t in time_list:
+                    time_str = excel_to_data(t)
+                    if date_to_week(time_str) == 6:
+                        sunday_num += 1
+
+                # 计算下单数量
+                sum_num = len(time_list)
+
+                task_info_list = list()
+                for one in row_list[1:]:
+                    one_task_list = list()
+                    if not one[0]:
+                        task_run_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    else:
+                        task_run_time = excel_to_data(one[0])
+                    country = one[1].strip()
+                    store_name = one[2].strip()
+                    key_word = one[3].strip()
+                    asin = one[4].strip()
+                    good_search_money = float(one[5])
+                    good_link = one[6].strip()
+                    mail_method = one[7].strip()
+                    sku = one[8]
+                    good_money = one[9]
+                    mail_money = one[10]
+                    review_text = one[11]
+                    review_image = one[12]
+                    one_task_list.append(task_run_time)
+                    one_task_list.append(country)
+                    one_task_list.append(store_name)
+                    one_task_list.append(key_word)
+                    one_task_list.append(asin)
+                    one_task_list.append(good_search_money)
+                    one_task_list.append(good_link)
+                    one_task_list.append(mail_method)
+                    one_task_list.append(sku)
+                    one_task_list.append(good_money)
+                    one_task_list.append(mail_money)
+                    one_task_list.append(review_text)
+                    one_task_list.append(review_image)
+                    task_info_list.append(one_task_list)
+                task_info_dict = dict()
+                task_info_dict['task_info'] = task_info_list
+
+                task_info_dict['sum_num'] = sum_num
+
+                task_info_dict['terrace'] = 'SMT'
+
+                task_info_dict['good_sum_money'] = good_sum_money
+
+                task_info_dict['mail_sum_money'] = mail_sum_money
+
+                task_info_dict['text_num'] = text_num
+
+                task_info_dict['image_num'] = image_num
+
+                task_info_dict['sunday_num'] = sunday_num
+                # print(task_info_dict)
+                task_info_json = json.dumps(task_info_dict, ensure_ascii=False)
+
+                label = g.cus_label
+                print(task_info_json)
+                SqlData().update_user_cus('task_json', task_info_json, user_id, label)
+
+                return jsonify(results)
+        except Exception as e:
+            logging.error(str(e))
+            results = {'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR}
+            return jsonify(results)
+
+    else:
+        results = {'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR}
+        return jsonify(results)
 
 
 @customer_blueprint.route('/preview', methods=['GET', 'POST'])

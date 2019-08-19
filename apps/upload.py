@@ -1,12 +1,11 @@
 import datetime
 import logging
-
 import xlrd
 from tools_me.other_tools import save_file, excel_to_data, sum_code, login_required
 from . import upload_blueprint
 from flask import render_template, jsonify, request, send_file, g
 from tools_me.mysql_tools import SqlData
-from tools_me.parameter import RET, MSG, ACCOUNT_DIR, TASK_DIR, DW_TASK, DW_ACCOUNT
+from tools_me.parameter import RET, MSG, ACCOUNT_DIR, TASK_DIR, DW_TASK, DW_ACCOUNT, SMT_TASK
 
 
 @upload_blueprint.route('/up_acc', methods=['GET'])
@@ -31,6 +30,12 @@ def download_account():
 @upload_blueprint.route('/task_excel', methods=['GET'])
 def download_task():
     response = send_file(DW_TASK)
+    return response
+
+
+@upload_blueprint.route('/smt_excel', methods=['GET'])
+def download_smt():
+    response = send_file(SMT_TASK)
     return response
 
 

@@ -232,7 +232,6 @@ class SqlData(object):
               "customer_label, sum_time, sum_state, note, good_money FROM task_parent WHERE user_id = {}".format(user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
-        print(rows)
         task_list = self.task_info_to_list(rows, user_id)
         return task_list
 
@@ -740,7 +739,6 @@ class SqlData(object):
         sql_parent = "INSERT INTO task_parent(user_id, sum_order_code) VALUES ('{}','{}')". \
             format(user_id, sum_order_code)
         # print(sql_parent)
-
         try:
             self.cursor.execute(sql_parent)
             self.connect.commit()

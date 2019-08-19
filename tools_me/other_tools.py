@@ -63,11 +63,7 @@ def save_file(file, filename, account_path):
                 logging.info("warning 创建目录失败")
                 return "创建目录失败, 看日志去%s" % bigpath
         new_name = change_filename(filename)
-        # filepath = os.path.join(bigpath, new_name)
         filepath = bigpath + "/" + new_name
-        # if not os.access(filepath, os.W_OK):
-        #     logging.exception("warning 目录不写")
-        #     return "目录不可写, 看日志去"
         try:
             file.save(filepath)
         except Exception as e:
@@ -417,3 +413,9 @@ def asin_num(asin_list):
         res[i] = res.get(i, 0) + 1
     asin_num_dict = dict(zip([k for k in res.keys()], [v for v in res.values()]))
     return asin_num_dict
+
+
+def date_to_week(t):
+    date = datetime.datetime.strptime(t, '%Y-%m-%d')
+    week = date.weekday()
+    return week

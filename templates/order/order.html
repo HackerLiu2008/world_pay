@@ -18,11 +18,21 @@
     <div class="layui-logo">GUTE  分单系统</div>
     <ul class="layui-nav layui-layout-left" lay-filter="demo" id="demo">
       <li class="layui-nav-item">
-          <a href="javascript:">参数配置</a>
+          <a href="javascript:">客户管理</a>
           <dl class="layui-nav-child">
-              <dd id="user_conf"><a href="javascript:">汇率配置</a></dd>
+              <dd id="look_cus"><a href="javascript:">查看客户信息</a></dd>
+              <dd id="user_cus"><a href="javascript:">添加客户标签</a></dd>
           </dl>
       </li>
+
+        <li class="layui-nav-item">
+            <a href="javascript:">收费标准</a>
+            <dl class="layui-nav-child">
+              <dd id="user_conf"><a href="javascript:">汇  率  配  置</a></dd>
+              <dd id="amz_serve"><a href="javascript:">AMZ收费标准</a></dd>
+              <dd id=""><a href="javascript:">SMT收费标准</a></dd>
+            </dl>
+        </li>
 
       <li class="layui-nav-item">
         <a href="javascript:">上传文件</a>
@@ -234,6 +244,39 @@
             , element = layui.element //元素操作
             , $ = layui.$;
 
+        //编辑客户标签
+        $('#user_cus').on('click',function () {
+           layer.open({
+                 type: 2
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: ['600px','600px']
+                ,shade: 0.8
+                ,id: 'user_customer_label' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/user/customer'
+           })
+        });
+
+        //编辑客户标签
+        $('#look_cus').on('click',function () {
+           layer.open({
+                 type: 2
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: ['700px','400px']
+                ,shade: 0.8
+                ,shadeClose:true
+                ,id: 'user_customer_detail' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/user/customer_detail'
+           })
+        });
+
         //修改美元汇率
         $('#user_conf').on('click',function () {
            layer.open({
@@ -251,6 +294,24 @@
         });
 
 
+        //修改AMZ服务费收取标准
+        $('#amz_serve').on('click',function () {
+           layer.open({
+                 type: 2
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: ['500px','700px']
+                ,shade: 0.8
+                ,id: 'amz_serve_money' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,shadeClose: true
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/user/amz_serve'
+           })
+        });
+
+
         //基本资料弹出
         $('#user_info').on('click', function () {
             layer.open({
@@ -264,6 +325,8 @@
                 ,btnAlign: 'c'
                 ,moveType: 1 //拖拽模式，0或者1
                 ,content: '/user/user_info'
+
+
               });
         });
 
@@ -284,6 +347,10 @@
 
               });
         });
+
+
+
+
 
 
         //监听Tab切换
