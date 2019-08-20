@@ -18,32 +18,49 @@
 <div style="padding: 50px; line-height: 22px; background-color: #fbfdff; color: #180e15; font-weight: 400;">
     任务基本信息:
     <br>大任务编号: {{ big_code }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp小任务编号: {{ task_code }}
-    <br>ASIN: {{ asin }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp关键字: {{ kwy_word }}
+    <br>&nbsp
+    <br>ASIN: {{ asin }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp关键字: {{ key_word }}
+    <br>&nbsp
     <br>关键字位置: {{ kw_location }}
-    <br>店铺名称: {{ store_name }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFBA/FBM: {{ meil_method }}
+    <br>&nbsp
+    <br>店铺名称/搜索价格: {{ store_name }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFBA/FBM: {{ mail_method }}
+    <br>&nbsp
     <br>商品名称: {{ good_name }}
+    <br>&nbsp
     <br>商品金额: {{ good_money }}
+    <br>&nbsp
     <br>商品链接: {{ good_link }}
-    <br>支付方式: {{ pay_method }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp服务类型: {{ serve_class }}
+    <br>&nbsp
+    <br>支付方式/SKU: {{ pay_method }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp服务类型/邮费: {{ serve_class }}
+    <br>&nbsp
     <br>
     <br>
     操作信息:
     <br>购买账号: {{ buy_account }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 账号密码: {{ account_ps }}
+    <br>&nbsp
     <br>下单时间: {{ task_run_time }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp任务状态: {{ task_state }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp刷    手: {{ brush_hand }}
+    <br>&nbsp
     <br>订单编号: {{ order_num }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp实际金额: {{ good_money_real }}
+    <br>&nbsp
     <br>邮    费: {{ mail_money }}
+    <br>&nbsp
     <br>税    费: {{ taxes_money }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp合    计: {{ sum_money }}
+    <br>&nbsp
     <br>订单备注: {{ note }}
+    <br>&nbsp
     <br>
     <br>
     留评信息:
     <br>Review星级(默认五星):
     <div id="test1"></div>
-    <br>评论标题: {{ review_title }}
-    <br>评论内容: {{ review_info }}
+    <br>评论标题/文字留评: {{ review_title }}
+    <br>&nbsp
+    <br>评论内容/图片留评: {{ review_info }}
+    <br>&nbsp
     <br>Feedback星级(默认五星);
     <div id="test2"></div>
-    <br>Feedback内容: {{ feedback_info }}
+    <br>Feedback内容/默认留评: {{ feedback_info }}
+    <br>&nbsp
     <br>截屏图片显示:
     {% for i in pic_link %}
     <a href="{{ i }}" target="_blank" style="text-decoration:underline; color: #0000FF" >留评截图</a>

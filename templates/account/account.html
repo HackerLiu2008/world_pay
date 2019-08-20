@@ -29,9 +29,9 @@
         <li class="layui-nav-item">
             <a href="javascript:">收费标准</a>
             <dl class="layui-nav-child">
-              <dd id="user_conf"><a href="javascript:">汇  率  配  置</a></dd>
+              <dd id="user_conf"><a href="javascript:">汇&nbsp率&nbsp配&nbsp置</a></dd>
               <dd id="amz_serve"><a href="javascript:">AMZ收费标准</a></dd>
-              <dd id=""><a href="javascript:">SMT收费标准</a></dd>
+              <dd id="smt_serve"><a href="javascript:">SMT收费标准</a></dd>
             </dl>
         </li>
 
@@ -178,6 +178,23 @@
             , upload = layui.upload //上传
             , element = layui.element //元素操作
             , $ = layui.$;
+
+        //修改SMT服务费收取标准
+        $('#smt_serve').on('click',function () {
+           layer.open({
+                 type: 2
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: ['500px','700px']
+                ,shade: 0.8
+                ,id: 'smt_serve_money' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,shadeClose: true
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/user/smt_serve'
+           })
+        });
 
         //修改美元汇率
         $('#user_conf').on('click',function () {

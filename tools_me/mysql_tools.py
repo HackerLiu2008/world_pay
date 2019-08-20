@@ -5,11 +5,11 @@ import logging
 
 class SqlData(object):
     def __init__(self):
-        host = "rm-j6c3t1i83rgylsuamvo.mysql.rds.aliyuncs.com"
+        host = "127.0.0.1"
         port = 3306
-        user = "hellen"
-        password = "trybest_1"
-        database = "helen_db"
+        user = "root"
+        password = "admin"
+        database = "smt_allot_order"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
             passwd=password, db=database,
@@ -107,6 +107,9 @@ class SqlData(object):
             detail_dict['task_state'] = i[17]
             detail_dict['brush_hand'] = i[18]
             detail_dict['note'] = i[24]
+            detail_dict['review_title'] = i[25]
+            detail_dict['review_info'] = i[26]
+            detail_dict['feedback_info'] = i[27]
             detail_list.append(detail_dict)
         return detail_list
 
@@ -258,6 +261,12 @@ class SqlData(object):
         rows = self.cursor.fetchall()
         task_list = self.task_info_to_list(rows, user_id)
         return task_list
+
+    def search_order_one(self, field, value):
+        sql = "SELECT {} FROM task_detail_info WHERE task_code = '{}' ".format(field, value)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
 
     def search_task_detail(self, sum_order_code, state_sql=''):
         sql = "SELECT task_detail_info.* FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id = " \

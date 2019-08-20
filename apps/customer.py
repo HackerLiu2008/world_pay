@@ -12,6 +12,55 @@ from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
 
 
+@customer_blueprint.route('/up_review_pic', methods=['POST'])
+@customer_required
+def up_review_pic():
+    user_id = g.cus_user_id
+    results = {'code': RET.OK, 'msg': MSG.OK}
+    file = request.files.get('file')
+    task_code = request.args.get('task_code')
+    image_state = SqlData().search_order_one('review_info', task_code)
+    if image_state != "T":
+        return jsonify({'code': RET.SERVERERROR, 'msg': '此订单不支持上传图片'})
+    bucket_name = 'pay_pic'
+    file_name = str(user_id) + "-" + sum_code() + ".PNG"
+    file_path = PHOTO_DIR + "/" + file_name
+    file.save(file_path)
+    status_code, filename = up_photo(file_name, file_path, bucket_name)
+    if status_code == 200:
+        os.remove(file_path)
+        phone_link = PHOTO_LINK_2 + filename
+        SqlData().update_review_one('review_info', phone_link, task_code)
+        return jsonify(results)
+    else:
+        return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@customer_blueprint.route('/edit_smt', methods=['GET', 'POST'])
+@customer_required
+def edit_smt():
+    if request.method == 'GET':
+        task_code = request.args.get('task_code')
+        context = {'task_code': task_code}
+        return render_template('customer/smt_review.html', **context)
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.form.get('data'))
+            task_code = request.args.get('task_code')
+            review_title = data.get('review_title')
+            title_state = SqlData().search_order_one('review_title', task_code)
+            if title_state != "T":
+                return jsonify({'code': RET.SERVERERROR, 'msg': '此订单不可添加文字留评'})
+            if review_title:
+                SqlData().update_review_one('review_title', review_title, task_code)
+            results = {'code': RET.OK, 'msg': MSG.OK}
+            return jsonify(results)
+        except Exception as e:
+            logging.error(str(e))
+            results = {'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR}
+            return jsonify(results)
+
+
 @customer_blueprint.route('/edit_review', methods=['GET', 'POST'])
 @customer_required
 def edit_review():
@@ -57,7 +106,7 @@ def edit_sum():
 
 @customer_blueprint.route('/up_pay_pic', methods=['POST'])
 @customer_required
-def up_review_pic():
+def up_pay_pic():
     user_id = g.cus_user_id
     results = {'code': RET.OK, 'msg': MSG.OK}
     file = request.files.get('file')
@@ -172,9 +221,157 @@ def preview_index():
     return render_template('customer/preview_task.html', **context)
 
 
-@customer_blueprint.route('/smt_preview', methods=['GET', 'POST'])
+@customer_blueprint.route('/smt_choose', methods=['GET', 'POST'])
 @customer_required
-def preview_smt():
+def smt_choose():
+    user_id = g.cus_user_id
+    label = g.cus_label
+    cus_id = g.cus_id
+    if request.method == 'GET':
+        SqlData().update_user_cus('task_json', '', user_id, label)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+    if request.method == 'POST':
+        task_json = SqlData().search_cus_field('task_json', cus_id)
+        task_dict = json.loads(task_json)
+
+        task_list = task_dict.get('task_info')
+        serve_money = float(task_dict.get('serve_money')) + float(task_dict.get('other_money'))
+        good_sum_money = task_dict.get('good_money')
+        terrace = task_dict.get('terrace')
+        sum_num = task_dict.get('sum_num')
+        sum_money = float(task_dict.get('sum_money'))
+
+        sum_order_code = sum_code()
+        parent_id = SqlData().insert_task_parent(user_id, sum_order_code)
+
+        SqlData().update_task_one('terrace', terrace, sum_order_code)
+        SqlData().update_task_one('sum_num', sum_num, sum_order_code)
+        SqlData().update_task_one('serve_money', serve_money, sum_order_code)
+        SqlData().update_task_one('good_money', good_sum_money, sum_order_code)
+        SqlData().update_task_one('sum_money', sum_money, sum_order_code)
+        now_time = xianzai_time()
+        SqlData().update_task_one('sum_time', now_time, sum_order_code)
+        label = g.cus_label
+        SqlData().update_task_one('customer_label', label, sum_order_code)
+
+        index = 1
+        for i in task_list:
+            task_code = sum_order_code + '-' + str(index)
+            country = i[1]
+            task_run_time = i[0]
+            store_name = i[2]
+            key_word = i[3]
+            asin = i[4]
+            good_search_money = i[5]
+            good_link = i[6]
+            mail_method = i[7]
+            sku = i[8]
+            good_money = i[9]
+            mail_money = i[10]
+            text_review = i[11]
+            image_review = i[12]
+            if len(i) == 14:
+                default_review = i[13]
+            else:
+                default_review = ''
+            kw_location = ""
+            note = ""
+            # good_search_money=AMZ.good_name, sku=AMZ.pay_method, mail_money=AMZ.serve_class, text_review=AMZ.review_t
+            # itle, image_review=AMZ.review_info, default_review=AMZ.feedback_info
+            try:
+                SqlData().insert_task_detail(parent_id, task_code, country, asin, key_word, kw_location, store_name,
+                                             good_search_money, good_money, good_link, sku, task_run_time, mail_money,
+                                             mail_method, note, text_review, image_review, default_review)
+                index += 1
+            except Exception as e:
+                logging.error(str(e))
+                return jsonify({'code': RET.SERVERERROR, 'msg': '上传失败!'})
+        SqlData().update_user_cus('task_json', '', user_id, label)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
+@customer_blueprint.route('/smt_preview', methods=['GET'])
+@customer_required
+def smt_preview():
+    if request.method == 'GET':
+        try:
+            cus_id = g.cus_id
+            user_id = g.cus_user_id
+            label = g.cus_label
+            method = request.args.get('method')
+            task_json = SqlData().search_cus_field('task_json', cus_id)
+            if not task_json:
+                return '请先导入表格文件!'
+            task_dict = json.loads(task_json)
+            task_info = task_dict.get('task_info')
+            sum_num = task_dict.get('sum_num')
+            terrace = task_dict.get('terrace')
+            good_sum_money = task_dict.get('good_sum_money')
+            mail_sum_money = task_dict.get('mail_sum_money')
+            text_num = task_dict.get('text_num')
+            image_num = task_dict.get('image_num')
+            sunday_num = task_dict.get('sunday_num')
+
+            discount = SqlData().search_cus_field('discount', cus_id)
+
+            exchange_dis = SqlData().search_cus_field('exchange_dis', cus_id)
+
+            exchange = SqlData().search_user_field('dollar_exchange', user_id)
+
+            smt_serve = SqlData().search_user_field('amz_serve', user_id)
+
+            smt_dict = json.loads(smt_serve)
+            bili = smt_dict.get('bili')
+            bili = bili / 100
+            default = round(sum_num * bili)
+            for i in task_info[:default]:
+                i.append('T')
+            task_dict['task_info'] = task_info
+            SqlData().update_user_cus('task_json', task_info, user_id, label)
+            pc_money = smt_dict.get('pc_money')
+            app_money = smt_dict.get('app_money')
+            text_money = smt_dict.get('text_money')
+            image_money = smt_dict.get('image_money')
+            sunday_money = smt_dict.get('sunday_money')
+            if not all([pc_money, app_money, text_money, image_money, sunday_money]):
+                return '请联系服务商完善收费标准!'
+            good_sum_money = float("%.3f" %(good_sum_money))
+            mail_sum_money = float("%.3f" %(mail_sum_money))
+            s = (good_sum_money + mail_sum_money) * exchange * exchange_dis
+            if method == 'PC':
+                money = float(pc_money)
+                q = sum_num * float(pc_money) * discount
+            else:
+                # APP
+                money = float(pc_money)
+                q = sum_num * float(app_money) * discount
+            text = text_num * float(text_money)
+            image = image_num * float(image_money)
+            sunday = sunday_num * float(sunday_money)
+            other_money = text + image + sunday
+            context = dict()
+            context['serve_money'] = str(q) + " = " + str(sum_num * float(money)) + "(服务费总额)" + "*" + str(float(discount)) + "(折扣)"
+            context['good_money'] = str(s) + " = (" + str(good_sum_money) + "(商品金额总额)+" + str(mail_sum_money) + '(邮费总额)) ' + "*" + str(float(exchange)) + "(汇率) *" + str(float(exchange_dis)) + '折扣'
+            context['other_money'] = str(other_money) + "=" + str(text)+"(文字留评) +" + str(image) + "(图片留评) +" + str(sunday) + "(周日留评)"
+            context['sum_money'] = "%.2f" % (q + s + other_money)
+            context['sum_num'] = sum_num
+            context['terrace'] = terrace
+            task_dict['sum_money'] = "%.2f" % (q + s + other_money)
+            task_dict['serve_money'] = str(q)
+            task_dict['good_money'] = str(s)
+            task_dict['other_money'] = str(other_money)
+            task_json = json.dumps(task_dict, ensure_ascii=False)
+            SqlData().update_user_cus('task_json', task_json, user_id, label)
+            return render_template('customer/smt_preview_task.html', **context)
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@customer_blueprint.route('/smt_up_preview', methods=['GET', 'POST'])
+@customer_required
+def smt_up_preview():
     cus_id = g.cus_id
     results = {'code': RET.OK, 'msg': MSG.OK}
     if request.method == 'GET':
@@ -186,8 +383,8 @@ def preview_smt():
         data = list()
         for i in task_list:
             one_dict = dict()
-            one_dict['task_run_time'] = i[0]
-            one_dict['country'] = i[1]
+            one_dict['task_run_time'] = i[1]
+            one_dict['country'] = i[0]
             one_dict['store_name'] = i[2]
             one_dict['key_word'] = i[3]
             one_dict['asin'] = i[4]
@@ -199,6 +396,10 @@ def preview_smt():
             one_dict['mail_money'] = i[10]
             one_dict['text_review'] = i[11]
             one_dict['image_review'] = i[12]
+            if len(i) == 14:
+                one_dict['default_review'] = i[13]
+            else:
+                one_dict['default_review'] = ''
             data.append(one_dict)
         page_list = list()
         for i in range(0, len(data), int(limit)):
@@ -234,7 +435,7 @@ def smt_task():
                 err_list = list()
                 for i in row_list[1:]:
                     index += 1
-                    if not all([i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10]]):
+                    if not all([i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9]]):
                         err_list.append(str(index))
                 if len(err_list) != 0:
                     results['code'] = RET.SERVERERROR
@@ -333,7 +534,6 @@ def smt_task():
                 task_info_json = json.dumps(task_info_dict, ensure_ascii=False)
 
                 label = g.cus_label
-                print(task_info_json)
                 SqlData().update_user_cus('task_json', task_info_json, user_id, label)
 
                 return jsonify(results)
@@ -633,7 +833,7 @@ def task_detail():
         else:
             state_sql = "AND task_detail_info.task_state!='已完成' AND task_detail_info.task_state!='待留评'"
         task_info = SqlData().search_task_detail(sum_order_code, state_sql=state_sql)
-        task_info = list(reversed(task_info))
+        # task_info = list(reversed(task_info))
         for i in range(0, len(task_info), int(limit)):
             page_list.append(task_info[i:i + int(limit)])
         results['data'] = page_list[int(page) - 1]
@@ -649,7 +849,8 @@ def task_detail():
 @customer_required
 def task_list():
     sum_order_code = request.args.get('sum_order_code')
-    context = {'sum_code': sum_order_code}
+    terrace = request.args.get('terrace')
+    context = {'sum_code': sum_order_code, 'terrace': terrace}
     return render_template('customer/customer_task_list.html', **context)
 
 

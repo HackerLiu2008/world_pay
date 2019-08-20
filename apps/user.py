@@ -18,6 +18,56 @@ def ch_pass_html():
     return render_template('user/edit_user.html')
 
 
+@user_blueprint.route('/smt_serve', methods=['GET', 'POST'])
+@login_required
+def smt_serve():
+    user_id = g.user_id
+    if request.method == 'GET':
+        amz_serve = SqlData().search_user_field('amz_serve', user_id)
+        if not amz_serve:
+            context = {'serve_list': ['暂无收费标准!']}
+        else:
+            serve_dict = json.loads(amz_serve)
+            serve_list = list()
+            for key, value in sorted(serve_dict.items()):
+                if key == 'bili':
+                    s = '留评比例: ' + str(value) + "%"
+                else:
+                    s = "服务类型: " + str(key) + ", 单价: " + str(value)
+                serve_list.append(s)
+            context = {'serve_list': serve_list}
+        return render_template('user/smt_serve_money.html', **context)
+    if request.method == 'POST':
+        data = json.loads(request.form.get('data'))
+        bili = data.get('bili')
+        pc_money = data.get('pc_money')
+        app_money = data.get('app_money')
+        text_money = data.get('text_money')
+        image_money = data.get('image_money')
+        sunday_money = data.get('sunday_money')
+        smt_serve = SqlData().search_user_field('amz_serve', user_id)
+        if not smt_serve:
+            serve_dict = dict()
+        else:
+            serve_dict = json.loads(smt_serve)
+        if bili:
+            serve_dict['bili'] = int(bili)
+        if pc_money:
+            serve_dict['pc_money'] = float(pc_money)
+        if app_money:
+            serve_dict['app_money'] = float(app_money)
+        if text_money:
+            serve_dict['text_money'] = float(text_money)
+        if image_money:
+            serve_dict['image_money'] = float(image_money)
+        if sunday_money:
+            serve_dict['sunday_money'] = float(sunday_money)
+
+        serve_json = json.dumps(serve_dict)
+        SqlData().update_user_field('amz_serve', "'" + serve_json + "'", user_id)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
 @user_blueprint.route('/amz_serve', methods=['GET', 'POST'])
 @login_required
 def amz_serve():
@@ -45,7 +95,6 @@ def amz_serve():
         if not amz_serve:
             serve_dict = dict()
             serve_dict[bili] = int(money)
-
         else:
             serve_dict = json.loads(amz_serve)
             serve_dict[bili] = int(money)
@@ -87,6 +136,7 @@ def customer():
         account = data.get('account')
         password = data.get('password')
         discount = data.get('discount')
+        ex_discount = data.get('ex_discount')
         note = data.get('note')
         try:
             label_list = SqlData().search_user_cus(user_id)
@@ -97,6 +147,8 @@ def customer():
                     SqlData().update_user_cus('pass_word', password, user_id, add_cus)
                 if discount:
                     SqlData().update_user_cus('discount', float(discount), user_id, add_cus)
+                if ex_discount:
+                    SqlData().update_user_cus('exchange_dis', float(ex_discount), user_id, add_cus)
                 if note:
                     SqlData().update_user_cus('note', note, user_id, add_cus)
             if add_cus not in label_list:
