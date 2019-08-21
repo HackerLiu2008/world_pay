@@ -140,18 +140,19 @@
                 , {field: 'asin', title: 'ASIN', align: 'center', sort: true,}
                 , {field: 'key_word', title: '关键字', align: 'center', sort: true, totalRow: true}
                 , {field: 'kw_location', title: '关键字位置', align: 'center', sort: true}
-                , {field: 'store_name', title: '店铺名称/搜索价格', align: 'center', totalRow: true}
-                , {field: 'good_name', title: '产品名称', align: 'center'}
+                , {field: 'store_name', title: '店铺名称', align: 'center', totalRow: true}
+                , {field: 'good_name', title: '{{ good_name }}', align: 'center'}
                 , {field: 'good_money', title: '产品金额', align: 'center'}
                 , {field: 'good_link', title: '产品链接', align: 'center'}
-                , {field: 'pay_method', title: '支付方式/SKU', align: 'center'}
-                , {field: 'serve_class', title: '服务类型/邮费', align: 'center'}
+                , {field: 'pay_method', title: '{{ pay_method }}', align: 'center'}
+                , {field: 'serve_class', title: '{{ serve_class }}', align: 'center'}
                 , {field: 'mail_method', title: '物流方式', align: 'center'}
                 , {field: 'task_run_time', title: '下单时间', align: 'center'}
                 , {field: 'task_state', title: '订单状态', align: 'center'}
-                , {field: 'review_title', title: '评论标题/文字留评', align: 'center'}
-                , {field: 'review_info', title: '评论内容/图片留评', align: 'center'}
-                , {field: 'feedback_info', title: 'Feedback/默认留评', align: 'center'}
+                , {field: 'review_title', title: '{{ review_title }}', align: 'center'}
+                , {field: 'review_info', title: '{{ review_info }}', align: 'center'}
+                , {field: 'feedback_info', title: '{{ feedback_info }}', align: 'center'}
+                , {field: 'note', title: '备注', align: 'center'}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
             , id: 'task_list'

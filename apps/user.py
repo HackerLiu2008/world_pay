@@ -7,11 +7,6 @@ from flask import render_template, request, jsonify, redirect, url_for, session,
 from tools_me.mysql_tools import SqlData
 
 
-@user_blueprint.route('/log_tl', methods=['GET'])
-def log_tl():
-    return render_template('user/login.html')
-
-
 @user_blueprint.route('/edit_user', methods=['GET'])
 @login_required
 def ch_pass_html():
@@ -239,39 +234,44 @@ def logout():
     session.pop('pass_word')
     session.pop('expire_time')
     session.pop('us_time')
+    session.pop('terrace')
     return render_template('user/login.html')
 
 
-@user_blueprint.route('/login', methods=['POST'])
+@user_blueprint.route('/login', methods=['POST', 'GET'])
 def login():
-    data = json.loads(request.form.get('data'))
-    user_name = data.get('user_name')
-    user_pass = data.get('pass_word')
-    results = {'code': RET.OK, 'msg': MSG.OK}
+    if request.method == 'GET':
+        return render_template('user/login.html')
 
-    user_data = SqlData().search_user_info(user_name)
-    try:
-        user_id = user_data.get('user_id')
-        pass_word = user_data.get('pass_word')
-        expire_time = user_data.get('expire_time')
-        us_time = user_data.get('us_time')
-        time_str = expire_time.strftime("%Y-%m-%d %H:%M:%S")
-        now_time = xianzai_time()
-        if user_pass == pass_word and verify_login_time(time_str, now_time):
-            session['user_id'] = user_id
-            session['user_name'] = user_name
-            session['pass_word'] = pass_word
-            session['expire_time'] = time_str
-            session['us_time'] = us_time
+    if request.method == 'POST':
+        data = json.loads(request.form.get('data'))
+        user_name = data.get('user_name')
+        user_pass = data.get('pass_word')
+        results = {'code': RET.OK, 'msg': MSG.OK}
+        user_data = SqlData().search_user_info(user_name)
+        try:
+            user_id = user_data.get('user_id')
+            pass_word = user_data.get('pass_word')
+            expire_time = user_data.get('expire_time')
+            us_time = user_data.get('us_time')
+            terrace = user_data.get('terrace')
+            time_str = expire_time.strftime("%Y-%m-%d %H:%M:%S")
+            now_time = xianzai_time()
+            if user_pass == pass_word and verify_login_time(time_str, now_time):
+                session['user_id'] = user_id
+                session['user_name'] = user_name
+                session['pass_word'] = pass_word
+                session['expire_time'] = time_str
+                session['us_time'] = us_time
+                session['terrace'] = terrace
+                return jsonify(results)
+            else:
+                results['code'] = RET.SERVERERROR
+                results['msg'] = MSG.DATAERROR
+                return jsonify(results)
 
-            return jsonify(results)
-        else:
+        except Exception as e:
+            logging.error(str(e))
             results['code'] = RET.SERVERERROR
             results['msg'] = MSG.DATAERROR
             return jsonify(results)
-
-    except Exception as e:
-        logging.error(str(e))
-        results['code'] = RET.SERVERERROR
-        results['msg'] = MSG.DATAERROR
-        return jsonify(results)

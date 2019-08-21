@@ -13,7 +13,8 @@ from tools_me.parameter import RET, MSG, ORDER, PHOTO_DIR, PHOTO_LINK
 @order_blueprint.route('/', methods=['GET'])
 @login_required
 def account():
-    context = {'user_name': g.user_name}
+    terrace = g.terrace
+    context = {'user_name': g.user_name, 'terrace': terrace}
     return render_template("order/order.html", **context)
 
 
@@ -54,7 +55,7 @@ def up_review_pic():
     status_code, filename = up_photo(file_name, file_path, bucket_name)
     if status_code == 200:
         os.remove(file_path)
-        phone_link = PHOTO_LINK + filename
+        phone_link = filename
         phone_info = SqlData().search_review_pic(task_code)
         if not phone_info:
             link_dict = dict()
@@ -182,6 +183,7 @@ def sub_order():
     if request.method == 'GET':
         return render_template('order/sub_order.html')
     elif request.method == 'POST':
+        terrace = g.terrace
         results_ok = {'code': RET.OK, 'msg': MSG.OK}
         results_er = {'code': RET.SERVERERROR, 'msg': MSG.NODATA}
         data = json.loads(request.form.get('data'))
@@ -207,12 +209,26 @@ def sub_order():
             taxes_money = 0
         sum_money = good_money_real + mail_money + taxes_money
         try:
-            if serve_class:
-                task_state = '待留评'
-                account_state = ", account_state='待留评'"
-            else:
-                task_state = '已完成'
-                account_state = ""
+            task_state = ''
+            account_state = ''
+            if terrace == 'AMZ':
+                if serve_class:
+                    task_state = '待留评'
+                    account_state = ", account_state='待留评'"
+                else:
+                    task_state = '已完成'
+                    account_state = ""
+            if terrace == 'SMT':
+                text_review = SqlData().search_order_one('review_title', task_code)
+                image_review = SqlData().search_order_one('review_info', task_code)
+                defalut_review = SqlData().search_order_one('feedback_info', task_code)
+                if text_review or image_review or defalut_review:
+                    task_state = '待留评'
+                    account_state = ", account_state='待留评'"
+                else:
+                    task_state = '已完成'
+                    account_state = ""
+
             SqlData().update_payed(order_num, good_money_real, mail_money, taxes_money, note, sum_money,  task_code, task_state)
             goods, stores, first_buy_time = SqlData().search_asin_store(account)
             if goods:

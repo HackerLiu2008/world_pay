@@ -1,15 +1,20 @@
+import json
+
 import pymysql
 import pymysql.cursors
 import logging
 
+from tools_me.other_tools import is_json
+from tools_me.parameter import PHOTO_LINK
+
 
 class SqlData(object):
     def __init__(self):
-        host = "127.0.0.1"
+        host = "rm-j6c3t1i83rgylsuamvo.mysql.rds.aliyuncs.com"
         port = 3306
-        user = "root"
-        password = "admin"
-        database = "smt_allot_order"
+        user = "hellen"
+        password = "trybest_1"
+        database = "helen_db"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
             passwd=password, db=database,
@@ -76,7 +81,10 @@ class SqlData(object):
             detail_dict["sum_money"] = i[10]
             detail_dict["serve_money"] = i[4]
             detail_dict["all_money"] = i[3]
-            detail_dict["deal_num"] = i[5]
+            if i[5]:
+                detail_dict["deal_num"] = PHOTO_LINK + str(i[5])
+            else:
+                detail_dict["deal_num"] = i[5]
             detail_dict["customer_label"] = i[6]
             detail_dict["sum_time"] = str(i[7])
             detail_dict["sum_state"] = i[8]
@@ -108,7 +116,16 @@ class SqlData(object):
             detail_dict['brush_hand'] = i[18]
             detail_dict['note'] = i[24]
             detail_dict['review_title'] = i[25]
-            detail_dict['review_info'] = i[26]
+            if is_json(i[26]):
+                link_dict = json.loads(i[26])
+                key_list = list(link_dict.keys())
+                s = ''
+                for n in key_list:
+                    link = PHOTO_LINK + n + ', '
+                    s += link
+                detail_dict['review_info'] = s
+            else:
+                detail_dict['review_info'] = i[26]
             detail_dict['feedback_info'] = i[27]
             detail_list.append(detail_dict)
         return detail_list
@@ -134,7 +151,19 @@ class SqlData(object):
             order_data['task_run_time'] = str(i[16])
             order_data['task_state'] = i[17]
             order_data['brush_hand'] = i[18]
-            order_data['note'] = i[19]
+            order_data['note'] = i[24]
+            order_data['review_title'] = i[25]
+            if is_json(i[26]):
+                link_dict = json.loads(i[26])
+                key_list = list(link_dict.keys())
+                s = ''
+                for n in key_list:
+                    link = PHOTO_LINK + n + ', '
+                    s += link
+                order_data['review_info'] = s
+            else:
+                order_data['review_info'] = i[26]
+            order_data['feedback_info'] = i[27]
             order_list.append(order_data)
         return order_list
 
@@ -475,7 +504,7 @@ class SqlData(object):
         self.close_connect()
 
     def search_user_info(self, user_name):
-        sql = "SELECT id, pass_word, expire_time, us_time FROM user_info WHERE user_name = '{}'".format(user_name)
+        sql = "SELECT id, pass_word, expire_time, us_time, terrace FROM user_info WHERE user_name = '{}'".format(user_name)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         try:
@@ -484,6 +513,7 @@ class SqlData(object):
             user_data['pass_word'] = rows[0][1]
             user_data['expire_time'] = rows[0][2]
             user_data['us_time'] = rows[0][3]
+            user_data['terrace'] = rows[0][4]
             return user_data
         except Exception as e:
             logging.error(str(e))
@@ -569,11 +599,11 @@ class SqlData(object):
         now_order_list = self.orders_to_dict(rows)
         return now_order_list
 
-    def search_order_of_overdue(self, t1, user_id):
+    def search_order_of_overdue(self, t, user_id):
         sql = "SELECT task_detail_info.* FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE task_run_time < '{}' AND " \
-              "user_info.id = {} AND task_detail_info.task_state = '' OR task_detail_info.task_state = '已分配'"\
-               .format(t1, user_id)
+              "user_info.id = {} AND task_detail_info.task_state = ''"\
+               .format(t, user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         now_order_list = self.orders_to_dict(rows)

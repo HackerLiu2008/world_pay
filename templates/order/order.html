@@ -12,6 +12,12 @@
     <script src="/static/layui/layui.js"></script>
 </head>
 <body>
+<div class="layui-form-item" style="display: none">
+    <label class="layui-form-label">隐藏域</label>
+    <div class="layui-input-block">
+        <input type ="text" name="terrace"  id="terrace" value="{{ terrace }}">
+    </div>
+</div>
 
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
@@ -30,7 +36,7 @@
             <dl class="layui-nav-child">
               <dd id="user_conf"><a href="javascript:">汇  率  配  置</a></dd>
               <dd id="amz_serve"><a href="javascript:">AMZ收费标准</a></dd>
-              <dd id=""><a href="javascript:">SMT收费标准</a></dd>
+              <dd id="smt_serve"><a href="javascript:">SMT收费标准</a></dd>
             </dl>
         </li>
 
@@ -244,6 +250,23 @@
             , element = layui.element //元素操作
             , $ = layui.$;
 
+        //修改SMT服务费收取标准
+        $('#smt_serve').on('click',function () {
+           layer.open({
+                 type: 2
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: ['500px','700px']
+                ,shade: 0.8
+                ,id: 'smt_serve_money' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,shadeClose: true
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/user/smt_serve'
+           })
+        });
+
         //编辑客户标签
         $('#user_cus').on('click',function () {
            layer.open({
@@ -251,7 +274,7 @@
                 ,title: false //不显示标题栏
                 ,closeBtn: false
                 ,area: ['600px','600px']
-                ,shade: 0.8
+                ,shadeClose: true
                 ,id: 'user_customer_label' //设定一个id，防止重复弹出
                 ,btn: ['关闭']
                 ,btnAlign: 'c'
@@ -284,7 +307,7 @@
                 ,title: false //不显示标题栏
                 ,closeBtn: false
                 ,area: ['500px','340px']
-                ,shade: 0.8
+                ,shadeClose: true
                 ,id: 'user_conf_exchange' //设定一个id，防止重复弹出
                 ,btn: ['关闭']
                 ,btnAlign: 'c'
@@ -319,7 +342,7 @@
                 ,title: false //不显示标题栏
                 ,closeBtn: false
                 ,area: ['500px','340px']
-                ,shade: 0.8
+                ,shadeClose: true
                 ,id: 'user_detail' //设定一个id，防止重复弹出
                 ,btn: ['关闭']
                 ,btnAlign: 'c'
@@ -337,7 +360,7 @@
                 ,title: false //不显示标题栏
                 ,closeBtn: false
                 ,area: ['500px','400px']
-                ,shade: 0.8
+                ,shadeClose: true
                 ,id: 'change_pass' //设定一个id，防止重复弹出
                 ,btn: ['关闭']
                 ,btnAlign: 'c'
@@ -411,6 +434,54 @@
             return false;
         });
 
+        var terrace = $("#terrace").val();
+        if (terrace=='AMZ'){
+            var cols = [[ //表头
+                {type:'numbers'}
+                ,{type: 'checkbox'}
+                , {field: 'task_code', title: '小任务编号', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'country', title: '国家', align: 'center', sort: true,}
+                , {field: 'asin', title: 'ASIN', align: 'center', sort: true,}
+                , {field: 'key_word', title: '关键字', align: 'center', sort: true}
+                , {field: 'store_name', title: '店铺名', align: 'center', totalRow: true, sort: true}
+                , {field: 'good_name', title: '商品名称', align: 'center', sort: true}
+                , {field: 'good_money', title: '商品价格($)', align: 'center', sort: true}
+                , {field: 'good_link', title: '商品链接', align: 'center', sort: true}
+                , {field: 'serve_class', title: '服务类型', align: 'center', sort: true}
+                , {field: 'buy_account', title: '购买账号', align: 'center', sort: true}
+                , {field: 'task_run_time', title: '订单时间', align: 'center', sort: true}
+                , {field: 'task_state', title: '订单状态', align: 'center', sort: true}
+                , {field: 'brush_hand', title: '刷手', align: 'center', sort: true}
+                , {field: 'note', title: '备注', align: 'center', sort: true}
+                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+            ]];
+        }else if (terrace=='SMT'){
+            var cols = [[ //表头
+                {type:'numbers'}
+                , {type: 'checkbox'}
+                , {field: 'task_code', title: '订单编号', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'country', title: '国家', align: 'center', sort: true,}
+                , {field: 'asin', title: 'ASIN', align: 'center', sort: true,}
+                , {field: 'key_word', title: '关键字', align: 'center', sort: true, totalRow: true}
+                , {field: 'store_name', title: '店铺名称', align: 'center', totalRow: true}
+                , {field: 'good_name', title: '搜索价格', align: 'center'}
+                , {field: 'good_money', title: '产品金额', align: 'center'}
+                , {field: 'good_link', title: '产品链接', align: 'center'}
+                , {field: 'serve_class', title: '邮费', align: 'center'}
+                , {field: 'pay_method', title: 'SKU', align: 'center'}
+                , {field: 'buy_account', title: '购买账号', align: 'center'}
+                , {field: 'task_run_time', title: '下单时间', align: 'center'}
+                , {field: 'task_state', title: '订单状态', align: 'center'}
+                , {field: 'brush_hand', title: '刷手', align: 'center'}
+                , {field: 'review_title', title: '文字留评', align: 'center'}
+                , {field: 'review_info', title: '图片留评', align: 'center'}
+                , {field: 'feedback_info', title: '默认留评', align: 'center'}
+                , {field: 'note', title: '备注', align: 'center'}
+                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+            ]];
+        }
+
+
         //执行一个 table 实例
         table.render({
             elem: '#account_all'
@@ -420,29 +491,7 @@
             , limit:20
             , toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
-            , cols: [[ //表头
-                {type:'numbers'}
-                ,{type: 'checkbox'}
-                , {field: 'task_code', title: '小任务编号', align: 'center', sort: true,  totalRowText: '合计：'}
-                , {field: 'country', title: '国家', align: 'center', sort: true,}
-                , {field: 'asin', title: 'ASIN', align: 'center', sort: true,}
-                , {field: 'key_word', title: '关键字', align: 'center', sort: true}
-                , {field: 'kw_location', title: '关键字位置', align: 'center', sort: true}
-                , {field: 'store_name', title: '店铺名', align: 'center', totalRow: true, sort: true}
-                , {field: 'good_name', title: '商品名称', align: 'center', sort: true}
-                , {field: 'good_money', title: '商品价格($)', align: 'center', sort: true}
-                , {field: 'good_link', title: '商品链接', align: 'center', sort: true}
-                , {field: 'mail_method', title: 'FBA/FBM', align: 'center', sort: true}
-                , {field: 'pay_method', title: '支付方式', align: 'center', sort: true}
-                , {field: 'serve_class', title: '服务类型', align: 'center', sort: true}
-                , {field: 'buy_account', title: '购买账号', align: 'center', sort: true}
-                , {field: 'account_ps', title: '账号密码', align: 'center', sort: true}
-                , {field: 'task_run_time', title: '订单时间', align: 'center', sort: true}
-                , {field: 'task_state', title: '订单状态', align: 'center', sort: true}
-                , {field: 'brush_hand', title: '刷手', align: 'center', sort: true}
-                , {field: 'note', title: '备注', align: 'center', sort: true}
-                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
-            ]]
+            , cols: cols
             , id: 'account'
             , page: true
         });
@@ -488,12 +537,6 @@
               }, '/order/order_detail');
         });
 
-        /*
-      $('.demoTable .layui-btn').on('click', function(){
-        var type = $(this).data('type');
-        active[type] ? active[type].call(this) : '';
-      });
-        */
 
         //监听行工具事件
         table.on('tool(account_all)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
@@ -505,6 +548,7 @@
                     layer.alert("已完成订单,不可分配账号!")
                 }else{
                     var str = $("#example").serialize();
+                    obj.del();
                     layer.open({
                         type: 2
                         ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset

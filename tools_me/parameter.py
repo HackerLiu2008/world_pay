@@ -10,8 +10,7 @@ DW_ACCOUNT = 'G:/order_flask/static/download/买家号导入模板.xlsx'
 DW_TASK = 'G:/order_flask/static/download/AMZ任务导入模板.xlsx'
 SMT_TASK = 'G:/order_flask/static/download/SMT任务导入模板.xlsx'
 
-PHOTO_LINK = "http://pw7sli1ci.bkt.clouddn.com/"
-PHOTO_LINK_2 = "http://pwd2pj5mx.bkt.clouddn.com/"
+PHOTO_LINK = "http://pwd2pj5mx.bkt.clouddn.com/"
 
 
 class RET:

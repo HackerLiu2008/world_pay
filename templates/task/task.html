@@ -31,7 +31,7 @@
             <dl class="layui-nav-child">
               <dd id="user_conf"><a href="javascript:">汇  率  配  置</a></dd>
               <dd id="amz_serve"><a href="javascript:">AMZ收费标准</a></dd>
-              <dd id=""><a href="javascript:">SMT收费标准</a></dd>
+              <dd id="smt_serve"><a href="javascript:">SMT收费标准</a></dd>
             </dl>
         </li>
 
@@ -170,6 +170,23 @@
             , form = layer.form
             , $ = layui.$;
 
+        //修改SMT服务费收取标准
+        $('#smt_serve').on('click',function () {
+           layer.open({
+                 type: 2
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: ['500px','700px']
+                ,shade: 0.8
+                ,id: 'smt_serve_money' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,shadeClose: true
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/user/smt_serve'
+           })
+        });
+
         //编辑客户标签
         $('#user_cus').on('click',function () {
            layer.open({
@@ -177,7 +194,7 @@
                 ,title: false //不显示标题栏
                 ,closeBtn: false
                 ,area: ['600px','600px']
-                ,shade: 0.8
+                ,shadeClose: true
                 ,id: 'user_customer_label' //设定一个id，防止重复弹出
                 ,btn: ['关闭']
                 ,btnAlign: 'c'
@@ -210,7 +227,7 @@
                 ,title: false //不显示标题栏
                 ,closeBtn: false
                 ,area: ['500px','340px']
-                ,shade: 0.8
+                ,shadeClose: true
                 ,id: 'user_conf_exchange' //设定一个id，防止重复弹出
                 ,btn: ['关闭']
                 ,btnAlign: 'c'
@@ -245,7 +262,7 @@
                 ,title: false //不显示标题栏
                 ,closeBtn: false
                 ,area: ['500px','340px']
-                ,shade: 0.8
+                ,shadeClose: true
                 ,id: 'user_detail' //设定一个id，防止重复弹出
                 ,btn: ['关闭']
                 ,btnAlign: 'c'
@@ -263,7 +280,7 @@
                 ,title: false //不显示标题栏
                 ,closeBtn: false
                 ,area: ['500px','400px']
-                ,shade: 0.8
+                ,shadeClose: true
                 ,id: 'change_pass' //设定一个id，防止重复弹出
                 ,btn: ['关闭']
                 ,btnAlign: 'c'
@@ -349,7 +366,7 @@
                 , {field: 'sum_money', title: '商品总额($)', align: 'center', totalRow: true, sort: true}
                 , {field: 'serve_money', title: '服务费(￥)', align: 'center', totalRow: true, sort: true}
                 , {field: 'all_money', title: '总金额(￥)', align: 'center', totalRow: true, sort: true}
-                , {field: 'deal_num', title: '流水单号', align: 'center', sort: true}
+                , {field: 'deal_num', title: '支付截图', align: 'center', sort: true}
                 , {field: 'customer_label', title: '客户标签', align: 'center', sort: true}
                 , {field: 'sum_time', title: '任务时间', align: 'center', sort: true}
                 , {field: 'sum_state', title: '任务状态', align: 'center', sort: true}
@@ -372,7 +389,7 @@
                     ,area: ['1800px', '1200px']
                     ,anim: 1
                     ,shadeClose: true
-                    ,content: '/task/task_list/' + '?sum_order_code=' + data.sum_order_code
+                    ,content: '/task/task_list/' + '?sum_order_code=' + data.sum_order_code + '&terrace=' + data.terrace
                     ,btn: '关闭全部'
                     ,btnAlign: 'c' //按钮居中a
                     ,shade:  [0.8, '#393D49'] //弹框背景选项

@@ -5,7 +5,7 @@ import os
 import xlrd
 from tools_me.other_tools import customer_required, save_file, excel_to_data, asin_num, sum_code, xianzai_time, \
     date_to_week
-from tools_me.parameter import RET, MSG, TASK_DIR, PHOTO_DIR, PHOTO_LINK_2
+from tools_me.parameter import RET, MSG, TASK_DIR, PHOTO_DIR
 from tools_me.up_pic import up_photo
 from . import customer_blueprint
 from flask import render_template, request, jsonify, session, g
@@ -20,7 +20,7 @@ def up_review_pic():
     file = request.files.get('file')
     task_code = request.args.get('task_code')
     image_state = SqlData().search_order_one('review_info', task_code)
-    if image_state != "T":
+    if not image_state:
         return jsonify({'code': RET.SERVERERROR, 'msg': '此订单不支持上传图片'})
     bucket_name = 'pay_pic'
     file_name = str(user_id) + "-" + sum_code() + ".PNG"
@@ -29,8 +29,18 @@ def up_review_pic():
     status_code, filename = up_photo(file_name, file_path, bucket_name)
     if status_code == 200:
         os.remove(file_path)
-        phone_link = PHOTO_LINK_2 + filename
-        SqlData().update_review_one('review_info', phone_link, task_code)
+        if image_state == 'T':
+            phone_link = dict()
+            phone_link[filename] = 1
+            link_json = json.dumps(phone_link, ensure_ascii=False)
+            SqlData().update_review_one('review_info', link_json, task_code)
+        else:
+            phone_link = json.loads(image_state)
+            if len(phone_link) == 4:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '最多可上传四张图片'})
+            phone_link[filename] = 1
+            link_json = json.dumps(phone_link, ensure_ascii=False)
+            SqlData().update_review_one('review_info', link_json, task_code)
         return jsonify(results)
     else:
         return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
@@ -73,12 +83,25 @@ def edit_review():
             review_title = data.get('review_title')
             review_info = data.get('review_info')
             feedback_info = data.get('feedback_info')
+            serve = SqlData().search_order_one('serve_class', task_code)
             if review_title:
-                SqlData().update_review_one('review_title', review_title, task_code)
+                if 'REVIEW' in serve.upper():
+                    SqlData().update_review_one('review_title', review_title, task_code)
+                else:
+                    results = {'code': RET.SERVERERROR, 'msg': '次订单没有编辑评论信息权限!'}
+                    return jsonify(results)
             if review_info:
-                SqlData().update_review_one('review_info', review_info, task_code)
+                if 'REVIEW' in serve.upper():
+                    SqlData().update_review_one('review_info', review_info, task_code)
+                else:
+                    results = {'code': RET.SERVERERROR, 'msg': '次订单没有编辑评论信息权限!'}
+                    return jsonify(results)
             if feedback_info:
-                SqlData().update_review_one('feedback_info', feedback_info, task_code)
+                if 'FEEDBACK' in serve.upper():
+                    SqlData().update_review_one('feedback_info', feedback_info, task_code)
+                else:
+                    results = {'code': RET.SERVERERROR, 'msg': '次订单没有编辑Feedback信息权限!'}
+                    return jsonify(results)
             results = {'code': RET.OK, 'msg': MSG.OK}
             return jsonify(results)
         except Exception as e:
@@ -118,8 +141,7 @@ def up_pay_pic():
     status_code, filename = up_photo(file_name, file_path, bucket_name)
     if status_code == 200:
         os.remove(file_path)
-        phone_link = PHOTO_LINK_2 + filename
-        SqlData().update_task_one('deal_num', phone_link, sum_order_code)
+        SqlData().update_task_one('deal_num', filename, sum_order_code)
         return jsonify(results)
     else:
         return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
@@ -539,8 +561,7 @@ def smt_task():
                 return jsonify(results)
         except Exception as e:
             logging.error(str(e))
-            results = {'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR}
-            return jsonify(results)
+            return '请联系服务商拟定收费规则!'
 
     else:
         results = {'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR}
@@ -850,7 +871,24 @@ def task_detail():
 def task_list():
     sum_order_code = request.args.get('sum_order_code')
     terrace = request.args.get('terrace')
-    context = {'sum_code': sum_order_code, 'terrace': terrace}
+    context = dict()
+    if terrace == "AMZ":
+        context['good_name'] = '产品名称'
+        context['pay_method'] = '支付方式'
+        context['serve_class'] = '服务类型'
+        context['review_title'] = '评论标题'
+        context['review_info'] = '评论内容'
+        context['feedback_info'] = 'FeedBack'
+    if terrace == "SMT":
+        context['good_name'] = '搜索价格'
+        context['pay_method'] = 'SKU'
+        context['serve_class'] = '邮费'
+        context['review_title'] = '文字留评'
+        context['review_info'] = '图片留评'
+        context['feedback_info'] = '默认留评'
+
+    context['sum_code'] = sum_order_code
+    context['terrace'] = terrace
     return render_template('customer/customer_task_list.html', **context)
 
 

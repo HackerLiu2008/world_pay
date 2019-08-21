@@ -39,8 +39,13 @@ def up_task():
 @login_required
 def task_list():
     sum_order_code = request.args.get('sum_order_code')
-    context = {'sum_code': sum_order_code}
-    return render_template('task/task_list.html', **context)
+    terrace = request.args.get('terrace')
+    context = dict()
+    context['sum_code'] = sum_order_code
+    if terrace == "AMZ":
+        return render_template('task/task_list.html', **context)
+    if terrace == "SMT":
+        return render_template('task/smt_task_list.html', **context)
 
 
 @task_blueprint.route('/add_task/', methods=['GET'])
@@ -236,7 +241,7 @@ def task_detail():
     page_list = list()
     try:
         task_info = SqlData().search_task_detail(sum_order_code)
-        task_info = list(reversed(task_info))
+        # task_info = list(reversed(task_info))
         for i in range(0, len(task_info), int(limit)):
             page_list.append(task_info[i:i + int(limit)])
         results['data'] = page_list[int(page) - 1]

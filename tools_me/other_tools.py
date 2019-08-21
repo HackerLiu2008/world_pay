@@ -112,6 +112,7 @@ def login_required(view_func):
         us_time = session.get('us_time')
         pass_word = session.get('pass_word')
         expire_time = session.get('expire_time')
+        terrace = session.get('terrace')
         if not user_id:
             return render_template('user/login.html')
         else:
@@ -121,6 +122,7 @@ def login_required(view_func):
             g.us_time = us_time
             g.pass_word = pass_word
             g.expire_time = expire_time
+            g.terrace = terrace
             # 执行被装饰的视图函数
             return view_func(*args, **kwargs)
 
@@ -166,7 +168,7 @@ def check_param(terrace, country, store, asin, store_group, asin_group):
     if terrace == '0':
         terrace_info = "AMZ"
     if terrace == '1':
-        terrace_info = 'AE'
+        terrace_info = 'SMT'
     if country == '0':
         country_info = '美国'
     if country == '1':
@@ -419,3 +421,11 @@ def date_to_week(t):
     date = datetime.datetime.strptime(t, '%Y-%m-%d')
     week = date.weekday()
     return week
+
+
+def is_json(myjson):
+    try:
+        json_object = json.loads(myjson)
+    except:
+        return False
+    return True
