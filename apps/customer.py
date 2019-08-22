@@ -4,7 +4,7 @@ import logging
 import os
 import xlrd
 from tools_me.other_tools import customer_required, save_file, excel_to_data, asin_num, sum_code, xianzai_time, \
-    date_to_week
+    date_to_week, transferContent
 from tools_me.parameter import RET, MSG, TASK_DIR, PHOTO_DIR
 from tools_me.up_pic import up_photo
 from . import customer_blueprint
@@ -778,9 +778,15 @@ def up_task():
                 task_info_dict['sum_num'] = sum_num
                 # print(task_info_dict)
                 task_info_json = json.dumps(task_info_dict, ensure_ascii=False)
-
+                string = ""
+                for i in task_info_json:
+                    if i == "'":
+                        i = "\\'"
+                        string += i
+                    else:
+                        string += i
                 label = g.cus_label
-                SqlData().update_user_cus('task_json', task_info_json, user_id, label)
+                SqlData().update_user_cus('task_json', string, user_id, label)
 
                 return jsonify(results)
         except Exception as e:

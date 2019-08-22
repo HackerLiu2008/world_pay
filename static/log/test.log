@@ -3748,3 +3748,594 @@
 2019-08-21  18:35:50 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [21/Aug/2019 18:35:50] "GET /task/sum_info/?page=1&limit=20&sum_state=未完成 HTTP/1.1" 200 - 
 2019-08-21  18:35:50 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [21/Aug/2019 18:35:50] "GET /task/sum_info/?page=1&limit=20&sum_state= HTTP/1.1" 200 - 
 2019-08-21  18:35:51 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [21/Aug/2019 18:35:51] "GET /task/sum_info/?page=1&limit=20&sum_state= HTTP/1.1" 200 - 
+2019-08-22  14:03:32 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  14:03:33 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  14:03:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  14:03:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  14:04:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:27] "GET /account/ HTTP/1.1" 200 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/css/index.css HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/img/a.png HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/layui/css/layui.css HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/img/1.jpg HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/img/yhm.png HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/img/mm.png HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/layui/layui.js HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/layui/layui.all.js HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/layui/css/modules/laydate/default/laydate.css?v=5.0.9 HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/layui/css/modules/layer/default/layer.css?v=3.1.1 HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /static/layui/css/modules/code.css HTTP/1.1" 304 - 
+2019-08-22  14:04:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:28] "GET /favicon.ico HTTP/1.1" 404 - 
+2019-08-22  14:04:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:35] "POST /user/login HTTP/1.1" 200 - 
+2019-08-22  14:04:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:35] "GET /account/ HTTP/1.1" 200 - 
+2019-08-22  14:04:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:35] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-22  14:04:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:35] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-22  14:04:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:35] "GET /static/layui/font/iconfont.woff2?v=250 HTTP/1.1" 304 - 
+2019-08-22  14:04:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:35] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  14:04:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:39] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  14:04:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:39] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  14:04:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:40] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  14:04:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:40] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  14:04:41 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:41] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  14:04:41 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:41] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  14:04:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:45] "GET /upload/up_acc HTTP/1.1" 200 - 
+2019-08-22  14:04:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:45] "GET /static/layui/lay/modules/upload.js HTTP/1.1" 304 - 
+2019-08-22  14:04:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:45] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 304 - 
+2019-08-22  14:04:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:45] "GET /static/layui/lay/modules/jquery.js HTTP/1.1" 304 - 
+2019-08-22  14:04:56 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:56] "POST /upload/up_account HTTP/1.1" 500 - 
+2019-08-22  14:04:56 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:04:56] "GET /static/layui/css/modules/layer/default/icon.png HTTP/1.1" 304 - 
+2019-08-22  14:05:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:05:20] "GET /upload/account_excel HTTP/1.1" 200 - 
+2019-08-22  14:07:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:07:45] "GET /upload/up_acc HTTP/1.1" 200 - 
+2019-08-22  14:07:57 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:07:57] "POST /upload/up_account HTTP/1.1" 500 - 
+2019-08-22  14:09:26 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  14:09:27 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  14:09:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  14:09:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  14:09:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:09:33] "POST /upload/up_account HTTP/1.1" 500 - 
+2019-08-22  14:10:44 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  14:10:45 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  14:10:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  14:10:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  14:10:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:10:45] "GET /upload/up_acc HTTP/1.1" 200 - 
+2019-08-22  14:11:05 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:11:05] "POST /upload/up_account HTTP/1.1" 200 - 
+2019-08-22  14:11:11 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:11:11] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  14:11:11 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:11:11] "GET /account/ HTTP/1.1" 200 - 
+2019-08-22  14:11:11 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:11:11] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-22  14:11:11 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:11:11] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-22  14:11:11 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:11:11] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  14:12:00 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  14:12:01 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  14:12:01 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  14:12:01 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  14:56:38 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:56:38] "GET /user/logout HTTP/1.1" 200 - 
+2019-08-22  14:56:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:56:48] "POST /user/login HTTP/1.1" 200 - 
+2019-08-22  14:56:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:56:48] "GET /account/ HTTP/1.1" 200 - 
+2019-08-22  14:56:49 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:56:49] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-22  14:56:49 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:56:49] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-22  14:56:49 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:56:49] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  14:56:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:56:53] "GET /user/logout HTTP/1.1" 200 - 
+2019-08-22  14:57:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:57:03] "POST /user/login HTTP/1.1" 200 - 
+2019-08-22  14:57:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:57:03] "GET /account/ HTTP/1.1" 200 - 
+2019-08-22  14:57:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:57:03] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-22  14:57:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:57:03] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-22  14:57:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:57:03] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  14:57:09 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:57:09] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  14:57:09 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:57:09] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  14:57:10 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  14:57:10 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:57:10] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  14:57:11 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 14:57:11] "GET /order/order_detail?page=1&limit=20&buy_state=已逾期 HTTP/1.1" 200 - 
+2019-08-22  15:47:43 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:47:43] "GET /order/order_detail?page=1&limit=20&buy_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  15:47:43 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:47:43] "GET /order/order_detail?page=1&limit=20&buy_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  15:47:44 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:47:44] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  15:47:44 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  15:47:44 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:47:44] "GET /order/order_detail?page=1&limit=20&buy_state= HTTP/1.1" 200 - 
+2019-08-22  15:47:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:47:45] "GET /order/order_detail?page=1&limit=20&buy_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  15:47:46 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  15:47:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:47:46] "GET /order/order_detail?page=1&limit=20&buy_state=已逾期 HTTP/1.1" 200 - 
+2019-08-22  15:47:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:47:47] "GET /order/order_detail?page=1&limit=20&buy_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  15:47:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:47:47] "GET /order/order_detail?page=1&limit=20&buy_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  15:48:16 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:48:16] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  15:48:16 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  15:48:16 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:48:16] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  15:48:18 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:48:18] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  15:48:18 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  15:48:18 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:48:18] "GET /order/order_detail?page=1&limit=20&buy_state=已逾期 HTTP/1.1" 200 - 
+2019-08-22  15:48:19 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:48:19] "GET /order/order_detail?page=1&limit=20&buy_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  15:48:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:48:20] "GET /order/order_detail?page=1&limit=20&buy_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  15:48:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:48:20] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  15:48:22 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:48:22] "GET /order/order_detail?page=1&limit=20&buy_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  15:48:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:48:25] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  15:48:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:48:27] "GET /order/order_detail?page=1&limit=20&buy_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  15:49:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:49:48] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  15:49:48 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  15:49:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:49:48] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  15:49:51 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:49:51] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  15:49:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:49:52] "GET /order/order_detail?page=1&limit=20&buy_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  15:49:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:49:52] "GET /order/order_detail?page=1&limit=20&buy_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  15:49:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:49:53] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  15:49:54 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:49:54] "GET /order/order_detail?page=1&limit=20&buy_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  15:49:54 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:49:54] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  15:50:21 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:50:21] "GET /user/logout HTTP/1.1" 200 - 
+2019-08-22  15:50:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:50:27] "GET /user/login HTTP/1.1" 200 - 
+2019-08-22  15:50:29 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 15:50:29] "GET /user/login HTTP/1.1" 200 - 
+2019-08-22  17:35:49 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  17:35:50 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  17:35:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  17:35:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  17:35:57 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:35:57] "GET /account/ HTTP/1.1" 200 - 
+2019-08-22  17:36:05 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:05] "POST /user/login HTTP/1.1" 200 - 
+2019-08-22  17:36:05 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:05] "GET /account/ HTTP/1.1" 200 - 
+2019-08-22  17:36:05 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:05] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-22  17:36:05 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:05] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-22  17:36:05 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:05] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:36:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:07] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  17:36:08 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:08] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:36:08 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:08] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  17:36:09 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  17:36:09 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:09] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:36:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:14] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  17:36:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:14] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:36:15 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:15] "GET /account/ HTTP/1.1" 200 - 
+2019-08-22  17:36:15 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:15] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-22  17:36:15 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:15] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-22  17:36:15 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:15] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:36:16 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:16] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  17:36:17 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:17] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:36:18 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:18] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  17:36:18 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  17:36:18 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:18] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:36:22 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:22] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  17:36:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:24] "GET /static/layui/css/modules/layer/default/loading-1.gif HTTP/1.1" 304 - 
+2019-08-22  17:36:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:24] "GET /order/filter_html?task_code=201908201813463269e-1&buy_account=美国002&country=0&last_buy=3&store=0&asin=0&store_group=0&asin_group=0&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  17:36:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:24] "GET /order/filter_order/?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  17:36:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:34] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  17:36:34 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  17:36:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:34] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:36:36 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:36] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  17:36:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:39] "GET /order/filter_html?task_code=201908201813463269e-1&buy_account=美国002&country=0&last_buy=3&store=0&asin=0&store_group=0&asin_group=0&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  17:36:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:36:39] "GET /order/filter_order/?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  17:38:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  17:38:34 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  17:38:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  17:38:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  17:38:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:38:34] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  17:38:34 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  17:38:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:38:34] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:38:36 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:38:36] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  17:38:38 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:38:38] "GET /order/filter_html?task_code=201908201813463269e-1&buy_account=美国002&country=0&last_buy=3&store=0&asin=0&store_group=0&asin_group=0&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  17:38:38 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:38:38] "GET /order/filter_order/?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  17:38:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:38:48] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  17:38:48 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  17:38:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:38:48] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:38:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:38:50] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  17:39:02 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:02] "GET /order/order_detail?page=1&limit=20&buy_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  17:39:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:03] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  17:39:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:03] "GET /order/order_detail?page=1&limit=20&buy_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  17:39:17 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\order.py', reloading 
+2019-08-22  17:39:17 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  17:39:19 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  17:39:19 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  17:39:19 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  17:39:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  17:39:38 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  17:39:38 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  17:39:38 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  17:39:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:40] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  17:39:40 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  17:39:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:40] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:39:42 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:42] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  17:39:42 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  17:39:42 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:42] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:39:42 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:42] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  17:39:42 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  17:39:42 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:42] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:39:44 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:44] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  17:39:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:46] "GET /order/filter_html?task_code=201908201813463269e-1&buy_account=美国002&country=0&last_buy=3&store=0&asin=0&store_group=0&asin_group=0&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  17:39:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:39:47] "GET /order/filter_order/?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  17:40:51 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\order.py', reloading 
+2019-08-22  17:40:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  17:40:56 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  17:40:57 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  17:40:57 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  17:40:57 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  17:40:57 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:40:57] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  17:40:58 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  17:40:58 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:40:58] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:41:00 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:00] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-08-22  17:41:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:03] "GET /order/filter_html?task_code=201908201813463269e-1&buy_account=美国002&country=0&last_buy=3&store=0&asin=0&store_group=0&asin_group=0&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  17:41:08 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:08] "GET /order/filter_order/?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  17:41:23 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:23] "GET /order/ HTTP/1.1" 200 - 
+2019-08-22  17:41:23 Thu  root WARNING G:\order_flask\apps\order.py 没有符合条件的数据list index out of range 
+2019-08-22  17:41:23 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:23] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:41:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:25] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  17:41:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:25] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:41:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:34] "GET /task/sum_info/?page=1&limit=20&label=&sum_order_code=2019082216243445dc0&asin= HTTP/1.1" 200 - 
+2019-08-22  17:41:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:37] "GET /account/ HTTP/1.1" 200 - 
+2019-08-22  17:41:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:37] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-22  17:41:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:37] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-22  17:41:38 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:38] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  17:41:41 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:41] "GET /account/one_detail?account=美国099 HTTP/1.1" 200 - 
+2019-08-22  17:41:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:50] "GET /account/detail?page=1&limit=20&label=&account=美国099 HTTP/1.1" 308 - 
+2019-08-22  17:41:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 17:41:50] "GET /account/detail/?page=1&limit=20&label=&account=美国099 HTTP/1.1" 200 - 
+2019-08-22  18:59:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 18:59:20] "GET /customer/logout HTTP/1.1" 200 - 
+2019-08-22  18:59:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 18:59:20] "GET /static/img/icon1.png HTTP/1.1" 304 - 
+2019-08-22  18:59:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 18:59:20] "GET /static/img/icon2.png HTTP/1.1" 304 - 
+2019-08-22  18:59:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 18:59:20] "GET /static/css/login.css HTTP/1.1" 304 - 
+2019-08-22  18:59:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 18:59:20] "GET /static/img/bg2.jpg HTTP/1.1" 304 - 
+2019-08-22  18:59:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 18:59:53] "POST /customer/login HTTP/1.1" 200 - 
+2019-08-22  18:59:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 18:59:53] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  18:59:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 18:59:53] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  19:00:01 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:00:01] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:00:07 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 更新客户标签失败!(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  19:00:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:00:07] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:00:09 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:00:09] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  19:02:15 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  19:02:16 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  19:02:16 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  19:02:16 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  19:02:16 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:02:16] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:02:21 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 更新客户标签失败!(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  19:02:21 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:02:21] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:02:22 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:02:22] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  19:05:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:05:28] "GET /customer/preview_index HTTP/1.1" 500 - 
+2019-08-22  19:05:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:05:28] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 - 
+2019-08-22  19:05:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:05:28] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 - 
+2019-08-22  19:05:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:05:28] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 - 
+2019-08-22  19:05:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:05:28] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 - 
+2019-08-22  19:05:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:05:28] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 - 
+2019-08-22  19:12:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:12:20] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:12:22 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:12:22] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  19:12:22 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:12:22] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  19:12:52 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 插入任务订单行为失败(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  19:12:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:12:52] "POST /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  19:13:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:13:03] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  19:13:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:13:03] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  19:13:05 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:13:05] "GET /customer/task_list/?sum_order_code=20190822191252c87f7&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  19:13:05 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:13:05] "GET /customer/task_detail/?sum_order_code=20190822191252c87f7&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  19:13:10 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  19:13:10 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:13:10] "GET /customer/task_detail/?sum_order_code=20190822191252c87f7&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  19:13:11 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  19:13:11 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:13:11] "GET /customer/task_detail/?sum_order_code=20190822191252c87f7&page=1&limit=10&task_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  19:13:12 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:13:12] "GET /customer/task_detail/?sum_order_code=20190822191252c87f7&page=1&limit=10&task_state= HTTP/1.1" 200 - 
+2019-08-22  19:13:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:13:14] "GET /customer/one_detail/?task_code=20190822191252c87f7-2 HTTP/1.1" 200 - 
+2019-08-22  19:14:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:14] "GET /customer/one_detail/?task_code=20190822191252c87f7-2 HTTP/1.1" 200 - 
+2019-08-22  19:14:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:25] "GET /account/ HTTP/1.1" 200 - 
+2019-08-22  19:14:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:25] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-22  19:14:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:25] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-22  19:14:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:25] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  19:14:26 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:26] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  19:14:26 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:26] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  19:14:30 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:30] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  19:14:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:31] "GET /task/del_task?sum_order_code=20190822191252c87f7 HTTP/1.1" 200 - 
+2019-08-22  19:14:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:31] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  19:14:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:35] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  19:14:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:14:35] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  19:15:23 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  19:15:24 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  19:15:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  19:15:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  19:17:12 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:12] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:17:13 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:13] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:17:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:14] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  19:17:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:14] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  19:17:22 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 插入任务订单行为失败(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  19:17:22 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:22] "POST /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  19:17:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:27] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  19:17:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:27] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  19:17:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:28] "GET /customer/task_list/?sum_order_code=2019082219172169276&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  19:17:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:28] "GET /customer/task_detail/?sum_order_code=2019082219172169276&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  19:17:31 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  19:17:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:31] "GET /customer/task_detail/?sum_order_code=2019082219172169276&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  19:17:32 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  19:17:32 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:32] "GET /customer/task_detail/?sum_order_code=2019082219172169276&page=1&limit=10&task_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  19:17:32 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:17:32] "GET /customer/task_detail/?sum_order_code=2019082219172169276&page=1&limit=10&task_state= HTTP/1.1" 200 - 
+2019-08-22  19:19:02 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:19:02] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:19:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:19:03] "GET /customer/preview_index HTTP/1.1" 500 - 
+2019-08-22  19:19:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:19:03] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 - 
+2019-08-22  19:19:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:19:03] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 - 
+2019-08-22  19:19:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:19:03] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 - 
+2019-08-22  19:19:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:19:03] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 - 
+2019-08-22  19:19:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:19:03] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 - 
+2019-08-22  19:24:16 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\customer.py', reloading 
+2019-08-22  19:24:16 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  19:24:18 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  19:24:18 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  19:24:18 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  19:25:21 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  19:25:23 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  19:25:23 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  19:25:23 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  19:25:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:24] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:25:30 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:30] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:25:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:33] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  19:25:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:33] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  19:25:39 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 插入任务订单行为失败(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  19:25:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:39] "POST /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  19:25:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:45] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  19:25:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:46] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  19:25:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:47] "GET /customer/task_list/?sum_order_code=20190822192538917dc&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  19:25:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:47] "GET /customer/task_detail/?sum_order_code=20190822192538917dc&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  19:25:49 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  19:25:49 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:49] "GET /customer/task_detail/?sum_order_code=20190822192538917dc&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  19:25:50 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  19:25:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:50] "GET /customer/task_detail/?sum_order_code=20190822192538917dc&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  19:25:50 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  19:25:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:25:50] "GET /customer/task_detail/?sum_order_code=20190822192538917dc&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  19:53:38 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  19:53:40 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  19:53:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  19:53:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  19:53:42 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  19:53:43 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  19:53:43 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  19:53:43 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  19:53:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:53:47] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  19:53:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:53:47] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  19:53:49 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:53:49] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:53:53 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 更新客户标签失败!(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  19:53:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:53:53] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:53:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:53:55] "GET /customer/preview_index HTTP/1.1" 500 - 
+2019-08-22  19:53:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:53:55] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 - 
+2019-08-22  19:53:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:53:55] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 - 
+2019-08-22  19:53:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:53:55] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 - 
+2019-08-22  19:53:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:53:55] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 - 
+2019-08-22  19:53:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:53:55] "GET /customer/preview_index?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 - 
+2019-08-22  19:54:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:54:37] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  19:54:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:54:37] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  19:55:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:55:24] "GET /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  19:55:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:55:24] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:57:12 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  19:57:14 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  19:57:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  19:57:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  19:57:22 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 更新客户标签失败!(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  19:57:22 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:57:22] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:58:38 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  19:58:40 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  19:58:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  19:58:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  19:58:42 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 更新客户标签失败!(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  19:58:42 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:58:42] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:58:58 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:58:58] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  19:59:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  19:59:33 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  19:59:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  19:59:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  19:59:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:59:33] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:59:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:59:40] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  19:59:42 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:59:42] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  19:59:42 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 19:59:42] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:00:35 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 插入任务订单行为失败(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  20:00:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:35] "POST /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  20:00:43 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:43] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:00:43 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:43] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:00:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:46] "GET /customer/task_list/?sum_order_code=2019082220003572ef2&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:00:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:47] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:00:48 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:00:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:48] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:00:49 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:00:49 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:49] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  20:00:49 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:00:49 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:49] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:00:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:50] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state= HTTP/1.1" 200 - 
+2019-08-22  20:00:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:52] "GET /customer/task_list/?sum_order_code=2019082219172169276&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:00:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:52] "GET /customer/task_detail/?sum_order_code=2019082219172169276&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:00:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:55] "GET /customer/task_list/?sum_order_code=20190822192538917dc&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:00:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:55] "GET /customer/task_detail/?sum_order_code=20190822192538917dc&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:00:58 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:58] "GET /customer/task_list/?sum_order_code=2019082220003572ef2&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:00:58 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:00:58] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:01:00 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:00 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:00] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:01:01 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:01] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state= HTTP/1.1" 200 - 
+2019-08-22  20:01:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:20] "GET /customer/task_list/?sum_order_code=2019082220003572ef2&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:01:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:20] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:01:23 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:23 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:23] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:01:24 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:24] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:01:24 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:24] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  20:01:25 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:25] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:01:25 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:25] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:01:26 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:26] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state= HTTP/1.1" 200 - 
+2019-08-22  20:01:26 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:26 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:26] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:01:27 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:27] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  20:01:27 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:27] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:01:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:28] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state= HTTP/1.1" 200 - 
+2019-08-22  20:01:28 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:28] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:01:29 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:01:29 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:01:29] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10&task_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  20:02:36 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:02:36] "GET /customer/task_list/?sum_order_code=2019082220003572ef2&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:02:36 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:02:36] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:04:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:04:24] "GET /customer/task_list/?sum_order_code=2019082220003572ef2&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:04:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:04:24] "GET /customer/task_detail/?sum_order_code=2019082220003572ef2&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:06:54 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:06:55 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:06:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:06:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:07:12 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:07:14 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:07:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:07:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:07:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:07:14] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:07:19 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 更新客户标签失败!(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  20:07:19 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:07:19] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:07:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:07:27] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:08:13 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:08:15 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:08:15 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:08:15 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:08:15 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:08:15] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:08:19 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 更新客户标签失败!(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  20:08:19 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:08:19] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:08:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:08:25] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:12:32 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:12:33 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:12:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:12:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:12:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:12:33] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:12:38 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 更新客户标签失败!(1064, 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'task_info": [["美国", "2019-8-23", "B07QXJY4BM", "earphones for iPhone 6", "\' at line 1') 
+2019-08-22  20:12:38 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:12:38] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:12:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:12:40] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:16:49 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:16:49] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:16:51 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:16:51] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:16:51 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:16:51] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:17:25 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 插入任务订单行为失败(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  20:17:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:25] "POST /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  20:17:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:31] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:17:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:31] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:17:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:33] "GET /customer/task_list/?sum_order_code=20190822201724cccf7&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:17:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:33] "GET /customer/task_detail/?sum_order_code=20190822201724cccf7&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:17:39 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:17:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:39] "GET /customer/task_detail/?sum_order_code=20190822201724cccf7&page=1&limit=10&task_state=待留评 HTTP/1.1" 200 - 
+2019-08-22  20:17:40 Thu  root WARNING G:\order_flask\apps\customer.py 没有符合条件的数据list index out of range 
+2019-08-22  20:17:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:40] "GET /customer/task_detail/?sum_order_code=20190822201724cccf7&page=1&limit=10&task_state=已完成 HTTP/1.1" 200 - 
+2019-08-22  20:17:41 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:41] "GET /customer/task_detail/?sum_order_code=20190822201724cccf7&page=1&limit=10&task_state= HTTP/1.1" 200 - 
+2019-08-22  20:17:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:45] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  20:17:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:45] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:17:51 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:51] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  20:17:51 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:51] "GET /task/del_task?sum_order_code=20190822201724cccf7 HTTP/1.1" 200 - 
+2019-08-22  20:17:51 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:51] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:17:56 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:56] "GET /task/del_task?sum_order_code=2019082220003572ef2 HTTP/1.1" 200 - 
+2019-08-22  20:17:56 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:56] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  20:17:57 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:17:57] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:18:01 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:18:01] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  20:18:01 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:18:01] "GET /task/del_task?sum_order_code=20190822192538917dc HTTP/1.1" 200 - 
+2019-08-22  20:18:01 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:18:01] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:18:10 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:18:10] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  20:18:10 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:18:10] "GET /task/del_task?sum_order_code=2019082219172169276 HTTP/1.1" 200 - 
+2019-08-22  20:18:10 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:18:10] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:20:41 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:20:42 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:20:42 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:20:42 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:20:44 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:20:44] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:20:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:20:45] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:20:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:20:45] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:20:48 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 插入任务订单行为失败(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  20:20:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:20:48] "POST /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  20:21:30 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:21:31 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:21:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:21:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:21:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:21:39] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:21:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:21:39] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:21:41 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 插入任务订单行为失败(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 't fall out.They are cheap, but they have good sound quality.All the sounds are c' at line 1") 
+2019-08-22  20:21:41 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:21:41] "POST /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  20:27:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:27:38 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:27:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:27:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:27:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:27:39] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:27:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:27:40] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:27:45 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 更新客户标签失败!(1064, 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'task_info": [["美国", "2019-8-23", "B07QXJY4BM", "earphones for iPhone 6", "\' at line 1') 
+2019-08-22  20:27:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:27:45] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:27:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:27:47] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:27:56 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:27:56] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:27:58 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:27:58] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:27:58 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:27:58] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:28:00 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 插入任务订单行为失败(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'headphones for the price,For a cheap set of earbuds, these are good. I like that' at line 1") 
+2019-08-22  20:28:00 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 插入任务订单行为失败(1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',OK,earphones work just as described.)' at line 1") 
+2019-08-22  20:28:00 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:00] "POST /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  20:28:04 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:04] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:28:04 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:04] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:28:06 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:06] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:28:06 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:06] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:28:06 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:06] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:28:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:07] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:28:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:07] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:28:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:07] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:28:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:07] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:28:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:07] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:28:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:07] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:28:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:07] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:28:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:07] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:28:07 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:07] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:28:51 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:28:52 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:28:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:28:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:28:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:52] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:28:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:53] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:28:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:53] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:28:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:53] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:28:54 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:54] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:28:54 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:28:54] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:30:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:30:28 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:30:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:30:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:30:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:30:28] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:30:29 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:30:29] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:30:29 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:30:29] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:30:30 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:30:30] "GET /customer/task?page=1&limit=20 HTTP/1.1" 500 - 
+2019-08-22  20:30:59 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:30:59] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:30:59 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:30:59] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:31:02 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:02] "GET /customer/task_list/?sum_order_code=2019082220214065612&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:31:02 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:02] "GET /customer/task_detail/?sum_order_code=2019082220214065612&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:31:14 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:14] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:31:15 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:15] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:31:17 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:17] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:31:17 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:17] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:31:19 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:19] "POST /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  20:31:23 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:23] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:31:23 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:23] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:31:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:25] "GET /customer/task_list/?sum_order_code=20190822203118bdea3&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:31:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:25] "GET /customer/task_detail/?sum_order_code=20190822203118bdea3&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:31:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:27] "GET /customer/one_detail/?task_code=20190822203118bdea3-2 HTTP/1.1" 200 - 
+2019-08-22  20:31:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:31:34] "GET /customer/one_detail/?task_code=20190822203118bdea3-1 HTTP/1.1" 200 - 
+2019-08-22  20:32:44 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:32:46 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:32:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:32:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:33:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:33:48 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:33:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:33:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:33:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:33:48] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:33:49 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:33:49] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:33:54 Thu  root WARNING G:\order_flask\tools_me\mysql_tools.py 更新客户标签失败!(1064, 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'task_info": [["美国", "2019-8-23", "B07QXJY4BM", "earphones for iPhone 6", "\' at line 1') 
+2019-08-22  20:33:54 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:33:54] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:34:11 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:34:11] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:36:25 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-22  20:36:27 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-22  20:36:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-22  20:36:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-22  20:36:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:36:27] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:36:30 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:36:30] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:36:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:36:35] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:36:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:36:37] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:36:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:36:37] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:36:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:36:47] "GET /customer HTTP/1.1" 404 - 
+2019-08-22  20:36:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:36:50] "GET /customer/logout HTTP/1.1" 200 - 
+2019-08-22  20:37:05 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:05] "POST /customer/login HTTP/1.1" 200 - 
+2019-08-22  20:37:19 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:19] "POST /customer/login HTTP/1.1" 200 - 
+2019-08-22  20:37:19 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:19] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:37:20 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:20] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:37:26 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:26] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  20:37:26 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:26] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:37:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:31] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  20:37:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:31] "GET /task/del_task?sum_order_code=20190822203118bdea3 HTTP/1.1" 200 - 
+2019-08-22  20:37:31 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:31] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:37:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:34] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  20:37:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:34] "GET /task/del_task?sum_order_code=2019082220214065612 HTTP/1.1" 200 - 
+2019-08-22  20:37:34 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:34] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:37:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:37] "GET /task/ HTTP/1.1" 200 - 
+2019-08-22  20:37:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:37] "GET /task/del_task?sum_order_code=2019082220204745a83 HTTP/1.1" 200 - 
+2019-08-22  20:37:37 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:37] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:37:41 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:41] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:37:41 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:41] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:37:43 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:43] "GET /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:37:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:48] "POST /customer/up_task HTTP/1.1" 200 - 
+2019-08-22  20:37:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:53] "GET /customer/preview_index HTTP/1.1" 200 - 
+2019-08-22  20:37:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:53] "GET /customer/preview?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-22  20:37:55 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:37:55] "POST /customer/task_choose HTTP/1.1" 200 - 
+2019-08-22  20:38:00 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:38:00] "GET /customer/index HTTP/1.1" 200 - 
+2019-08-22  20:38:00 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:38:00] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-22  20:38:02 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:38:02] "GET /customer/task_list/?sum_order_code=20190822203754a9d3d&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-22  20:38:02 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [22/Aug/2019 20:38:02] "GET /customer/task_detail/?sum_order_code=20190822203754a9d3d&page=1&limit=10 HTTP/1.1" 200 - 

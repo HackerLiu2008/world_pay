@@ -21,16 +21,19 @@
             upload = layui.upload;
 
         upload.render({
-        elem: '#account'
-        ,url: '/upload/up_account'
-        ,accept: 'file' //普通文件
-        ,done: function(res){
-            if (res.code == 502){
-                layer.msg(res.msg)
-            }else if(res.code == 0){
-                layer.msg('上传成功!')
+            elem: '#account'
+            ,url: '/upload/up_account'
+            ,accept: 'file' //普通文件
+            ,before:function () {
+                layui.msg('上传中....')
             }
-        }
+            ,done: function(res){
+                if (res.code == 502){
+                    layer.msg(res.msg)
+                }else if(res.code == 0){
+                    layer.msg('上传成功!')
+                }
+            }
         });
 
 

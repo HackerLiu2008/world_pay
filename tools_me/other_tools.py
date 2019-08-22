@@ -165,9 +165,9 @@ def check_param(terrace, country, store, asin, store_group, asin_group):
     asin_day = ''
     store_info = ''
     asin_info = ''
-    if terrace == '0':
+    if terrace == 'AMZ':
         terrace_info = "AMZ"
-    if terrace == '1':
+    if terrace == 'SMT':
         terrace_info = 'SMT'
     if country == '0':
         country_info = '美国'
@@ -429,3 +429,20 @@ def is_json(myjson):
     except:
         return False
     return True
+
+
+def transferContent(content):
+    if content is None:
+        return None
+    else:
+        string = ""
+        for c in content:
+            if c == '"':
+                string += '\\\"'
+            elif c == "'":
+                string += "\\\'"
+            elif c == "\\":
+                string += "\\\\"
+            else:
+                string += c
+        return string

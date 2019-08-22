@@ -78,15 +78,6 @@
         <div id="details" style="padding: 20px;" lay-filter="detail">
             <form class="layui-form" lay-filter="example" id="example" enctype="multipart/form-data">
                 <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">平台</label>
-                            <div class="layui-input-block">
-                              <select name="terrace">
-                                <option value="0" selected="">AMZ</option>
-                                <option value="1" >SMT</option>
-                              </select>
-                            </div>
-                    </div>
 
                     <div class="layui-inline">
                         <label class="layui-form-label" >国家</label>
@@ -372,10 +363,6 @@
         });
 
 
-
-
-
-
         //监听Tab切换
         element.on('tab(tables)', function (data) {
             var demoReload = $('#demoReload');
@@ -556,7 +543,7 @@
                         ,title: '订单编号为 [ ' + data.task_code + ' ] 的分配账号信息'
                         ,area: ['1600px','670px']
                         ,anim: 1
-                        ,content: '/order/filter_html' + '?task_code=' + data.task_code + '&buy_account=' + data.buy_account + '&' + str
+                        ,content: '/order/filter_html' + '?task_code=' + data.task_code + '&buy_account=' + data.buy_account + '&' + str + "&terrace=" + terrace
                         ,btn: '关闭全部'
                         ,btnAlign: 'c' //按钮居中a
                         ,shade:  [0.8, '#393D49'] //弹框背景选项

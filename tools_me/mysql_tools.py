@@ -795,7 +795,7 @@ class SqlData(object):
         sql = "INSERT INTO task_detail_info(parent_id,task_code,country,asin,key_word,kw_location,store_name," \
               "good_name,good_money,good_link,pay_method,task_run_time, serve_class, mail_method, note, review_title, " \
               "review_info, feedback_info) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}'," \
-              "'{}','{}','{}','{}','{}')".format(parent_id, task_code, country, asin, key_word, kw_location, store_name,
+              "'{}',\"{}\",\"{}\",\"{}\",\"{}\")".format(parent_id, task_code, country, asin, key_word, kw_location, store_name,
                                                  good_name, good_money, good_link, pay_method, task_run_time,
                                                  serve_class, mail_method, note, review_title, review_info,
                                                  feedback_info)

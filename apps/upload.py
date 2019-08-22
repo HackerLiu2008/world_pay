@@ -75,27 +75,27 @@ def up_account():
             return jsonify(results)
 
         for one in row_list[1:]:
-            account = one[0].strip()
-            password = one[1].strip()
-            email = one[2].strip()
-            email_pw = one[3].strip()
-            pay_money = one[4].strip()
+            account = one[0]
+            password = one[1]
+            email = one[2]
+            email_pw = one[3]
+            pay_money = one[4]
             if not one[5]:
                 reg_time = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
             else:
                 reg_time = excel_to_data(one[5])
-            label = one[6].strip()
+            label = one[6]
             terrace = one[7].strip().upper()
-            country = one[8].strip()
+            country = one[8]
             member_state = one[9].strip()
-            name = one[10].strip()
-            phone = one[11].strip()
-            coun = one[12].strip()
-            province = one[13].strip()
-            city = one[14].strip()
-            zip_num = one[15].strip()
-            address = one[16].strip()
-            card_num = one[17].strip()
+            name = one[10]
+            phone = one[11]
+            coun = one[12]
+            province = one[13]
+            city = one[14]
+            zip_num = one[15]
+            address = one[16]
+            card_num = one[17]
             if not one[18]:
                 sizeof = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
             else:
