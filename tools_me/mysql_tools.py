@@ -10,11 +10,11 @@ from tools_me.parameter import PHOTO_LINK
 
 class SqlData(object):
     def __init__(self):
-        host = "rm-j6c3t1i83rgylsuamvo.mysql.rds.aliyuncs.com"
+        host = "114.116.236.27"
         port = 3306
-        user = "hellen"
-        password = "trybest_1"
-        database = "helen_db"
+        user = "root"
+        password = "gute123"
+        database = "buysys"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
             passwd=password, db=database,
