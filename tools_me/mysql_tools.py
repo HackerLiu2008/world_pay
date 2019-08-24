@@ -10,11 +10,11 @@ from tools_me.parameter import PHOTO_LINK
 
 class SqlData(object):
     def __init__(self):
-        host = "114.116.236.27"
+        host = "rm-j6c3t1i83rgylsuamvo.mysql.rds.aliyuncs.com"
         port = 3306
-        user = "root"
-        password = "gute123"
-        database = "buysys"
+        user = "hellen"
+        password = "trybest_1"
+        database = "helen_db"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
             passwd=password, db=database,
@@ -127,6 +127,7 @@ class SqlData(object):
             else:
                 detail_dict['review_info'] = i[26]
             detail_dict['feedback_info'] = i[27]
+            detail_dict['urgent'] = i[30]
             detail_list.append(detail_dict)
         return detail_list
 
@@ -164,6 +165,8 @@ class SqlData(object):
             else:
                 order_data['review_info'] = i[26]
             order_data['feedback_info'] = i[27]
+            order_data['urgent'] = i[30]
+            order_data['customer_label'] = i[31]
             order_list.append(order_data)
         return order_list
 
@@ -405,9 +408,10 @@ class SqlData(object):
 
     def search_detail_order(self, account_id, label='', account='', pay_money=''):
         sql = "SELECT account_info.account,account_info.pay_money,account_info.pay_num,account_info.review_num," \
-              "account_info.label,account_info.member_state,account_info.account_state,account_action.last_buy_time " \
-              "FROM account_info LEFT JOIN account_action ON account_info.id=account_action.account_id WHERE account_" \
-              "info.id = {} AND account_info.buy_state='' {} {} {}".format(account_id, label, account, pay_money)
+              "account_info.label,account_info.member_state,account_info.account_state,account_info.reg_time," \
+              "account_action.last_buy_time FROM account_info LEFT JOIN account_action ON account_info.id=" \
+              "account_action.account_id WHERE account_info.id = {} AND account_info.buy_state='' {} {} {}".\
+               format(account_id, label, account, pay_money)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         # print(len(rows))
@@ -423,7 +427,8 @@ class SqlData(object):
             data['label'] = row[4]
             data['member_state'] = row[5]
             data['account_state'] = row[6]
-            data['last_buy_time'] = str(row[7])
+            data['reg_time'] = str(row[7])
+            data['last_buy_time'] = str(row[8])
             return data
 
     # 更新帐号是否有做过购买
@@ -573,16 +578,16 @@ class SqlData(object):
         return row[0]
 
     def search_now_order(self, t1, t2, user_id):
-        sql = "SELECT task_detail_info.* FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
+        sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE task_run_time BETWEEN " \
-              "'{}' and '{}' AND user_info.id = {} AND task_detail_info.task_state = ''".format(t1, t2, user_id)
+              "'{}' and '{}' AND user_info.id = {} AND task_detail_info.task_state = '' AND task_parent.deal_num != ''".format(t1, t2, user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         now_order_list = self.orders_to_dict(rows)
         return now_order_list
 
     def search_all_order(self, user_id, task_sql='', asin_sql='', order_num=''):
-        sql = "SELECT task_detail_info.* FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
+        sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE user_info.id = {} {}" \
               " {} {}".format(user_id, task_sql, asin_sql, order_num)
         self.cursor.execute(sql)
@@ -591,18 +596,18 @@ class SqlData(object):
         return now_order_list
 
     def search_order_of_state(self, buy_state, user_id):
-        sql = "SELECT task_detail_info.* FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
+        sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE user_info.id = {} AND " \
-              "task_detail_info.task_state = '{}'".format(user_id, buy_state)
+              "task_detail_info.task_state = '{}' AND task_parent.deal_num != ''".format(user_id, buy_state)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         now_order_list = self.orders_to_dict(rows)
         return now_order_list
 
     def search_order_of_overdue(self, t, user_id):
-        sql = "SELECT task_detail_info.* FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
+        sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE task_run_time < '{}' AND " \
-              "user_info.id = {} AND task_detail_info.task_state = ''"\
+              "user_info.id = {} AND task_detail_info.task_state = '' AND task_parent.deal_num != ''"\
                .format(t, user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()

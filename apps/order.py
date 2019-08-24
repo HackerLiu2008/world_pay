@@ -35,6 +35,7 @@ def sub_review():
         task_code = data.get('task_code')
         account = data.get('account')
         SqlData().update_review_one('task_state', '已完成', task_code)
+        SqlData().update_review_one('urgent', '', task_code)
         SqlData().update_account_one('account_state', '', account, user_id)
         if note:
             SqlData().update_review_one('review_note', note, task_code)
@@ -197,6 +198,7 @@ def sub_order():
         mail_money = data.get('mail_money')
         taxes_money = data.get('taxes_money')
         note = data.get('note')
+        SqlData().update_review_one('urgent', '', task_code)
         good_money_real = round(float(good_money_real), 3)
         if mail_money:
             mail_money = round(float(mail_money), 3)

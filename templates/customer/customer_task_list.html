@@ -42,6 +42,7 @@
 <table class="layui-hide" id="task_list" lay-filter="task_list"></table>
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="urgent">催评</a>
     </script>
 </div>
 </div>
@@ -157,6 +158,13 @@
             ]]
             , id: 'task_list'
             , page: true
+            , done:function (res, curr, count) {
+                for (var i=0; i<res.data.length; i++){
+                    if (res.data[i].urgent=='T'){
+                        $('table tbody tr').eq(i).css('color','red')
+                    }
+                }
+            }
         });
 
         //监听行工具事件
@@ -164,7 +172,6 @@
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event //获得 lay-event 对应的值
                 , terrace = $("#terrace").val();
-            console.log(terrace);
             if (layEvent === 'edit') {
                 if (data.task_state == '已完成' || data.serve_class == ''){
                     layer.alert("不可修改信息!")
@@ -206,7 +213,64 @@
                     parent.layer.msg('不可编辑!', {
 						icon : 5
 					});
-                }}
+                }}else if(layEvent === 'urgent'){
+                    if (terrace=='AMZ'){
+                        $.ajax({
+                        type : 'GET',
+                        url : '/customer/urgent?task_code=' + data.task_code + "&terrace="+ terrace,
+                        dataType : 'json',
+                        success : function(data) {
+                            // 成功提示框
+                            if (data.code == 0){
+                                parent.layer.msg('催评成功!', {
+                                icon : 6,
+                            });
+                            }else if(data.code == 502){
+                                parent.layer.msg('该订单不可催屏!', {
+                                icon : 5
+                            });
+                            }
+
+                        },
+                        error : function(data) {
+                            // 异常提示
+                            parent.layer.msg('出现网络故障', {
+                                icon : 5
+                            });
+                        }
+                            })
+                }else if (terrace == 'SMT' && data.review_title!='' ||data.review_info!='' ||data.feedback_info!=''){
+                    $.ajax({
+                    type : 'GET',
+                    url : '/customer/urgent?task_code=' + data.task_code ,
+                    dataType : 'json',
+                    success : function(data) {
+                        {#var data1 = JSON.parse(data);#}
+                        {#console.log(data.code);#}
+                        // 成功提示框
+                        if (data.code == 0){
+                            parent.layer.msg('催评成功!', {
+                            icon : 6,
+                        });
+                        }else if(data.code == 502){
+                            parent.layer.msg('催评失败!', {
+                            icon : 5
+                        });
+                        }
+
+                    },
+                    error : function(data) {
+                        // 异常提示
+                        parent.layer.msg('出现网络故障', {
+                            icon : 5
+                        });
+                    }
+                        })}else{
+                    parent.layer.msg('该订单不支持催屏!!!', {
+                            icon : 5
+                        });
+                }
+            }
         });
 
     });

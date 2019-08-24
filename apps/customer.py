@@ -3,13 +3,30 @@ import json
 import logging
 import os
 import xlrd
-from tools_me.other_tools import customer_required, save_file, excel_to_data, asin_num, sum_code, xianzai_time, \
-    date_to_week, transferContent
+from tools_me.other_tools import customer_required, save_file, excel_to_data, asin_num, sum_code, xianzai_time, date_to_week
 from tools_me.parameter import RET, MSG, TASK_DIR, PHOTO_DIR
 from tools_me.up_pic import up_photo
 from . import customer_blueprint
 from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
+
+
+@customer_blueprint.route('/urgent', methods=['GET'])
+@customer_required
+def urgent_review():
+    if request.method == 'GET':
+        task_code = request.args.get('task_code')
+        # terrace = request.args.get('terrace')
+        try:
+            task_state = SqlData().search_order_one('task_state', task_code)
+            if task_state != "待留评":
+                return jsonify({'code': RET.SERVERERROR, 'msg': '该订单未下单完成不可催屏!'})
+
+            SqlData().update_review_one('urgent', 'T', task_code)
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
 
 
 @customer_blueprint.route('/up_review_pic', methods=['POST'])
@@ -159,7 +176,7 @@ def task_choose():
 
     if request.method == 'POST':
         task_json = SqlData().search_cus_field('task_json', cus_id)
-        task_dict = json.loads(task_json)
+        task_dict = json.loads(task_json, strict=False)
 
         task_list = task_dict.get('task_info')
         serve_money = task_dict.get('serve_money')
@@ -224,7 +241,7 @@ def preview_index():
     task_json = SqlData().search_cus_field('task_json', cus_id)
     if not task_json:
         return '请先导入表格文件!'
-    task_dict = json.loads(task_json)
+    task_dict = json.loads(task_json, strict=False)
     serve_money = task_dict.get('serve_money')
     good_sum_money = task_dict.get('good_sum_money')
     terrace = task_dict.get('terrace')
@@ -255,7 +272,7 @@ def smt_choose():
 
     if request.method == 'POST':
         task_json = SqlData().search_cus_field('task_json', cus_id)
-        task_dict = json.loads(task_json)
+        task_dict = json.loads(task_json, strict=False)
 
         task_list = task_dict.get('task_info')
         serve_money = float(task_dict.get('serve_money')) + float(task_dict.get('other_money'))
@@ -325,7 +342,7 @@ def smt_preview():
             task_json = SqlData().search_cus_field('task_json', cus_id)
             if not task_json:
                 return '请先导入表格文件!'
-            task_dict = json.loads(task_json)
+            task_dict = json.loads(task_json, strict=False)
             task_info = task_dict.get('task_info')
             sum_num = task_dict.get('sum_num')
             terrace = task_dict.get('terrace')
@@ -400,7 +417,7 @@ def smt_up_preview():
         limit = request.args.get('limit')
         page = request.args.get('page')
         task_json = SqlData().search_cus_field('task_json', cus_id)
-        task_dict = json.loads(task_json)
+        task_dict = json.loads(task_json, strict=False)
         task_list = task_dict.get('task_info')
         data = list()
         for i in task_list:
@@ -554,9 +571,18 @@ def smt_task():
                 task_info_dict['sunday_num'] = sunday_num
                 # print(task_info_dict)
                 task_info_json = json.dumps(task_info_dict, ensure_ascii=False)
-
+                string = ""
+                for i in task_info_json:
+                    if i == "'":
+                        i = "\\'"
+                        string += i
+                    elif i == '"':
+                        s = '\\"'
+                        string += s
+                    else:
+                        string += i
                 label = g.cus_label
-                SqlData().update_user_cus('task_json', task_info_json, user_id, label)
+                SqlData().update_user_cus('task_json', string, user_id, label)
 
                 return jsonify(results)
         except Exception as e:
@@ -577,7 +603,7 @@ def preview_task():
         limit = request.args.get('limit')
         page = request.args.get('page')
         task_json = SqlData().search_cus_field('task_json', cus_id)
-        task_dict = json.loads(task_json)
+        task_dict = json.loads(task_json, strict=False)
         task_list = task_dict.get('task_info')
         data = list()
         for i in task_list:
@@ -783,6 +809,9 @@ def up_task():
                     if i == "'":
                         i = "\\'"
                         string += i
+                    elif i == '"':
+                        s = '\\"'
+                        string += s
                     else:
                         string += i
                 label = g.cus_label
