@@ -1,9 +1,7 @@
 import json
-
 import pymysql
 import pymysql.cursors
 import logging
-
 from tools_me.other_tools import is_json
 from tools_me.parameter import PHOTO_LINK
 
@@ -379,8 +377,31 @@ class SqlData(object):
             label_list.append(i[0])
         return label_list
 
+    # 查询主账号下的所有用户信息
+    def search_cus_all(self, user_id, sql=''):
+        sql = "SELECT * FROM customer_info WHERE user_id={} {}".format(user_id, sql)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        info_list = list()
+        for i in rows:
+            info_dict = dict()
+            info_dict['label'] = i[2]
+            info_dict['account'] = i[3]
+            info_dict['password'] = i[4]
+            info_dict['amz_money'] = i[9]
+            info_dict['note'] = i[6]
+            info_list.append(info_dict)
+        return info_list
+
     def search_cus_field(self, field, cus_id):
         sql = "SELECT {} FROM customer_info WHERE id={}".format(field, cus_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
+
+    # 按标签查询客户信息
+    def search_cus_of_label(self, field, user_id, sql=""):
+        sql = "SELECT {} FROM customer_info WHERE user_id={} {}".format(field, user_id, sql)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         return rows[0][0]
@@ -395,9 +416,9 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
-    def insert_user_cus(self, label, account, password, discount, note, user_id):
-        sql = "INSERT INTO customer_info(label, account, pass_word, discount, note, user_id) VALUES('{}','{}','{}'," \
-              "{},'{}',{})".format(label, account, password, discount, note, user_id)
+    def insert_user_cus(self, label, account, password, note, user_id):
+        sql = "INSERT INTO customer_info(label, account, pass_word, note, user_id) VALUES('{}','{}','{}'," \
+              "{},{})".format(label, account, password, note, user_id)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -825,7 +846,7 @@ class SqlData(object):
         return rows[0][0]
 
     def task_plan(self, sum_order_code):
-        sql = "AND task_state != ''"
+        sql = "AND task_state != '' AND task_state != '已分配'"
         complete = self.search_finish_order(sum_order_code)
         finish = self.search_finish_order(sum_order_code, sql=sql)
         results1 = int(finish) / int(complete)

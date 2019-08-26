@@ -63,30 +63,22 @@ def smt_serve():
         return jsonify({'code': RET.OK, 'msg': MSG.OK})
 
 
-@user_blueprint.route('/amz_serve', methods=['GET', 'POST'])
+@user_blueprint.route('/amz_serve_money', methods=['GET', 'POST'])
 @login_required
 def amz_serve():
     user_id = g.user_id
     if request.method == 'GET':
-        amz_serve = SqlData().search_user_field('amz_serve', user_id)
-        if not amz_serve:
-            context = {'serve_list': ['暂无收费标准!']}
-        else:
-            serve_dict = json.loads(amz_serve)
-            serve_list = list()
-            for key, value in sorted(serve_dict.items()):
-                if key == 'FeedBack':
-                    s = str(key) + ", 单价金额: " + str(value)
-                else:
-                    s = "留评比例: " + str(key) + "%, 单价金额: " + str(value)
-                serve_list.append(s)
-            context = {'serve_list': serve_list}
+        label = request.args.get('label')
+        context = {'label': label}
         return render_template('user/amz_serve_money.html', **context)
     if request.method == 'POST':
         data = json.loads(request.form.get('data'))
         bili = data.get('bili')
         money = data.get('money')
-        amz_serve = SqlData().search_user_field('amz_serve', user_id)
+        label = data.get('label')
+        sql = "AND label='" + label + "'"
+        field = 'amz_money'
+        amz_serve = SqlData().search_cus_of_label(field, user_id, sql)
         if not amz_serve:
             serve_dict = dict()
             serve_dict[bili] = int(money)
@@ -94,14 +86,101 @@ def amz_serve():
             serve_dict = json.loads(amz_serve)
             serve_dict[bili] = int(money)
         serve_json = json.dumps(serve_dict)
-        SqlData().update_user_field('amz_serve', "'" + serve_json + "'", user_id)
+        SqlData().update_user_cus('amz_money', serve_json, user_id, label)
         return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
+@user_blueprint.route('/amz_customer_detail', methods=['GET', 'POST'])
+@login_required
+def amz_customer_detail():
+    user_id = g.user_id
+    results = {'code': RET.OK, 'msg': MSG.OK}
+    if request.method == 'GET':
+        try:
+            limit = request.args.get('limit')
+            page = request.args.get('page')
+            label = request.args.get('label')
+            if label:
+                sql = "AND label = '" + str(label) + "'"
+                info_list = SqlData().search_cus_all(user_id, sql=sql)
+            else:
+                info_list = SqlData().search_cus_all(user_id)
+            new_list = list()
+            for i in info_list:
+                amz_money = i.get('amz_money')
+                if not amz_money:
+                    i['0'] = ''
+                    i['10'] = ''
+                    i['20'] = ''
+                    i['30'] = ''
+                    i['40'] = ''
+                    i['50'] = ''
+                    i['60'] = ''
+                    i['70'] = ''
+                    i['80'] = ''
+                    i['90'] = ''
+                    i['100'] = ''
+                    i['feedback'] = ''
+                    new_list.append(i)
+                else:
+                    money_dict = json.loads(amz_money)
+                    i['0'] = money_dict.get('0')
+                    i['10'] = money_dict.get('10')
+                    i['20'] = money_dict.get('20')
+                    i['30'] = money_dict.get('30')
+                    i['40'] = money_dict.get('40')
+                    i['50'] = money_dict.get('50')
+                    i['60'] = money_dict.get('60')
+                    i['70'] = money_dict.get('70')
+                    i['80'] = money_dict.get('80')
+                    i['90'] = money_dict.get('90')
+                    i['100'] = money_dict.get('100')
+                    i['feedback'] = money_dict.get('feedback')
+                    new_list.append(i)
+            page_list = list()
+            for i in range(0, len(new_list), int(limit)):
+                page_list.append(new_list[i:i + int(limit)])
+            results['data'] = page_list[int(page) - 1]
+            results['count'] = len(new_list)
+            return jsonify(results)
+        except Exception as e:
+            logging.info(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.NODATA})
+
+
+@user_blueprint.route('/amz_money', methods=['GET'])
+@login_required
+def amz_money():
+    user_id = g.user_id
+    terrace = SqlData().search_user_field('terrace', user_id)
+    if terrace != "AMZ":
+        return '该账号没有操作AMZ权限!'
+    if request.method == 'GET':
+        return render_template('user/amz_money.html')
+    if request.method == 'POST':
+        try:
+            data_list = SqlData().search_customer_detail(user_id)
+            str_list = list()
+            for i in data_list:
+                one_str = ''
+                for key, value in i.items():
+                    s = str(key) + ':' + str(value) + ', '
+                    one_str += s
+                str_list.append(one_str)
+            context = {'detail_list': str_list}
+            return render_template('customer/customer_detail.html', **context)
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.NODATA})
 
 
 @user_blueprint.route('/customer_detail', methods=['GET'])
 @login_required
 def customer_detail():
     user_id = g.user_id
+    terrace = SqlData().search_user_field('terrace', user_id)
+    if terrace != 'SMT':
+        return '此账号没有查看SMT信息权限!'
     if request.method == 'GET':
         try:
             data_list = SqlData().search_customer_detail(user_id)
@@ -119,10 +198,52 @@ def customer_detail():
             return jsonify({'code': RET.SERVERERROR, 'msg': MSG.NODATA})
 
 
+@user_blueprint.route('/amz_customer', methods=['GET', 'POST'])
+@login_required
+def amz_customer():
+    user_id = g.user_id
+    terrace = SqlData().search_user_field('terrace', user_id)
+    if terrace != 'AMZ':
+        return "此帐号没有添加AMZ客户权限!"
+    if request.method == 'GET':
+        return render_template('user/amz_customer.html')
+    elif request.method == "POST":
+        data = json.loads(request.form.get('data'))
+        add_cus = data.get('add_cus')
+        account = data.get('account')
+        password = data.get('password')
+        note = data.get('note')
+        try:
+            label_list = SqlData().search_user_cus(user_id)
+            if add_cus in label_list:
+                if account:
+                    SqlData().update_user_cus('account', account, user_id, add_cus)
+                if password:
+                    SqlData().update_user_cus('pass_word', password, user_id, add_cus)
+                if note:
+                    SqlData().update_user_cus('note', note, user_id, add_cus)
+            if add_cus not in label_list:
+                if not account:
+                    account = ''
+                if not password:
+                    password = ''
+                if not note:
+                    note = ''
+                SqlData().insert_user_cus(add_cus, account, password, note, user_id)
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
 @user_blueprint.route('/customer', methods=['GET', 'POST'])
 @login_required
 def customer():
     user_id = g.user_id
+    terrace = SqlData().search_user_field('terrace', user_id)
+    if terrace != 'SMT':
+        return "该帐号没有添加SMT客户权限!"
     if request.method == 'GET':
         return render_template('user/user_customer.html')
     elif request.method == "POST":
@@ -149,13 +270,17 @@ def customer():
             if add_cus not in label_list:
                 if not discount:
                     discount = '1.0'
+                if not ex_discount:
+                    ex_discount = '1.0'
                 if not account:
                     account = ''
                 if not password:
                     password = ''
                 if not note:
                     note = ''
-                SqlData().insert_user_cus(add_cus, account, password, float(discount), note, user_id)
+                SqlData().insert_user_cus(add_cus, account, password, note, user_id)
+                SqlData().update_user_cus('exchange_dis', float(ex_discount), user_id, add_cus)
+                SqlData().update_user_cus('discount', float(discount), user_id, add_cus)
             return jsonify({'code': RET.OK, 'msg': MSG.OK})
 
         except Exception as e:

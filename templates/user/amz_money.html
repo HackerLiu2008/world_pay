@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>GUTE 账号管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <script src="/static/layui/layui.js"></script>
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+<body>
+
+<hr class="layui-bg-cyan">
+
+<form class="layui-form" action="" lay-filter="example" id="example">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">标签:</label>
+        <div class="layui-input-inline">
+            <input type="text" name="label" placeholder="请输入客户标签名" autocomplete="off"
+                   class="layui-input" id="label">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="formDemo" id="sub" type="submit">立即搜索</button>
+        </div>
+    </div>
+
+</form>
+
+
+<table class="layui-hide" id="filter_order" lay-filter="filter_order"></table>
+
+<script src="/static/layui/layui.all.js"></script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="bind">编辑</a>
+</script>
+
+<script>
+    layui.config({
+        version: '1560414887305' //为了更新 js 缓存，可忽略
+    });
+
+    layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form'], function () {
+
+        var layer = layui.layer //弹层
+            , table = layui.table //表格
+            , element = layui.element //元素操作
+            , form = layer.form
+            , $ = layui.$;
+
+        //执行一个 table 实例
+        table.render({
+            elem: '#filter_order'
+            , height: ''
+            , url: '/user/amz_customer_detail' //数据接口
+            , title: '过滤条件账号'
+            , limit:10
+            , area: ['1500px','900px']
+            {#, toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档#}
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'label', title: '标签', align: 'center', sort: true}
+                , {field: 'account', title: '账号', align: 'center', sort: true}
+                , {field: 'password', title: '密码', align: 'center', sort: true}
+                , {field: '0', title: '0%', align: 'center', sort: true}
+                , {field: '10', title: '10%', align: 'center', sort: true}
+                , {field: '20', title: '20%', align: 'center', sort: true}
+                , {field: '30', title: '30%', align: 'center', sort: true}
+                , {field: '40', title: '40%', align: 'center', sort: true}
+                , {field: '50', title: '50%', align: 'center', sort: true}
+                , {field: '60', title: '60%', align: 'center', sort: true}
+                , {field: '70', title: '70%', align: 'center', sort: true}
+                , {field: '80', title: '80%', align: 'center', sort: true}
+                , {field: '90', title: '90%', align: 'center', sort: true}
+                , {field: '100', title: '100%', align: 'center', sort: true}
+                , {field: 'feedback', title: 'FeedBack', align: 'center', sort: true}
+                , {field: 'note', title: '备注', align: 'center', sort: true}
+                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+            ]]
+            , id: 'allot_order'
+            , page: true
+        });
+
+        var sub = $('#sub');
+        sub.on('click',function () {
+            var label = $('#label').val();
+            table.reload('allot_order', {
+                page: {
+                  curr: 1 //重新从第 1 页开始
+                },where: {
+                    label:label,
+                  }
+              }, '/user/amz_customer_detail');
+            return false
+        });
+
+        //监听行工具事件
+        table.on('tool(filter_order)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据
+                , layEvent = obj.event; //获得 lay-event 对应的值
+
+            if (layEvent === 'bind') {
+                layui.layer.open({
+                title: '标签为 [ ' + data.label + ' ] 的相关信息',
+                type: 2,
+                anim: 3,
+                area: ['600px', '400px'],//宽高
+                shadeClose: true, //点击遮罩关闭
+                content: '/user/amz_serve_money?label=' + data.label,
+                });
+            }
+        });
+
+
+    });
+
+</script>
+</body>
+</html>

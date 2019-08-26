@@ -638,6 +638,7 @@ def up_task():
 
     # 预存表格数据到task_json字段中
     if request.method == 'POST':
+        cus_id = g.cus_id
         file = request.files.get('file')
         filename = file.filename
         file_path = save_file(file, filename, TASK_DIR)
@@ -713,13 +714,13 @@ def up_task():
                     asin_detail_list.append(asin_detail)
 
                 # 查询服务商的收费标准
-                serve_json = SqlData().search_user_field('amz_serve', user_id)
+                serve_json = SqlData().search_cus_field('amz_money', cus_id)
                 if not serve_json:
                     return jsonify({'code': RET.SERVERERROR, 'msg': "请联系服务商设置收费标准!"})
                 else:
                     serve_dict = json.loads(serve_json)
-                    FeedBack = serve_dict.get('FeedBack')
-                    if not FeedBack:
+                    feedback = serve_dict.get('feedback')
+                    if not feedback:
                         return jsonify({'code': RET.SERVERERROR, 'msg': "请联系服务商设置FeedBack收费标准!"})
 
                 # 判断留评比例是否符合要求
@@ -747,7 +748,7 @@ def up_task():
                     price = i.get('review_price')
                     review_money = asin_n * price
                     feedback_num = i.get('feedback')
-                    feedback_money = feedback_num * FeedBack
+                    feedback_money = feedback_num * feedback
                     i['sum_money'] = review_money + feedback_money
 
                 task_info_list = list()
