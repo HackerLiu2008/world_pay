@@ -14,7 +14,7 @@
 <body>
 <div id="details" style="padding: 20px;" lay-filter="detail">
     <form class="layui-form" lay-filter="example" id="example" enctype="multipart/form-data">
-        <div class="layui-inline">
+        <div class="layui-form-item">
             <label class="layui-form-label" >下单方式:</label>
                 <div class="layui-input-block" >
                   <select name="method" >
@@ -23,6 +23,18 @@
                   </select>
                 </div>
         </div>
+        <div class="layui-form-item">
+        <label class="layui-form-label">选择支付方式</label>
+        <div class="layui-input-block">
+          <select name="pay_method" lay-filter="">
+            <option value=默认 selected="">默认</option>
+              {% for i in pay_list %}
+            <option value="{{ i }}">{{ i }}</option>
+              {% endfor %}
+          </select>
+        </div>
+      </div>
+
 
         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="button" class="layui-btn" id="task"><i class="layui-icon"></i>上传文件</button>
         <br>&nbsp
@@ -75,8 +87,10 @@
             }
             ,done: function(res){
                 if (res.code == 502){
+                    layer.closeAll();
                     layer.alert(res.msg)
                 }else if(res.code == 0){
+                    layer.closeAll();
                     layer.msg('上传成功!')
                 }
             }

@@ -20,7 +20,7 @@ def urgent_review():
         try:
             task_state = SqlData().search_order_one('task_state', task_code)
             if task_state != "待留评":
-                return jsonify({'code': RET.SERVERERROR, 'msg': '该订单未下单完成不可催屏!'})
+                return jsonify({'code': RET.SERVERERROR, 'msg': '该订单未下单完成不可催评!'})
 
             SqlData().update_review_one('urgent', 'T', task_code)
             return jsonify({'code': RET.OK, 'msg': MSG.OK})
@@ -187,7 +187,7 @@ def task_choose():
         serve_dis = "%.2f" % (serve_money * float(discount))
         exchange = SqlData().search_user_field('dollar_exchange', user_id)
         good_dis = "%.2f" % (good_sum_money * float(exchange))
-        sum_money = float(serve_dis) + float(good_dis)
+        sum_money = round(float(serve_dis) + float(good_dis), 2)
 
         sum_order_code = sum_code()
         parent_id = SqlData().insert_task_parent(user_id, sum_order_code)
@@ -254,7 +254,7 @@ def preview_index():
     context = dict()
     context['serve_money'] = str(serve_dis) + " = " + str(serve_money) + "(服务费总额)" + "*" + str(float(discount)) + "(折扣)"
     context['good_money'] = str(good_dis) + " = " + str(good_sum_money) + "(商品金额总额)" + "*" + str(float(exchange)) + "(汇率)"
-    context['sum_money'] = str(sum_money)
+    context['sum_money'] = str(round(sum_money, 2))
     context['terrace'] = terrace
     context['sum_num'] = sum_num
     return render_template('customer/preview_task.html', **context)
@@ -280,6 +280,7 @@ def smt_choose():
         terrace = task_dict.get('terrace')
         sum_num = task_dict.get('sum_num')
         sum_money = float(task_dict.get('sum_money'))
+        pay_method = task_dict.get('pay_method')
 
         sum_order_code = sum_code()
         parent_id = SqlData().insert_task_parent(user_id, sum_order_code)
@@ -314,13 +315,14 @@ def smt_choose():
                 default_review = i[13]
             else:
                 default_review = ''
-            kw_location = ""
             note = ""
-            # good_search_money=AMZ.good_name, sku=AMZ.pay_method, mail_money=AMZ.serve_class, text_review=AMZ.review_t
-            # itle, image_review=AMZ.review_info, default_review=AMZ.feedback_info
+
+            # good_search_money=AMZ.good_name, sku=AMZ.kw_location, mail_money=AMZ.serve_class, text_review=AMZ.review_
+            # title, image_review=AMZ.review_info, default_review=AMZ.feedback_info
+
             try:
-                SqlData().insert_task_detail(parent_id, task_code, country, asin, key_word, kw_location, store_name,
-                                             good_search_money, good_money, good_link, sku, task_run_time, mail_money,
+                SqlData().insert_task_detail(parent_id, task_code, country, asin, key_word, sku, store_name,
+                                             good_search_money, good_money, good_link, pay_method, task_run_time, mail_money,
                                              mail_method, note, text_review, image_review, default_review)
                 index += 1
             except Exception as e:
@@ -339,6 +341,7 @@ def smt_preview():
             user_id = g.cus_user_id
             label = g.cus_label
             method = request.args.get('method')
+            pay_method = request.args.get('pay_method')
             task_json = SqlData().search_cus_field('task_json', cus_id)
             if not task_json:
                 return '请先导入表格文件!'
@@ -354,7 +357,12 @@ def smt_preview():
 
             discount = SqlData().search_cus_field('discount', cus_id)
 
-            exchange_dis = SqlData().search_cus_field('exchange_dis', cus_id)
+            if pay_method == "默认":
+                exchange_dis = SqlData().search_cus_field('exchange_dis', cus_id)
+            else:
+                pay_dis = SqlData().search_user_field('pay_discount', user_id)
+                pay_dict = json.loads(pay_dis)
+                exchange_dis = pay_dict.get(pay_method)
 
             exchange = SqlData().search_user_field('dollar_exchange', user_id)
 
@@ -375,8 +383,8 @@ def smt_preview():
             sunday_money = smt_dict.get('sunday_money')
             if not all([pc_money, app_money, text_money, image_money, sunday_money]):
                 return '请联系服务商完善收费标准!'
-            good_sum_money = float("%.3f" %(good_sum_money))
-            mail_sum_money = float("%.3f" %(mail_sum_money))
+            good_sum_money = float("%.3f" % good_sum_money)
+            mail_sum_money = float("%.3f" % mail_sum_money)
             s = (good_sum_money + mail_sum_money) * exchange * exchange_dis
             if method == 'PC':
                 money = float(pc_money)
@@ -400,6 +408,7 @@ def smt_preview():
             task_dict['serve_money'] = str(q)
             task_dict['good_money'] = str(s)
             task_dict['other_money'] = str(other_money)
+            task_dict['pay_method'] = pay_method
             task_json = json.dumps(task_dict, ensure_ascii=False)
             SqlData().update_user_cus('task_json', task_json, user_id, label)
             return render_template('customer/smt_preview_task.html', **context)
@@ -451,8 +460,20 @@ def smt_up_preview():
 @customer_blueprint.route('/smt_task', methods=['GET', 'POST'])
 @customer_required
 def smt_task():
+    user_id = g.cus_user_id
+    terrace = SqlData().search_user_field('terrace', user_id)
+    if terrace != 'SMT':
+        return '此账号没有查看权限!!!'
     if request.method == 'GET':
-        return render_template('customer/cus_smt_task.html')
+        user_id = g.cus_user_id
+        pay_dis = SqlData().search_user_field('pay_discount', user_id)
+        context = dict()
+        if not pay_dis:
+            context['pay_list'] = []
+        else:
+            pay_dict = json.loads(pay_dis)
+            context['pay_list'] = list(pay_dict.keys())
+        return render_template('customer/cus_smt_task.html', **context)
 
     # 预存表格数据到task_json字段中
     if request.method == 'POST':
@@ -633,6 +654,11 @@ def preview_task():
 @customer_blueprint.route('/up_task', methods=['GET', 'POST'])
 @customer_required
 def up_task():
+    user_id = g.cus_user_id
+    terrace = SqlData().search_user_field('terrace', user_id)
+    if terrace != 'AMZ':
+        return '此账号没有查看权限!!!'
+
     if request.method == 'GET':
         return render_template('customer/cus_up_task.html')
 
@@ -910,14 +936,14 @@ def task_list():
     context = dict()
     if terrace == "AMZ":
         context['good_name'] = '产品名称'
-        context['pay_method'] = '支付方式'
+        context['kw_location'] = '关键字位置'
         context['serve_class'] = '服务类型'
         context['review_title'] = '评论标题'
         context['review_info'] = '评论内容'
         context['feedback_info'] = 'FeedBack'
     if terrace == "SMT":
         context['good_name'] = '搜索价格'
-        context['pay_method'] = 'SKU'
+        context['kw_location'] = 'SKU'
         context['serve_class'] = '邮费'
         context['review_title'] = '文字留评'
         context['review_info'] = '图片留评'

@@ -83,7 +83,7 @@ def up_account():
             if not one[5]:
                 reg_time = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
             else:
-                reg_time = excel_to_data(one[5])
+                reg_time = excel_to_data(int(one[5]))
             label = one[6]
             terrace = one[7].strip().upper()
             country = one[8]
@@ -99,7 +99,7 @@ def up_account():
             if not one[18]:
                 sizeof = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
             else:
-                sizeof = excel_to_data(one[18])
+                sizeof = excel_to_data(int(one[18]))
             security_code = one[19]
             SqlData().insert_account_detail(user_id, account, password, email, email_pw, pay_money, reg_time, label, terrace,
                                             country, member_state, name, phone, coun, province, city, zip_num,

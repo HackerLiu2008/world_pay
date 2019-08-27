@@ -635,8 +635,8 @@ class SqlData(object):
         now_order_list = self.orders_to_dict(rows)
         return now_order_list
 
-    def update_user_field(self, field, exchange, user_id):
-        sql = "UPDATE user_info SET {} = {} WHERE id = {}".format(field, exchange, user_id)
+    def update_user_field(self, field, value, user_id):
+        sql = "UPDATE user_info SET {} = {} WHERE id = {}".format(field, value, user_id)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -648,6 +648,19 @@ class SqlData(object):
     # 更新订单时间
     def update_order_time(self, run_time, task_code):
         sql = "UPDATE task_detail_info SET task_run_time='{}' WHERE task_code='{}'".format(run_time, task_code)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error(str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    # 跟新详细订单的一个字段
+    def update_order_repair(self, value, task_code):
+        sql = "UPDATE task_detail_info SET buy_account='',account_ps='',task_run_time='{}',task_state=''," \
+              "order_num='',good_money_real=0,mail_money=0,taxes_money=0,sum_money=0 WHERE task_code='{}'".\
+               format(value, task_code)
         try:
             self.cursor.execute(sql)
             self.connect.commit()

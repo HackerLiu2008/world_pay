@@ -13,6 +13,50 @@ def ch_pass_html():
     return render_template('user/edit_user.html')
 
 
+@user_blueprint.route('/smt_pay', methods=['GET', 'POST'])
+@login_required
+def smt_pay():
+    user_id = g.user_id
+    if request.method == 'GET':
+        pay_discount = SqlData().search_user_field('pay_discount', user_id)
+        context = dict()
+        if not pay_discount:
+            context['info_list'] = ["暂无支付方式及汇率!"]
+        else:
+            pay_dict = json.loads(pay_discount)
+            info_list = list()
+            for key, value in pay_dict.items():
+                s = '支付方式: ' + str(key) + ", 汇率: " + str(value)
+                info_list.append(s)
+            context['info_list'] = info_list
+        return render_template('user/smt_pay.html', **context)
+    if request.method == 'POST':
+        data = json.loads(request.form.get('data'))
+        pay_method = data.get('pay_method')
+        pay_dis = data.get('pay_discount')
+        pay_discount = SqlData().search_user_field('pay_discount', user_id)
+        pay_dict = json.loads(pay_discount)
+        if not pay_dis:
+            if pay_method in pay_dict:
+                pay_dict.pop(pay_method)
+                pay_json = json.dumps(pay_dict, ensure_ascii=False)
+                SqlData().update_user_field('pay_discount', "'" + pay_json + "'", user_id)
+                return jsonify({'code': RET.OK, 'msg': MSG.OK})
+            else:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '没有该支付方式!!!'})
+        if not pay_discount:
+            pay_dict = dict()
+            pay_dict[pay_method] = float(pay_dis)
+            pay_json = json.dumps(pay_dict, ensure_ascii=False)
+            SqlData().update_user_field('pay_discount', "'" + pay_json + "'", user_id)
+        else:
+            pay_dict = json.loads(pay_discount)
+            pay_dict[pay_method] = float(pay_dis)
+            pay_json = json.dumps(pay_dict, ensure_ascii=False)
+            SqlData().update_user_field('pay_discount', "'" + pay_json + "'", user_id)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
 @user_blueprint.route('/smt_serve', methods=['GET', 'POST'])
 @login_required
 def smt_serve():

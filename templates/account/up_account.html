@@ -17,19 +17,22 @@
 <script>
     layui.use('upload', function () {
         var $ = layui.jquery,
-            upload = layui.upload;
+            upload = layui.upload,
+            layer = layui.layer;
 
         upload.render({
             elem: '#account'
             ,url: '/upload/up_account'
             ,accept: 'file' //普通文件
             ,before:function () {
-                layui.load()
+                layer.load()
             }
             ,done: function(res){
                 if (res.code == 502){
+                    layer.closeAll();
                     layer.msg(res.msg)
                 }else if(res.code == 0){
+                    layer.closeAll();
                     layer.msg('上传成功!')
                 }
             }

@@ -18,6 +18,16 @@ def account():
     return render_template("order/order.html", **context)
 
 
+@order_blueprint.route('/repair', methods=['GET'])
+@login_required
+def repair():
+    if request.method == 'GET':
+        task_code = request.args.get('task_code')
+        now_time = xianzai_time()
+        SqlData().update_order_repair(now_time, task_code)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
 @order_blueprint.route('/sub_review', methods=['GET', 'POST'])
 @login_required
 def sub_review():
@@ -232,6 +242,8 @@ def sub_order():
                     account_state = ""
 
             SqlData().update_payed(order_num, good_money_real, mail_money, taxes_money, note, sum_money,  task_code, task_state)
+            now_time = xianzai_time()
+            SqlData().update_order_time(now_time, task_code)
             goods, stores, first_buy_time = SqlData().search_asin_store(account)
             if goods:
                 goods_dict = json.loads(goods)
