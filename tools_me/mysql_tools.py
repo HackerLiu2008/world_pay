@@ -3,16 +3,16 @@ import pymysql
 import pymysql.cursors
 import logging
 from tools_me.other_tools import is_json
-from tools_me.parameter import PHOTO_LINK
 
 
 class SqlData(object):
     def __init__(self):
-        host = "rm-j6c3t1i83rgylsuamvo.mysql.rds.aliyuncs.com"
+        # host = "rm-j6c3t1i83rgylsuamvo.mysql.rds.aliyuncs.com"
+        host = "114.116.236.27"
         port = 3306
-        user = "hellen"
-        password = "trybest_1"
-        database = "helen_db"
+        user = "root"
+        password = "gute123"
+        database = "buysys"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
             passwd=password, db=database,
@@ -80,7 +80,7 @@ class SqlData(object):
             detail_dict["serve_money"] = i[4]
             detail_dict["all_money"] = i[3]
             if i[5]:
-                detail_dict["deal_num"] = PHOTO_LINK + str(i[5])
+                detail_dict["deal_num"] = i[5]
             else:
                 detail_dict["deal_num"] = i[5]
             detail_dict["customer_label"] = i[6]
@@ -119,8 +119,7 @@ class SqlData(object):
                 key_list = list(link_dict.keys())
                 s = ''
                 for n in key_list:
-                    link = PHOTO_LINK + n + ', '
-                    s += link
+                    s += n
                 detail_dict['review_info'] = s
             else:
                 detail_dict['review_info'] = i[26]
@@ -157,8 +156,7 @@ class SqlData(object):
                 key_list = list(link_dict.keys())
                 s = ''
                 for n in key_list:
-                    link = PHOTO_LINK + n + ', '
-                    s += link
+                    s += n
                 order_data['review_info'] = s
             else:
                 order_data['review_info'] = i[26]
@@ -418,7 +416,7 @@ class SqlData(object):
 
     def insert_user_cus(self, label, account, password, note, user_id):
         sql = "INSERT INTO customer_info(label, account, pass_word, note, user_id) VALUES('{}','{}','{}'," \
-              "{},{})".format(label, account, password, note, user_id)
+              "'{}',{})".format(label, account, password, note, user_id)
         try:
             self.cursor.execute(sql)
             self.connect.commit()

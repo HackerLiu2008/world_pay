@@ -3,7 +3,7 @@ import logging
 from tools_me.other_tools import verify_login_time, xianzai_time, login_required
 from tools_me.parameter import RET, MSG
 from . import user_blueprint
-from flask import render_template, request, jsonify, redirect, url_for, session, g
+from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
 
 
@@ -17,6 +17,9 @@ def ch_pass_html():
 @login_required
 def smt_pay():
     user_id = g.user_id
+    terrace = SqlData().search_user_field('terrace', user_id)
+    if terrace != 'SMT':
+        return '此账号没有权限!!!'
     if request.method == 'GET':
         pay_discount = SqlData().search_user_field('pay_discount', user_id)
         context = dict()
@@ -61,6 +64,9 @@ def smt_pay():
 @login_required
 def smt_serve():
     user_id = g.user_id
+    terrace = SqlData().search_user_field('terrace', user_id)
+    if terrace != 'SMT':
+        return '此账号没有权限!!!'
     if request.method == 'GET':
         amz_serve = SqlData().search_user_field('amz_serve', user_id)
         if not amz_serve:

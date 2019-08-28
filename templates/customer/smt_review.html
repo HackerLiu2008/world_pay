@@ -99,6 +99,7 @@
             ,url: '/customer/up_review_pic?task_code=' + task_code
             ,before: function(obj){
               //预读本地文件示例，不支持ie8
+                layer.load();
               obj.preview(function(index, file, result){
                 $('#demo1').attr('src', result); //图片链接（base64）
               });
@@ -106,12 +107,15 @@
             ,done: function(res){
               //如果上传失败
               if(res.code > 0){
+                  layer.closeAll();
                  return layer.msg(res.msg,{icon:5});
               }else if(res.code == 0){
+                  layer.closeAll();
                   layer.msg('上传成功!',{icon:6});
               }
             }
             ,error: function(){
+                layer.closeAll();
               //演示失败状态，并实现重传
               var demoText = $('#demoText');
               demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');

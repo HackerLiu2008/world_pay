@@ -3,11 +3,11 @@ import logging
 import os
 from tools_me.other_tools import login_required, now_day, check_param, filter_by_time, filter_by_store, \
     filter_by_asin, xianzai_time, sum_code
-from tools_me.up_pic import up_photo
+from tools_me.up_pic import sm_photo
 from . import order_blueprint
 from flask import render_template, jsonify, request, g
 from tools_me.mysql_tools import SqlData
-from tools_me.parameter import RET, MSG, ORDER, PHOTO_DIR, PHOTO_LINK
+from tools_me.parameter import RET, MSG, ORDER, PHOTO_DIR
 
 
 @order_blueprint.route('/', methods=['GET'])
@@ -56,15 +56,16 @@ def sub_review():
 @login_required
 def up_review_pic():
     user_id = g.user_id
-    bucket_name = 'review_pic'
     results = {'code': RET.OK, 'msg': MSG.OK}
     file = request.files.get('file')
     task_code = request.args.get('task_code')
     file_name = str(user_id) + "-" + sum_code() + ".PNG"
     file_path = PHOTO_DIR + "/" + file_name
     file.save(file_path)
-    status_code, filename = up_photo(file_name, file_path, bucket_name)
-    if status_code == 200:
+    filename = sm_photo(file_path)
+    if filename == 'F':
+        return jsonify({'code': RET.SERVERERROR, 'msg': '不可上传相同图片,请重新上传!'})
+    if filename:
         os.remove(file_path)
         phone_link = filename
         phone_info = SqlData().search_review_pic(task_code)

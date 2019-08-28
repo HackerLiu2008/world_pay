@@ -4,7 +4,7 @@ from tools_me.other_tools import sum_code, login_required
 from . import task_blueprint
 from flask import render_template, jsonify, request, g
 from tools_me.mysql_tools import SqlData
-from tools_me.parameter import RET, MSG, TASK
+from tools_me.parameter import RET, MSG
 
 
 @task_blueprint.route('/', methods=['GET'])

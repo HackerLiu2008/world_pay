@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'Gute9878934'
 
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=3)
 
 app.app_context().push()
 # CSRFProtect(app)
@@ -20,7 +20,7 @@ app.app_context().push()
 
 LOG_FORMAT = "%(asctime)s %(name)s %(levelname)s %(pathname)s %(message)s "  # 配置输出日志格式
 DATE_FORMAT = '%Y-%m-%d  %H:%M:%S %a '  # 配置输出时间的格式，注意月份和天数不要搞乱了
-logging.basicConfig(level=logging.WARNING,
+logging.basicConfig(level=logging.ERROR,
                     format=LOG_FORMAT,
                     datefmt=DATE_FORMAT,
                     filename=r"G:/order_flask/static/log/buy.log"  # 有了filename参数就不会直接输出显示到控制台，而是直接写入文件
@@ -51,3 +51,7 @@ app.register_blueprint(order_blueprint)
 from apps.customer import customer_blueprint
 
 app.register_blueprint(customer_blueprint)
+
+from apps.dome import dome_blueprint
+
+app.register_blueprint(dome_blueprint)

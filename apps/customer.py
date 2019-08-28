@@ -5,7 +5,7 @@ import os
 import xlrd
 from tools_me.other_tools import customer_required, save_file, excel_to_data, asin_num, sum_code, xianzai_time, date_to_week
 from tools_me.parameter import RET, MSG, TASK_DIR, PHOTO_DIR
-from tools_me.up_pic import up_photo
+from tools_me.up_pic import sm_photo
 from . import customer_blueprint
 from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
@@ -39,12 +39,14 @@ def up_review_pic():
     image_state = SqlData().search_order_one('review_info', task_code)
     if not image_state:
         return jsonify({'code': RET.SERVERERROR, 'msg': '此订单不支持上传图片'})
-    bucket_name = 'pay_pic'
     file_name = str(user_id) + "-" + sum_code() + ".PNG"
     file_path = PHOTO_DIR + "/" + file_name
     file.save(file_path)
-    status_code, filename = up_photo(file_name, file_path, bucket_name)
-    if status_code == 200:
+    filename = sm_photo(file_path)
+    if filename == 'F':
+        os.remove(file_path)
+        return jsonify({'code': RET.SERVERERROR, 'msg': '不可上传相同图片,请重新上传!'})
+    if filename:
         os.remove(file_path)
         if image_state == 'T':
             phone_link = dict()
@@ -151,12 +153,14 @@ def up_pay_pic():
     results = {'code': RET.OK, 'msg': MSG.OK}
     file = request.files.get('file')
     sum_order_code = request.args.get('sum_order_code')
-    bucket_name = 'pay_pic'
     file_name = str(user_id) + "-" + sum_order_code + ".PNG"
     file_path = PHOTO_DIR + "/" + file_name
     file.save(file_path)
-    status_code, filename = up_photo(file_name, file_path, bucket_name)
-    if status_code == 200:
+    filename = sm_photo(file_path)
+    if filename == 'F':
+        os.remove(file_path)
+        return jsonify({'code': RET.SERVERERROR, 'msg': '不可上传相同图片,请重新上传!'})
+    if filename:
         os.remove(file_path)
         SqlData().update_task_one('deal_num', filename, sum_order_code)
         return jsonify(results)
@@ -963,6 +967,8 @@ def customer_task():
     limit = request.args.get('limit')
     results = {'code': RET.OK, 'msg': MSG.OK}
     task_info = SqlData().search_task_on_code('customer_label', cus_label, user_id)
+    if len(task_info) == 0:
+        return jsonify({'code': RET.OK, 'msg': MSG.NODATA})
     task_info = list(reversed(task_info))
     page_list = list()
     for i in range(0, len(task_info), int(limit)):
