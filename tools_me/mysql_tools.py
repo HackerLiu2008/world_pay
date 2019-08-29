@@ -786,7 +786,7 @@ class SqlData(object):
                               card_num, sizeof, security_code):
 
         sql = "INSERT INTO account_info(user_id, account, password, email, email_pw, pay_money, reg_time, label, " \
-              "terrace, country, member_state) VALUES ({},'{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
+              "terrace, country, member_state) VALUES ({},'{}','{}','{}','{}',{},'{}','{}','{}','{}','{}')".format(
             user_id, account,
             password,
             email, email_pw,
@@ -807,7 +807,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("插入买家账号行为失败" + str(e))
+            logging.error("插入买家账号行为失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 

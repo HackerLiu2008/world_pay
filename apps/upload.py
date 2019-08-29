@@ -79,7 +79,10 @@ def up_account():
             password = one[1]
             email = one[2]
             email_pw = one[3]
-            pay_money = one[4]
+            if one[4]:
+                pay_money = float(one[4])
+            else:
+                pay_money = 0
             if not one[5]:
                 reg_time = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
             else:

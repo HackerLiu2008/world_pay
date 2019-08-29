@@ -1,10 +1,6 @@
 from datetime import timedelta
-
 from flask import Flask
 import logging
-
-# from flask_wtf.csrf import CSRFProtect
-# from apps.task import task_blueprint
 
 app = Flask(__name__)
 # 使用缓存,缓存大量查出来的信息

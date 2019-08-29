@@ -134,7 +134,19 @@ def edit_review():
 def edit_sum():
     if request.method == 'GET':
         sum_order_code = request.args.get('sum_order_code')
-        context = {'sum_order_code': sum_order_code}
+        user_id = g.cus_user_id
+        terrace = SqlData().search_user_field('terrace', user_id)
+        pay_photo = ""
+        if terrace == 'AMZ':
+            pay_photo = SqlData().search_user_field('amz_serve', user_id)
+        if terrace == 'SMT':
+            pay_photo = SqlData().search_user_field('note', user_id)
+        if not pay_photo:
+            # 空白图片链接
+            pay_photo = 'https://i.loli.net/2019/08/29/m5TuFrJAo3vDBCt.png'
+
+        context = {'sum_order_code': sum_order_code,
+                   'pay_photo': pay_photo}
         return render_template('customer/sub_pay.html', **context)
     if request.method == 'POST':
         data = json.loads(request.form.get('data'))
@@ -250,13 +262,12 @@ def preview_index():
     good_sum_money = task_dict.get('good_sum_money')
     terrace = task_dict.get('terrace')
     sum_num = task_dict.get('sum_num')
-    discount = SqlData().search_cus_field('discount', cus_id)
-    serve_dis = "%.2f" % (serve_money * float(discount))
+    serve_dis = "%.2f" % serve_money
     exchange = SqlData().search_user_field('dollar_exchange', user_id)
     good_dis = "%.2f" % (good_sum_money * float(exchange))
     sum_money = float(serve_dis) + float(good_dis)
     context = dict()
-    context['serve_money'] = str(serve_dis) + " = " + str(serve_money) + "(服务费总额)" + "*" + str(float(discount)) + "(折扣)"
+    context['serve_money'] = str(serve_dis) + " = " + str(serve_money) + "(服务费总额)"
     context['good_money'] = str(good_dis) + " = " + str(good_sum_money) + "(商品金额总额)" + "*" + str(float(exchange)) + "(汇率)"
     context['sum_money'] = str(round(sum_money, 2))
     context['terrace'] = terrace
@@ -697,6 +708,23 @@ def up_task():
                     results['msg'] = "第" + m + "行缺少必填参数!"
                     return jsonify(results)
 
+                # 验证时间参数是否正确
+                run_time_list = col_list[1][1:]
+                try:
+                    for t in run_time_list:
+                        excel_to_data(int(t))
+                except Exception as e:
+                    logging.error(str(e))
+                    return jsonify({'code': RET.SERVERERROR, 'msg': '下单时间格式错误!请按照示例格式填写!'})
+
+                # 验证留评参数是否正确
+                review_list = col_list[10][1:]
+                for r in review_list:
+                    if r not in ['Review', 'FeedBack', 'Review/FeedBack', '']:
+                        return jsonify({'code': RET.SERVERERROR, 'msg': '服务类型参数错误:Review(留评), FeedBack(feedba'
+                                                                        'ck), Review/FeedBack(留评+feedback), 不做不填'
+                                                                        '内容,注意大小写!'})
+
                 # 以下是计算服务费
                 asin_list = col_list[2][1:]
                 serve_class_list = col_list[10][1:]
@@ -762,7 +790,6 @@ def up_task():
                         i['review_price'] = serve_dict.get(str(bili_baifen))
                     else:
                         pass_asin.append(i)
-
                 if len(pass_asin) > 0:
                     s = "以下ASIN的留评比例不符合服务商的收费标准: "
                     for i in pass_asin:
@@ -788,7 +815,7 @@ def up_task():
                     if not one[1]:
                         task_run_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     else:
-                        task_run_time = excel_to_data(one[1])
+                        task_run_time = excel_to_data(int(one[1]))
                     asin = one[2].strip()
                     key_word = one[3].strip()
                     kw_location = one[4].strip()
