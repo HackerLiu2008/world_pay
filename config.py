@@ -48,6 +48,12 @@ from apps.customer import customer_blueprint
 
 app.register_blueprint(customer_blueprint)
 
+from apps.middle import middle_blueprint
+
+app.register_blueprint(middle_blueprint)
+
 from apps.dome import dome_blueprint
 
 app.register_blueprint(dome_blueprint)
+
+

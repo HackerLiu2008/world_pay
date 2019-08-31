@@ -18,6 +18,11 @@ order_blueprint = Blueprint('order', __name__, url_prefix='/order', template_fol
 
 customer_blueprint = Blueprint('customer', __name__, url_prefix='/customer', template_folder='../templates')
 
+
 dome_blueprint = Blueprint('dome', __name__, url_prefix='/dome', template_folder='../templates')
 
-from . import task, account, upload, user, order, customer
+
+middle_blueprint = Blueprint('middle', __name__, url_prefix='/middle',  template_folder='../templates')
+
+
+from . import task, account, upload, user, order, customer, middle

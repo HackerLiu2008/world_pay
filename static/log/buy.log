@@ -3907,3 +3907,142 @@
 2019-08-31  11:06:09 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
 2019-08-31  11:06:09 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
 2019-08-31  11:06:11 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:06:11] "GET /account/one_detail?account=dorthabooth@gmail.com HTTP/1.1" 200 - 
+2019-08-31  11:27:22 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:27:22] "GET /account/detail?page=1&limit=10 HTTP/1.1" 308 - 
+2019-08-31  11:27:22 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:27:22] "GET /account/detail/?page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-31  11:27:24 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:27:24] "GET /static/layui/css/modules/layer/default/loading-0.gif HTTP/1.1" 304 - 
+2019-08-31  11:27:27 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:27:27] "POST /account/del_account HTTP/1.1" 200 - 
+2019-08-31  11:27:27 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:27:27] "GET /account/ HTTP/1.1" 200 - 
+2019-08-31  11:27:27 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:27:27] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-31  11:27:27 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:27:27] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-31  11:27:27 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:27:27] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-31  11:38:17 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:38:17] "GET /customer/index?field=asin&value=撒旦发射点 HTTP/1.1" 200 - 
+2019-08-31  11:38:18 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:38:18] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-31  11:38:31 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:38:31] "GET /customer/amz_search/?field=asin&value=asdfdsafsa HTTP/1.1" 200 - 
+2019-08-31  11:38:31 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:38:31] "GET /customer/task_search/?field=asin&value=asdfdsafsa&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-31  11:38:37 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:38:37] "GET /customer/task_list/?sum_order_code=201908162054580d6cb&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-31  11:38:37 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 11:38:37] "GET /customer/task_detail/?sum_order_code=201908162054580d6cb&page=1&limit=15 HTTP/1.1" 200 - 
+2019-08-31  12:05:56 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:05:56] "GET /account/ HTTP/1.1" 200 - 
+2019-08-31  12:05:56 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:05:56] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-31  12:05:56 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:05:56] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-31  12:05:56 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:05:56] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-31  12:05:58 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:05:58] "GET /task/ HTTP/1.1" 200 - 
+2019-08-31  12:05:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:05:59] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-31  12:07:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:07:59] "GET /task/sum_info/?page=1&limit=20&label=马化腾&sum_order_code=&asin= HTTP/1.1" 200 - 
+2019-08-31  12:08:03 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:08:03] "GET /task/sum_info/?page=1&limit=20&label=老黑&sum_order_code=&asin= HTTP/1.1" 200 - 
+2019-08-31  12:13:18 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:18] "GET /order/ HTTP/1.1" 200 - 
+2019-08-31  12:13:18 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:18] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-31  12:13:19 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:19] "GET /task/ HTTP/1.1" 200 - 
+2019-08-31  12:13:21 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:21] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-31  12:13:22 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:22] "GET /task/task_list/?sum_order_code=20190816205247bf9e4&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-31  12:13:22 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:22] "GET /task/task_detail/?sum_order_code=20190816205247bf9e4&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-31  12:13:24 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:24] "GET /order/one_detail/?task_code=20190816205247bf9e4-1 HTTP/1.1" 200 - 
+2019-08-31  12:13:30 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:30] "GET /order/one_detail/?task_code=20190816205247bf9e4-1 HTTP/1.1" 200 - 
+2019-08-31  12:13:44 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:44] "GET /task/task_list/?sum_order_code=201908162054580d6cb&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-31  12:13:44 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:44] "GET /task/task_detail/?sum_order_code=201908162054580d6cb&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-31  12:13:47 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:47] "GET /order/one_detail/?task_code=201908162054580d6cb-1 HTTP/1.1" 200 - 
+2019-08-31  12:13:56 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:56] "GET /task/sum_info/?page=1&limit=20&label=&sum_order_code=&asin=1AJFOAFJA HTTP/1.1" 200 - 
+2019-08-31  12:13:58 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:58] "GET /task/task_list/?sum_order_code=20190816205259c69d9&terrace=AMZ HTTP/1.1" 200 - 
+2019-08-31  12:13:58 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:13:58] "GET /task/task_detail/?sum_order_code=20190816205259c69d9&page=1&limit=10 HTTP/1.1" 200 - 
+2019-08-31  12:14:01 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:14:01] "GET /order/ HTTP/1.1" 200 - 
+2019-08-31  12:14:02 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 12:14:02] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-31  16:54:53 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-31  16:54:55 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-31  16:54:55 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-31  16:54:55 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-31  16:55:03 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:03] "GET /account/ HTTP/1.1" 200 - 
+2019-08-31  16:55:03 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:03] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-08-31  16:55:03 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:03] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-08-31  16:55:03 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:03] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-08-31  16:55:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:13] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  16:55:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:13] "GET /static/img/login1.jpg HTTP/1.1" 200 - 
+2019-08-31  16:55:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:13] "GET /static/js/jquery.min.js HTTP/1.1" 200 - 
+2019-08-31  16:55:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:13] "GET /static/assembly/jqarticle/jparticle.min.js HTTP/1.1" 200 - 
+2019-08-31  16:55:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:13] "GET /static/assembly/zylVerificationCode/zylVerificationCode.js HTTP/1.1" 200 - 
+2019-08-31  16:55:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:13] "GET /static/layui/lay/modules/carousel.js HTTP/1.1" 200 - 
+2019-08-31  16:55:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:13] "GET /static/layui/lay/modules/form.js HTTP/1.1" 304 - 
+2019-08-31  16:55:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:13] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 304 - 
+2019-08-31  16:55:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:13] "GET /favicon.ico HTTP/1.1" 404 - 
+2019-08-31  16:55:25 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:25] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  16:55:26 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:26] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  16:55:28 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:28] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  16:55:33 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:55:33] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  16:56:43 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-31  16:56:44 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-31  16:56:44 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-31  16:56:44 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-31  16:56:44 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:56:44] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  16:56:45 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:56:45] "GET /static/css/login_middle.css HTTP/1.1" 200 - 
+2019-08-31  16:59:30 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-31  16:59:31 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-31  16:59:31 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-31  16:59:31 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-31  16:59:40 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:59:40] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  16:59:48 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 16:59:48] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:02:17 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:02:17] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:06:41 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:06:41] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:06:42 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:06:42] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:12 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\middle.py', reloading 
+2019-08-31  17:14:12 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-31  17:14:13 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-31  17:14:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-31  17:14:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-31  17:14:34 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-31  17:14:35 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-31  17:14:35 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-31  17:14:35 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-31  17:14:36 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:36] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:36 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:36] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:36 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:36] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:37 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:37] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:37 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:37] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:37 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:37] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:37 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:37] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:37 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:37] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:37 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:37] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:38 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:38] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:38 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:38] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:38 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:38] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:38 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:38] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:38 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:38] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:38 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:38] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:39 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:39] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:14:51 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:14:51] "POST /middle/login HTTP/1.1" 500 - 
+2019-08-31  17:16:40 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\middle.py', reloading 
+2019-08-31  17:16:40 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-31  17:16:41 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-31  17:16:41 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-31  17:16:41 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-31  17:23:25 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\middle.py', reloading 
+2019-08-31  17:23:25 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-31  17:23:26 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-31  17:23:26 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-31  17:23:26 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-31  17:26:12 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:12] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:26:49 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-08-31  17:26:50 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-08-31  17:26:50 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-08-31  17:26:50 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-08-31  17:26:50 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:50] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:26:51 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:51] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:26:51 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:51] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-08-31  17:26:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:59] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:26:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:59] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-08-31  17:26:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:59] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:26:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:59] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-08-31  17:26:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:59] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:26:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:59] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:26:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:26:59] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:00 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:00] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:00 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:00] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:00 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:00] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:00 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:00] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:00 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:00] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-08-31  17:27:00 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:00] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:00 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:00] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:00 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:00] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-08-31  17:27:01 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:01] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:01 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:01] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:01 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:01] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-08-31  17:27:01 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:01] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:01 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:01] "GET /middle/login HTTP/1.1" 200 - 
+2019-08-31  17:27:01 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [31/Aug/2019 17:27:01] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
