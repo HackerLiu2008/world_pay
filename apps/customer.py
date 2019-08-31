@@ -11,6 +11,23 @@ from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
 
 
+@customer_blueprint.route('/amz_search/', methods=['GET'])
+@customer_required
+def search_html():
+    if request.method == 'GET':
+        user_id = g.cus_user_id
+        terrace = SqlData().search_user_field('terrace', user_id)
+        field = request.args.get('field')
+        value = request.args.get('value')
+        if not all([field, value]):
+            return "请填写参数后搜索"
+        context = dict()
+        context['field'] = field
+        context['value'] = value
+        context['terrace'] = terrace
+        return render_template('customer/search.html', **context)
+
+
 @customer_blueprint.route('/urgent', methods=['GET'])
 @customer_required
 def urgent_review():
@@ -199,8 +216,7 @@ def task_choose():
         good_sum_money = task_dict.get('good_sum_money')
         terrace = task_dict.get('terrace')
         sum_num = task_dict.get('sum_num')
-        discount = SqlData().search_cus_field('discount', cus_id)
-        serve_dis = "%.2f" % (serve_money * float(discount))
+        serve_dis = "%.2f" % serve_money
         exchange = SqlData().search_user_field('dollar_exchange', user_id)
         good_dis = "%.2f" % (good_sum_money * float(exchange))
         sum_money = round(float(serve_dis) + float(good_dis), 2)
@@ -268,7 +284,7 @@ def preview_index():
     sum_money = float(serve_dis) + float(good_dis)
     context = dict()
     context['serve_money'] = str(serve_dis) + " = " + str(serve_money) + "(服务费总额)"
-    context['good_money'] = str(good_dis) + " = " + str(good_sum_money) + "(商品金额总额)" + "*" + str(float(exchange)) + "(汇率)"
+    context['good_money'] = str(good_dis) + " = " + str(round(good_sum_money, 2)) + "(商品金额总额)" + "*" + str(float(exchange)) + "(汇率)"
     context['sum_money'] = str(round(sum_money, 2))
     context['terrace'] = terrace
     context['sum_num'] = sum_num
@@ -698,7 +714,7 @@ def up_task():
                 err_list = list()
                 for i in row_list[1:]:
                     index += 1
-                    if not all([i[0], i[1], i[2], i[3], i[4], i[6], i[7], i[8], i[11]]):
+                    if not all([i[0], i[1], i[2], i[3], i[4], i[6], i[7], i[8]]):
                         err_list.append(str(index))
                 if len(err_list) != 0:
                     results['code'] = RET.SERVERERROR
@@ -932,6 +948,36 @@ def one_detail():
         return jsonify(results)
 
 
+@customer_blueprint.route('/task_search/', methods=['GET'])
+@customer_required
+def task_search():
+    user_id = g.cus_user_id
+    label = g.cus_label
+    page = request.args.get('page')
+    limit = request.args.get('limit')
+    field = request.args.get('field')
+    value = request.args.get('value')
+    print(field, value)
+    results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
+    page_list = list()
+    try:
+        if value and field:
+            state_sql = "AND " + field + "='" + value + "'"
+        else:
+            return "缺少必要参数!!"
+        task_info = SqlData().search_task_field(user_id, label, state_sql=state_sql)
+        # task_info = list(reversed(task_info))
+        for i in range(0, len(task_info), int(limit)):
+            page_list.append(task_info[i:i + int(limit)])
+        results['data'] = page_list[int(page) - 1]
+        results['count'] = len(task_info)
+    except Exception as e:
+        logging.warning('没有符合条件的数据' + str(e))
+        results['code'] = RET.SERVERERROR
+        results['msg'] = MSG.NODATA
+    return results
+
+
 @customer_blueprint.route('/task_detail/', methods=['GET'])
 @customer_required
 def task_detail():
@@ -965,24 +1011,18 @@ def task_list():
     sum_order_code = request.args.get('sum_order_code')
     terrace = request.args.get('terrace')
     context = dict()
-    if terrace == "AMZ":
-        context['good_name'] = '产品名称'
-        context['kw_location'] = '关键字位置'
-        context['serve_class'] = '服务类型'
-        context['review_title'] = '评论标题'
-        context['review_info'] = '评论内容'
-        context['feedback_info'] = 'FeedBack'
-    if terrace == "SMT":
-        context['good_name'] = '搜索价格'
-        context['kw_location'] = 'SKU'
-        context['serve_class'] = '邮费'
-        context['review_title'] = '文字留评'
-        context['review_info'] = '图片留评'
-        context['feedback_info'] = '默认留评'
-
     context['sum_code'] = sum_order_code
     context['terrace'] = terrace
-    return render_template('customer/customer_task_list.html', **context)
+    if terrace == "AMZ":
+        return render_template('customer/customer_task_list.html', **context)
+    if terrace == "SMT":
+        # context['good_name'] = '搜索价格'
+        # context['kw_location'] = 'SKU'
+        # context['serve_class'] = '邮费'
+        # context['review_title'] = '文字留评'
+        # context['review_info'] = '图片留评'
+        # context['feedback_info'] = '默认留评'
+        return render_template('customer/customer_smt_list.html', **context)
 
 
 @customer_blueprint.route('/task', methods=['GET'])

@@ -18,25 +18,25 @@
         }
     </style>
 <body>
-
 <div class="layui-form-item" style="display: none">
     <label class="layui-form-label">隐藏域</label>
     <div class="layui-input-block">
-        <input type ="text" name="sum_order_code"  id="sum_order_code" value="{{ sum_code }}">
+        <input type ="text" id="terrace" value="{{ terrace }}">
     </div>
 </div>
 <div class="layui-form-item" style="display: none">
     <label class="layui-form-label">隐藏域</label>
     <div class="layui-input-block">
-        <input type ="text" name="terrace"  id="terrace" value="{{ terrace }}">
+        <input type ="text" id="field" value="{{ field }}">
+    </div>
+</div>
+<div class="layui-form-item" style="display: none">
+    <label class="layui-form-label">隐藏域</label>
+    <div class="layui-input-block">
+        <input type ="text" id="value" value="{{ value }}">
     </div>
 </div>
 <div class="layui-tab" lay-filter="tables">
-    <ul class="layui-tab-title">
-        <li class="layui-this">未完成任务</li>
-        <li>待留评任务</li>
-        <li>已完成任务</li>
-    </ul>
 <div class="layui-tab-content">
 <div class="layui-tab-item layui-show">
 <table class="layui-hide" id="task_list" lay-filter="task_list"></table>
@@ -57,42 +57,7 @@
             , $ = layui.jquery;
 
 
-        //监听Tab切换
-        element.on('tab(tables)', function (data) {
-            if (data.index == 0){
-                table.reload('task_list', {
-                page: {
-                  curr: 1 //重新从第 1 页开始
-                }
-                ,where: {
-                    task_state:''
-                  }
-              }, '/customer/task_detail/');
-
-            }else if (data.index == 1){
-                table.reload('task_list', {
-                    page: {
-                    curr: 1 //重新从第 1 页开始
-                    }
-                    ,where: {
-                        task_state: '待留评'
-                  }
-              }, '/customer/task_detail/');
-            }else if (data.index == 2){
-                table.reload('task_list', {
-                    page: {
-                    curr: 1 //重新从第 1 页开始
-                    }
-                    ,where: {
-                        task_state: '已完成'
-                  }
-              }, '/customer/task_detail/');
-            }
-            return false;
-        });
-
-
-        //监听行双击事件（单击事件为：row,双击事件为: rowDouble）
+        //监听行双击事件（单击事件为：row,双击事件为: rowDouble)
         table.on('rowDouble(task_list)', function(obj){
         var data = obj.data,
             task_code = data.task_code;
@@ -116,22 +81,16 @@
         });
 
 
-        //监听Tab切换
-        element.on('tab(demo)', function (data) {
-            layer.tips('切换了 ' + data.index + '：' + this.innerHTML, this, {
-                tips: 1
-            });
-        });
-
-        var sum_order_code = $('#sum_order_code').val();
+        var field = $('#field').val(),
+            value = $("#value").val();
 
         //执行一个 table 实例
         table.render({
             elem: '#task_list'
             , height: ''
-            , url: '/customer/task_detail/?sum_order_code=' + sum_order_code //数据接口
+            , url: '/customer/task_search/?field=' + field + "&value=" + value //数据接口
             , title: '订单列表'
-            , limit:15
+            , limit:10
             , toolbar: true //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
@@ -154,7 +113,7 @@
             ]]
             , id: 'task_list'
             , page: true
-            , done:function (res, curr, count) {
+            , done:function (res) {
                 for (var i=0; i<res.data.length; i++){
                     if (res.data[i].urgent=='T'){
                         $('table tbody tr').eq(i).css('color','red')

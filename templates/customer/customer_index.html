@@ -41,22 +41,69 @@
 </ul>
 </ul>
 
+ <div id="details" style="padding: 20px;" lay-filter="detail">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">搜索条件: </label>
+                <div class="layui-input-block">
+                    <select name="field" id="field" class="layui-select">
+                        <option value="asin" selected="">ASIN</option>
+                        <option value="order_num">订单编号</option>
+                        <option value="task_code">小任务编号</option>
+                        <option value="store_name">店铺名称</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">对应参数: </label>
+                <div class="layui-input-block">
+                    <input type="text" name="value" id="value" lay-verify="required" lay-reqtext="必填项，岂能为空？"
+                           placeholder="选择什么条件就输入什么" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+            <button  class="layui-btn" lay-submit="" lay-filter="formDemo" id="sub" type="submit">搜索</button>
+            </div>
+        </div>
+</div>
+
 <table class="layui-hide" id="cus_task" lay-filter="cus_task" ></table>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit">确认付款</a>
-{#    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">取消</a>#}
 </script>
 
 
 <script src="/static/layui/layui.all.js"></script>
 <script>
     layui.use(['table', 'layer', 'element'], function(){
-        var tabel = layui.table,
+        var table = layui.table,
             layer = layui.layer,
             $ = layui.jquery;
 
 
-        tabel.on('tool(cus_task)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
+        $('#sub').on('click',function () {
+            var field = $('#field').val(),
+                value = $('#value').val();
+            if (value==""){
+                parent.layer.msg('请输入搜索内容!!', {
+                    icon : 5
+                });
+            }else{layer.open({
+                     type: 2
+                    ,title: '查询结果如下' //不显示标题栏
+                    ,closeBtn: '关闭'
+                    ,area: ['2200px', '800px']
+                    ,shadeClose:true
+                    ,shade: 0.8
+                    ,id: 'search' //设定一个id，防止重复弹出
+                    ,btn: ['关闭']
+                    ,btnAlign: 'c'
+                    ,content: '/customer/amz_search/?field='+ field +"&value=" + value
+               })}
+            });
+
+        table.on('tool(cus_task)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event;//获得 lay-event 对应的值
 
@@ -109,7 +156,7 @@
         });
 
          //执行一个 table 实例
-        tabel.render({
+        table.render({
             elem: '#cus_task'
             , height: ''
             , url: '/customer/task' //数据接口
@@ -136,14 +183,14 @@
         });
 
         //行事件
-        tabel.on('rowDouble(cus_task)', function(obj){
+        table.on('rowDouble(cus_task)', function(obj){
         var data = obj.data;
             layer.open({
                     type: 2
                     ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
                     ,id: 'layerDemo'//防止重复弹出
                     ,title: '任务号为 [' + data.sum_order_code + '] 的详细信息'
-                    ,area: ['1800px', '900px']
+                    ,area: ['2200px', '1100px']
                     ,anim: 1
                     ,shadeClose: true
                     ,content: '/customer/task_list/' + '?sum_order_code=' + data.sum_order_code +"&terrace=" + data.terrace

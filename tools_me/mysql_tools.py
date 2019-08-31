@@ -2,6 +2,9 @@ import json
 import pymysql
 import pymysql.cursors
 import logging
+
+from flask import jsonify
+
 from tools_me.other_tools import is_json
 
 
@@ -79,10 +82,7 @@ class SqlData(object):
             detail_dict["sum_money"] = i[10]
             detail_dict["serve_money"] = i[4]
             detail_dict["all_money"] = i[3]
-            if i[5]:
-                detail_dict["deal_num"] = i[5]
-            else:
-                detail_dict["deal_num"] = i[5]
+            detail_dict["deal_num"] = i[5]
             detail_dict["customer_label"] = i[6]
             detail_dict["sum_time"] = str(i[7])
             detail_dict["sum_state"] = i[8]
@@ -299,6 +299,15 @@ class SqlData(object):
     def search_task_detail(self, sum_order_code, state_sql=''):
         sql = "SELECT task_detail_info.* FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id = " \
               "task_parent.id  WHERE task_parent.sum_order_code = '{}' {}".format(sum_order_code, state_sql)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        results = self.task_detail_list(rows)
+        return results
+
+    #  按条件搜索小订单
+    def search_task_field(self, user_id, label, state_sql=''):
+        sql = "SELECT task_detail_info.* FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id = " \
+              "task_parent.id  WHERE task_parent.user_id = {} AND task_parent.customer_label='{}' {}".format(user_id, label, state_sql)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         results = self.task_detail_list(rows)
@@ -840,7 +849,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("插入任务订单行为失败" + str(e))
+            logging.error("插入任务订单行为失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 

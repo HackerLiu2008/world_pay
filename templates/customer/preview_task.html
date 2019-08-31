@@ -62,6 +62,9 @@
                 type : 'POST',
                 url : '/customer/task_choose',
                 dataType : 'json',
+                beforeSend:function(){
+                  layer.load()
+                },
                 success : function(data) {
                     // 成功提示框
                     if (data.code == 0){
