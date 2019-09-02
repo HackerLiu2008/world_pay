@@ -158,6 +158,31 @@ def customer_required(view_func):
     return wraaper
 
 
+def middle_required(view_func):
+    """自定义装饰器判断用户是否登录
+    使用装饰器装饰函数时，会修改被装饰的函数的__name属性和被装饰的函数的说明文档
+    为了不让装饰器影响被装饰的函数的默认的数据，我们会使用@wraps装饰器，提前对view_funcJ进行装饰
+    """
+
+    @wraps(view_func)
+    def wraaper(*args, **kwargs):
+        """具体实现判断用户是否登录的逻辑"""
+        middle_id = session.get('middle_id')
+        middle_user_id = session.get('middle_user_id')
+        middle_name = session.get('middle_name')
+        if not middle_id:
+            return render_template('middle/login.html')
+        else:
+            # 当用户已登录，使用g变量记录用户的user_id，方便被装饰是的视图函数中可以直接使用
+            g.middle_id = middle_id
+            g.middle_user_id = middle_user_id
+            g.middle_name = middle_name
+            # 执行被装饰的视图函数
+            return view_func(*args, **kwargs)
+
+    return wraaper
+
+
 def check_param(terrace, country, store, asin, store_group, asin_group):
     terrace_info = ''
     country_info = ''

@@ -7,6 +7,154 @@ from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
 
 
+@user_blueprint.route('/del_middle', methods=['GET'])
+@login_required
+def del_middle():
+    if request.method == 'GET':
+        try:
+            name = request.args.get('name')
+            user_id = g.user_id
+            cus_json = SqlData().search_one_middle_field('cus_json', user_id, name)
+            if not cus_json:
+                SqlData().del_middle(name, user_id)
+            else:
+                cus_dict = json.loads(cus_json)
+                cus_list = list(cus_dict.keys())
+                for i in cus_list:
+                    SqlData().update_user_cus('middle_id', '', user_id, i)
+                SqlData().del_middle(name, user_id)
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@user_blueprint.route('/middle_edit', methods=['GET', 'POST'])
+@login_required
+def middle_detail():
+    user_id = g.user_id
+    if request.method == 'GET':
+        cus_list = SqlData().search_user_cus(user_id)
+        name = request.args.get('name')
+        context = dict()
+        context['name'] = name
+        context['cus_list'] = cus_list
+        return render_template('user/middle_edit.html', **context)
+    if request.method == 'POST':
+        data = json.loads(request.form.get('data'))
+        name = data.get('name')
+        field = data.get('field')
+        value = data.get('value')
+        bind_cus = data.get('bind_cus')
+        del_cus = data.get('del_cus')
+        if value:
+            if field == 'discount':
+                try:
+                    value = float(value)
+                    SqlData().update_middle_dis(field, value, name, user_id)
+                except:
+                    return jsonify({'code': RET.SERVERERROR, 'msg': '提成输入值错误!请输入小数。'})
+            else:
+                SqlData().update_middle_field(field, value, name, user_id)
+        if bind_cus:
+            cus_json = SqlData().search_one_middle_field('cus_json', user_id, name)
+            if not cus_json:
+                cus_dict = dict()
+                now_time = xianzai_time()
+                cus_dict[bind_cus] = now_time
+                cus_json = json.dumps(cus_dict, ensure_ascii=False)
+                SqlData().update_middle_field('cus_json', cus_json, name, user_id)
+            else:
+                cus_dict = json.loads(cus_json)
+                now_time = xianzai_time()
+                cus_dict[bind_cus] = now_time
+                cus_json = json.dumps(cus_dict, ensure_ascii=False)
+                SqlData().update_middle_field('cus_json', cus_json, name, user_id)
+            middle_id = SqlData().search_one_middle_field('id', user_id, name)
+            SqlData().update_user_cus('middle_id', str(middle_id), user_id, bind_cus)
+        if del_cus:
+            cus_json = SqlData().search_one_middle_field('cus_json', user_id, name)
+            if not cus_json:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '该渠道商没有该客户!'})
+            else:
+                cus_dict = json.loads(cus_json)
+                if del_cus in cus_dict:
+                    cus_dict.pop(del_cus)
+                    cus_json = json.dumps(cus_dict, ensure_ascii=False)
+                    SqlData().update_middle_field('cus_json', cus_json, name, user_id)
+                    SqlData().update_user_cus('middle_id', '', user_id, del_cus)
+                else:
+                    return jsonify({'code': RET.SERVERERROR, 'msg': '该渠道商没有该客户!'})
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
+@user_blueprint.route('/middle_info_list', methods=['GET'])
+@login_required
+def middle_info_list():
+    user_id = g.user_id
+    if request.method == 'GET':
+        limit = request.args.get('limit')
+        page = request.args.get('page')
+        rows = SqlData().search_middle_field('*', user_id)
+        if not rows:
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.NODATA})
+        else:
+            info_list = list()
+            for i in rows:
+                info_dict = dict()
+                info_dict['name'] = i[2]
+                info_dict['account'] = i[3]
+                info_dict['password'] = i[4]
+                info_dict['discount'] = i[5]
+                if not i[6]:
+                    info_dict['customer'] = i[6]
+                else:
+                    data = json.loads(i[6])
+                    label_list = list(data.keys())
+                    label_str = ', '.join(label_list)
+                    info_dict['customer'] = label_str
+                info_list.append(info_dict)
+            page_list = list()
+            results = {'code': RET.OK, 'msg': MSG.OK}
+            for i in range(0, len(info_list), int(limit)):
+                page_list.append(info_list[i:i + int(limit)])
+            results['data'] = page_list[int(page) - 1]
+            results['count'] = len(info_list)
+            return jsonify(results)
+
+
+@user_blueprint.route('/middle_index', methods=['GET'])
+@login_required
+def middle_index():
+    if request.method == 'GET':
+        return render_template('user/middle_index.html')
+
+
+@user_blueprint.route('/add_middle', methods=['GET', 'POST'])
+@login_required
+def add_middle():
+    if request.method == 'GET':
+        return render_template('user/add_middle.html')
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.form.get('data'))
+            user_id = g.user_id
+            name = data.get('name')
+            rows = SqlData().search_middle_field('name', user_id)
+            if rows:
+                for i in rows:
+                    if name in i:
+                        return jsonify({'code': RET.SERVERERROR, 'msg': '已存在该用户名!'})
+            account = data.get('account')
+            password = data.get('password')
+            discount = data.get('discount')
+            SqlData().insert_middle(user_id, name, account, password, float(discount))
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
 @user_blueprint.route('/edit_user', methods=['GET'])
 @login_required
 def ch_pass_html():

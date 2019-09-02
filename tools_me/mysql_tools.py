@@ -11,10 +11,10 @@ from tools_me.other_tools import is_json
 class SqlData(object):
     def __init__(self):
         # host = "rm-j6c3t1i83rgylsuamvo.mysql.rds.aliyuncs.com"
-        host = "114.116.236.27"
+        host = "119.3.251.10"
         port = 3306
         user = "root"
-        password = "gute123"
+        password = "lx7996"
         database = "buysys"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
@@ -339,7 +339,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新客户标签失败!" + str(e))
+            logging.error("更新客户标签失败!" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -419,7 +419,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新客户标签失败!" + str(e))
+            logging.error("更新客户标签失败!" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -430,7 +430,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("插入客户标签行为失败" + str(e))
+            logging.error("插入客户标签行为失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -466,7 +466,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新是否已购买状态失败" + str(e))
+            logging.error("更新是否已购买状态失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -478,7 +478,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新是否已购买状态失败" + str(e))
+            logging.error("更新是否已购买状态失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -493,7 +493,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新是否已购买状态失败" + str(e))
+            logging.error("更新是否已购买状态失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -507,7 +507,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新是否已购买状态失败" + str(e))
+            logging.error("更新是否已购买状态失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -695,7 +695,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新订单信息失败" + str(e))
+            logging.error("更新订单信息失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -707,7 +707,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新订单信息失败" + str(e))
+            logging.error("更新订单信息失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -718,7 +718,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新data_time失败" + str(e))
+            logging.error("更新data_time失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -730,7 +730,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新账号行为失败" + str(e))
+            logging.error("更新账号行为失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -741,7 +741,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新账号行为失败" + str(e))
+            logging.error("更新账号行为失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -752,7 +752,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.warning("更新订单时间失败" + str(e))
+            logging.error("更新订单时间失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -831,7 +831,7 @@ class SqlData(object):
             return last_id
 
         except Exception as e:
-            logging.warning("插入任务订单行为失败" + str(e))
+            logging.error("插入任务订单行为失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -879,6 +879,68 @@ class SqlData(object):
             self.cursor.close()
         if self.connect:
             self.connect.close()
+
+    def search_middle_login(self, main_user, account, password):
+        sql = "SELECT * FROM middle_info LEFT JOIN user_info ON user_info.id = middle_info.user_id WHERE " \
+              "user_info.user_name='{}' AND middle_info.account='{}' AND middle_info.password='{}'" \
+            .format(main_user, account, password)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows
+
+    # 查询所有中介的信息
+    def search_middle_field(self, field, user_id):
+        sql = "SELECT {} FROM  middle_info WHERE user_id={}".format(field, user_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows
+
+    # 查询一个中介的信息
+    def search_one_middle_field(self, field, user_id, name):
+        sql = "SELECT {} FROM  middle_info WHERE user_id={} AND name='{}'".format(field, user_id, name)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
+
+    def insert_middle(self, user_id, name, account, password, discount):
+        sql_parent = "INSERT INTO middle_info(user_id, name, account, password, discount) VALUES ({},'{}','{}','{}',{})". \
+            format(user_id, name, account, password, discount)
+        try:
+            self.cursor.execute(sql_parent)
+            self.connect.commit()
+
+        except Exception as e:
+            logging.error("插入任务订单行为失败" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    # 跟新数字类型
+    def update_middle_dis(self, field, value, name, user_id):
+        sql = "UPDATE middle_info SET {}={} WHERE user_id={} AND name='{}'".format(field, value, user_id, name)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error(str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    # 更新字符串类型
+    def update_middle_field(self, field, value, name, user_id):
+        sql = "UPDATE middle_info SET {}='{}' WHERE user_id={} AND name='{}'".format(field, value, user_id, name)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error(str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def del_middle(self, name, user_id):
+        sql = "DELETE FROM middle_info WHERE name='{}'AND user_id={}".format(name, user_id)
+        self.cursor.execute(sql)
+        self.connect.commit()
+        self.close_connect()
 
 
 if __name__ == "__main__":
