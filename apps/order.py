@@ -459,7 +459,7 @@ def order_detail():
             if asin:
                 asin_sql = "AND asin='" + asin + "'"
             if order_num:
-                order_sql = "AND order_num='" + task_code + "'"
+                order_sql = "AND order_num='" + order_num + "'"
             task_info = SqlData().search_all_order(user_id, task_sql, asin_sql, order_sql)
             if len(task_info) == 0:
                 results['code'] = RET.SERVERERROR

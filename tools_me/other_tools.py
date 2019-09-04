@@ -74,7 +74,6 @@ def save_file(file, filename, account_path):
 
 def excel_to_data(num):
     t = xldate_as_tuple(num, 0)
-    # t = num.split('/')
     year = t[0]
     month = t[1]
     day = t[2]
