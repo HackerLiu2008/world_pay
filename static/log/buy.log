@@ -6089,3 +6089,39 @@
 2019-09-04  10:49:10 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:49:10] "GET /middle/task_detail/?sum_order_code=201908162054580d6cb&page=1&limit=10 HTTP/1.1" 200 - 
 2019-09-04  10:49:12 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:49:12] "GET /middle/order_html/?sum_order_code=201908162054580d6cb&terrace=AMZ HTTP/1.1" 200 - 
 2019-09-04  10:49:12 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:49:12] "GET /middle/task_detail/?sum_order_code=201908162054580d6cb&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  12:09:02 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  12:09:03 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  12:09:03 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  12:09:03 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  12:09:04 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:04] "GET /middle/login HTTP/1.1" 200 - 
+2019-09-04  12:09:10 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:10] "GET /account/ HTTP/1.1" 200 - 
+2019-09-04  12:09:16 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:16] "POST /user/login HTTP/1.1" 200 - 
+2019-09-04  12:09:17 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:17] "GET /account/ HTTP/1.1" 200 - 
+2019-09-04  12:09:17 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:17] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-04  12:09:17 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:17] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-04  12:09:17 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:17] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  12:09:18 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:18] "GET /order/ HTTP/1.1" 200 - 
+2019-09-04  12:09:19 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:19] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  12:09:19 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:19] "GET /account/ HTTP/1.1" 200 - 
+2019-09-04  12:09:19 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:19] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-04  12:09:19 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:19] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-04  12:09:20 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:20] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  12:09:20 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:20] "GET /task/ HTTP/1.1" 200 - 
+2019-09-04  12:09:22 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:22] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  12:09:22 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:22] "GET /order/ HTTP/1.1" 200 - 
+2019-09-04  12:09:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:23] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  12:09:25 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:25] "GET /task/ HTTP/1.1" 200 - 
+2019-09-04  12:09:27 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:27] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  12:09:28 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:28] "GET /task/task_list/?sum_order_code=201908162054580d6cb&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  12:09:28 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:28] "GET /task/task_detail/?sum_order_code=201908162054580d6cb&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  12:09:32 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:32] "GET /order/ HTTP/1.1" 200 - 
+2019-09-04  12:09:33 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:33] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  12:09:34 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:09:34] "GET /order/one_detail/?task_code=20190816205623402eb-20 HTTP/1.1" 200 - 
+2019-09-04  12:11:33 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:11:33] "GET /order/ HTTP/1.1" 200 - 
+2019-09-04  12:11:34 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:11:34] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  12:14:45 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:14:45] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-04  12:14:45 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:14:45] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  12:14:58 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:14:58] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  12:14:59 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:14:59] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  12:15:01 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:15:01] "GET /middle/order_html/?sum_order_code=201908162054580d6cb&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  12:15:01 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 12:15:01] "GET /middle/task_detail/?sum_order_code=201908162054580d6cb&page=1&limit=10 HTTP/1.1" 200 - 
