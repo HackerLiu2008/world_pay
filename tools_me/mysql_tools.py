@@ -1,10 +1,6 @@
 import json
 import pymysql
-import pymysql.cursors
 import logging
-
-from flask import jsonify
-
 from tools_me.other_tools import is_json
 
 
@@ -79,7 +75,6 @@ class SqlData(object):
             detail_dict["sum_order_code"] = i[0]
             detail_dict["terrace"] = i[1]
             detail_dict["sum_num"] = i[2]
-            detail_dict["sum_money"] = i[10]
             detail_dict["serve_money"] = i[4]
             detail_dict["all_money"] = i[3]
             detail_dict["deal_num"] = i[5]
@@ -87,6 +82,31 @@ class SqlData(object):
             detail_dict["sum_time"] = str(i[7])
             detail_dict["sum_state"] = i[8]
             detail_dict["note"] = i[9]
+            detail_dict["sum_money"] = i[10]
+            detail_dict["pay_cus"] = i[11]
+            detail_dict["pay_middle"] = i[12]
+            detail_dict['task_plan'] = self.task_plan(i[0])
+            detail_list.append(detail_dict)
+        return detail_list
+
+    def task_info_middle_list(self, info, user_id):
+        detail_list = list()
+        for i in info:
+            detail_dict = dict()
+            detail_dict["sum_order_code"] = i[0]
+            detail_dict["terrace"] = i[1]
+            detail_dict["sum_num"] = i[2]
+            detail_dict["serve_money"] = i[4]
+            detail_dict["all_money"] = i[3]
+            detail_dict["deal_num"] = i[5]
+            detail_dict["customer_label"] = i[6]
+            detail_dict["sum_time"] = str(i[7])
+            detail_dict["sum_state"] = i[8]
+            detail_dict["note"] = i[9]
+            detail_dict["sum_money"] = i[10]
+            detail_dict["pay_cus"] = i[11]
+            detail_dict["pay_middle"] = i[12]
+            detail_dict["middle_money"] = i[13]
             detail_dict['task_plan'] = self.task_plan(i[0])
             detail_list.append(detail_dict)
         return detail_list
@@ -260,7 +280,7 @@ class SqlData(object):
 
     def search_task_parent(self, user_id):
         sql = "SELECT sum_order_code, terrace, sum_num, sum_money, serve_money, deal_num, " \
-              "customer_label, sum_time, sum_state, note, good_money FROM task_parent WHERE user_id = {}".format(user_id)
+              "customer_label, sum_time, sum_state, note, good_money,pay_cus, pay_middle FROM task_parent WHERE user_id = {}".format(user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         task_list = self.task_info_to_list(rows, user_id)
@@ -283,7 +303,7 @@ class SqlData(object):
 
     def search_task_on_code(self, field, value, user_id):
         sql = "SELECT sum_order_code, terrace, sum_num, sum_money, serve_money, deal_num, " \
-              "customer_label, sum_time, sum_state, note, good_money FROM task_parent WHERE {} = '{}' AND " \
+              "customer_label, sum_time, sum_state, note, good_money, pay_cus, pay_middle FROM task_parent WHERE {} = '{}' AND " \
               "user_id = {}".format(field, value, user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
@@ -312,6 +332,13 @@ class SqlData(object):
         rows = self.cursor.fetchall()
         results = self.task_detail_list(rows)
         return results
+
+    # 根据订单号查某一个字段
+    def search_task_one_field(self, field, sum_order_code):
+        sql = "SELECT {} FROM task_parent WHERE sum_order_code='{}'".format(field, sum_order_code)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
 
     def search_one_task(self, task_code):
         sql = "SELECT asin, store_name FROM task_detail_info WHERE task_code = '{}'".format(task_code)
@@ -402,6 +429,12 @@ class SqlData(object):
 
     def search_cus_field(self, field, cus_id):
         sql = "SELECT {} FROM customer_info WHERE id={}".format(field, cus_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
+
+    def search_cus_one_field(self, field, user_id, label):
+        sql = "SELECT {} FROM customer_info WHERE user_id={} AND label='{}'".format(field, user_id, label)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         return rows[0][0]
@@ -608,7 +641,7 @@ class SqlData(object):
     def search_now_order(self, t1, t2, user_id):
         sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE task_run_time BETWEEN " \
-              "'{}' and '{}' AND user_info.id = {} AND task_detail_info.task_state = '' AND task_parent.deal_num != ''".format(t1, t2, user_id)
+              "'{}' and '{}' AND user_info.id = {} AND task_detail_info.task_state = '' AND task_parent.pay_cus != ''".format(t1, t2, user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         now_order_list = self.orders_to_dict(rows)
@@ -626,7 +659,7 @@ class SqlData(object):
     def search_order_of_state(self, buy_state, user_id):
         sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE user_info.id = {} AND " \
-              "task_detail_info.task_state = '{}' AND task_parent.deal_num != ''".format(user_id, buy_state)
+              "task_detail_info.task_state = '{}' AND task_parent.pay_cus != ''".format(user_id, buy_state)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         now_order_list = self.orders_to_dict(rows)
@@ -635,7 +668,7 @@ class SqlData(object):
     def search_order_of_overdue(self, t, user_id):
         sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE task_run_time < '{}' AND " \
-              "user_info.id = {} AND task_detail_info.task_state = '' AND task_parent.deal_num != ''"\
+              "user_info.id = {} AND task_detail_info.task_state = '' AND task_parent.pay_cus != ''"\
                .format(t, user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
@@ -902,6 +935,12 @@ class SqlData(object):
         rows = self.cursor.fetchall()
         return rows[0][0]
 
+    def search_of_middle_id(self, field, middle_id):
+        sql = "SELECT {} FROM  middle_info WHERE id={}".format(field, middle_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
+
     def insert_middle(self, user_id, name, account, password, discount):
         sql_parent = "INSERT INTO middle_info(user_id, name, account, password, discount) VALUES ({},'{}','{}','{}',{})". \
             format(user_id, name, account, password, discount)
@@ -942,7 +981,16 @@ class SqlData(object):
         self.connect.commit()
         self.close_connect()
 
+    def search_task_on_middle(self, middle_id, user_id):
+        sql = "SELECT sum_order_code, terrace, sum_num, sum_money, serve_money, deal_num, customer_label, sum_time, " \
+              "sum_state, task_parent.note, good_money, pay_cus, pay_middle, middle_money FROM task_parent LEFT JOIN customer_info ON task_parent.cust" \
+              "omer_label=customer_info.label WHERE customer_info.middle_id = '{}' AND " \
+              "task_parent.user_id = {} AND task_parent.pay_cus='已支付'".format(middle_id, user_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        task_list = self.task_info_middle_list(rows, user_id)
+        return task_list
+
 
 if __name__ == "__main__":
     s = SqlData()
-    s.search_task_parent(1)

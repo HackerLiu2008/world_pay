@@ -7,6 +7,53 @@ from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
 
 
+@user_blueprint.route('/pay_middle', methods=['GET'])
+@login_required
+def pay_middle():
+    if request.method == 'GET':
+        sum_order_code = request.args.get('sum_order_code')
+        SqlData().update_task_one('pay_middle', '已支付', sum_order_code)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
+@user_blueprint.route('/middle_task', methods=['GET'])
+@login_required
+def middle_task():
+    if request.method == 'GET':
+        try:
+            user_id = g.user_id
+            name = request.args.get('name')
+            limit = request.args.get('limit')
+            page = request.args.get('page')
+            middle_id = SqlData().search_one_middle_field('id', user_id, name)
+            info_list = SqlData().search_task_on_middle(str(middle_id), user_id)
+            if not info_list:
+                return jsonify({'code': RET.OK, 'msg': MSG.NODATA})
+            page_list = list()
+            results = dict()
+            results['code'] = RET.OK
+            results['msg'] = MSG.OK
+            info_list = list(reversed(info_list))
+            for i in range(0, len(info_list), int(limit)):
+                page_list.append(info_list[i:i + int(limit)])
+            results['data'] = page_list[int(page) - 1]
+            results['count'] = len(info_list)
+            return jsonify(results)
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@user_blueprint.route('/middle_task_html', methods=['GET'])
+@login_required
+def middle_html():
+    if request.method == 'GET':
+        name = request.args.get('name')
+        context = dict()
+        context['name'] = name
+        return render_template('user/middle_task.html', **context)
+
+
 @user_blueprint.route('/del_middle', methods=['GET'])
 @login_required
 def del_middle():

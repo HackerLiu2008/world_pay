@@ -49,8 +49,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">商品总额</label>
             <div class="layui-input-block">
-                <input type="number" name="sum_money" placeholder="商品总额" autocomplete="off"
-                       class="layui-input" id="sum_money">
+                <input type="number" name="good_money" placeholder="商品总额" autocomplete="off"
+                       class="layui-input" id="good_money">
             </div>
         </div>
 
@@ -63,10 +63,20 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">流水号</label>
+            <label class="layui-form-label">合计金额</label>
             <div class="layui-input-block">
-                <input type="text" name="deal_num" placeholder="流水号" autocomplete="off"
-                       class="layui-input" id="deal_num">
+                <input type="number" name="sum_money" placeholder="商品总额+服务费" autocomplete="off"
+                       class="layui-input" id="sum_money">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">客户付款</label>
+            <div class="layui-input-block">
+                <select name="pay_cus">
+                    <option value="">未支付</option>
+                    <option value="已支付">已支付</option>
+                </select>
             </div>
         </div>
 
@@ -133,12 +143,15 @@
 				url : '/task/up_task_info/',
 				data : data_info,
 				dataType : 'json',
+                beforeSend:function(){
+				    layer.load();
+                },
 				success : function(data) {
 				    {#var data1 = JSON.parse(data);#}
 			    	console.log(data.code);
 					// 成功提示框
                     if (data.code == 0){
-                        parent.layer.msg('添加成功', {
+                        parent.layer.msg(data.msg, {
 						icon : 6,
 					    });
                         window.parent.location.reload();

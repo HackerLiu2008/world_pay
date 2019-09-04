@@ -52,6 +52,15 @@
 {#                    <dd><a href="/upload/task_excel">订单任务模板下载</a></dd>#}
                 </dl>
             </li>
+
+            <li class="layui-nav-item">
+            <a href="javascript:">中介管理</a>
+            <dl class="layui-nav-child">
+              <dd id="add_middle"><a href="javascript:">添加中介</a></dd>
+              <dd id="middle_index"><a href="/user/middle_index" target="_blank">查看中介</a></dd>
+            </dl>
+        </li>
+
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -249,6 +258,23 @@
                 , upload = layui.upload //上传
                 , element = layui.element //元素操作
                 , $ = layui.$;
+
+            // 添加中介
+        $("#add_middle").on('click', function () {
+           layer.open({
+               type:2
+                ,title:'添加中介'
+                ,closeBtn: false
+                ,area:['500px', '500px']
+                ,shade: 0.8
+                ,id: 'middle' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,shadeClose: true
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/user/add_middle'
+           })
+        });
 
             $("#reset").on('click', function () {
                 location.reload()

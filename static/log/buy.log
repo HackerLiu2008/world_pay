@@ -4940,3 +4940,1152 @@
 2019-09-02  18:42:39 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:42:39] "GET /user/del_middle?name=刘晓 HTTP/1.1" 200 - 
 2019-09-02  18:42:39 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:42:39] "GET /user/middle_index HTTP/1.1" 200 - 
 2019-09-02  18:42:39 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:42:39] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-02  18:44:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-02  18:44:29 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-02  18:44:29 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-02  18:44:29 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-02  18:44:30 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:44:30] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-02  18:44:30 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:44:30] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-02  18:44:30 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:44:30] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-02  18:44:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:44:33] "GET /task/ HTTP/1.1" 200 - 
+2019-09-02  18:44:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:44:33] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-02  18:44:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:44:35] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-02  18:46:18 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:18] "GET /upload/up_acc HTTP/1.1" 200 - 
+2019-09-02  18:46:18 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:18] "GET /static/layui/lay/modules/upload.js HTTP/1.1" 304 - 
+2019-09-02  18:46:22 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:22] "GET /account/ HTTP/1.1" 200 - 
+2019-09-02  18:46:22 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:22] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-02  18:46:22 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:22] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-02  18:46:23 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:23] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-02  18:46:24 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:24] "GET /user/add_middle HTTP/1.1" 200 - 
+2019-09-02  18:46:45 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:45] "POST /user/add_middle HTTP/1.1" 200 - 
+2019-09-02  18:46:48 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:48] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-02  18:46:48 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:48] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-02  18:46:48 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:48] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-02  18:46:57 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Sep/2019 18:46:57] "GET /user/middle_edit?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  09:49:17 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  09:49:18 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  09:49:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  09:49:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /account/ HTTP/1.1" 200 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/layui/css/layui.css HTTP/1.1" 304 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/css/index.css HTTP/1.1" 304 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/img/a.png HTTP/1.1" 304 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/img/1.jpg HTTP/1.1" 304 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/img/yhm.png HTTP/1.1" 304 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/img/mm.png HTTP/1.1" 304 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/layui/layui.js HTTP/1.1" 304 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/layui/layui.all.js HTTP/1.1" 304 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/layui/css/modules/laydate/default/laydate.css?v=5.0.9 HTTP/1.1" 304 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/layui/css/modules/code.css HTTP/1.1" 304 - 
+2019-09-03  09:49:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:27] "GET /static/layui/css/modules/layer/default/layer.css?v=3.1.1 HTTP/1.1" 304 - 
+2019-09-03  09:49:34 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:34] "POST /user/login HTTP/1.1" 200 - 
+2019-09-03  09:49:34 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:34] "GET /account/ HTTP/1.1" 200 - 
+2019-09-03  09:49:34 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:34] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-03  09:49:34 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:34] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-03  09:49:35 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:35] "GET /static/layui/font/iconfont.woff2?v=250 HTTP/1.1" 304 - 
+2019-09-03  09:49:35 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:49:35] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  09:54:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:06] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  09:54:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:06] "GET /static/layui/lay/modules/table.js HTTP/1.1" 304 - 
+2019-09-03  09:54:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:06] "GET /static/layui/lay/modules/laytpl.js HTTP/1.1" 304 - 
+2019-09-03  09:54:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:06] "GET /static/layui/lay/modules/laypage.js HTTP/1.1" 304 - 
+2019-09-03  09:54:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:06] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 304 - 
+2019-09-03  09:54:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:06] "GET /static/layui/lay/modules/jquery.js HTTP/1.1" 304 - 
+2019-09-03  09:54:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:06] "GET /static/layui/lay/modules/form.js HTTP/1.1" 304 - 
+2019-09-03  09:54:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:06] "GET /static/layui/lay/modules/util.js HTTP/1.1" 304 - 
+2019-09-03  09:54:07 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:07] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  09:54:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:23] "GET /static/layui/css/modules/layer/default/loading-1.gif HTTP/1.1" 304 - 
+2019-09-03  09:54:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:23] "GET /user/middle_edit?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  09:54:29 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 09:54:29] "GET /user/middle_edit?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  10:08:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  10:08:47 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  10:08:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  10:08:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  10:08:49 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:08:49] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:08:49 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:08:49] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  10:08:49 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:08:49] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:09:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  10:09:43 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  10:09:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  10:09:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  10:09:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:09:43] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:09:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:09:43] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  10:09:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:09:43] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:11:07 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  10:11:08 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  10:11:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  10:11:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  10:11:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:09] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:11:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:09] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  10:11:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:09] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:11:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:09] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:11:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:10] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  10:11:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:10] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:11:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:10] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  10:11:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:10] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:11:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:10] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:11:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:10] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:11:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:10] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  10:11:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:10] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:11:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:10] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:11:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:11] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  10:11:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:11] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:11:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:12] "GET /static/layui/css/modules/layer/default/icon.png HTTP/1.1" 304 - 
+2019-09-03  10:11:12 Tue  root ERROR G:\order_flask\apps\account.py tuple index out of range 
+2019-09-03  10:11:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:12] "GET /account/one_detail?account=123455 HTTP/1.1" 500 - 
+2019-09-03  10:11:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:12] "GET /account/one_detail?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 - 
+2019-09-03  10:11:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:12] "GET /account/one_detail?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 - 
+2019-09-03  10:11:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:12] "GET /account/one_detail?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 - 
+2019-09-03  10:11:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:13] "GET /account/one_detail?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 - 
+2019-09-03  10:11:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:11:13] "GET /account/one_detail?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 - 
+2019-09-03  10:18:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  10:18:14 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  10:18:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  10:18:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  10:18:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:16] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:18:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:16] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  10:18:17 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:17] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:18:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:18] "GET /user/middle_edit?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  10:18:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:23] "POST /user/middle_edit HTTP/1.1" 200 - 
+2019-09-03  10:18:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:23] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:18:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:24] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:18:25 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:25] "GET /user/middle_edit?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  10:18:29 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:29] "POST /user/middle_edit HTTP/1.1" 200 - 
+2019-09-03  10:18:29 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:29] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:18:29 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:29] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:18:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:33] "GET /user/middle_task?name=蔡志伟 HTTP/1.1" 500 - 
+2019-09-03  10:18:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:33] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 - 
+2019-09-03  10:18:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:33] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 - 
+2019-09-03  10:18:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:33] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 - 
+2019-09-03  10:18:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:33] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 - 
+2019-09-03  10:18:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:18:33] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 - 
+2019-09-03  10:22:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\tools_me\\mysql_tools.py', reloading 
+2019-09-03  10:22:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  10:22:17 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  10:22:17 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  10:22:17 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  10:23:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\tools_me\\mysql_tools.py', reloading 
+2019-09-03  10:23:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  10:23:55 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  10:23:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  10:23:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  10:28:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\tools_me\\mysql_tools.py', reloading 
+2019-09-03  10:28:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  10:28:15 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  10:28:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  10:28:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  10:31:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  10:31:37 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  10:31:37 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  10:31:37 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  10:31:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:31:43] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:31:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:31:43] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  10:31:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:31:43] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:31:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:31:45] "GET /user/middle_task?name=蔡志伟 HTTP/1.1" 500 - 
+2019-09-03  10:31:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:31:45] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 - 
+2019-09-03  10:31:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:31:45] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 - 
+2019-09-03  10:31:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:31:45] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 - 
+2019-09-03  10:31:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:31:45] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 - 
+2019-09-03  10:31:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:31:45] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 - 
+2019-09-03  10:46:39 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  10:46:40 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  10:46:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  10:46:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  10:46:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:46:46] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  10:46:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:46:46] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  10:46:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:46:50] "GET /user/middle_task?name=蔡志伟 HTTP/1.1" 500 - 
+2019-09-03  10:46:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:46:52] "GET /user/middle_task?name=蔡志伟 HTTP/1.1" 500 - 
+2019-09-03  10:46:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:46:52] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 - 
+2019-09-03  10:46:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:46:52] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 - 
+2019-09-03  10:46:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:46:52] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 - 
+2019-09-03  10:46:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:46:52] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 - 
+2019-09-03  10:46:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 10:46:52] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 - 
+2019-09-03  11:15:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  11:15:19 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  11:15:19 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  11:15:19 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  11:15:20 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:15:20] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  11:15:20 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:15:20] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  11:15:20 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:15:20] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:15:22 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:15:22] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:15:22 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:15:22] "GET /user/middle_task_list?name=蔡志伟&page=1&limit=10 HTTP/1.1" 404 - 
+2019-09-03  11:15:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:15:27] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:15:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:15:27] "GET /user/middle_task_list?name=蔡志伟&page=1&limit=10 HTTP/1.1" 404 - 
+2019-09-03  11:15:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:15:36] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:15:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:15:36] "GET /user/middle_task_list?name=蔡志伟&page=1&limit=10 HTTP/1.1" 404 - 
+2019-09-03  11:18:25 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  11:18:26 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  11:18:26 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  11:18:26 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  11:18:28 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:18:28] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  11:18:28 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:18:28] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  11:18:28 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:18:28] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:18:29 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:18:29] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:18:32 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:18:32] "GET /user/middle_task?name=蔡志伟&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:19:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  11:19:17 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  11:19:17 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  11:19:17 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  11:19:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:19:18] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  11:19:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:19:18] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  11:19:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:19:18] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:19:20 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:19:20] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:19:22 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:19:22] "GET /user/middle_task?name=蔡志伟&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:21:17 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  11:21:18 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  11:21:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  11:21:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  11:21:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:21:18] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  11:21:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:21:18] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  11:21:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:21:18] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:21:20 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:21:20] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:21:22 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:21:22] "GET /user/middle_task?name=蔡志伟&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:21:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:21:45] "GET /user/middle_task?name=蔡志伟&page=1&limit=60 HTTP/1.1" 200 - 
+2019-09-03  11:28:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  11:28:09 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  11:28:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  11:28:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  11:28:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:28:09] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  11:28:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:28:10] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  11:28:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:28:10] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:28:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:28:12] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:28:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:28:14] "GET /user/middle_task?name=蔡志伟&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:53:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:53:06] "GET /user/middle_edit?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:53:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:53:14] "POST /user/middle_edit HTTP/1.1" 200 - 
+2019-09-03  11:53:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:53:14] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  11:53:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:53:14] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:54:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  11:54:42 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  11:54:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  11:54:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  11:54:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:54:43] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  11:54:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:54:43] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  11:54:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:54:43] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:54:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:54:45] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:54:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:54:46] "GET /user/middle_task?name=蔡志伟&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:55:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:55:12] "GET /user/middle_task?name=蔡志伟&page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  11:56:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\user.py', reloading 
+2019-09-03  11:56:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  11:57:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  11:57:02 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  11:57:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  11:57:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  11:57:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:57:05] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  11:57:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:57:05] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  11:57:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:57:05] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:57:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:57:06] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:57:07 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:57:07] "GET /user/middle_task?name=蔡志伟&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:57:31 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  11:57:32 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  11:57:32 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  11:57:32 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  11:57:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:57:33] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  11:57:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:57:33] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  11:57:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:57:33] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  11:57:35 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:57:35] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  11:57:37 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 11:57:37] "GET /user/middle_task?name=蔡志伟&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  12:00:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  12:00:48 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  12:00:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  12:00:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  12:00:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:00:48] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  12:00:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:00:48] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  12:00:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:00:48] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  12:00:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:00:50] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  12:00:51 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:00:51] "GET /user/middle_task?name=蔡志伟&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  12:04:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  12:04:11 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  12:04:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  12:04:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  12:04:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:04:12] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  12:04:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:04:12] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  12:04:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:04:12] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  12:04:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:04:14] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  12:04:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:04:15] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  12:07:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:07:23] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  12:07:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 12:07:24] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  14:10:28 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:10:28] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  14:10:29 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:10:29] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  14:10:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:10:36] "GET /user/middle_task?name=undefined HTTP/1.1" 500 - 
+2019-09-03  14:10:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:10:36] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 - 
+2019-09-03  14:10:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:10:36] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 - 
+2019-09-03  14:10:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:10:36] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 - 
+2019-09-03  14:10:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:10:36] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 - 
+2019-09-03  14:10:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:10:36] "GET /user/middle_task?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 - 
+2019-09-03  14:11:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  14:11:44 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  14:11:44 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  14:11:44 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  14:11:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:11:45] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  14:11:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:11:47] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  14:17:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:17:54] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  14:17:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:17:55] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  14:24:19 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:24:19] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  14:24:19 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:24:19] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  14:24:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:24:24] "GET /account/ HTTP/1.1" 200 - 
+2019-09-03  14:24:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:24:24] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-03  14:24:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:24:24] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-03  14:24:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:24:24] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  14:39:26 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  14:39:27 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  14:39:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  14:39:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  14:39:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:39:45] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  14:39:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:39:45] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  14:39:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:39:45] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  14:39:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:39:47] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  14:39:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:39:48] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  14:39:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:39:50] "GET /user/pay_middle?sum_order_code=20190810110620d3fe7 HTTP/1.1" 200 - 
+2019-09-03  14:39:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:39:50] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  14:39:51 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:39:51] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  14:40:53 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  14:40:54 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  14:40:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  14:40:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  14:40:56 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:40:56] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  14:40:56 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:40:56] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  14:40:56 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:40:56] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  14:40:57 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:40:57] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  14:40:59 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:40:59] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  14:48:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  14:48:46 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  14:48:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  14:48:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  14:48:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:48:46] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  14:48:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:48:47] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  14:48:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:48:47] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  14:48:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:48:47] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  14:48:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:48:47] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  14:48:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:48:47] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  14:48:49 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:48:49] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  14:48:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:48:50] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  14:50:56 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  14:50:57 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  14:50:57 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  14:50:57 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  14:51:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  14:51:12 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  14:51:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  14:51:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  14:51:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:51:13] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  14:51:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:51:13] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  14:51:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:51:14] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  14:51:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:51:15] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  14:51:17 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:51:17] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  14:58:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:58:46] "GET /user/pay_middle?sum_order_code=20190816205111866d2 HTTP/1.1" 200 - 
+2019-09-03  14:58:53 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:58:53] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  14:58:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:58:55] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  14:59:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:59:06] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  14:59:09 Tue  root ERROR G:\order_flask\apps\task.py tuple index out of range 
+2019-09-03  14:59:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:59:09] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  14:59:13 Tue  root ERROR G:\order_flask\apps\task.py tuple index out of range 
+2019-09-03  14:59:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:59:13] "GET /task/sum_info/?page=1&limit=20&sum_state=已完成 HTTP/1.1" 200 - 
+2019-09-03  14:59:13 Tue  root ERROR G:\order_flask\apps\task.py tuple index out of range 
+2019-09-03  14:59:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:59:13] "GET /task/sum_info/?page=1&limit=20&sum_state=已完成 HTTP/1.1" 200 - 
+2019-09-03  14:59:14 Tue  root ERROR G:\order_flask\apps\task.py tuple index out of range 
+2019-09-03  14:59:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:59:14] "GET /task/sum_info/?page=1&limit=20&sum_state=未完成 HTTP/1.1" 200 - 
+2019-09-03  14:59:15 Tue  root ERROR G:\order_flask\apps\task.py tuple index out of range 
+2019-09-03  14:59:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:59:15] "GET /task/sum_info/?page=1&limit=20&sum_state=未完成 HTTP/1.1" 200 - 
+2019-09-03  14:59:16 Tue  root ERROR G:\order_flask\apps\task.py tuple index out of range 
+2019-09-03  14:59:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:59:16] "GET /task/sum_info/?page=1&limit=20&sum_state= HTTP/1.1" 200 - 
+2019-09-03  14:59:16 Tue  root ERROR G:\order_flask\apps\task.py tuple index out of range 
+2019-09-03  14:59:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 14:59:16] "GET /task/sum_info/?page=1&limit=20&sum_state= HTTP/1.1" 200 - 
+2019-09-03  15:02:59 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  15:03:00 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  15:03:00 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  15:03:00 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  15:03:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:03:01] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  15:03:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:03:01] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  15:03:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:03:02] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:04:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  15:04:19 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  15:04:19 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  15:04:19 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  15:04:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:04:27] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  15:04:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:04:27] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  15:04:28 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:04:28] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:17:22 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  15:17:23 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  15:17:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  15:17:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  15:17:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:17:24] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  15:17:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:17:24] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  15:17:25 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:17:25] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:17:26 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:17:26] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  15:17:26 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:17:26] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  15:17:28 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:17:28] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:17:28 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:17:28] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  15:17:28 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:17:28] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  15:17:29 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:17:29] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:18:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:18:06] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  15:18:44 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:18:44] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  15:27:39 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  15:27:40 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  15:27:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  15:27:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  15:27:41 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:27:41] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  15:27:41 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:27:41] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  15:27:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:27:42] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:27:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:27:46] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  15:27:51 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:27:51] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  15:27:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:27:52] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  15:27:53 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:27:53] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:28:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:06] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  15:28:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:12] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  15:28:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:12] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  15:28:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:13] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:28:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:33] "GET /account/ HTTP/1.1" 200 - 
+2019-09-03  15:28:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:33] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-03  15:28:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:33] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-03  15:28:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:33] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:28:35 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:35] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  15:28:35 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:35] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  15:28:38 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:38] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  15:28:39 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:39] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  15:28:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:43] "GET /user/pay_middle?sum_order_code=20190816205259c69d9 HTTP/1.1" 200 - 
+2019-09-03  15:28:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:46] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  15:28:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:46] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  15:28:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:47] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  15:28:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:48] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  15:28:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:28:50] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  15:34:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:34:54] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  15:34:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:34:55] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:34:57 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:34:57] "GET /task/task_list/?sum_order_code=20190816205429fc6f3&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-03  15:34:57 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:34:57] "GET /task/task_detail/?sum_order_code=20190816205429fc6f3&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  15:34:59 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:34:59] "GET /order/one_detail/?task_code=20190816205429fc6f3-1 HTTP/1.1" 200 - 
+2019-09-03  15:35:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:35:10] "GET /task/task_list/?sum_order_code=20190816205623402eb&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-03  15:35:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:35:10] "GET /task/task_detail/?sum_order_code=20190816205623402eb&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  15:35:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:35:12] "GET /order/one_detail/?task_code=20190816205623402eb-4 HTTP/1.1" 200 - 
+2019-09-03  15:35:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:35:40] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  15:35:41 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:35:41] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:36:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:36:03] "GET /account/ HTTP/1.1" 200 - 
+2019-09-03  15:36:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:36:03] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-03  15:36:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:36:03] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-03  15:36:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:36:03] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  15:36:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:36:06] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  15:36:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:36:06] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  15:36:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:36:11] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  15:36:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 15:36:12] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  16:05:04 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:05:04] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  16:05:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:05:05] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  16:05:07 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:05:07] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  16:05:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:05:12] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  16:05:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:05:12] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  16:05:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:05:14] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  16:08:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\task.py', reloading 
+2019-09-03  16:08:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  16:08:52 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  16:08:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  16:08:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  16:09:39 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\task.py', reloading 
+2019-09-03  16:09:39 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  16:09:40 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  16:09:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  16:09:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  16:12:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\task.py', reloading 
+2019-09-03  16:12:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  16:12:02 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  16:12:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  16:12:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  16:25:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\task.py', reloading 
+2019-09-03  16:25:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  16:25:13 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  16:25:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  16:25:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  16:28:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\task.py', reloading 
+2019-09-03  16:28:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  16:28:53 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  16:28:53 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  16:28:53 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  16:29:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\task.py', reloading 
+2019-09-03  16:29:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  16:29:51 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  16:29:51 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  16:29:51 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  16:32:56 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:32:56] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  16:32:56 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:32:56] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  16:32:58 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:32:58] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  16:33:00 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:33:00] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  16:33:04 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:33:04] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  16:33:08 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  16:33:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:33:08] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  16:33:12 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  16:33:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:33:12] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  16:34:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  16:34:44 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  16:34:44 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  16:34:44 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  16:34:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:34:47] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  16:34:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:34:47] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  16:34:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:34:48] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  16:34:49 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:34:49] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  16:34:54 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  16:34:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 16:34:54] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  17:01:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:01:23 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:01:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:01:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:01:31 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:01:31] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  17:01:31 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:01:31] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  17:01:32 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:01:32] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  17:01:35 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:01:35] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  17:01:40 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  17:01:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:01:40] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  17:04:30 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:04:31 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:04:31 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:04:31 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:04:38 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:04:38] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  17:04:38 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:04:38] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  17:04:39 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:04:39] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  17:04:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:04:40] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  17:04:44 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  17:04:44 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:04:44] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  17:04:45 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  17:04:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:04:45] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  17:22:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:22:02 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:22:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:22:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:22:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:22:08] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  17:22:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:22:08] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  17:22:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:22:09] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  17:22:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:22:11] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  17:22:15 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  17:22:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:22:15] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  17:29:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\tools_me\\mysql_tools.py', reloading 
+2019-09-03  17:29:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:29:05 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:29:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:29:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:32:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:32:37 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:32:37 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:32:37 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:32:41 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:32:41] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  17:32:41 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:32:41] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  17:32:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:32:42] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  17:32:49 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:32:49] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  17:32:53 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  17:32:53 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:32:53] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  17:34:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:34:05 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:34:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:34:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:34:07 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:34:07] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  17:34:07 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:34:07] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  17:34:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:34:09] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  17:34:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:34:11] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  17:34:15 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  17:34:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:34:15] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  17:36:35 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:36:36 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:36:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:36:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:36:37 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:36:37] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  17:36:37 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:36:37] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  17:36:38 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:36:38] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  17:36:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:36:40] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  17:36:44 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  17:36:44 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:36:44] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  17:37:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\tools_me\\mysql_tools.py', reloading 
+2019-09-03  17:37:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:37:15 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:37:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:37:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:48:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:48:16 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:48:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:48:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:48:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:48:18] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  17:48:19 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:48:19] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  17:48:20 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:48:20] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  17:48:21 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:48:21] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  17:48:25 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  17:48:25 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:48:25] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  17:55:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:55:55 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:55:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:55:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:55:59 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:55:59] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  17:55:59 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:55:59] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  17:56:00 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:56:00] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  17:56:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:56:57 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:56:57 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:56:57 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:57:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:57:14 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:57:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:57:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:57:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:57:15] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  17:57:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:57:15] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  17:57:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:57:16] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  17:57:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:57:18] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  17:57:22 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  17:57:22 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:57:22] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  17:58:00 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  17:58:01 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  17:58:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  17:58:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  17:58:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:58:02] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  17:58:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:58:02] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  17:58:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:58:03] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  17:58:04 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:58:04] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  17:58:10 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  17:58:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 17:58:10] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:00:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\tools_me\\mysql_tools.py', reloading 
+2019-09-03  18:00:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:00:02 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:00:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:00:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:00:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\tools_me\\mysql_tools.py', reloading 
+2019-09-03  18:00:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:00:14 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:00:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:00:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:00:58 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:01:00 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:01:00 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:01:00 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:01:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:01:01] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:01:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:01:01] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:01:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:01:02] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:01:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:01:03] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:01:07 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:01:07 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:01:07] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:02:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:02:02 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:02:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:02:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:02:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:02:03] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:02:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:02:03] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:02:04 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:02:04] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:02:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:02:05] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:02:10 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:02:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:02:10] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:03:21 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:03:22 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:03:22 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:03:22 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:03:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:03:23] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:03:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:03:23] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:03:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:03:23] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:03:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:03:23] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:03:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:03:24] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:03:26 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:03:26] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:03:31 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:03:31 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:03:31] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:06:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:06:12 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:06:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:06:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:06:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:06:12] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:06:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:06:13] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:06:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:06:14] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:06:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:06:15] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:06:19 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:06:19 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:06:19] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:08:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:08:25 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:08:25 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:08:25 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:08:25 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:25] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:08:25 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:25] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:08:26 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:26] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:08:28 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:28] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:08:47 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:08:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:47] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:08:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:48] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:08:48 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:08:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:48] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:08:48 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:08:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:48] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:08:48 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:08:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:48] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:08:48 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:08:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:48] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:08:48 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:08:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:48] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:08:48 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:08:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:48] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:08:48 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:08:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:08:48] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:09:09 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:09:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:09:09] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:09:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:09:50 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:09:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:09:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:09:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:09:50] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:09:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:09:50] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:09:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:09:50] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:09:51 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:09:51] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:09:53 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:09:53] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:09:58 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:09:58 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:09:58] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:10:32 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\tools_me\\mysql_tools.py', reloading 
+2019-09-03  18:10:32 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:10:34 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:10:34 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:10:34 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:10:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:10:42 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:10:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:10:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:10:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:10:43] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:10:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:10:43] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:10:44 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:10:44] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:10:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:10:46] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:10:50 Tue  root ERROR G:\order_flask\apps\task.py (1054, "Unknown column 'customer_label' in 'where clause'") 
+2019-09-03  18:10:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:10:50] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:12:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:12:06 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:12:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:12:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:12:07 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:12:07] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:12:07 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:12:07] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:12:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:12:08] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:12:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:12:13] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:12:17 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:12:17] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:12:17 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:12:17] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:12:19 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:12:19] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:14:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:14:55] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:14:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:14:55] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:14:56 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:14:56] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:14:58 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:14:58] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:15:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:15:03] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:15:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:15:08] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:15:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:15:08] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:15:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:15:10] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:18:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:18:46 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:18:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:18:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:18:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:18:47] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:18:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:18:47] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:18:48 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:18:48] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:18:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:18:50] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:18:53 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:18:53] "GET /static/layui/css/modules/layer/default/loading-0.gif HTTP/1.1" 304 - 
+2019-09-03  18:18:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:18:55] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:18:55 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:18:55] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:18:56 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:18:56] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:20:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:20:53 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:20:53 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:20:53 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:20:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:20:54] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  18:20:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:20:54] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:20:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:20:54] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  18:21:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:21:43 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:21:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:21:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:21:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:21:43] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-03  18:21:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:21:43] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:21:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:21:43] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  18:21:44 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:21:44] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  18:21:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:21:46] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  18:22:10 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:22:10] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  18:22:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:22:11] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:24:21 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:24:23 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:24:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:24:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:24:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:23] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  18:24:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:23] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:24:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:23] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:24:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:24] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  18:24:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:24] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:24:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:24] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:24:26 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:26] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-09-03  18:24:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:27] "GET /order/order_detail?page=1&limit=20&buy_state=待留评 HTTP/1.1" 200 - 
+2019-09-03  18:24:27 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:27] "GET /order/order_detail?page=1&limit=20&buy_state=已完成 HTTP/1.1" 200 - 
+2019-09-03  18:24:28 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:28] "GET /order/order_detail?page=1&limit=20&buy_state=已逾期 HTTP/1.1" 200 - 
+2019-09-03  18:24:34 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:34] "GET /order/order_detail?page=1&limit=20&buy_state= HTTP/1.1" 200 - 
+2019-09-03  18:24:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:36] "GET /account/ HTTP/1.1" 200 - 
+2019-09-03  18:24:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:36] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-03  18:24:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:36] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-03  18:24:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:36] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:24:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:42] "GET /account/ HTTP/1.1" 200 - 
+2019-09-03  18:24:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:42] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-03  18:24:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:42] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-03  18:24:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:42] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:24:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:43] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:24:44 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:44] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:24:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:50] "GET /task/task_list/?sum_order_code=201908232013306b868&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-03  18:24:51 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:51] "GET /task/task_detail/?sum_order_code=201908232013306b868&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  18:24:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:54] "GET /task/edit_run_time HTTP/1.1" 200 - 
+2019-09-03  18:24:57 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:57] "POST /task/edit_run_time HTTP/1.1" 200 - 
+2019-09-03  18:24:57 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:57] "GET /task/task_list/?sum_order_code=201908232013306b868&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-03  18:24:57 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:24:57] "GET /task/task_detail/?sum_order_code=201908232013306b868&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  18:25:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:02] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  18:25:02 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:02] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:25:04 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:04] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  18:25:04 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:04] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:25:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:05] "GET /account/ HTTP/1.1" 200 - 
+2019-09-03  18:25:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:05] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-03  18:25:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:05] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-03  18:25:05 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:05] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:25:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:06] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:25:07 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:07] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:25:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:08] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:25:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:13] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:25:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:14] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:25:15 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:15] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:25:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:16] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  18:25:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:16] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:25:39 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  18:25:40 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  18:25:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  18:25:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  18:25:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:40] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  18:25:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:40] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:25:40 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:40] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:25:41 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:41] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:25:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:43] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:25:45 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:45] "GET /task/task_list/?sum_order_code=2019082114520831d13&terrace=SMT HTTP/1.1" 200 - 
+2019-09-03  18:25:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:46] "GET /task/task_detail/?sum_order_code=2019082114520831d13&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  18:25:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:52] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:25:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:54] "GET /task/task_list/?sum_order_code=20190816205623402eb&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-03  18:25:54 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:54] "GET /task/task_detail/?sum_order_code=20190816205623402eb&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  18:25:59 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:59] "GET /task/task_list/?sum_order_code=20190816205429fc6f3&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-03  18:25:59 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:25:59] "GET /task/task_detail/?sum_order_code=20190816205429fc6f3&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  18:26:01 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:01] "GET /task/edit_run_time HTTP/1.1" 200 - 
+2019-09-03  18:26:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:03] "POST /task/edit_run_time HTTP/1.1" 200 - 
+2019-09-03  18:26:03 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:03] "GET /task/task_list/?sum_order_code=20190816205429fc6f3&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-03  18:26:04 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:04] "GET /task/task_detail/?sum_order_code=20190816205429fc6f3&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-03  18:26:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:09] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:26:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:12] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  18:26:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:12] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:26:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:13] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:26:14 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:14] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:26:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:16] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:26:20 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:20] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:26:20 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:20] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:26:21 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:21] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:26:22 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:22] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  18:26:22 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:22] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:26:35 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:35] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  18:26:36 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:26:36] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  18:27:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:27:12] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:27:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:27:13] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:27:16 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:27:16] "GET /task/sum_info/?page=1&limit=20&label=&sum_order_code=20190816205623402eb&asin= HTTP/1.1" 200 - 
+2019-09-03  18:27:18 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:27:18] "GET /task/form_input/ HTTP/1.1" 200 - 
+2019-09-03  18:27:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:27:23] "POST /task/up_task_info/ HTTP/1.1" 200 - 
+2019-09-03  18:27:23 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:27:23] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:27:24 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:27:24] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:27:41 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:27:41] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  18:27:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:27:42] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  18:28:11 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:28:11] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:28:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:28:12] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:28:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:28:12] "GET /task/ HTTP/1.1" 200 - 
+2019-09-03  18:28:12 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:28:12] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-03  18:28:13 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:28:13] "GET /task/sum_info/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:29:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:29:06] "GET /order/ HTTP/1.1" 200 - 
+2019-09-03  18:29:06 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:29:06] "GET /order/order_detail?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-03  18:29:08 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:29:08] "GET /order/order_detail?page=1&limit=20&buy_state=待留评 HTTP/1.1" 200 - 
+2019-09-03  18:29:09 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 18:29:09] "GET /order/order_detail?page=1&limit=20&buy_state=已分配 HTTP/1.1" 200 - 
+2019-09-03  19:12:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\task.py', reloading 
+2019-09-03  19:12:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-03  19:12:43 Tue  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-03  19:12:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-03  19:12:43 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-03  19:13:26 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:13:26] "GET /user/middle_edit?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  19:13:33 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:13:33] "GET /user/middle_edit?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  19:13:37 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:13:37] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  19:13:38 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:13:38] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  19:13:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:13:46] "GET /user/pay_middle?sum_order_code=201908162054580d6cb HTTP/1.1" 200 - 
+2019-09-03  19:13:50 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:13:50] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-03  19:13:52 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:13:52] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-03  19:17:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:17:46] "GET /middle/login HTTP/1.1" 200 - 
+2019-09-03  19:17:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:17:46] "GET /static/assembly/zylVerificationCode/zylVerificationCode.js HTTP/1.1" 304 - 
+2019-09-03  19:17:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:17:46] "GET /static/css/login_middle.css HTTP/1.1" 304 - 
+2019-09-03  19:17:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:17:46] "GET /static/assembly/jqarticle/jparticle.min.js HTTP/1.1" 304 - 
+2019-09-03  19:17:46 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:17:46] "GET /static/js/jquery.min.js HTTP/1.1" 304 - 
+2019-09-03  19:17:47 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:17:47] "GET /static/layui/lay/modules/carousel.js HTTP/1.1" 304 - 
+2019-09-03  19:18:41 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:18:41] "POST /middle/login HTTP/1.1" 200 - 
+2019-09-03  19:18:41 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:18:41] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-03  19:18:42 Tue  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [03/Sep/2019 19:18:42] "GET /demo/table/user/?page=1&limit=10 HTTP/1.1" 404 - 
+2019-09-04  09:42:53 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  09:42:56 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  09:42:56 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  09:42:56 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  09:43:05 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:05] "GET /middle/login HTTP/1.1" 200 - 
+2019-09-04  09:43:05 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:05] "GET /static/css/login_middle.css HTTP/1.1" 304 - 
+2019-09-04  09:43:05 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:05] "GET /static/assembly/jqarticle/jparticle.min.js HTTP/1.1" 304 - 
+2019-09-04  09:43:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:06] "GET /static/assembly/zylVerificationCode/zylVerificationCode.js HTTP/1.1" 304 - 
+2019-09-04  09:43:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:06] "GET /static/layui/css/layui.css HTTP/1.1" 304 - 
+2019-09-04  09:43:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:06] "GET /static/layui/layui.js HTTP/1.1" 304 - 
+2019-09-04  09:43:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:06] "GET /static/js/jquery.min.js HTTP/1.1" 304 - 
+2019-09-04  09:43:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:06] "GET /static/layui/font/iconfont.woff2?v=250 HTTP/1.1" 304 - 
+2019-09-04  09:43:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:06] "GET /static/layui/lay/modules/carousel.js HTTP/1.1" 304 - 
+2019-09-04  09:43:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:06] "GET /static/layui/lay/modules/form.js HTTP/1.1" 304 - 
+2019-09-04  09:43:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:06] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 304 - 
+2019-09-04  09:43:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:43:06] "GET /static/layui/css/modules/layer/default/layer.css?v=3.1.1 HTTP/1.1" 304 - 
+2019-09-04  09:44:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:44:36] "POST /middle/login HTTP/1.1" 200 - 
+2019-09-04  09:44:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:44:36] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  09:44:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:44:36] "GET /static/layui/lay/modules/table.js HTTP/1.1" 304 - 
+2019-09-04  09:44:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:44:36] "GET /static/layui/lay/modules/laytpl.js HTTP/1.1" 304 - 
+2019-09-04  09:44:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:44:36] "GET /static/layui/lay/modules/laypage.js HTTP/1.1" 304 - 
+2019-09-04  09:44:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:44:36] "GET /static/layui/lay/modules/jquery.js HTTP/1.1" 304 - 
+2019-09-04  09:44:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:44:36] "GET /static/layui/lay/modules/util.js HTTP/1.1" 304 - 
+2019-09-04  09:44:37 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:44:37] "GET /demo/table/user/?page=1&limit=10 HTTP/1.1" 404 - 
+2019-09-04  09:45:25 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:25] "GET /account/ HTTP/1.1" 200 - 
+2019-09-04  09:45:25 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:25] "GET /static/css/index.css HTTP/1.1" 304 - 
+2019-09-04  09:45:25 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:25] "GET /static/img/a.png HTTP/1.1" 304 - 
+2019-09-04  09:45:25 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:25] "GET /static/img/1.jpg HTTP/1.1" 304 - 
+2019-09-04  09:45:25 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:25] "GET /static/img/yhm.png HTTP/1.1" 304 - 
+2019-09-04  09:45:25 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:25] "GET /static/img/mm.png HTTP/1.1" 304 - 
+2019-09-04  09:45:26 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:26] "GET /static/layui/layui.all.js HTTP/1.1" 304 - 
+2019-09-04  09:45:26 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:26] "GET /static/layui/css/modules/laydate/default/laydate.css?v=5.0.9 HTTP/1.1" 304 - 
+2019-09-04  09:45:26 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:26] "GET /static/layui/css/modules/code.css HTTP/1.1" 304 - 
+2019-09-04  09:45:32 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:32] "POST /user/login HTTP/1.1" 200 - 
+2019-09-04  09:45:32 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:32] "GET /account/ HTTP/1.1" 200 - 
+2019-09-04  09:45:32 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:32] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-04  09:45:32 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:32] "GET /task/add_task.html/ HTTP/1.1" 404 - 
+2019-09-04  09:45:32 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:32] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  09:45:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:36] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-04  09:45:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:36] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  09:45:38 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:38] "GET /static/layui/css/modules/layer/default/icon.png HTTP/1.1" 304 - 
+2019-09-04  09:45:38 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:38] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-04  09:45:38 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:38] "GET /static/layui/css/modules/layer/default/loading-1.gif HTTP/1.1" 304 - 
+2019-09-04  09:45:39 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:45:39] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-04  09:51:34 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  09:51:35 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  09:51:35 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  09:51:35 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  09:51:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:36] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-04  09:51:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:36] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  09:51:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:36] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  09:51:39 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:39] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  09:51:39 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:39] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  09:51:39 Wed  root ERROR G:\order_flask\apps\middle.py name 'g' is not defined 
+2019-09-04  09:51:39 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:39] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:42] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  root ERROR G:\order_flask\apps\middle.py name 'g' is not defined 
+2019-09-04  09:51:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:42] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:42] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:42] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  root ERROR G:\order_flask\apps\middle.py name 'g' is not defined 
+2019-09-04  09:51:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:42] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:42] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:42] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:42] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  root ERROR G:\order_flask\apps\middle.py name 'g' is not defined 
+2019-09-04  09:51:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:42] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:42] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  09:51:42 Wed  root ERROR G:\order_flask\apps\middle.py name 'g' is not defined 
+2019-09-04  09:51:43 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:51:43] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  09:52:22 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  09:52:23 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  09:52:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  09:52:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  09:52:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:52:23] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  09:52:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:52:23] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  09:52:23 Wed  root ERROR G:\order_flask\apps\middle.py name 'g' is not defined 
+2019-09-04  09:52:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:52:23] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  09:52:24 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:52:24] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  09:52:24 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:52:24] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  09:52:24 Wed  root ERROR G:\order_flask\apps\middle.py name 'g' is not defined 
+2019-09-04  09:52:24 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:52:24] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  09:52:34 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  09:52:34 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  09:52:34 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  09:52:34 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  09:52:34 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:52:34] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  09:52:35 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:52:35] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  09:52:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:52:36] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  09:54:01 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  09:54:02 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  09:54:02 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  09:54:02 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  09:54:02 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:54:02] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  09:54:02 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:54:02] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  09:54:03 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 09:54:03] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:00:11 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:00:12 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:00:12 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:00:12 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:00:12 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:00:12] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:00:12 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:00:12] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:00:13 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:00:13] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:00:24 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:00:24] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:00:25 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:00:25] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:01:10 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:01:10 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:01:10 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:01:10 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:01:11 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:01:11] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:01:11 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:01:11] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:01:12 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:01:12] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:08:48 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:08:49 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:08:49 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:08:49 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:08:51 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:08:51] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:08:51 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:08:51] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:08:52 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:08:52] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:08:53 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:08:53] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:08:53 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:08:53] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:08:54 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:08:54] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:08:59 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:08:59] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-04  10:09:00 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:09:00] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-04  10:10:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:10:42] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-04  10:10:43 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:10:43] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-04  10:10:46 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:10:46] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-04  10:10:47 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:10:47] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-04  10:10:57 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:10:57] "GET /user/middle_edit?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-04  10:11:04 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:04] "POST /user/middle_edit HTTP/1.1" 200 - 
+2019-09-04  10:11:04 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:04] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-04  10:11:04 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:04] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  10:11:07 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:07] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-04  10:11:08 Wed  root ERROR G:\order_flask\apps\user.py list index out of range 
+2019-09-04  10:11:08 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:08] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-04  10:11:17 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:17] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:11:17 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:17] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:11:18 Wed  root ERROR G:\order_flask\apps\middle.py list index out of range 
+2019-09-04  10:11:18 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:18] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:11:20 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:20] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:11:20 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:20] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:11:20 Wed  root ERROR G:\order_flask\apps\middle.py list index out of range 
+2019-09-04  10:11:20 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:20] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:11:30 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:30] "GET /user/middle_edit?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-04  10:11:35 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:35] "POST /user/middle_edit HTTP/1.1" 200 - 
+2019-09-04  10:11:35 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:35] "GET /user/middle_index HTTP/1.1" 200 - 
+2019-09-04  10:11:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:36] "GET /user/middle_info_list?page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  10:11:37 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:37] "GET /user/middle_task_html?name=蔡志伟 HTTP/1.1" 200 - 
+2019-09-04  10:11:38 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:38] "GET /user/middle_task?name=蔡志伟&page=1&limit=15 HTTP/1.1" 200 - 
+2019-09-04  10:11:44 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:44] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:11:44 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:44] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:11:44 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:11:44] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:18:29 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:18:29] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:18:30 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:18:30] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:22:00 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\user.py', reloading 
+2019-09-04  10:22:00 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:22:01 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:22:01 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:22:01 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:26:45 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:26:46 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:26:46 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:26:46 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:26:46 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:26:46] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:26:46 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:26:46] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:26:47 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:26:47] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:27:34 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:27:36 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:27:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:27:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:27:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:27:36] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:27:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:27:36] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:27:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:27:36] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:27:36 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:27:36] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:27:37 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:27:37] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:27:37 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:27:37] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:28:39 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:28:40 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:28:40 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:28:40 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:28:40 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:28:40] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:28:40 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:28:40] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:28:41 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:28:41] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:28:41 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:28:41] "GET /task/task_list/?sum_order_code=201908162054580d6cb&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  10:28:42 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:28:42] "GET /task/task_detail/?sum_order_code=201908162054580d6cb&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  10:28:47 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:28:47] "GET /task/task_list/?sum_order_code=20190816205623402eb&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  10:28:47 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:28:47] "GET /task/task_detail/?sum_order_code=20190816205623402eb&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  10:28:57 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:28:57] "GET /task/task_list/?sum_order_code=201908232013306b868&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  10:28:57 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:28:57] "GET /task/task_detail/?sum_order_code=201908232013306b868&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  10:29:14 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:29:14] "GET /user/logout HTTP/1.1" 200 - 
+2019-09-04  10:29:18 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:29:18] "GET /task/task_list/?sum_order_code=201908232013306b868&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  10:42:04 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:42:05 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:42:05 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:42:05 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:42:05 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:05] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:42:05 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:05] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:42:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:06] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:42:07 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:07] "GET /task/order_html/?sum_order_code=201908162054580d6cb&terrace=AMZ HTTP/1.1" 404 - 
+2019-09-04  10:42:22 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:42:23 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:42:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:42:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:42:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:23] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:42:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:23] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:42:24 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:24] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:42:27 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:27] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:42:27 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:27] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:42:28 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:28] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:42:29 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:29] "GET /middle/order_html/?sum_order_code=20190816205623402eb&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  10:42:29 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:42:29] "GET /task/task_detail/?sum_order_code=20190816205623402eb&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  10:43:20 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:43:20] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:43:20 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:43:20] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:43:21 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:43:21] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:43:21 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:43:21] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:43:21 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:43:21] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:43:21 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:43:21] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:44:28 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\middle.py', reloading 
+2019-09-04  10:44:28 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:44:30 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:44:30 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:44:30 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:46:14 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:46:15 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:46:15 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:46:15 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:46:17 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:46:17] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:46:17 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:46:17] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:46:18 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:46:18] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:46:19 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:46:19] "GET /middle/order_html/?sum_order_code=201908162058087ef89&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  10:46:19 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:46:19] "GET /middle/task_detail/?sum_order_code=201908162058087ef89&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  10:47:01 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:01] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:01 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:01] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:05 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:05] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:05 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:05] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:06] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:06] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:06] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:06] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:06] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:06] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:06] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:06] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:06] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:06 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:06] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:07 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:07] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:07 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:07] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:07 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:07] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:07 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:07] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:14 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:47:15 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:47:15 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:47:15 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:47:15 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:15] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:16 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:16] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:16 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:16] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:16 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:16] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:16 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:16] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:47:17 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:17] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:47:30 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:30] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:47:30 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:30] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:47:30 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:47:30] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:48:21 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:48:22 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:48:22 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:48:22 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:48:22 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:48:22] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:48:22 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:48:22] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:48:23 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:48:23] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:48:24 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:48:24] "GET /middle/order_html/?sum_order_code=201908162054580d6cb&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  10:48:24 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:48:24] "GET /middle/task_detail/?sum_order_code=201908162054580d6cb&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  10:48:45 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:48:45] "GET /order/one_detail/?task_code=201908162054580d6cb-1 HTTP/1.1" 200 - 
+2019-09-04  10:49:07 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-04  10:49:08 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-04  10:49:08 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-04  10:49:08 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-04  10:49:08 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:49:08] "GET /middle/ HTTP/1.1" 200 - 
+2019-09-04  10:49:09 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:49:09] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-04  10:49:09 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:49:09] "GET /middle/task_list?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-04  10:49:10 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:49:10] "GET /middle/order_html/?sum_order_code=201908162054580d6cb&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  10:49:10 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:49:10] "GET /middle/task_detail/?sum_order_code=201908162054580d6cb&page=1&limit=10 HTTP/1.1" 200 - 
+2019-09-04  10:49:12 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:49:12] "GET /middle/order_html/?sum_order_code=201908162054580d6cb&terrace=AMZ HTTP/1.1" 200 - 
+2019-09-04  10:49:12 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [04/Sep/2019 10:49:12] "GET /middle/task_detail/?sum_order_code=201908162054580d6cb&page=1&limit=10 HTTP/1.1" 200 - 
