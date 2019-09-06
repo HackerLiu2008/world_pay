@@ -70,7 +70,8 @@
 
 <table class="layui-hide" id="cus_task" lay-filter="cus_task" ></table>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">确认付款</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="again">再来一单</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit" id="pay">确认付款</a>
 </script>
 
 
@@ -121,39 +122,9 @@
                         body.contents().find("#sum_order_code").val(data.sum_order_code);
                     }
                 });
-
-                /*
-                $.ajax({
-                    type : 'GET',
-                    url : '/customer/edit_sum' + '?sum_order_code=' + data.sum_order_code,
-                    dataType : 'json',
-                    success : function(data) {
-                        {#var data1 = JSON.parse(data);#}
-                        {#console.log(data.code);#}
-                        // 成功提示框
-                        if (data.code == 0){
-
-                            parent.layer.msg('提交成功!', {
-                            icon : 6,
-                        });
-                        }else if(data.code == 502){
-                            parent.layer.msg('提交失败!', {
-                            icon : 5
-                        });
-                        }
-
-                    },
-                    error : function(data) {
-                        // 异常提示
-                        parent.layer.msg('出现网络故障', {
-                            icon : 5
-                        });
-                    }
-                });
-                */
-            }
-
-        });
+            }else if (layEvent==='again'){
+                location.href='/customer/again/' + '?sum_order_code=' + data.sum_order_code +"&terrace=" + data.terrace
+            }});
 
          //执行一个 table 实例
         table.render({
@@ -172,6 +143,7 @@
                 , {field: 'serve_money', title: '服务费(￥)', align: 'center', totalRow: true, sort: true}
                 , {field: 'all_money', title: '总金额(￥)', align: 'center', totalRow: true, sort: true}
                 , {field: 'deal_num', title: '支付凭证', align: 'center', sort: true}
+                , {field: 'pay_cus', title: '终端确认支付', align: 'center', sort: true}
                 , {field: 'sum_time', title: '任务时间', align: 'center', sort: true}
                 , {field: 'sum_state', title: '任务状态', align: 'center', sort: true}
                 , {field: 'task_plan', title: '任务进度', align: 'center', sort: true}
@@ -180,6 +152,13 @@
             ]]
             , id: 'cus_task'
             , page: true
+            , done: function (res, curr, count) {
+                    for (var i = 0; i < res.data.length; i++) {
+                        if (res.data[i].pay_cus == '已支付') {
+                            $('table tbody tr td a[id=pay]').eq(i).css('display', 'none')
+                        }
+                    }
+                }
         });
 
         //行事件
@@ -206,7 +185,7 @@
         });
 
 
-    });
+    })
 </script>
 </body>
 </html>

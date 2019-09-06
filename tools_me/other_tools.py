@@ -90,8 +90,8 @@ def datatime_to_timenum(tss1):
 
 # 验证两个日期大小
 def verify_login_time(before_time, now_time):
-    seconds = datatime_to_timenum(now_time) - datatime_to_timenum(before_time)
-    if seconds:
+    seconds = datatime_to_timenum(now_time) - datatime_to_timenum(before_time) + 1
+    if seconds > 0:
         return True
     else:
         return
@@ -460,13 +460,13 @@ def transferContent(content):
         return None
     else:
         string = ""
-        for c in content:
-            if c == '"':
-                string += '\\\"'
-            elif c == "'":
-                string += "\\\'"
-            elif c == "\\":
-                string += "\\\\"
+        for i in content:
+            if i == "'":
+                i = "\\'"
+                string += i
+            elif i == '"':
+                s = '\\"'
+                string += s
             else:
-                string += c
+                string += i
         return string

@@ -7,6 +7,26 @@ from tools_me.mysql_tools import SqlData
 from tools_me.parameter import RET, MSG
 
 
+@task_blueprint.route('/payed', methods=['GET'])
+@login_required
+def payed():
+    try:
+        sum_order_code = request.args.get('sum_order_code')
+        SqlData().update_task_one('pay_cus', '已支付', sum_order_code)
+        label = SqlData().search_task_one_field('customer_label', sum_order_code)
+        user_id = g.user_id
+        middle_id = SqlData().search_cus_one_field('middle_id', user_id, label)
+        if middle_id:
+            discount = SqlData().search_of_middle_id('discount', int(middle_id))
+            serve_money = SqlData().search_task_one_field('serve_money', sum_order_code)
+            middle_money = round(serve_money * discount, 2)
+            SqlData().update_task_one('middle_money', middle_money, sum_order_code)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+    except Exception as e:
+        logging.error(str(e))
+        return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
 @task_blueprint.route('/', methods=['GET'])
 @login_required
 def account():
@@ -201,7 +221,6 @@ def up_task_info():
     sum_money = data.get('sum_money')
     good_money = data.get('good_money')
     serve_money = data.get('serve_money')
-    pay_cus = data.get('pay_cus')
     customer_label = data.get('customer_label')
     sum_time = data.get('sum_time')
     note = data.get('note')
@@ -226,16 +245,6 @@ def up_task_info():
             SqlData().update_task_one('good_money', float(good_money), sum_order_code)
         if sum_money:
             SqlData().update_task_one('sum_money', float(sum_money), sum_order_code)
-        if pay_cus:
-            SqlData().update_task_one('pay_cus', pay_cus, sum_order_code)
-            label = SqlData().search_task_one_field('customer_label', sum_order_code)
-            user_id = g.user_id
-            middle_id = SqlData().search_cus_one_field('middle_id', user_id, label)
-            if middle_id:
-                discount = SqlData().search_of_middle_id('discount', int(middle_id))
-                serve_money = SqlData().search_task_one_field('serve_money', sum_order_code)
-                middle_money = round(serve_money * discount, 2)
-                SqlData().update_task_one('middle_money', middle_money, sum_order_code)
         if customer_label:
             SqlData().update_task_one('customer_label', customer_label, sum_order_code)
         if sum_time:

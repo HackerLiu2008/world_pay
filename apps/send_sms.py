@@ -6,16 +6,16 @@ from email.mime.text import MIMEText
 my_sender = "iuwby@qq.com"
 
 # 发送给谁
-send_her = "1655515529@qq.com"
+send_her = "buysys@163.com"
 
 # 密钥
 s_keys = "gxzegzuvcnvrdjjg"
 
 # 要发送的内容
-context = "------"
+context = "测试"
 
 # 邮件头部信息
-header_info = "-------"
+header_info = "测试"
 
 
 def mail():

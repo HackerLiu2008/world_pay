@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="icon" href="/static/img/buy-icon.png" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
-{#    <script src="/static/layui/layui.js"></script>#}
     <script src="/static/layui/layui.all.js"></script>
 </head>
 <body>
@@ -133,6 +132,7 @@
         <table class="layui-hide" id="task_list"></table>
 
         <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="pay" style="background-color:black;color: white" id="pay">确认付款</a>
             <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">完成</a>
             <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
@@ -453,10 +453,17 @@
                 {#, {field: 'pay_middle', title: '中介提成', align: 'center', sort: true}#}
                 , {field: 'note', title: '备注', align: 'center', sort: true}
                 , {field: 'task_plan', title: '任务进度', align: 'center', sort: true}
-                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+                , {fixed: 'right', width: 230, align: 'center', toolbar: '#barDemo'}
             ]]
             , id: 'testReload'
             , page: true
+            , done: function (res, curr, count) {
+                    for (var i = 0; i < res.data.length; i++) {
+                        if (res.data[i].pay_cus == '已支付') {
+                            $('table tbody tr td a[id=pay]').eq(i).css('display', 'none')
+                        }
+                    }
+                }
         });
 
         //行事件
@@ -545,7 +552,7 @@
                     });
                 }
             } else if (layEvent === 'del') {
-                layer.confirm('真的删除行么', function (index) {
+                layer.confirm('确定删除此订单吗?', function (index) {
                     obj.del(); //删除对应行（tr）的DOM结构
                     layer.close(index);
                     //向服务端发送删除指令
@@ -577,8 +584,6 @@
                         }
                             });
                     location.reload();
-
-
                 });
             } else if (layEvent === 'edit') {
                 layui.layer.open({
@@ -598,6 +603,35 @@
                         body.contents().find('#sum_order_code').val(data.sum_order_code)
                     }
                 });
+            }else if (layEvent==='pay'){
+                $.ajax({
+                    type : 'GET',
+                    url : '/task/payed' + '?sum_order_code=' + data.sum_order_code,
+                    dataType : 'json',
+                    success : function(data) {
+                        {#var data1 = JSON.parse(data);#}
+                        {#console.log(data.code);#}
+                        // 成功提示框
+                        if (data.code == 0){
+
+                            parent.layer.msg(data.msg, {
+                            icon : 6,
+                        });
+                        }else if(data.code == 502){
+                            parent.layer.msg(data.msg, {
+                            icon : 5
+                        });
+                        }
+
+                    },
+                    error : function(data) {
+                        // 异常提示
+                        parent.layer.msg('出现网络故障', {
+                            icon : 5
+                        });
+                    }
+                        });
+                location.reload();
             }
             return false
         });

@@ -49,7 +49,7 @@
                 , offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
                 , id: 'preview'//防止重复弹出
                 , title: '待确认任务详细信息'
-                , area: ['1800px', '900px']
+                , area: ['90%','90%']
                 , anim: 1
                 , shadeClose: true
                 , content: '/customer/preview_index'
@@ -76,7 +76,10 @@
                     layer.alert(res.msg)
                 }else if(res.code == 0){
                     layer.closeAll();
-                    layer.msg('上传成功!')
+                    layer.msg('上传成功!请先点击预览,核对金额,确认无误后点击提交!', {
+                        time:60000,
+                        btn: ['明白了']
+                      });
                 }
             }
         });

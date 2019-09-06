@@ -627,7 +627,7 @@ def login():
             terrace = user_data.get('terrace')
             time_str = expire_time.strftime("%Y-%m-%d %H:%M:%S")
             now_time = xianzai_time()
-            if user_pass == pass_word and verify_login_time(time_str, now_time):
+            if user_pass == pass_word and verify_login_time(now_time, time_str):
                 session['user_id'] = user_id
                 session['user_name'] = user_name
                 session['pass_word'] = pass_word

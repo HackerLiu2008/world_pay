@@ -93,7 +93,7 @@
                     <div class="layui-form-item">
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">国家</label>
+                            <label class="layui-form-label" title="过滤符合国家要求的账号">国家</label>
                             <div class="layui-input-block">
                                 <select name="country">
                                     <option value="0" selected="">美国</option>
@@ -118,7 +118,7 @@
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">距上次购买</label>
+                            <label class="layui-form-label" title="距离账号上次购买天数">距上次购买</label>
                             <div class="layui-input-block">
                                 <input type="number" name="last_buy" lay-verify="required" lay-reqtext="必填项，岂能为空？"
                                        placeholder="距离上次购买天数" autocomplete="off" class="layui-input" value="3">
@@ -127,7 +127,7 @@
 
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">同一店铺</label>
+                            <label class="layui-form-label" title="是否允许账号购买过此订单的店铺">同一店铺</label>
                             <div class="layui-input-block">
                                 <select name="store">
                                     <option value="0" selected="">绝不</option>
@@ -138,7 +138,7 @@
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">同一ASIN</label>
+                            <label class="layui-form-label" title="是否允许账号购买过此订单的ASIN">同一ASIN</label>
                             <div class="layui-input-block">
                                 <select name="asin">
                                     <option value="0" selected="">绝不</option>
@@ -149,7 +149,7 @@
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">店铺组合</label>
+                            <label class="layui-form-label" title="假如这个数值设置为2，比如买家甲购买了店铺a也购买了店铺b,那可以分配买家乙可以购买店铺a和店铺b的任何产品，但假如买家甲购又购买了店铺c，那买家乙就不能购买店铺c了,这时候就不能分配买家乙购买店铺c了">店铺组合</label>
                             <div class="layui-input-block">
                                 <select name="store_group">
                                     <option value="0" selected="">两组</option>
@@ -159,7 +159,7 @@
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">ASIN组合</label>
+                            <label class="layui-form-label" title="假如这个数值设置为2，比如买家甲购买了产品A也购买了产品B,那可以分配买家乙也可以购买产品A和产品B,，但假如买家甲购买了产品C,这时候就不能分配买家乙购买产品C了。">ASIN组合</label>
                             <div class="layui-input-block">
                                 <select name="asin_group">
                                     <option value="0" selected="">两组</option>

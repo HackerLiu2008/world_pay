@@ -3,12 +3,313 @@ import json
 import logging
 import os
 import xlrd
-from tools_me.other_tools import customer_required, save_file, excel_to_data, asin_num, sum_code, xianzai_time, date_to_week
+from tools_me.other_tools import customer_required, save_file, excel_to_data, asin_num, sum_code, xianzai_time, \
+    date_to_week, transferContent, now_day, verify_login_time
 from tools_me.parameter import RET, MSG, TASK_DIR, PHOTO_DIR
 from tools_me.up_pic import sm_photo
 from . import customer_blueprint
 from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
+
+
+@customer_blueprint.route('/preview_money', methods=['GET'])
+@customer_required
+def preview_money():
+    cus_id = g.cus_id
+    user_id = g.cus_user_id
+    task_json = SqlData().search_cus_field('task_json', cus_id)
+    if not task_json:
+        return '请先导入表格文件!'
+    task_dict = json.loads(task_json, strict=False)
+    serve_money = task_dict.get('serve_money')
+    good_sum_money = task_dict.get('good_sum_money')
+    terrace = task_dict.get('terrace')
+    sum_num = task_dict.get('sum_num')
+    serve_dis = "%.2f" % serve_money
+    exchange = SqlData().search_user_field('dollar_exchange', user_id)
+    good_dis = "%.2f" % (good_sum_money * float(exchange))
+    sum_money = float(serve_dis) + float(good_dis)
+    context = dict()
+    context['serve_money'] = str(serve_dis) + " = " + str(serve_money) + "(服务费总额)"
+    context['good_money'] = str(good_dis) + " = " + str(round(good_sum_money, 2)) + "(商品金额总额)" + "*" + str(float(exchange)) + "(汇率)"
+    context['sum_money'] = str(round(sum_money, 2))
+    context['terrace'] = terrace
+    context['sum_num'] = sum_num
+    return render_template('customer/preview_money.html', **context)
+
+
+@customer_blueprint.route('/again_preview', methods=['GET', 'POST'])
+@customer_required
+def again_preview():
+    if request.method == 'GET':
+        user_id = g.cus_user_id
+        cus_id = g.cus_id
+        dome_task = SqlData().search_cus_field('task_json', cus_id)
+        task_dict = json.loads(dome_task)
+        task_list = task_dict.get('task_info')
+
+        # 订单数据量
+        sum_menber = len(task_list)
+
+        # 检查订单时间:
+        run_time_list = list()
+        index = 1
+        for i in task_list:
+            task_run_time = i.get('task_run_time')
+            t1 = now_day() + ' 00:00:00'
+            if verify_login_time(task_run_time, t1):
+                run_time_list.append(index)
+            index += 1
+        if len(run_time_list) > 0:
+            s = ''
+            for num in run_time_list:
+                dome = str(num) + "行, "
+                s += dome
+            s = '请修改第: ' + s + '下单时间!(不得小于当天日期....)'
+            return jsonify({'code': RET.SERVERERROR, 'msg': s})
+
+        # 取出asin, serve_class, good_money 列表
+        asin_list = list()
+        serve_class_list = list()
+        good_money_list = list()
+        for i in task_list:
+            asin_list.append(i.get('asin'))
+            serve_class_list.append(i.get('serve_class'))
+            good_money_list.append(i.get('good_money'))
+
+        # 计算商品总额
+        good_sum_money = 0
+        for i in good_money_list:
+            good_sum_money += float(i)
+
+        # 获取每个asin对饮的数量(字典)
+        asin_num_dict = asin_num(asin_list)
+        # 去重后的asin列表
+        one_asin_list = list(asin_num_dict.keys())
+        # 将asin和serve_class组合为列表,数据结构:[['1AJFOAFJA', 'Review/FeedBack'], ['AB', 'FeedBack']]
+        asin_group = list()
+        index = 0
+        for i in asin_list:
+            one_asin = [asin_list[index], serve_class_list[index]]
+            asin_group.append(one_asin)
+            index += 1
+
+        # 计算review的数量和feedback数量
+        asin_detail_list = list()
+        for asin in one_asin_list:
+            asin_detail = dict()
+            review_num = 0
+            feedback_num = 0
+            for i in asin_group:
+                if i[0] == asin and i[1] == "Review":
+                    review_num += 1
+                if i[0] == asin and i[1] == "FeedBack":
+                    feedback_num += 1
+                if i[0] == asin and i[1] == "Review/FeedBack":
+                    review_num += 1
+                    feedback_num += 1
+            asin_detail['asin'] = asin
+            num = asin_num_dict.get(asin)
+            asin_detail['num'] = num
+            asin_detail['review_num'] = review_num
+            asin_detail['feedback'] = feedback_num
+            asin_detail['bili'] = review_num / num
+            asin_detail_list.append(asin_detail)
+
+        # 查询服务商的收费标准
+        serve_json = SqlData().search_cus_field('amz_money', cus_id)
+        if not serve_json:
+            return jsonify({'code': RET.SERVERERROR, 'msg': "请联系服务商设置收费标准!"})
+        else:
+            serve_dict = json.loads(serve_json)
+            feedback = serve_dict.get('feedback')
+            if not feedback:
+                return jsonify({'code': RET.SERVERERROR, 'msg': "请联系服务商设置FeedBack收费标准!"})
+
+        # 判断留评比例是否符合要求
+        pass_asin = list()
+        for i in asin_detail_list:
+            bili = i.get('bili')
+            bili_baifen = str(int(bili * 100))
+            if bili_baifen in serve_dict:
+                i['review_price'] = serve_dict.get(str(bili_baifen))
+            else:
+                pass_asin.append(i)
+        if len(pass_asin) > 0:
+            s = "以下ASIN的留评比例不符合服务商的收费标准: "
+            for i in pass_asin:
+                asin = i.get('asin')
+                bili = str(int(i.get('bili') * 100)) + '%'
+                s1 = asin + ": " + bili + "。 "
+                s += s1
+            s + '更多收费标准请咨询服务商!'
+            return jsonify({'code': RET.SERVERERROR, 'msg': s})
+
+        for i in asin_detail_list:
+            asin_n = i.get('num')
+            price = i.get('review_price')
+            review_money = asin_n * price
+            feedback_num = i.get('feedback')
+            feedback_money = feedback_num * feedback
+            i['sum_money'] = review_money + feedback_money
+
+        serve_money = 0
+        for i in asin_detail_list:
+            money = i.get('sum_money')
+            serve_money += money
+        task_dict['serve_money'] = serve_money
+
+        task_dict['good_sum_money'] = good_sum_money
+
+        task_dict['sum_num'] = sum_menber
+        # print(task_info_dict)
+        task_info_json = json.dumps(task_dict, ensure_ascii=False)
+        string = transferContent(task_info_json)
+        label = g.cus_label
+        SqlData().update_user_cus('task_json', string, user_id, label)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
+@customer_blueprint.route('/once_again', methods=['GET', 'POST'])
+@customer_required
+def once_again():
+    if request.method == 'POST':
+        cus_id = g.cus_id
+        task_code = request.args.get('task_code')
+        dome_task = SqlData().search_cus_field('task_json', cus_id)
+        task_dict = json.loads(dome_task)
+        task_list = task_dict.get('task_info')
+        s = None
+        for q in task_list:
+            task_code_key = q.get('task_code')
+            if task_code == task_code_key:
+
+                s = q.copy()
+        t = sum_code()
+        s['task_code'] = t
+        task_list.append(s)
+        task_json = json.dumps(task_dict, ensure_ascii=False)
+        user_id = g.cus_user_id
+        label = g.cus_label
+        task_json = transferContent(task_json)
+        SqlData().update_user_cus('task_json', task_json, user_id, label)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+    if request.method == 'GET':
+        cus_id = g.cus_id
+        task_code = request.args.get('task_code')
+        dome_task = SqlData().search_cus_field('task_json', cus_id)
+        task_dict = json.loads(dome_task)
+        task_list = task_dict.get('task_info')
+        for i in task_list:
+            if task_code == i.get('task_code'):
+                task_list.remove(i)
+        task_json = json.dumps(task_dict, ensure_ascii=False)
+        user_id = g.cus_user_id
+        label = g.cus_label
+        task_json = transferContent(task_json)
+        SqlData().update_user_cus('task_json', task_json, user_id, label)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
+@customer_blueprint.route('/again_edit', methods=['GET', 'POST'])
+@customer_required
+def again_edit():
+    if request.method == 'GET':
+        task_code = request.args.get('task_code')
+        context = dict()
+        context['task_code'] = task_code
+        return render_template('customer/again_edit.html', **context)
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.form.get('data'))
+            task_code = data.get('task_code')
+            run_time = data.get('sum_time')
+            asin = data.get('asin')
+            store_name = data.get('store_name')
+            key_word = data.get('key_word')
+            kw_location = data.get('kw_location')
+            good_name = data.get('good_name')
+            good_money = data.get('good_money')
+            good_link = data.get('good_link')
+            pay_method = data.get('pay_method')
+            serve_class = data.get('serve_class')
+            mail_method = data.get('mail_method')
+            note = data.get('note')
+            cus_id = g.cus_id
+            dome_task = SqlData().search_cus_field('task_json', cus_id)
+            task_dict = json.loads(dome_task)
+            task_list = task_dict.get('task_info')
+            for i in task_list:
+                if task_code == i.get('task_code'):
+                    if run_time:
+                        i['task_run_time'] = run_time
+                    if asin:
+                        i['asin'] = asin
+                    if store_name:
+                        i['store_name'] = store_name
+                    if key_word:
+                        i['key_word'] = key_word
+                    if kw_location:
+                        i['kw_location'] = kw_location
+                    if good_money:
+                        i['good_money'] = good_money
+                    if good_name:
+                        i['good_name'] = good_name
+                    if good_link:
+                        i['good_link'] = good_link
+                    if pay_method:
+                        i['pay_method'] = pay_method
+                    i['serve_class'] = serve_class
+                    if mail_method:
+                        i['mail_method'] = mail_method
+                    if note:
+                        i['note'] = note
+            task_json = json.dumps(task_dict, ensure_ascii=False)
+            user_id = g.cus_user_id
+            label = g.cus_label
+            task_json = transferContent(task_json)
+            SqlData().update_user_cus('task_json', task_json, user_id, label)
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@customer_blueprint.route('/task_again/', methods=['GET'])
+@customer_required
+def task_again():
+    sum_order_code = request.args.get('sum_order_code')
+    results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
+    try:
+        cus_id = g.cus_id
+        user_id = g.cus_user_id
+        dome_task = SqlData().search_cus_field('task_json', cus_id)
+        if not dome_task:
+            task_info = SqlData().search_task_detail(sum_order_code)
+            terrace = SqlData().search_user_field('terrace', user_id)
+            task_dict = dict()
+            task_dict['terrace'] = terrace
+            task_dict['serve_money'] = 0
+            task_dict['good_sum_money'] = 0
+            task_dict['sum_num'] = 0
+            task_dict['task_info'] = task_info
+            task_json = json.dumps(task_dict, ensure_ascii=False)
+            label = g.cus_label
+            user_id = g.cus_user_id
+            task_json = transferContent(task_json)
+            SqlData().update_user_cus('task_json', task_json, user_id, label)
+            results['data'] = task_info
+            results['count'] = len(task_info)
+        else:
+            task_dict = json.loads(dome_task)
+            task_info = task_dict.get('task_info')
+            results['data'] = task_info
+            results['count'] = len(task_info)
+    except Exception as e:
+        logging.warning('没有符合条件的数据' + str(e))
+        results['code'] = RET.SERVERERROR
+        results['msg'] = MSG.NODATA
+    return results
 
 
 @customer_blueprint.route('/amz_search/', methods=['GET'])
@@ -237,26 +538,44 @@ def task_choose():
         index = 1
         for i in task_list:
             task_code = sum_order_code + '-' + str(index)
-            country = i[0]
-            task_run_time = i[1]
-            asin = i[2]
-            key_word = i[3]
-            kw_location = i[4]
-            store_name = i[5]
-            good_name = i[6]
-            good_money = i[7]
-            good_link = i[8]
-            pay_method = i[9]
-            serve_class = i[10]
-            mail_method = i[11]
-            note = i[12]
-            review_title = i[13]
-            review_info = i[14]
-            feedback_info = i[15]
+            if isinstance(i, list):
+                country = i[0]
+                task_run_time = i[1]
+                asin = i[2]
+                key_word = i[3]
+                kw_location = i[4]
+                store_name = i[5]
+                good_name = i[6]
+                good_money = i[7]
+                good_link = i[8]
+                pay_method = i[9]
+                serve_class = i[10]
+                mail_method = i[11]
+                note = i[12]
+                review_title = i[13]
+                review_info = i[14]
+                feedback_info = i[15]
+            else:
+                country = i.get('country')
+                task_run_time = i.get('task_run_time')
+                asin = i.get('asin')
+                key_word = i.get('key_word')
+                kw_location = i.get('kw_location')
+                store_name = i.get('store_name')
+                good_name = i.get('good_name')
+                good_money = i.get('good_money')
+                good_link = i.get('good_link')
+                pay_method = i.get('pay_method')
+                serve_class = i.get('serve_class')
+                mail_method = i.get('mail_method')
+                note = i.get('note')
+                review_title = ''
+                review_info = ''
+                feedback_info = ''
             try:
                 SqlData().insert_task_detail(parent_id, task_code, country, asin, key_word, kw_location, store_name,
                                              good_name, good_money, good_link, pay_method, task_run_time, serve_class,
-                                             mail_method, note, review_title, review_info, feedback_info)
+                                             mail_method, note, review_title, review_info, feedback_info, user_id)
                 index += 1
             except Exception as e:
                 logging.error(str(e))
@@ -623,16 +942,7 @@ def smt_task():
                 task_info_dict['sunday_num'] = sunday_num
                 # print(task_info_dict)
                 task_info_json = json.dumps(task_info_dict, ensure_ascii=False)
-                string = ""
-                for i in task_info_json:
-                    if i == "'":
-                        i = "\\'"
-                        string += i
-                    elif i == '"':
-                        s = '\\"'
-                        string += s
-                    else:
-                        string += i
+                string = transferContent(task_info_json)
                 label = g.cus_label
                 SqlData().update_user_cus('task_json', string, user_id, label)
 
@@ -878,16 +1188,7 @@ def up_task():
                 task_info_dict['sum_num'] = sum_num
                 # print(task_info_dict)
                 task_info_json = json.dumps(task_info_dict, ensure_ascii=False)
-                string = ""
-                for i in task_info_json:
-                    if i == "'":
-                        i = "\\'"
-                        string += i
-                    elif i == '"':
-                        s = '\\"'
-                        string += s
-                    else:
-                        string += i
+                string = transferContent(task_info_json)
                 label = g.cus_label
                 SqlData().update_user_cus('task_json', string, user_id, label)
 
@@ -1005,6 +1306,20 @@ def task_detail():
     return results
 
 
+@customer_blueprint.route('/again/', methods=['GET'])
+@customer_required
+def again():
+    sum_order_code = request.args.get('sum_order_code')
+    terrace = request.args.get('terrace')
+    context = dict()
+    context['sum_code'] = sum_order_code
+    context['terrace'] = terrace
+    if terrace == "AMZ":
+        return render_template('customer/again_preview.html', **context)
+    if terrace == "SMT":
+        return render_template('customer/customer_smt_list.html', **context)
+
+
 @customer_blueprint.route('/task_list/', methods=['GET'])
 @customer_required
 def task_list():
@@ -1016,12 +1331,6 @@ def task_list():
     if terrace == "AMZ":
         return render_template('customer/customer_task_list.html', **context)
     if terrace == "SMT":
-        # context['good_name'] = '搜索价格'
-        # context['kw_location'] = 'SKU'
-        # context['serve_class'] = '邮费'
-        # context['review_title'] = '文字留评'
-        # context['review_info'] = '图片留评'
-        # context['feedback_info'] = '默认留评'
         return render_template('customer/customer_smt_list.html', **context)
 
 

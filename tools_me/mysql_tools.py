@@ -1,7 +1,9 @@
 import json
 import pymysql
 import logging
+from flask import jsonify
 from tools_me.other_tools import is_json
+from tools_me.parameter import RET, MSG
 
 
 class SqlData(object):
@@ -132,6 +134,7 @@ class SqlData(object):
             detail_dict['task_run_time'] = str(i[16])
             detail_dict['task_state'] = i[17]
             detail_dict['brush_hand'] = i[18]
+            detail_dict['order_num'] = i[19]
             detail_dict['note'] = i[24]
             detail_dict['review_title'] = i[25]
             if is_json(i[26]):
@@ -366,7 +369,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.error("更新客户标签失败!" + str(e))
+            logging.error("更新客户留评失败!" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -870,21 +873,26 @@ class SqlData(object):
 
     def insert_task_detail(self, parent_id, task_code, country, asin, key_word, kw_location, store_name, good_name,
                            good_money, good_link, pay_method, task_run_time, serve_class, mail_method, note,
-                           review_title, review_info, feedback_info):
+                           review_title, review_info, feedback_info, user_id):
         sql = "INSERT INTO task_detail_info(parent_id,task_code,country,asin,key_word,kw_location,store_name," \
               "good_name,good_money,good_link,pay_method,task_run_time, serve_class, mail_method, note, review_title, " \
-              "review_info, feedback_info) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}'," \
-              "'{}',\"{}\",\"{}\",\"{}\",\"{}\")".format(parent_id, task_code, country, asin, key_word, kw_location, store_name,
-                                                 good_name, good_money, good_link, pay_method, task_run_time,
-                                                 serve_class, mail_method, note, review_title, review_info,
-                                                 feedback_info)
+              "review_info, feedback_info) VALUES (\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\"," \
+              "\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\")".format(parent_id, task_code,
+                                                        country, asin, key_word,kw_location, store_name,
+                                                         good_name, good_money, good_link, pay_method, task_run_time,
+                                                         serve_class, mail_method, note, review_title, review_info,
+                                                         feedback_info)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
             logging.error("插入任务订单行为失败" + str(e))
             self.connect.rollback()
+            sum_order_code = task_code.split('-')[0]
+            self.del_task(sum_order_code, user_id)
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
         self.close_connect()
+
 
     def search_last_id(self, table_name):
         sql = "select id from {} order by id DESC limit 1".format(table_name)
