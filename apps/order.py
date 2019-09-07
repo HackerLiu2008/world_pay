@@ -1,6 +1,8 @@
 import json
 import logging
 import os
+from operator import itemgetter
+
 from tools_me.other_tools import login_required, now_day, check_param, filter_by_time, filter_by_store, \
     filter_by_asin, xianzai_time, sum_code
 from tools_me.up_pic import sm_photo
@@ -455,10 +457,13 @@ def order_detail():
             asin_sql = ''
             order_sql = ''
             if task_code:
+                task_code.strip()
                 task_sql = "AND task_code='" + task_code + "'"
             if asin:
+                task_code.strip()
                 asin_sql = "AND asin='" + asin + "'"
             if order_num:
+                task_code.strip()
                 order_sql = "AND order_num='" + order_num + "'"
             task_info = SqlData().search_all_order(user_id, task_sql, asin_sql, order_sql)
             if len(task_info) == 0:
