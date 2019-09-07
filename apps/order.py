@@ -1,8 +1,6 @@
 import json
 import logging
 import os
-from operator import itemgetter
-
 from tools_me.other_tools import login_required, now_day, check_param, filter_by_time, filter_by_store, \
     filter_by_asin, xianzai_time, sum_code
 from tools_me.up_pic import sm_photo
@@ -49,6 +47,7 @@ def sub_review():
         SqlData().update_review_one('task_state', '已完成', task_code)
         SqlData().update_review_one('urgent', '', task_code)
         SqlData().update_account_one('account_state', '', account, user_id)
+        SqlData().update_account_review_num(account, user_id)
         if note:
             SqlData().update_review_one('review_note', note, task_code)
         return jsonify(results)

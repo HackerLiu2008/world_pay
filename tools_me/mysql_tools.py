@@ -9,10 +9,12 @@ from tools_me.parameter import RET, MSG
 class SqlData(object):
     def __init__(self):
         # host = "rm-j6c3t1i83rgylsuamvo.mysql.rds.aliyuncs.com"
-        host = "119.3.251.10"
+        # host = "119.3.251.10"
+        host = "114.116.236.27"
         port = 3306
         user = "root"
-        password = "lx7996"
+        # password = "lx7996"
+        password = "gute123"
         database = "buysys"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
@@ -455,7 +457,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.error("更新客户标签失败!" + str(e))
+            logging.error("更新客户订单task_json失败!" + str(e))
             self.connect.rollback()
         self.close_connect()
 
@@ -515,6 +517,16 @@ class SqlData(object):
             self.connect.commit()
         except Exception as e:
             logging.error("更新是否已购买状态失败" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def update_account_review_num(self, account, user_id):
+        sql = "UPDATE account_info SET review_num=review_num+1 WHERE account ='{}' AND user_id={}".format(account, user_id)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新账号留评留评次数失败" + str(e))
             self.connect.rollback()
         self.close_connect()
 
