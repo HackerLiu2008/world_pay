@@ -12,6 +12,28 @@ from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
 
 
+@customer_blueprint.route('/del_task', methods=['GET'])
+@customer_required
+def del_task():
+    sum_order_code = request.args.get('sum_order_code')
+    user_id = g.cus_user_id
+    results = {'code': RET.OK, 'msg': MSG.OK}
+    task_state = SqlData().search_task_one_field('task_state', sum_order_code)
+    if task_state == '已支付':
+        results['code'] = RET.SERVERERROR
+        results['msg'] = '订单已确认!不可取消请刷新当前界面!'
+        return jsonify(results)
+    if sum_order_code:
+        try:
+            SqlData().del_task(sum_order_code, user_id)
+            return jsonify(results)
+        except Exception as e:
+            logging.error(str(e))
+            results['code'] = RET.SERVERERROR
+            results['msg'] = MSG.DATAERROR
+            return jsonify(results)
+
+
 @customer_blueprint.route('/preview_money', methods=['GET'])
 @customer_required
 def preview_money():

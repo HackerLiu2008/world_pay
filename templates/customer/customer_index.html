@@ -70,8 +70,9 @@
 
 <table class="layui-hide" id="cus_task" lay-filter="cus_task" ></table>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="again">再来一单</a>
+    <a class="layui-btn layui-btn-xs" style="background-color: #1E9FFF" lay-event="again">再来一单</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit" id="pay">确认付款</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="cancel" id="cancel">取消订单</a>
 </script>
 
 
@@ -124,6 +125,40 @@
                 });
             }else if (layEvent==='again'){
                 location.href='/customer/again/' + '?sum_order_code=' + data.sum_order_code +"&terrace=" + data.terrace
+            }else if (layEvent==='cancel'){
+                layer.confirm('确定删除此订单吗?', function (index) {
+                    obj.del(); //删除对应行（tr）的DOM结构
+                    layer.close(index);
+                    //向服务端发送删除指令
+                    $.ajax({
+                        type : 'GET',
+                        url : '/customer/del_task' + '?sum_order_code=' + data.sum_order_code,
+                        dataType : 'json',
+                        success : function(data) {
+                            {#var data1 = JSON.parse(data);#}
+                            {#console.log(data.code);#}
+                            // 成功提示框
+                            if (data.code == 0){
+
+                                parent.layer.msg('删除成功!', {
+                                icon : 6,
+                            });
+                            }else if(data.code == 502){
+                                parent.layer.msg('删除失败!', {
+                                icon : 5
+                            });
+                            }
+
+                        },
+                        error : function(data) {
+                            // 异常提示
+                            parent.layer.msg('出现网络故障', {
+                                icon : 5
+                            });
+                        }
+                            });
+                    {#location.reload();#}
+                });
             }});
 
          //执行一个 table 实例
@@ -148,14 +183,15 @@
                 , {field: 'sum_state', title: '任务状态', align: 'center', sort: true}
                 , {field: 'task_plan', title: '任务进度', align: 'center', sort: true}
                 , {field: 'note', title: '备注', align: 'center', sort: true}
-                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+                , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo'}
             ]]
             , id: 'cus_task'
             , page: true
             , done: function (res, curr, count) {
                     for (var i = 0; i < res.data.length; i++) {
                         if (res.data[i].pay_cus == '已支付') {
-                            $('table tbody tr td a[id=pay]').eq(i).css('display', 'none')
+                            $('table tbody tr td a[id=pay]').eq(i).css('display', 'none');
+                            $('table tbody tr td a[id=cancel]').eq(i).css('display', 'none');
                         }
                     }
                 }
@@ -183,8 +219,6 @@
             //标注选中样式
             obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
         });
-
-
     })
 </script>
 </body>
