@@ -233,8 +233,8 @@ def smt_pay():
         pay_method = data.get('pay_method')
         pay_dis = data.get('pay_discount')
         pay_discount = SqlData().search_user_field('pay_discount', user_id)
-        pay_dict = json.loads(pay_discount)
         if not pay_dis:
+            pay_dict = json.loads(pay_discount)
             if pay_method in pay_dict:
                 pay_dict.pop(pay_method)
                 pay_json = json.dumps(pay_dict, ensure_ascii=False)

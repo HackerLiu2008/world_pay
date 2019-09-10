@@ -51,25 +51,30 @@
                 type : 'POST',
                 url : '/customer/smt_choose',
                 dataType : 'json',
+                beforeSend:function(){
+                    layer.load()
+                },
                 success : function(data) {
                     // 成功提示框
                     if (data.code == 0){
                         parent.layer.msg('导入成功!', {
                         icon : 6,
                     });
-                        parent.layer.closeAll('iframe'); //关闭弹框
+                        parent.layer.closeAll('iframe');
+                        location.href='/customer/index' //关闭弹框
                     }else if(data.code == 502){
                         parent.layer.msg('提交失败!', {
                         icon : 5
                     });
+                        layer.closeAll();
                     }
-
                 },
                 error : function(data) {
                     // 异常提示
                     parent.layer.msg('出现网络故障', {
                         icon : 2
                     });
+                    layer.closeAll();
                 }
                     })
             });

@@ -99,6 +99,7 @@
                     <input type="text" name="account" placeholder="请输入买家账号" autocomplete="off"
                            class="layui-input" id="account" value="">
                 </div>
+            </div>
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
@@ -106,9 +107,7 @@
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
-            </div>
         </form>
-
 
         <div class="layui-tab" lay-filter="tables">
           <ul class="layui-tab-title">
@@ -204,7 +203,7 @@
                  type: 2
                 ,title: false //不显示标题栏
                 ,closeBtn: false
-                ,area: ['500px','700px']
+                ,area: ['27%','30%']
                 ,shade: 0.8
                 ,id: 'smt_serve_pay' //设定一个id，防止重复弹出
                 ,btn: ['关闭']
@@ -437,6 +436,7 @@
                 , {field: 'email_pw', title: '邮箱密码', align: 'center', sort: true}
                 , {field: 'pay_money', title: '总支付金额', align: 'center', totalRow: true, sort: true}
                 , {field: 'pay_num', title: '购买次数', align: 'center', totalRow: true, sort: true}
+                , {field: 'review_num', title: '留评次数', align: 'center', totalRow: true, sort: true}
                 , {field: 'reg_time', title: '注册时间', align: 'center', sort: true}
                 , {field: 'label', title: '标签', align: 'center', sort: true}
                 , {field: 'terrace', title: '平台', align: 'center', sort: true}

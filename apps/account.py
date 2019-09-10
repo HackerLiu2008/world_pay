@@ -1,6 +1,5 @@
 import json
 import logging
-
 from . import account_blueprint
 from flask import render_template, jsonify, request, session, g
 from tools_me.mysql_tools import SqlData

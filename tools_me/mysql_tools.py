@@ -34,6 +34,7 @@ class SqlData(object):
             detail_dict["email_pw"] = i[5]
             detail_dict["pay_money"] = i[6]
             detail_dict["pay_num"] = i[7]
+            detail_dict["review_num"] = i[8]
             detail_dict["reg_time"] = str(i[9])
             detail_dict["label"] = i[10]
             detail_dict['terrace'] = i[11]
@@ -188,6 +189,7 @@ class SqlData(object):
             order_data['feedback_info'] = i[27]
             order_data['urgent'] = i[30]
             order_data['customer_label'] = i[31]
+            order_data['buy_method'] = i[32]
             order_list.append(order_data)
         return order_list
 
@@ -328,6 +330,15 @@ class SqlData(object):
         rows = self.cursor.fetchall()
         results = self.task_detail_list(rows)
         return results
+
+    def search_smt(self, sum_order_code):
+        sql = "SELECT task_detail_info.*, task_parent.customer_label,task_parent.pay_middle FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
+              "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE  " \
+              "task_parent.sum_order_code = '{}'".format(sum_order_code)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        now_order_list = self.orders_to_dict(rows)
+        return now_order_list
 
     #  按条件搜索小订单
     def search_task_field(self, user_id, label, state_sql=''):
@@ -654,7 +665,7 @@ class SqlData(object):
         return row[0]
 
     def search_now_order(self, t1, t2, user_id):
-        sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
+        sql = "SELECT task_detail_info.*, task_parent.customer_label,task_parent.pay_middle FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE task_run_time BETWEEN " \
               "'{}' and '{}' AND user_info.id = {} AND task_detail_info.task_state = '' AND task_parent.pay_cus != ''".format(t1, t2, user_id)
         self.cursor.execute(sql)
@@ -672,7 +683,7 @@ class SqlData(object):
         return now_order_list
 
     def search_order_of_state(self, buy_state, user_id):
-        sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
+        sql = "SELECT task_detail_info.*, task_parent.customer_label,task_parent.pay_middle FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE user_info.id = {} AND " \
               "task_detail_info.task_state = '{}' AND task_parent.pay_cus != ''".format(user_id, buy_state)
         self.cursor.execute(sql)
@@ -680,8 +691,18 @@ class SqlData(object):
         now_order_list = self.orders_to_dict(rows)
         return now_order_list
 
+    # 搜索已提交订单号的任务
+    def search_order_of_order_num(self, user_id):
+        sql = "SELECT task_detail_info.*, task_parent.customer_label,task_parent.pay_middle FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
+              "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE user_info.id = {} AND " \
+              "task_detail_info.order_num != '' AND task_parent.pay_cus != ''".format(user_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        now_order_list = self.orders_to_dict(rows)
+        return now_order_list
+
     def search_order_of_overdue(self, t, user_id):
-        sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
+        sql = "SELECT task_detail_info.*, task_parent.customer_label,task_parent.pay_middle FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE task_run_time < '{}' AND " \
               "user_info.id = {} AND task_detail_info.task_state = '' AND task_parent.pay_cus != ''"\
                .format(t, user_id)

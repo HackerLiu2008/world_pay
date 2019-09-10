@@ -42,7 +42,7 @@
 <table class="layui-hide" id="task_list" lay-filter="task_list"></table>
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="urgent">催评</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="urgent" id="urgent">催评</a>
     </script>
 </div>
 </div>
@@ -110,7 +110,6 @@
                     ,content: '/customer/one_detail/?task_code=' + task_code
                   });
 
-
             //标注选中样式
             obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
         });
@@ -149,6 +148,7 @@
                 , {field: 'mail_method', title: '物流方式', align: 'center'}
                 , {field: 'task_run_time', title: '下单时间', align: 'center'}
                 , {field: 'task_state', title: '订单状态', align: 'center'}
+                , {field: 'order_num', title: '订单号', align: 'center'}
                 , {field: 'note', title: '备注', align: 'center'}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
@@ -156,7 +156,7 @@
             , page: true
             , done:function (res, curr, count) {
                 for (var i=0; i<res.data.length; i++){
-                    if (res.data[i].urgent=='T'){
+                    if (res.data[i].urgent!=''){
                         $('table tbody tr').eq(i).css('color','red')
                     }
                 }
@@ -222,7 +222,7 @@
                                 icon : 6,
                             });
                             }else if(data.code == 502){
-                                parent.layer.msg('该订单不可催屏!', {
+                                parent.layer.msg(data.msg, {
                                 icon : 5
                             });
                             }
@@ -240,9 +240,7 @@
                     type : 'GET',
                     url : '/customer/urgent?task_code=' + data.task_code ,
                     dataType : 'json',
-                    success : function(data) {
-                        {#var data1 = JSON.parse(data);#}
-                        {#console.log(data.code);#}
+                    success : function(data){
                         // 成功提示框
                         if (data.code == 0){
                             parent.layer.msg('催评成功!', {

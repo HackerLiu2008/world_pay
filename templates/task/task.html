@@ -204,7 +204,7 @@
                  type: 2
                 ,title: false //不显示标题栏
                 ,closeBtn: false
-                ,area: ['500px','700px']
+                ,area: ['28%','30%']
                 ,shade: 0.8
                 ,id: 'smt_serve_pay' //设定一个id，防止重复弹出
                 ,btn: ['关闭']
@@ -433,7 +433,7 @@
             , height: ''
             , url: '/task/sum_info/' //数据接口
             , title: '任务表'
-            , limit:20
+            , limit: 50
             , toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
@@ -450,7 +450,6 @@
                 , {field: 'sum_time', title: '任务时间', align: 'center', sort: true}
                 , {field: 'sum_state', title: '任务状态', align: 'center', sort: true}
                 , {field: 'pay_cus', title: '客户付款', align: 'center', sort: true}
-                {#, {field: 'pay_middle', title: '中介提成', align: 'center', sort: true}#}
                 , {field: 'note', title: '备注', align: 'center', sort: true}
                 , {field: 'task_plan', title: '任务进度', align: 'center', sort: true}
                 , {fixed: 'right', width: 230, align: 'center', toolbar: '#barDemo'}

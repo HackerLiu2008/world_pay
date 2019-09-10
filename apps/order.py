@@ -315,24 +315,21 @@ def filter_order():
         asin_name, store_name = SqlData().search_one_task(task_code)
     except Exception as e:
         logging.error(str(e))
-        return jsonify(results_er)
+        return jsonify({'code': RET.SERVERERROR, 'msg': MSG.NODATA})
 
     try:
         filter_of_terrace = SqlData().search_account_action('', terrace, country, user_id)
         if len(filter_of_terrace) == 0:
-            return jsonify(results_er)
-
+            return jsonify({'code': RET.SERVERERROR, 'msg': '没有符合平台和国家要求的可用账号!'})
         match_of_time = filter_by_time(filter_of_terrace, int(last_buy))
         if len(match_of_time) == 0:
-            return jsonify(results_er)
-
+            return jsonify({'code': RET.SERVERERROR, 'msg': '没有符合距离上次可购买时间账号!'})
         match_of_store = filter_by_store(match_of_time, store_name, store, store_group)
         if len(match_of_store) == 0:
-            return jsonify(results_er)
-
+            return jsonify({'code': RET.SERVERERROR, 'msg': '没有符合店铺组合或店铺重合可用账号!'})
         match_of_asin = filter_by_asin(match_of_store, asin_name, asin, asin_group)
         if len(match_of_asin) == 0:
-            return jsonify(results_er)
+            return jsonify({'code': RET.SERVERERROR, 'msg': '没有符合ASIN组合或重合ASIN可用账号!'})
 
         data_list = list()
         try:
@@ -445,6 +442,8 @@ def order_detail():
                 task_info = SqlData().search_order_of_state(buy_state, user_id)
             elif buy_state == '已逾期':
                 task_info = SqlData().search_order_of_overdue(t1, user_id)
+            elif buy_state == '已提交':
+                task_info = SqlData().search_order_of_order_num(user_id)
             task_info = list(reversed(task_info))
             for i in range(0, len(task_info), int(limit)):
                 page_list.append(task_info[i:i + int(limit)])

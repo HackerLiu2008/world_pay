@@ -268,7 +268,7 @@ def task_detail():
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
     page_list = list()
     try:
-        task_info = SqlData().search_task_detail(sum_order_code)
+        task_info = SqlData().search_smt(sum_order_code)
         # task_info = list(reversed(task_info))
         for i in range(0, len(task_info), int(limit)):
             page_list.append(task_info[i:i + int(limit)])

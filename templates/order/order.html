@@ -178,10 +178,11 @@
 
             <div class="layui-tab" lay-filter="tables">
                 <ul class="layui-tab-title">
-                    <li class="layui-this">今日订单</li>
+                    <li class="layui-this" id="init">今日订单</li>
                     <li>已分配订单</li>
                     <li>待留评订单</li>
                     <li>已完成订单</li>
+                    <li>提交汇总</li>
                     <li>逾期订单</li>
                 </ul>
                 <div class="layui-tab-content">
@@ -260,21 +261,21 @@
                 , $ = layui.$;
 
             // 添加中介
-        $("#add_middle").on('click', function () {
-           layer.open({
-               type:2
-                ,title:'添加中介'
-                ,closeBtn: false
-                ,area:['500px', '500px']
-                ,shade: 0.8
-                ,id: 'middle' //设定一个id，防止重复弹出
-                ,btn: ['关闭']
-                ,btnAlign: 'c'
-                ,shadeClose: true
-                ,moveType: 1 //拖拽模式，0或者1
-                ,content: '/user/add_middle'
-           })
-        });
+            $("#add_middle").on('click', function () {
+               layer.open({
+                   type:2
+                    ,title:'添加中介'
+                    ,closeBtn: false
+                    ,area:['500px', '500px']
+                    ,shade: 0.8
+                    ,id: 'middle' //设定一个id，防止重复弹出
+                    ,btn: ['关闭']
+                    ,btnAlign: 'c'
+                    ,shadeClose: true
+                    ,moveType: 1 //拖拽模式，0或者1
+                    ,content: '/user/add_middle'
+               })
+            });
 
             $("#reset").on('click', function () {
                 location.reload()
@@ -286,7 +287,7 @@
                      type: 2
                     ,title: false //不显示标题栏
                     ,closeBtn: false
-                    ,area: ['500px','700px']
+                    ,area: ['28%','30%']
                     ,shade: 0.8
                     ,id: 'smt_serve_pay' //设定一个id，防止重复弹出
                     ,btn: ['关闭']
@@ -486,16 +487,56 @@
                         }
                     }, '/order/order_detail');
                 } else if (data.index == 2) {
+                    table.render({
+                    elem: '#account_all'
+                    , height: ''
+                    , url: '/order/order_detail?buy_state=待留评' //数据接口
+                    , title: '订单表'
+                    , limit: 90
+                    , toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+                    , totalRow: true //开启合计行
+                    , cols: [[ //表头
+                        {type: 'numbers'}
+                        , {type: 'checkbox'}
+                        , {field: 'task_code', title: '小任务编号', align: 'center',width:200 ,sort: true, totalRowText: '合计：'}
+                        , {field: 'customer_label', title: '客户标签', align: 'center', sort: true,}
+                        , {field: 'country', title: '国家', align: 'center', sort: true,}
+                        , {field: 'asin', title: 'ASIN', align: 'center', sort: true,}
+                        , {field: 'store_name', title: '店铺名', align: 'center', sort: true}
+                        , {field: 'good_name', title: '商品名称', align: 'center', sort: true}
+                        , {field: 'good_money', title: '商品价格($)', align: 'center', sort: true, totalRow: true}
+                        , {field: 'good_link', title: '商品链接', align: 'center', sort: true}
+                        , {field: 'serve_class', title: '服务类型', align: 'center', sort: true}
+                        , {field: 'buy_account', title: '购买账号', align: 'center', sort: true}
+                        , {field: 'task_run_time', title: '订单时间', width: 160, align: 'center', sort: true}
+                        , {field: 'task_state', title: '订单状态', align: 'center', sort: true}
+                        , {field: 'urgent', title: '催屏时间', align: 'center', sort: true}
+                        , {field: 'brush_hand', title: '刷手', align: 'center', sort: true}
+                        , {field: 'note', title: '备注', align: 'center', sort: true}
+                        , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
+                    ]]
+                    , id: 'review'
+                    , page: true
+                    , done: function (res, curr, count) {
+                        tdTitle();
+                        for (var i = 0; i < res.data.length; i++) {
+                            if (res.data[i].urgent != '') {
+                                $('table tbody tr').eq(i).css('color', 'red')
+                            }
+                        }
+                    }
+                });
+                } else if(data.index == 4){
                     table.reload('account', {
                         page: {
                             curr: 1 //重新从第 1 页开始
                         }
                         , where: {
-                            buy_state: '待留评',
+                            buy_state: '已提交',
                             account: demoReload.val()
                         }
                     }, '/order/order_detail');
-                } else if (data.index == 4) {
+                } else if (data.index == 5) {
                     table.reload('account', {
                         page: {
                             curr: 1 //重新从第 1 页开始
@@ -508,6 +549,15 @@
                 }
                 return false;
             });
+
+            function tdTitle(){
+                $('th').each(function(index,element){
+                    $(element).attr('title',$(element).text());
+                });
+                $('td').each(function(index,element){
+                    $(element).attr('title',$(element).text());
+                });
+            };
 
             var terrace = $("#terrace").val();
             if (terrace == 'AMZ') {
@@ -527,6 +577,7 @@
                     , {field: 'buy_account', title: '购买账号', align: 'center', sort: true}
                     , {field: 'task_run_time', title: '订单时间', width: 160, align: 'center', sort: true}
                     , {field: 'task_state', title: '订单状态', align: 'center', sort: true}
+                    {#, {field: 'urgent', title: '催屏时间', align: 'center', sort: true}#}
                     , {field: 'brush_hand', title: '刷手', align: 'center', sort: true}
                     , {field: 'note', title: '备注', align: 'center', sort: true}
                     , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
@@ -547,6 +598,7 @@
                     , {field: 'good_link', title: '产品链接', align: 'center'}
                     , {field: 'serve_class', title: '邮费', align: 'center', totalRow: true}
                     , {field: 'pay_method', title: '支付方式', align: 'center'}
+                    , {field: 'buy_method', title: '下单方式', align: 'center'}
                     , {field: 'buy_account', title: '购买账号', align: 'center'}
                     , {field: 'task_run_time', title: '下单时间', width: 160, align: 'center'}
                     , {field: 'task_state', title: '订单状态', align: 'center'}
@@ -566,20 +618,17 @@
                 , height: ''
                 , url: '/order/order_detail' //数据接口
                 , title: '订单表'
-                , limit: 20
+                , limit: 90
                 , toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
                 , totalRow: true //开启合计行
                 , cols: cols
                 , id: 'account'
                 , page: true
                 , done: function (res, curr, count) {
-                    for (var i = 0; i < res.data.length; i++) {
-                        if (res.data[i].urgent == 'T') {
-                            $('table tbody tr').eq(i).css('color', 'red')
-                        }
-                    }
+                    tdTitle();
                 }
             });
+
 
             //监听行双击事件（单击事件为：row,双击事件为: rowDouble）
             table.on('rowDouble(account_all)', function (obj) {
@@ -637,7 +686,7 @@
                             , offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
                             , id: 'layerOrder'//防止重复弹出
                             , title: '订单编号为 [ ' + data.task_code + ' ] 的分配账号信息'
-                            , area: ['1600px', '670px']
+                            , area: ['80%', '80%']
                             , anim: 1
                             , shadeClose: true
                             , content: '/order/filter_html' + '?task_code=' + data.task_code + '&buy_account=' + data.buy_account + '&' + str + "&terrace=" + terrace

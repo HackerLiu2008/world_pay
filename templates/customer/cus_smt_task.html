@@ -43,6 +43,7 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="formDemo" id="sub" type="submit">预&nbsp&nbsp览</button>
+                <a href="/customer/index" class="layui-btn" lay-submit="" lay-filter="formDemo">返回主页</a>
             </div>
         </div>
     </form>
@@ -64,7 +65,7 @@
                 , offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
                 , id: 'preview'//防止重复弹出
                 , title: '待确认任务详细信息'
-                , area: ['1800px', '900px']
+                , area: ['90%', '90%']
                 , anim: 1
                 , shadeClose: true
                 , content: '/customer/smt_preview?' + str
@@ -91,7 +92,10 @@
                     layer.alert(res.msg)
                 }else if(res.code == 0){
                     layer.closeAll();
-                    layer.msg('上传成功!')
+                    layer.msg('上传成功!请先点击预览,核对金额,确认无误后点击提交!', {
+                        time:60000,
+                        btn: ['明白了']
+                      });
                 }
             }
         });

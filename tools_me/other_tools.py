@@ -299,11 +299,17 @@ def repeat_asin(account_action_asin):
         index += 1
 
     # 将含有相同组合的账号删除
+    have_id = list()
     for i in key_list:
         asin_com = account_action_asin.get(i)
         for n in tem_list_1:
             if n in asin_com:
-                del account_action_asin[i]
+                have_id.append(i)
+
+    # 去除重复账号id(have_id)
+    have_id = list(set(have_id))
+    for o in have_id:
+        account_action_asin.pop(o)
 
     # 返回过滤后的符合要求的账号
     return account_action_asin

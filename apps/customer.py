@@ -337,10 +337,15 @@ def urgent_review():
         # terrace = request.args.get('terrace')
         try:
             task_state = SqlData().search_order_one('task_state', task_code)
+            urgent = SqlData().search_order_one('urgent', task_code)
             if task_state != "待留评":
-                return jsonify({'code': RET.SERVERERROR, 'msg': '该订单未下单完成不可催评!'})
+                return jsonify({'code': RET.SERVERERROR, 'msg': '该订单不是待留评订单不可催评!'})
 
-            SqlData().update_review_one('urgent', 'T', task_code)
+            if urgent:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '已催屏,不可重复催屏!'})
+
+            now_time = xianzai_time()
+            SqlData().update_review_one('urgent', now_time, task_code)
             return jsonify({'code': RET.OK, 'msg': MSG.OK})
         except Exception as e:
             logging.error(str(e))
@@ -631,10 +636,9 @@ def smt_choose():
         sum_num = task_dict.get('sum_num')
         sum_money = float(task_dict.get('sum_money'))
         pay_method = task_dict.get('pay_method')
-
+        buy_method = task_dict.get('buy_method')
         sum_order_code = sum_code()
         parent_id = SqlData().insert_task_parent(user_id, sum_order_code)
-
         SqlData().update_task_one('terrace', terrace, sum_order_code)
         SqlData().update_task_one('sum_num', sum_num, sum_order_code)
         SqlData().update_task_one('serve_money', serve_money, sum_order_code)
@@ -644,6 +648,7 @@ def smt_choose():
         SqlData().update_task_one('sum_time', now_time, sum_order_code)
         label = g.cus_label
         SqlData().update_task_one('customer_label', label, sum_order_code)
+        SqlData().update_task_one('pay_middle', buy_method, sum_order_code)
 
         index = 1
         for i in task_list:
@@ -673,7 +678,7 @@ def smt_choose():
             try:
                 SqlData().insert_task_detail(parent_id, task_code, country, asin, key_word, sku, store_name,
                                              good_search_money, good_money, good_link, pay_method, task_run_time, mail_money,
-                                             mail_method, note, text_review, image_review, default_review)
+                                             mail_method, note, text_review, image_review, default_review, user_id)
                 index += 1
             except Exception as e:
                 logging.error(str(e))
@@ -737,20 +742,18 @@ def smt_preview():
             mail_sum_money = float("%.3f" % mail_sum_money)
             s = (good_sum_money + mail_sum_money) * exchange * exchange_dis
             if method == 'PC':
-                money = float(pc_money)
                 q = sum_num * float(pc_money) * discount
             else:
                 # APP
-                money = float(pc_money)
                 q = sum_num * float(app_money) * discount
             text = text_num * float(text_money)
             image = image_num * float(image_money)
             sunday = sunday_num * float(sunday_money)
             other_money = text + image + sunday
             context = dict()
-            context['serve_money'] = str(q) + " = " + str(sum_num * float(money)) + "(服务费总额)" + "*" + str(float(discount)) + "(折扣)"
-            context['good_money'] = str(s) + " = (" + str(good_sum_money) + "(商品金额总额)+" + str(mail_sum_money) + '(邮费总额)) ' + "*" + str(float(exchange)) + "(汇率) *" + str(float(exchange_dis)) + '折扣'
-            context['other_money'] = str(other_money) + "=" + str(text)+"(文字留评) +" + str(image) + "(图片留评) +" + str(sunday) + "(周日留评)"
+            context['serve_money'] = str(q) + " = 服务费总额  *  折扣"
+            context['good_money'] = str(s) + " = (商品金额总额 + 邮费总额) * 汇率  * 折扣"
+            context['other_money'] = str(other_money) + "=文字留评) +图片留评 +周日留评"
             context['sum_money'] = "%.2f" % (q + s + other_money)
             context['sum_num'] = sum_num
             context['terrace'] = terrace
@@ -759,6 +762,7 @@ def smt_preview():
             task_dict['good_money'] = str(s)
             task_dict['other_money'] = str(other_money)
             task_dict['pay_method'] = pay_method
+            task_dict['buy_method'] = method
             task_json = json.dumps(task_dict, ensure_ascii=False)
             SqlData().update_user_cus('task_json', task_json, user_id, label)
             return render_template('customer/smt_preview_task.html', **context)
@@ -845,7 +849,7 @@ def smt_task():
                 err_list = list()
                 for i in row_list[1:]:
                     index += 1
-                    if not all([i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9]]):
+                    if not all([i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10]]):
                         err_list.append(str(index))
                 if len(err_list) != 0:
                     results['code'] = RET.SERVERERROR
@@ -859,13 +863,17 @@ def smt_task():
                 good_money = col_list[9][1:]
                 mail_money_list = col_list[10][1:]
                 # 计算全部商品本金
-                good_sum_money = 0
-                for i in good_money:
-                    good_sum_money += float(i)
-                #  计算邮费
-                mail_sum_money = 0
-                for n in mail_money_list:
-                    mail_sum_money += float(n)
+                try:
+                    good_sum_money = 0
+                    for i in good_money:
+                        good_sum_money += float(i)
+                    #  计算邮费
+                    mail_sum_money = 0
+                    for n in mail_money_list:
+                        mail_sum_money += float(n)
+                except Exception as e:
+                    logging.error(e)
+                    return jsonify({'code': RET.SERVERERROR, 'msg': '请在商品金额或邮费填写正确信息!'})
 
                 # 计算文字留评数量
                 text_review = col_list[11][1:]
@@ -898,13 +906,13 @@ def smt_task():
                         task_run_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     else:
                         task_run_time = excel_to_data(one[0])
-                    country = one[1].strip()
-                    store_name = one[2].strip()
-                    key_word = one[3].strip()
-                    asin = one[4].strip()
+                    country = one[1]
+                    store_name = one[2]
+                    key_word = one[3]
+                    asin = one[4]
                     good_search_money = float(one[5])
-                    good_link = one[6].strip()
-                    mail_method = one[7].strip()
+                    good_link = one[6]
+                    mail_method = one[7]
                     sku = one[8]
                     good_money = one[9]
                     mail_money = one[10]
@@ -1195,7 +1203,7 @@ def up_task():
                 return jsonify(results)
         except Exception as e:
             logging.error(str(e))
-            results = {'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR}
+            results = {'code': RET.SERVERERROR, 'msg': '表格内容错误!请核对表格信息,或咨询服务商表格问题!'}
             return jsonify(results)
 
     else:
