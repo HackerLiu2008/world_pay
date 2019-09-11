@@ -90,7 +90,7 @@ def up_account():
             label = one[6]
             terrace = one[7].strip().upper()
             country = one[8]
-            member_state = one[9].strip()
+            member_state = one[9]
             name = one[10]
             phone = one[11]
             coun = one[12]
