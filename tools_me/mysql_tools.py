@@ -175,6 +175,7 @@ class SqlData(object):
             order_data['task_run_time'] = str(i[16])
             order_data['task_state'] = i[17]
             order_data['brush_hand'] = i[18]
+            order_data['order_num'] = i[19]
             order_data['note'] = i[24]
             order_data['review_title'] = i[25]
             if is_json(i[26]):
@@ -377,7 +378,7 @@ class SqlData(object):
         return rows[0][0]
 
     def update_review_one(self, field, value, task_code):
-        sql = "UPDATE task_detail_info SET {}='{}' WHERE task_code='{}'".format(field, value, task_code)
+        sql = "UPDATE task_detail_info SET {}=\'{}\' WHERE task_code='{}'".format(field, value, task_code)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -674,7 +675,7 @@ class SqlData(object):
         return now_order_list
 
     def search_all_order(self, user_id, task_sql='', asin_sql='', order_num=''):
-        sql = "SELECT task_detail_info.*, task_parent.customer_label FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
+        sql = "SELECT task_detail_info.*, task_parent.customer_label,task_parent.pay_middle FROM task_detail_info LEFT JOIN task_parent ON task_detail_info.parent_id=" \
               "task_parent.id LEFT JOIN user_info ON user_info.id = task_parent.user_id WHERE user_info.id = {} {}" \
               " {} {}".format(user_id, task_sql, asin_sql, order_num)
         self.cursor.execute(sql)

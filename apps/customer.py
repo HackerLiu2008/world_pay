@@ -450,18 +450,21 @@ def edit_review():
             serve = SqlData().search_order_one('serve_class', task_code)
             if review_title:
                 if 'REVIEW' in serve.upper():
+                    review_title = transferContent(review_title)
                     SqlData().update_review_one('review_title', review_title, task_code)
                 else:
                     results = {'code': RET.SERVERERROR, 'msg': '次订单没有编辑评论信息权限!'}
                     return jsonify(results)
             if review_info:
                 if 'REVIEW' in serve.upper():
+                    review_info = transferContent(review_info)
                     SqlData().update_review_one('review_info', review_info, task_code)
                 else:
                     results = {'code': RET.SERVERERROR, 'msg': '次订单没有编辑评论信息权限!'}
                     return jsonify(results)
             if feedback_info:
                 if 'FEEDBACK' in serve.upper():
+                    feedback_info = transferContent(feedback_info)
                     SqlData().update_review_one('feedback_info', feedback_info, task_code)
                 else:
                     results = {'code': RET.SERVERERROR, 'msg': '次订单没有编辑Feedback信息权限!'}

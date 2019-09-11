@@ -191,10 +191,13 @@ def get_task_info():
         asin_sql = ""
         try:
             if task_code:
+                task_code.strip()
                 task_code_sql = "AND sum_order_code LIKE '%" + task_code + "%'"
             if label:
+                label.strip()
                 label_sql = "AND customer_label='" + label + "'"
             if asin:
+                asin.strip()
                 asin_sql = "AND asin='" + asin + "'"
             task_info = SqlData().search_task_on_asin(user_id, task_code_sql, label_sql, asin_sql)
             if len(task_info) == 0:
@@ -308,7 +311,7 @@ def insert_task():
         task_code = sum_order_code + '-' + '1'
         SqlData().insert_task_detail(parent_id, task_code, country, asin, key_word, kw_location, store_name, good_name,
                                      good_money, good_link, pay_method, sum_time, serve_class, mail_method, note,
-                                     review_title, review_info, feedback_info)
+                                     review_title, review_info, feedback_info, user_id)
         return jsonify({'code': RET.OK, 'msg': RET.OK})
     except Exception as e:
         logging.error(str(e))

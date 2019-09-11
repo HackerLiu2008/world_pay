@@ -1,5 +1,6 @@
 import json
 import logging
+import operator
 import os
 from tools_me.other_tools import login_required, now_day, check_param, filter_by_time, filter_by_store, \
     filter_by_asin, xianzai_time, sum_code
@@ -440,6 +441,7 @@ def order_detail():
                 task_info = SqlData().search_now_order(t1, t2, user_id)
             elif buy_state == '已分配' or buy_state == '已完成' or buy_state == '待留评':
                 task_info = SqlData().search_order_of_state(buy_state, user_id)
+                task_info = sorted(task_info, key=operator.itemgetter('urgent'))
             elif buy_state == '已逾期':
                 task_info = SqlData().search_order_of_overdue(t1, user_id)
             elif buy_state == '已提交':
