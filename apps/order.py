@@ -139,12 +139,16 @@ def one_detail():
 @login_required
 def del_order():
     data_info = request.args.get('order_info')
+    user_id = g.user_id
     try:
         data_list = json.loads(data_info)
         try:
             for i in data_list:
                 task_code = i.get('task_code')
                 SqlData().update_order_state(task_code)
+                account = SqlData().search_order_one('buy_account', data_info)
+                if account:
+                    SqlData().update_account_one('account_state', '', account, user_id)
         except Exception as e:
             logging.error(str(e))
             return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
@@ -153,6 +157,9 @@ def del_order():
     except Exception as e:
         logging.info("单行删除订单" + str(e))
         SqlData().update_order_state(data_info)
+        account = SqlData().search_order_one('buy_account', data_info)
+        if account:
+            SqlData().update_account_one('account_state', '', account, user_id)
         results = {'code': RET.OK, 'msg': MSG.OK}
         return jsonify(results)
 

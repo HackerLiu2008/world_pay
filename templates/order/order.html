@@ -709,7 +709,7 @@
                         //向服务端发送删除指令
                         $.ajax({
                             type: 'GET',
-                            url: '/order/del_order' + '?order_info=' + data.task_code,
+                            url: '/order/del_order?order_info=' + data.task_code,
                             dataType: 'json',
                             success: function (data) {
                                 // 成功提示框
@@ -775,7 +775,7 @@
                             anim: 3,
                             area: ['800px', '600px'],//宽高
                             shadeClose: true, //点击遮罩关闭
-                            content: '/order/sub_review' + '?task_code=' + data.task_code + '&account=' + data.account,
+                            content: '/order/sub_review' + '?task_code=' + data.task_code + '&account=' + data.buy_account,
                             success: function (layero, index) {
                                 var body = layer.getChildFrame('body', index);
                                 body.contents().find("#task_code").val(data.task_code);
