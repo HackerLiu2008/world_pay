@@ -9,12 +9,12 @@ from tools_me.parameter import RET, MSG
 class SqlData(object):
     def __init__(self):
         # host = "rm-j6c3t1i83rgylsuamvo.mysql.rds.aliyuncs.com"
-        # host = "119.3.251.10"
-        host = "114.116.236.27"
+        host = "119.3.251.10"
+        # host = "114.116.236.27"
         port = 3306
         user = "root"
-        # password = "lx7996"
-        password = "gute123"
+        password = "lx7996"
+        # password = "gute123"
         database = "buysys"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,

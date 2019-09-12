@@ -124,11 +124,10 @@
 			    	console.log(data.code);
 					// 成功提示框
                     if (data.code == 0){
-                        parent.layer.msg('添加成功', {
+                        parent.layer.msg(data.msg, {
 						icon : 6,
 					});
 					    parent.layer.closeAll('iframe'); //关闭弹框
-                        window.parent.location.reload()
                     }else if(data.code == 502){
                         parent.layer.msg('出现网络故障', {
 						icon : 5

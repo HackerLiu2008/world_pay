@@ -13,6 +13,7 @@
     <script src="/static/layui/layui.js"></script>
 </head>
 <body>
+
 <div class="layui-form-item" style="display: none">
     <label class="layui-form-label">隐藏域</label>
     <div class="layui-input-block">
@@ -211,8 +212,6 @@
                         </div>
                     </div>
                 </div>
-                <table class="layui-hide" id="account_list"></table>
-
                 <script type="text/html" id="barDemo">
                     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="allot">分配</a>
                     <a class="layui-btn layui-btn-xs" lay-event="sub">提交</a>
@@ -454,98 +453,18 @@
 
             //监听Tab切换
             element.on('tab(tables)', function (data) {
-                var demoReload = $('#demoReload');
                 if (data.index == 0) {
-                    table.reload('account', {
-                        page: {
-                            curr: 1 //重新从第 1 页开始
-                        }
-                        , where: {
-                            buy_state: '',
-                            account: demoReload.val()
-                        }
-                    }, '/order/order_detail');
-
+                    default_table('')
                 } else if (data.index == 1) {
-                    table.reload('account', {
-                        page: {
-                            curr: 1 //重新从第 1 页开始
-                        }
-                        , where: {
-                            buy_state: '已分配',
-                            account: demoReload.val()
-                        }
-                    }, '/order/order_detail');
+                    default_table('已分配')
                 } else if (data.index == 3) {
-                    table.reload('account', {
-                        page: {
-                            curr: 1 //重新从第 1 页开始
-                        }
-                        , where: {
-                            buy_state: '已完成',
-                            account: demoReload.val()
-                        }
-                    }, '/order/order_detail');
+                    default_table('已完成')
                 } else if (data.index == 2) {
-                    table.render({
-                    elem: '#account_all'
-                    , height: ''
-                    , url: '/order/order_detail?buy_state=待留评' //数据接口
-                    , title: '订单表'
-                    , limit: 90
-                    , toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
-                    , totalRow: true //开启合计行
-                    , cols: [[ //表头
-                        {type: 'numbers'}
-                        , {type: 'checkbox'}
-                        , {field: 'task_code', title: '小任务编号', align: 'center',width:200 ,sort: true, totalRowText: '合计：'}
-                        , {field: 'customer_label', title: '客户标签', align: 'center', sort: true,}
-                        , {field: 'country', title: '国家', align: 'center', sort: true,}
-                        , {field: 'asin', title: 'ASIN', align: 'center', sort: true,}
-                        , {field: 'store_name', title: '店铺名', align: 'center', sort: true}
-                        , {field: 'good_name', title: '商品名称', align: 'center', sort: true}
-                        , {field: 'good_money', title: '商品价格($)', align: 'center', sort: true, totalRow: true}
-                        , {field: 'good_link', title: '商品链接', align: 'center', sort: true}
-                        , {field: 'serve_class', title: '服务类型', align: 'center', sort: true}
-                        , {field: 'buy_account', title: '购买账号', align: 'center', sort: true}
-                        , {field: 'task_run_time', title: '订单时间', width: 160, align: 'center', sort: true}
-                        , {field: 'task_state', title: '订单状态', align: 'center', sort: true}
-                        , {field: 'urgent', title: '催屏时间', align: 'center', sort: true}
-                        , {field: 'brush_hand', title: '刷手', align: 'center', sort: true}
-                        , {field: 'note', title: '备注', align: 'center', sort: true}
-                        , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
-                    ]]
-                    , id: 'review'
-                    , page: true
-                    , done: function (res, curr, count) {
-                        tdTitle();
-                        for (var i = 0; i < res.data.length; i++) {
-                            if (res.data[i].urgent != '') {
-                                $('table tbody tr').eq(i).css('color', 'red')
-                            }
-                        }
-                    }
-                });
+                    review_table();
                 } else if(data.index == 4){
-                    table.reload('account', {
-                        page: {
-                            curr: 1 //重新从第 1 页开始
-                        }
-                        , where: {
-                            buy_state: '已提交',
-                            account: demoReload.val()
-                        }
-                    }, '/order/order_detail');
+                    default_table('已提交')
                 } else if (data.index == 5) {
-                    table.reload('account', {
-                        page: {
-                            curr: 1 //重新从第 1 页开始
-                        }
-                        , where: {
-                            buy_state: '已逾期',
-                            account: demoReload.val()
-                        }
-                    }, '/order/order_detail');
+                    default_table('已逾期')
                 }
                 return false;
             });
@@ -612,11 +531,64 @@
             }
 
 
-            //执行一个 table 实例
+            $(".layui-tab-title li").click(function(){
+            var picTabNum = $(this).index();
+            sessionStorage.setItem("picTabNum",picTabNum);
+            });
+            $(function(){
+                var getPicTabNum = sessionStorage.getItem("picTabNum");
+                $(".layui-tab-title li").eq(getPicTabNum).addClass("layui-this").siblings().removeClass("layui-this");
+                $(".layui-tab-content>div>div[id=test_table]>div>table").eq(getPicTabNum).addClass("layui-show").siblings().removeClass("layui-show");
+            });
+
+             var review_table = function(){
+                table.render({
+                    elem: '#account_all'
+                    , height: ''
+                    , url: '/order/order_detail?buy_state=待留评' //数据接口
+                    , title: '订单表'
+                    , limit: 90
+                    , toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+                    , totalRow: true //开启合计行
+                    , cols: [[ //表头
+                        {type: 'numbers'}
+                        , {type: 'checkbox'}
+                        , {field: 'task_code', title: '小任务编号', align: 'center',width:200 ,sort: true, totalRowText: '合计：'}
+                        , {field: 'customer_label', title: '客户标签', align: 'center', sort: true,}
+                        , {field: 'country', title: '国家', align: 'center', sort: true,}
+                        , {field: 'asin', title: 'ASIN', align: 'center', sort: true,}
+                        , {field: 'store_name', title: '店铺名', align: 'center', sort: true}
+                        , {field: 'good_name', title: '商品名称', align: 'center', sort: true}
+                        , {field: 'good_money', title: '商品价格($)', align: 'center', sort: true, totalRow: true}
+                        , {field: 'good_link', title: '商品链接', align: 'center', sort: true}
+                        , {field: 'serve_class', title: '服务类型', align: 'center', sort: true}
+                        , {field: 'buy_account', title: '购买账号', align: 'center', sort: true}
+                        , {field: 'task_run_time', title: '订单时间', width: 160, align: 'center', sort: true}
+                        , {field: 'task_state', title: '订单状态', align: 'center', sort: true}
+                        , {field: 'urgent', title: '催屏时间', align: 'center', sort: true}
+                        , {field: 'brush_hand', title: '刷手', align: 'center', sort: true}
+                        , {field: 'note', title: '备注', align: 'center', sort: true}
+                        , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
+                    ]]
+                    , id: 'review'
+                    , page: true
+                    , done: function (res, curr, count) {
+                        tdTitle();
+                        for (var i = 0; i < res.data.length; i++) {
+                            if (res.data[i].urgent != '') {
+                                $('table tbody tr').eq(i).css('color', 'red')
+                            }
+                        }
+                    }
+                });
+            };
+
+             //执行一个 table 实例
+            var default_table = function(buy_state){
             table.render({
                 elem: '#account_all'
                 , height: ''
-                , url: '/order/order_detail' //数据接口
+                , url: '/order/order_detail?buy_state=' + buy_state //数据接口
                 , title: '订单表'
                 , limit: 90
                 , toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
@@ -627,7 +599,31 @@
                 , done: function (res, curr, count) {
                     tdTitle();
                 }
-            });
+            });};
+
+
+            var getPicTabNum = sessionStorage.getItem("picTabNum");
+            if (!getPicTabNum && typeof(getPicTabNum)!="undefined" && getPicTabNum!=0){
+                var buy_state = '';
+                default_table(buy_state)
+            } else if (getPicTabNum==0){
+                var buy_state = '';
+                default_table(buy_state)
+            }else if (getPicTabNum==1){
+                var buy_state='已分配';
+                default_table(buy_state)
+            }else if (getPicTabNum==2){
+                review_table()
+            }else if (getPicTabNum==3){
+                var buy_state='已完成';
+                default_table(buy_state)
+            }else if (getPicTabNum==4){
+                var buy_state='已提交';
+                default_table(buy_state)
+            }else if (getPicTabNum==5){
+                var buy_state='已逾期';
+                default_table(buy_state)
+            }
 
 
             //监听行双击事件（单击事件为：row,双击事件为: rowDouble）
@@ -658,15 +654,8 @@
                 var tk_code = $('#tk_code').val(),
                     asin = $('#asin').val(),
                     order_num = $('#order_num').val();
-                table.reload('account', {
-                    page: {
-                        curr: 1 //重新从第 1 页开始
-                    }, where: {
-                        task_code: tk_code,
-                        asin: asin,
-                        order_num: order_num,
-                    }
-                }, '/order/order_detail');
+                var where_str = '&task_code='+ tk_code +'&asin=' + asin +'&order_num=' + order_num;
+                default_table(where_str)
             });
 
 
@@ -680,7 +669,7 @@
                         layer.alert("已完成订单,不可分配账号!")
                     } else {
                         var str = $("#example").serialize();
-                        obj.del();
+                        {#obj.del();#}
                         layer.open({
                             type: 2
                             , offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
@@ -693,8 +682,23 @@
                             , btn: '关闭全部'
                             , btnAlign: 'c' //按钮居中a
                             , shade: [0.8, '#393D49'] //弹框背景选项
-                            , yes: function () {
-                                layer.closeAll();
+                            , end: function () {
+                                var getPicTabNum = sessionStorage.getItem("picTabNum");
+                                if (getPicTabNum==0){
+                                    var buy_state = '';
+                                    default_table(buy_state)
+                                }else if (getPicTabNum==1){
+                                    var buy_state='已分配';
+                                    default_table(buy_state)
+                                }else if (getPicTabNum==2){
+                                    review_table()
+                                }else if (getPicTabNum==4){
+                                    var buy_state='已提交';
+                                    default_table(buy_state)
+                                }else if (getPicTabNum==5){
+                                    var buy_state='已逾期';
+                                    default_table(buy_state)
+                                }
                             }
                         });
                     }
@@ -744,6 +748,24 @@
                                 body.contents().find("#asin").val(data.asin);
                                 body.contents().find("#store").val(data.store_name);
                                 body.contents().find("#serve_class").val(data.serve_class);
+                            },
+                            end: function () {
+                                var getPicTabNum = sessionStorage.getItem("picTabNum");
+                                if (getPicTabNum==0){
+                                    var buy_state = '';
+                                    default_table(buy_state)
+                                }else if (getPicTabNum==1){
+                                    var buy_state='已分配';
+                                    default_table(buy_state)
+                                }else if (getPicTabNum==2){
+                                    review_table()
+                                }else if (getPicTabNum==4){
+                                    var buy_state='已提交';
+                                    default_table(buy_state)
+                                }else if (getPicTabNum==5){
+                                    var buy_state='已逾期';
+                                    default_table(buy_state)
+                                }
                             }
                         });
                     } else if (data.buy_account != '' && data.task_state == '待留评') {
@@ -757,6 +779,24 @@
                             success: function (layero, index) {
                                 var body = layer.getChildFrame('body', index);
                                 body.contents().find("#task_code").val(data.task_code);
+                            },
+                            end: function () {
+                                var getPicTabNum = sessionStorage.getItem("picTabNum");
+                                if (getPicTabNum==0){
+                                    var buy_state = '';
+                                    default_table(buy_state)
+                                }else if (getPicTabNum==1){
+                                    var buy_state='已分配';
+                                    default_table(buy_state)
+                                }else if (getPicTabNum==2){
+                                    review_table()
+                                }else if (getPicTabNum==4){
+                                    var buy_state='已提交';
+                                    default_table(buy_state)
+                                }else if (getPicTabNum==5){
+                                    var buy_state='已逾期';
+                                    default_table(buy_state)
+                                }
                             }
                         })
 
