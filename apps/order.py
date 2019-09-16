@@ -202,7 +202,14 @@ def change_time():
 @login_required
 def sub_order():
     if request.method == 'GET':
-        return render_template('order/sub_order.html')
+        customer_label = request.args.get('cus_label')
+        asin = request.args.get('asin')
+        good_money = request.args.get('good_money')
+        context = dict()
+        context['customer_label'] = customer_label
+        context['asin'] = asin
+        context['good_money'] = good_money
+        return render_template('order/sub_order.html', **context)
     elif request.method == 'POST':
         terrace = g.terrace
         results_ok = {'code': RET.OK, 'msg': MSG.OK}

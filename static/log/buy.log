@@ -13028,3 +13028,484 @@
 2019-09-12  17:50:57 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:50:57] "GET /order/order_detail?buy_state=已分配&page=1&limit=90 HTTP/1.1" 200 - 
 2019-09-12  17:51:03 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:51:03] "GET /order/del_order?order_info=201909101150472c2a2-11 HTTP/1.1" 200 - 
 2019-09-12  17:51:05 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:51:05] "GET /order/order_detail?buy_state=已分配&page=1&limit=90 HTTP/1.1" 200 - 
+2019-09-12  17:55:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-12  17:55:35 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-12  17:55:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-12  17:55:35 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-12  17:55:41 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:55:41] "GET /order/order_detail?buy_state=已分配&page=1&limit=90 HTTP/1.1" 200 - 
+2019-09-12  17:55:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:55:46] "GET /account/ HTTP/1.1" 200 - 
+2019-09-12  17:55:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:55:46] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-12  17:55:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:55:46] "GET /task/add_task.html HTTP/1.1" 404 - 
+2019-09-12  17:55:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:55:47] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-12  17:55:48 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:55:48] "GET /account/detail/?page=1&limit=20&buy_state=使用中 HTTP/1.1" 200 - 
+2019-09-12  17:55:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:55:52] "GET /account/detail/?page=1&limit=20&buy_state=使用中 HTTP/1.1" 200 - 
+2019-09-12  17:55:56 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:55:56] "GET /order/ HTTP/1.1" 200 - 
+2019-09-12  17:55:56 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [12/Sep/2019 17:55:56] "GET /order/order_detail?buy_state=已分配&page=1&limit=90 HTTP/1.1" 200 - 
+2019-09-16  09:52:19 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  09:52:20 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  09:52:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  09:52:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  09:52:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:35] "GET /account/ HTTP/1.1" 200 - 
+2019-09-16  09:52:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:35] "GET /static/css/index.css HTTP/1.1" 304 - 
+2019-09-16  09:52:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:35] "GET /static/layui/css/layui.css HTTP/1.1" 304 - 
+2019-09-16  09:52:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:35] "GET /static/img/a.png HTTP/1.1" 304 - 
+2019-09-16  09:52:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:35] "GET /static/img/1.jpg HTTP/1.1" 304 - 
+2019-09-16  09:52:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:35] "GET /static/layui/layui.js HTTP/1.1" 304 - 
+2019-09-16  09:52:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:35] "GET /static/img/yhm.png HTTP/1.1" 304 - 
+2019-09-16  09:52:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:35] "GET /static/img/mm.png HTTP/1.1" 304 - 
+2019-09-16  09:52:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:36] "GET /static/layui/layui.all.js HTTP/1.1" 304 - 
+2019-09-16  09:52:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:36] "GET /static/layui/css/modules/laydate/default/laydate.css?v=5.0.9 HTTP/1.1" 304 - 
+2019-09-16  09:52:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:36] "GET /static/layui/css/modules/layer/default/layer.css?v=3.1.1 HTTP/1.1" 304 - 
+2019-09-16  09:52:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:36] "GET /static/layui/css/modules/code.css HTTP/1.1" 304 - 
+2019-09-16  09:52:47 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:47] "POST /user/login HTTP/1.1" 200 - 
+2019-09-16  09:52:47 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:47] "GET /account/ HTTP/1.1" 200 - 
+2019-09-16  09:52:47 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:47] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-16  09:52:47 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:47] "GET /task/add_task.html HTTP/1.1" 404 - 
+2019-09-16  09:52:48 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:48] "GET /static/layui/font/iconfont.woff2?v=250 HTTP/1.1" 304 - 
+2019-09-16  09:52:48 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:48] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-16  09:52:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:50] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  09:52:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:50] "GET /order/order_detail?buy_state=&page=1&limit=90 HTTP/1.1" 200 - 
+2019-09-16  09:52:52 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:52:52] "GET /order/order_detail?buy_state=已完成&page=1&limit=90 HTTP/1.1" 200 - 
+2019-09-16  09:53:53 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  09:53:55 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  09:53:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  09:53:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  09:53:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:53:55] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  09:53:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:53:56] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  09:53:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:53:56] "GET /order/order_detail?buy_state=已完成&page=1&limit=90 HTTP/1.1" 200 - 
+2019-09-16  09:56:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:56:33] "GET /order/order_detail?buy_state=待留评&page=1&limit=90 HTTP/1.1" 200 - 
+2019-09-16  09:56:46 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:56:46] "GET /order/order_detail?buy_state=待留评&page=1&limit=1000 HTTP/1.1" 200 - 
+2019-09-16  09:58:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  09:58:22 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  09:58:22 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  09:58:22 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  09:58:26 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:58:26] "GET /order/order_detail?buy_state=已完成&page=1&limit=90 HTTP/1.1" 200 - 
+2019-09-16  09:58:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:58:56] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  09:58:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:58:56] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  09:58:57 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:58:57] "GET /order/order_detail?buy_state=已完成&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  09:58:58 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:58:58] "GET /static/layui/css/modules/layer/default/loading-1.gif HTTP/1.1" 304 - 
+2019-09-16  09:58:58 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 09:58:58] "GET /order/one_detail/?task_code=2019091009424348628-2 HTTP/1.1" 200 - 
+2019-09-16  10:01:58 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  10:01:59 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  10:01:59 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  10:01:59 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  10:02:01 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:02:01] "GET /order/order_detail?buy_state=待留评&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:02:02 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:02:02] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:02:04 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:02:04] "GET /static/layui/css/modules/layer/default/icon.png HTTP/1.1" 304 - 
+2019-09-16  10:02:04 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:02:04] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  10:03:42 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:03:42] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:03:45 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:03:45] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  10:03:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:03:50] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:03:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:03:50] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  10:03:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:03:51] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  10:03:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:03:51] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:03:53 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:03:53] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  10:03:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:03:55] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:03:57 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:03:57] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  10:04:40 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  10:04:41 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  10:04:41 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  10:04:41 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  10:04:42 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:04:42] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:04:43 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:04:43] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:04:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:04:44] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:04:45 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:04:45] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  10:04:45 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:04:45] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  10:04:45 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:04:45] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:04:47 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:04:47] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  10:04:53 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:04:53] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:05:14 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  10:05:17 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  10:05:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  10:05:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  10:05:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:05:17] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  10:05:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:05:17] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  10:05:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:05:17] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:05:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:05:20] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  10:06:03 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  10:06:05 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  10:06:05 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  10:06:05 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  10:06:05 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:06:05] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:06:08 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:06:08] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  10:06:10 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:06:10] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:31:40 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:31:40] "GET /order/order_detail?buy_state=&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:31:42 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:31:42] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:31:43 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:31:43] "GET /order/order_detail?buy_state=待留评&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:31:45 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:31:45] "GET /order/order_detail?buy_state=已完成&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:31:46 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:31:46] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:31:47 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:31:47] "GET /order/order_detail?buy_state=已逾期&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:31:48 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:31:48] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  10:31:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:31:50] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  10:31:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:31:50] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  10:31:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 10:31:50] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:17:00 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  11:17:01 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  11:17:01 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  11:17:01 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  11:17:02 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:02] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:17:02 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:02] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:17:02 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:02] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:17:03 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:03] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:17:03 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:03] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:17:03 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:03] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:17:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:17] "GET /order/order_detail?buy_state=&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:17:19 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:19] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:17:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:20] "GET /order/order_detail?buy_state=已逾期&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:17:21 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:21] "GET /order/order_detail?buy_state=待留评&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:17:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:25] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:17:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:25] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:17:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:25] "GET /order/order_detail?buy_state=待留评&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:17:27 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:27] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:17:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:28] "GET /order/order_detail?buy_state=&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:17:30 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:17:30] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  11:36:27 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  11:36:28 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  11:36:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  11:36:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  11:36:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:28] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:36:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:28] "GET /static/layui/soulTable.js HTTP/1.1" 200 - 
+2019-09-16  11:36:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:28] "GET /static/layui/lay/modules/table.js HTTP/1.1" 200 - 
+2019-09-16  11:36:29 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:29] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:36:29 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:29] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:36:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:32] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:36:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:32] "GET /static/layui/lay/modules/laytpl.js HTTP/1.1" 200 - 
+2019-09-16  11:36:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:32] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:36:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:32] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:36:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:32] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:36:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:32] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:36:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:32] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:36:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:33] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:36:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:33] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:36:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:33] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:36:43 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  11:36:44 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  11:36:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  11:36:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  11:36:48 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:48] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:36:48 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:48] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:36:48 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:36:48] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:37:15 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  11:37:16 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  11:37:16 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  11:37:16 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  11:37:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:37:17] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:37:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:37:17] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:37:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:37:17] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:37:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  11:37:35 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  11:37:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  11:37:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  11:37:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:37:35] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:37:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:37:35] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:37:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:37:35] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:37:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:37:35] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:37:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:37:36] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:37:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:37:36] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:48:26 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  11:48:27 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  11:48:27 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  11:48:27 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  11:48:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:33] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:48:34 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:34] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:48:34 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:34] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:48:34 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:34] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:48:34 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:34] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:48:34 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:34] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:48:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:35] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:48:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:35] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:48:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:35] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:48:54 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:54] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:48:54 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:48:54] "GET /favicon.ico HTTP/1.1" 404 - 
+2019-09-16  11:49:41 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  11:49:43 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  11:49:43 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  11:49:43 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  11:49:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:44] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:49:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:44] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:49:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:44] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:49:49 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:49] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:49:49 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:49] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:49:49 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:49] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:49:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:50] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:49:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:50] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:49:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:50] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:49:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:50] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:49:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:50] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:49:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:50] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:49:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:51] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:49:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:51] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:49:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:51] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:49:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:51] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:49:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:51] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:49:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:51] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:49:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:51] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:49:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:51] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:49:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:49:51] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:50:23 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  11:50:25 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  11:50:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  11:50:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  11:50:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:50:25] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:50:26 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:50:26] "GET /order/soulTable.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  11:50:26 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:50:26] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:50:54 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  11:50:55 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  11:50:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  11:50:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  11:50:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:50:55] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  11:50:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:50:56] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  11:50:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 11:50:56] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  12:02:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:02:51] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  12:02:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:02:51] "GET /static/layui-soul-table-master/ext/soulTable.js HTTP/1.1" 200 - 
+2019-09-16  12:02:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:02:51] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  12:02:52 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:02:52] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  12:04:01 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  12:04:02 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  12:04:02 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  12:04:02 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  12:04:03 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:04:03] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  12:04:03 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:04:03] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  12:04:04 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:04:04] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  12:04:14 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:04:14] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  12:04:15 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:04:15] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  12:04:15 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:04:15] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  12:04:19 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:04:19] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  12:04:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:04:20] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  12:04:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 12:04:20] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:25:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  14:25:29 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  14:25:29 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  14:25:29 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  14:25:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:25:33] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  14:25:34 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:25:34] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  14:25:34 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:25:34] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:25:37 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:25:37] "GET /order/order_detail?buy_state=&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:25:39 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:25:39] "GET /order/order_detail?buy_state=已完成&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:25:54 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:25:54] "GET /order/order_detail?buy_state=&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:25:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:25:56] "GET /order/order_detail?buy_state=已完成&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:25:57 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:25:57] "GET /task/ HTTP/1.1" 200 - 
+2019-09-16  14:26:02 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:26:02] "GET /task/sum_info/?page=1&limit=50 HTTP/1.1" 200 - 
+2019-09-16  14:26:03 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:26:03] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  14:26:03 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:26:03] "GET /order/order_detail?buy_state=已完成&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:26:06 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:26:06] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:33:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  14:33:38 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  14:33:38 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  14:33:38 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  14:33:46 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:33:46] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  14:33:46 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:33:46] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  14:33:46 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:33:46] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:33:57 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:33:57] "GET /order/order_detail?buy_state=已完成&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:34:00 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:34:00] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:34:01 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:34:01] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  14:34:02 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:34:02] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  14:34:02 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:34:02] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:34:05 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:34:05] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  14:34:05 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:34:05] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  14:34:06 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:34:06] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:38:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  14:38:37 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  14:38:37 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  14:38:37 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  14:38:37 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:37] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  14:38:37 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:37] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  14:38:38 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:38] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:38:40 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:40] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  14:38:40 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:40] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  14:38:41 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:41] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:38:43 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:43] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:38:54 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:54] "GET /order/order_detail?buy_state=已逾期&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:38:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:56] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  14:38:57 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:57] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  14:38:57 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:57] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  14:38:57 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 14:38:57] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  15:33:42 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\tools_me\\mysql_tools.py', reloading 
+2019-09-16  15:33:42 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  15:33:43 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  15:33:43 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  15:33:43 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  16:20:40 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  16:20:42 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  16:20:42 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  16:20:42 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  16:20:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:20:44] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:20:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:20:44] "GET /static/layui/tableFilter.css HTTP/1.1" 200 - 
+2019-09-16  16:20:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:20:44] "GET /order/tableFilter.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  16:20:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:20:44] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:20:54 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:20:54] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:20:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:20:55] "GET /order/tableFilter.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  16:20:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:20:55] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:20:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:20:55] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:20:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:20:55] "GET /order/tableFilter.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  16:20:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:20:56] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:21:23 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  16:21:25 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  16:21:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  16:21:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  16:21:27 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:21:27] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:21:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:21:28] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:21:29 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:21:29] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:21:30 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:21:30] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:32:14 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  16:32:16 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  16:32:16 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  16:32:16 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  16:32:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:17] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:32:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:17] "GET /static/layui/css/tableFilter.css HTTP/1.1" 200 - 
+2019-09-16  16:32:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:17] "GET /order/tableFilter.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  16:32:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:17] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:32:19 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:19] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:32:19 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:19] "GET /order/tableFilter.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  16:32:19 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:19] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:32:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:20] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:32:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:20] "GET /order/tableFilter.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  16:32:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:20] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:32:21 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:21] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:32:21 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:21] "GET /order/tableFilter.js?v=1560414887305 HTTP/1.1" 404 - 
+2019-09-16  16:32:21 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:21] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:32:31 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  16:32:32 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  16:32:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  16:32:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  16:32:34 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:34] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:32:34 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:34] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:32:35 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:35] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:32:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:32:36] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:54:30 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:54:30] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  16:54:30 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:54:30] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  16:54:31 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:54:31] "GET /order/order_detail?buy_state=已提交&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  16:54:54 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:54:54] "GET /order/order_detail?buy_state=已完成&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  16:54:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:54:56] "GET /order/order_detail?buy_state=待留评&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  16:54:59 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:54:59] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  16:55:06 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:55:06] "GET /order/order_detail?buy_state=待留评&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  16:55:14 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:55:14] "GET /order/sub_review?task_code=201908201813463269e-2&account=美国001 HTTP/1.1" 200 - 
+2019-09-16  16:55:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:55:17] "GET /order/order_detail?buy_state=待留评&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  16:55:18 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:55:18] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  16:55:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:55:20] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  16:55:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 16:55:25] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:03:52 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:03:52] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  17:16:37 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  17:16:40 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  17:16:40 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  17:16:40 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  17:16:40 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:16:40] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:16:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:16:44] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  17:16:53 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:16:53] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:17:11 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:17:11] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  17:17:19 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:17:19] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:17:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:17:20] "GET /order/sub_order HTTP/1.1" 200 - 
+2019-09-16  17:18:48 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:18:48] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:18:49 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:18:49] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  17:18:49 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:18:49] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:18:49 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:18:49] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  17:18:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:18:51] "GET /order/sub_order?cus_label=夏天&asin=B07SV2L37M&good_money=7.99 HTTP/1.1" 200 - 
+2019-09-16  17:19:08 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\order_flask\\apps\\order.py', reloading 
+2019-09-16  17:19:09 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  17:19:10 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  17:19:10 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  17:19:10 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  17:21:27 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  17:21:28 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  17:21:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  17:21:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  17:21:28 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:21:28] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  17:21:29 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:21:29] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  17:21:29 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:21:29] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:21:31 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:21:31] "GET /order/sub_order?cus_label=夏天&asin=B07SV2L37M&good_money=7.99 HTTP/1.1" 200 - 
+2019-09-16  17:22:11 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:22:11] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  17:22:11 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:22:11] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:22:11 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:22:11] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  17:22:11 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:22:11] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:22:14 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:22:14] "GET /order/sub_order?cus_label=夏天&asin=B07SV2L37M&good_money=7.99 HTTP/1.1" 200 - 
+2019-09-16  17:22:43 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:22:43] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:22:45 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:22:45] "GET /order/sub_order?cus_label=夏天&asin=B07SV2L37M&good_money=7.99 HTTP/1.1" 200 - 
+2019-09-16  17:22:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:22:56] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:23:53 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  17:23:55 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  17:23:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  17:23:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  17:23:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:23:55] "GET /user/logout HTTP/1.1" 200 - 
+2019-09-16  17:24:07 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:07] "POST /user/login HTTP/1.1" 200 - 
+2019-09-16  17:24:08 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:08] "GET /account/ HTTP/1.1" 200 - 
+2019-09-16  17:24:08 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:08] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-16  17:24:08 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:08] "GET /task/add_task.html HTTP/1.1" 404 - 
+2019-09-16  17:24:08 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:08] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-16  17:24:10 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:10] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  17:24:10 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:10] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:24:15 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:15] "GET /order/sub_order?cus_label=roma&asin=B07MLQW1RN&good_money=30 HTTP/1.1" 200 - 
+2019-09-16  17:24:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:17] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:24:18 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:18] "GET /account/ HTTP/1.1" 200 - 
+2019-09-16  17:24:18 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:18] "GET /task/edit_task.html HTTP/1.1" 404 - 
+2019-09-16  17:24:18 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:18] "GET /task/add_task.html HTTP/1.1" 404 - 
+2019-09-16  17:24:18 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:18] "GET /account/detail/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-16  17:24:20 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:20] "GET /account/detail/?page=1&limit=20&buy_state=使用中 HTTP/1.1" 200 - 
+2019-09-16  17:24:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:25] "GET /account/detail?page=1&limit=20&buy_state= HTTP/1.1" 308 - 
+2019-09-16  17:24:25 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:25] "GET /account/detail/?page=1&limit=20&buy_state= HTTP/1.1" 200 - 
+2019-09-16  17:24:27 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:27] "GET /task/ HTTP/1.1" 200 - 
+2019-09-16  17:24:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:32] "GET /task/sum_info/?page=1&limit=50 HTTP/1.1" 200 - 
+2019-09-16  17:24:42 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:42] "GET /order/ HTTP/1.1" 200 - 
+2019-09-16  17:24:42 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:42] "GET /order/order_detail?buy_state=已分配&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:24:46 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:46] "GET /order/order_detail?buy_state=&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:24:54 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:54] "GET /order/one_detail/?task_code=2019091116372360ae3-7 HTTP/1.1" 200 - 
+2019-09-16  17:24:59 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:24:59] "GET /order/order_detail?buy_state=已完成&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:25:11 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:25:11] "GET /order/order_detail?buy_state=待留评&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:25:21 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:25:21] "GET /order/order_detail?buy_state=已逾期&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:25:43 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:25:43] "GET /order/order_detail?buy_state=&page=1&limit=100 HTTP/1.1" 200 - 
+2019-09-16  17:26:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:26:36] "GET /customer/index HTTP/1.1" 200 - 
+2019-09-16  17:26:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:26:36] "GET /static/img/icon1.png HTTP/1.1" 304 - 
+2019-09-16  17:26:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:26:36] "GET /static/css/login.css HTTP/1.1" 304 - 
+2019-09-16  17:26:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:26:36] "GET /static/img/icon2.png HTTP/1.1" 304 - 
+2019-09-16  17:26:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:26:36] "GET /static/img/bg2.jpg HTTP/1.1" 304 - 
+2019-09-16  17:26:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:26:50] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  17:26:50 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:26:50] "GET /customer/index HTTP/1.1" 200 - 
+2019-09-16  17:26:51 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:26:51] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-16  17:26:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:26:56] "GET /customer/logout HTTP/1.1" 200 - 
+2019-09-16  17:27:21 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  17:27:22 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  17:27:22 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  17:27:22 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  17:27:26 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:27:26] "GET /customer/logout HTTP/1.1" 200 - 
+2019-09-16  17:27:26 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:27:26] "GET /static/img/buy-icon.png HTTP/1.1" 200 - 
+2019-09-16  17:27:41 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:27:41] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  17:27:41 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:27:41] "GET /customer/index HTTP/1.1" 200 - 
+2019-09-16  17:27:42 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:27:42] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 
+2019-09-16  17:47:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:47:33] "GET /customer/logout HTTP/1.1" 200 - 
+2019-09-16  17:47:44 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:47:44] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  17:47:52 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:47:52] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  17:48:05 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:48:05] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  17:49:22 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:49:22] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  17:49:23 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:49:23] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  17:49:24 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:49:24] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  17:49:30 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:49:30] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  17:49:30 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:49:30] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  17:49:31 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 17:49:31] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  18:31:16 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  18:31:17 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  18:31:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  18:31:17 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  18:32:36 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  18:32:38 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  18:32:38 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  18:32:38 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  18:33:32 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  18:33:33 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  18:33:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  18:33:33 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  18:33:46 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  18:33:49 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  18:33:49 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  18:33:49 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  18:34:21 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  18:34:23 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  18:34:23 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  18:34:23 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  18:34:38 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 18:34:38] "POST /customer/login HTTP/1.1" 500 - 
+2019-09-16  18:34:53 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-09-16  18:34:54 Mon  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-09-16  18:34:54 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 129-996-854 
+2019-09-16  18:34:55 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-09-16  18:34:56 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 18:34:56] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  18:35:12 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 18:35:12] "POST /customer/login HTTP/1.1" 200 - 
+2019-09-16  18:35:12 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 18:35:12] "GET /customer/index HTTP/1.1" 200 - 
+2019-09-16  18:35:12 Mon  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [16/Sep/2019 18:35:12] "GET /customer/task?page=1&limit=20 HTTP/1.1" 200 - 

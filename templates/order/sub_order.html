@@ -18,6 +18,7 @@
     </style>
 </head>
 <body>
+<h2 style="text-align:center; color: red;">客户标签: {{ customer_label }}; ASIN: {{ asin }}; 产品价格: {{ good_money }}</h2>
     <div id="details" style="padding: 20px;" lay-filter="detail">
     <form class="layui-form" lay-filter="example" id="example" enctype="multipart/form-data">
         <div class="layui-form-item" style="display: none">
@@ -98,7 +99,6 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="formDemo" id="sub" type="submit">立即提交</button>
-{#                <button type="reset" class="layui-btn layui-btn-primary">重置</button>#}
             </div>
         </div>
     </form>

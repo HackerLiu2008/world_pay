@@ -229,8 +229,8 @@
                         <a class="" href="javascript:">内容类别</a>
                         <dl class="layui-nav-child">
                             <dd><a href="/account/">买家号信息</a></dd>
-                            <dd><a href="/task/" target="_blank">任务信息</a></dd>
-                            <dd><a href="/order/" target="_blank">订单信息</a></dd>
+                            <dd><a href="/task/">任务信息</a></dd>
+                            <dd><a href="/order/">订单信息</a></dd>
                         </dl>
                     </li>
                 </ul>
@@ -257,7 +257,7 @@
                 , table = layui.table //表格
                 , upload = layui.upload //上传
                 , element = layui.element //元素操作
-                , $ = layui.$;
+                , $ = layui.$
 
             // 添加中介
             $("#add_middle").on('click', function () {
@@ -547,7 +547,8 @@
                     , height: ''
                     , url: '/order/order_detail?buy_state=待留评' //数据接口
                     , title: '订单表'
-                    , limit: 90
+                    , limit: 100
+                    , limits:[100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
                     , toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
                     , totalRow: true //开启合计行
                     , cols: [[ //表头
@@ -590,16 +591,18 @@
                 , height: ''
                 , url: '/order/order_detail?buy_state=' + buy_state //数据接口
                 , title: '订单表'
-                , limit: 90
+                , limit: 100
+                , limits:[100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
                 , toolbar: "default" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
                 , totalRow: true //开启合计行
                 , cols: cols
                 , id: 'account'
                 , page: true
-                , done: function (res, curr, count) {
+                , filter:true
+                ,done : function() {
                     tdTitle();
-                }
-            });};
+                }});
+             };
 
 
             var getPicTabNum = sessionStorage.getItem("picTabNum");
@@ -738,9 +741,9 @@
                             title: '提交小任务编号为 [ ' + data.task_code + ' ] 的相关信息',
                             type: 2,
                             anim: 3,
-                            area: ['800px', '600px'],//宽高
+                            area: ['25%', '40%'],//宽高
                             shadeClose: true, //点击遮罩关闭
-                            content: '/order/sub_order',
+                            content: '/order/sub_order?cus_label='+data.customer_label+'&asin='+data.asin+'&good_money='+data.good_money,
                             success: function (layero, index) {
                                 var body = layer.getChildFrame('body', index);
                                 body.contents().find("#task_code").val(data.task_code);
@@ -933,7 +936,6 @@
             var footerTpl = lay('#footer')[0].innerHTML;
             lay('#footer').html(layui.laytpl(footerTpl).render({}))
                 .removeClass('layui-hide');
-
         });
     </script>
 </div>

@@ -9,12 +9,12 @@ from tools_me.parameter import RET, MSG
 class SqlData(object):
     def __init__(self):
         # host = "rm-j6c3t1i83rgylsuamvo.mysql.rds.aliyuncs.com"
-        host = "119.3.251.10"
-        # host = "114.116.236.27"
+        # host = "119.3.251.10"
+        host = "114.116.236.27"
         port = 3306
         user = "root"
-        password = "lx7996"
-        # password = "gute123"
+        # password = "lx7996"
+        password = "gute123"
         database = "buysys"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
@@ -364,8 +364,8 @@ class SqlData(object):
         return rows[0][0], rows[0][1]
 
     def search_customer_login(self, main_user, account, password):
-        sql = "SELECT * FROM customer_info LEFT JOIN user_info ON user_info.id = customer_info.user_id WHERE " \
-              "user_info.user_name='{}' AND customer_info.account='{}' AND customer_info.pass_word='{}'"\
+        sql = "SELECT * FROM customer_info LEFT JOIN user_info ON user_info.id = customer_info.user_id WHERE BINARY " \
+              "user_info.user_name='{}' AND BINARY customer_info.account='{}' AND BINARY customer_info.pass_word='{}'"\
                .format(main_user, account, password)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
@@ -912,7 +912,7 @@ class SqlData(object):
               "good_name,good_money,good_link,pay_method,task_run_time, serve_class, mail_method, note, review_title, " \
               "review_info, feedback_info) VALUES (\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\"," \
               "\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\",\"{}\")".format(parent_id, task_code,
-                                                        country, asin, key_word,kw_location, store_name,
+                                                        country, asin, key_word, kw_location, store_name,
                                                          good_name, good_money, good_link, pay_method, task_run_time,
                                                          serve_class, mail_method, note, review_title, review_info,
                                                          feedback_info)
@@ -956,8 +956,8 @@ class SqlData(object):
             self.connect.close()
 
     def search_middle_login(self, main_user, account, password):
-        sql = "SELECT * FROM middle_info LEFT JOIN user_info ON user_info.id = middle_info.user_id WHERE " \
-              "user_info.user_name='{}' AND middle_info.account='{}' AND middle_info.password='{}'" \
+        sql = "SELECT * FROM middle_info LEFT JOIN user_info ON user_info.id = middle_info.user_id WHERE BINARY " \
+              "user_info.user_name='{}' AND BINARY middle_info.account='{}' AND BINARY middle_info.password='{}'" \
             .format(main_user, account, password)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
