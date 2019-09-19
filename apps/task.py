@@ -17,10 +17,25 @@ def payed():
         user_id = g.user_id
         middle_id = SqlData().search_cus_one_field('middle_id', user_id, label)
         if middle_id:
-            discount = SqlData().search_of_middle_id('discount', int(middle_id))
-            serve_money = SqlData().search_task_one_field('serve_money', sum_order_code)
-            middle_money = round(serve_money * discount, 2)
-            SqlData().update_task_one('middle_money', middle_money, sum_order_code)
+            terrace = g.terrace
+            if terrace == 'AMZ':
+                discount = SqlData().search_of_middle_id('discount', int(middle_id))
+                serve_money = SqlData().search_task_one_field('serve_money', sum_order_code)
+                middle_money = round(serve_money * discount, 2)
+                SqlData().update_task_one('middle_money', middle_money, sum_order_code)
+            if terrace == 'SMT':
+                discount = SqlData().search_of_middle_id('discount', int(middle_id))
+                good_num = SqlData().search_task_one_field('sum_num', sum_order_code)
+                pay_method = SqlData().search_task_one_field('pay_middle', sum_order_code)
+                server_money = SqlData().search_user_field('amz_serve', user_id)
+                serve_dict = json.loads(server_money)
+                method_money = 1
+                if pay_method == 'APP':
+                    method_money = serve_dict.get('app_money')
+                if pay_method == 'PC':
+                    method_money = serve_dict.get('pc_money')
+                middle_money = discount * good_num * int(method_money)
+                SqlData().update_task_one('middle_money', middle_money, sum_order_code)
         return jsonify({'code': RET.OK, 'msg': MSG.OK})
     except Exception as e:
         logging.error(str(e))
@@ -234,6 +249,25 @@ def up_task_info():
             SqlData().update_task_one('terrace', 'SMT', sum_order_code)
         if sum_num:
             SqlData().update_task_one('sum_num', int(sum_num), sum_order_code)
+            label = SqlData().search_task_one_field('customer_label', sum_order_code)
+            user_id = g.user_id
+            middle_id = SqlData().search_cus_one_field('middle_id', user_id, label)
+            if middle_id:
+                terrace = g.terrace
+                if terrace == 'SMT':
+                    discount = SqlData().search_of_middle_id('discount', int(middle_id))
+                    good_num = SqlData().search_task_one_field('sum_num', sum_order_code)
+                    pay_method = SqlData().search_task_one_field('pay_middle', sum_order_code)
+                    pay_method = pay_method.split(',')[0]
+                    server_money = SqlData().search_user_field('amz_serve', user_id)
+                    serve_dict = json.loads(server_money)
+                    method_money = 1
+                    if pay_method == 'APP':
+                        method_money = serve_dict.get('app_money')
+                    if pay_method == 'PC':
+                        method_money = serve_dict.get('pc_money')
+                    middle_money = discount * good_num * int(method_money)
+                    SqlData().update_task_one('middle_money', middle_money, sum_order_code)
         if serve_money:
             SqlData().update_task_one('serve_money', float(serve_money), sum_order_code)
             label = SqlData().search_task_one_field('customer_label', sum_order_code)

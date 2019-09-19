@@ -110,7 +110,10 @@ class SqlData(object):
             detail_dict["note"] = i[9]
             detail_dict["sum_money"] = i[10]
             detail_dict["pay_cus"] = i[11]
-            detail_dict["pay_middle"] = i[12]
+            if '已支付' in i[12]:
+                detail_dict["pay_middle"] = '已支付'
+            else:
+                detail_dict["pay_middle"] = ""
             detail_dict["middle_money"] = i[13]
             detail_dict['task_plan'] = self.task_plan(i[0])
             detail_list.append(detail_dict)
@@ -387,6 +390,12 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
+    def search_account_count(self, account, user_id):
+        sql = "SELECT COUNT(*) FROM account_info WHERE account = '{}' AND user_id = {}".format(account, user_id)
+        self .cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
+
     def search_account_ps(self, account):
         sql = "SELECT password FROM account_info WHERE account = '{}'".format(account)
         self.cursor.execute(sql)
@@ -588,6 +597,16 @@ class SqlData(object):
     def update_order_account(self, account, password, order_state, task_code):
         sql = "UPDATE task_detail_info SET buy_account='{}',account_ps='{}',task_state='{}' WHERE task_code='{}'". \
             format(account, password, order_state, task_code)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error(str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def update_order_one_field(self, field, value, task_code):
+        sql = "UPDATE task_detail_info SET {}='{}' WHERE task_code='{}'".format(field, value, task_code)
         try:
             self.cursor.execute(sql)
             self.connect.commit()

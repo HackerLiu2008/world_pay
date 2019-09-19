@@ -155,7 +155,7 @@
                     //向服务端发送删除指令
                     $.ajax({
                         type : 'GET',
-                        url : '/order/bind_account' + '?account=' + data.account + '&task_code=' + task_code.val() + '&buy_account=' + buy_account.val(),
+                        url : '/order/bind_account' + '?account=' + data.account +'&label='+ data.label + '&task_code=' + task_code.val() + '&buy_account=' + buy_account.val(),
                         dataType : 'json',
                         success : function(data) {
                             {#var data1 = JSON.parse(data);#}

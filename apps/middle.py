@@ -40,7 +40,7 @@ def task_html():
     if terrace == "AMZ":
         return render_template('middle/amz_order_list.html', **context)
     if terrace == "SMT":
-        return render_template('task/smt_task_list.html', **context)
+        return render_template('middle/smt_task_list.html', **context)
 
 
 @middle_blueprint.route('/task_list', methods=['GET'])

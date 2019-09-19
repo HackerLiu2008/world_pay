@@ -30,10 +30,10 @@
             ,done: function(res){
                 if (res.code == 502){
                     layer.closeAll();
-                    layer.msg(res.msg)
+                    layer.msg(res.data)
                 }else if(res.code == 0){
                     layer.closeAll();
-                    layer.msg('上传成功!')
+                    layer.msg(res.data,{time:3000})
                 }
             }
         });

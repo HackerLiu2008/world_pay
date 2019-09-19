@@ -1,7 +1,7 @@
 import datetime
 import logging
 import xlrd
-from tools_me.other_tools import save_file, excel_to_data, sum_code, login_required
+from tools_me.other_tools import save_file, excel_to_data, sum_code, login_required, transferContent
 from . import upload_blueprint
 from flask import render_template, jsonify, request, send_file, g
 from tools_me.mysql_tools import SqlData
@@ -73,41 +73,51 @@ def up_account():
                 m = m + i + ','
             results['msg'] = "第" + m + "行缺少必填参数!"
             return jsonify(results)
-
+        in_account_list = list()
         for one in row_list[1:]:
             account = one[0]
-            password = one[1]
-            email = one[2]
-            email_pw = one[3]
-            if one[4]:
-                pay_money = float(one[4])
+            in_account = SqlData().search_account_count(account, user_id)
+            if in_account:
+                in_account_list.append(account)
             else:
-                pay_money = 0
-            if not one[5]:
-                reg_time = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
-            else:
-                reg_time = excel_to_data(int(one[5]))
-            label = one[6]
-            terrace = one[7].strip().upper()
-            country = one[8]
-            member_state = one[9]
-            name = one[10]
-            phone = one[11]
-            coun = one[12]
-            province = one[13]
-            city = one[14]
-            zip_num = one[15]
-            address = one[16]
-            card_num = one[17]
-            if not one[18]:
-                sizeof = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
-            else:
-                sizeof = excel_to_data(int(one[18]))
-            security_code = one[19]
-            SqlData().insert_account_detail(user_id, account, password, email, email_pw, pay_money, reg_time, label, terrace,
-                                            country, member_state, name, phone, coun, province, city, zip_num,
-                                            address, card_num, sizeof, security_code)
-        return jsonify(results)
+                password = one[1]
+                email = one[2]
+                email_pw = one[3]
+                if one[4]:
+                    pay_money = float(one[4])
+                else:
+                    pay_money = 0
+                if not one[5]:
+                    reg_time = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
+                else:
+                    reg_time = excel_to_data(int(one[5]))
+                label = one[6]
+                terrace = one[7].strip().upper()
+                country = one[8]
+                member_state = one[9]
+                name = transferContent(one[10])
+                phone = one[11]
+                coun = one[12]
+                province = one[13]
+                city = transferContent(one[14])
+                zip_num = one[15]
+                address = transferContent(one[16])
+                card_num = one[17]
+                if not one[18]:
+                    sizeof = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
+                else:
+                    sizeof = excel_to_data(int(one[18]))
+                security_code = one[19]
+                SqlData().insert_account_detail(user_id, account, password, email, email_pw, pay_money, reg_time, label, terrace,
+                                                country, member_state, name, phone, coun, province, city, zip_num,
+                                                address, card_num, sizeof, security_code)
+        if in_account_list:
+            in_account_str = str(in_account_list)
+            s = "以下账号未导入系统,因为账号名已存在: " + in_account_str
+            results['data'] = s
+            return jsonify(results)
+        else:
+            return jsonify(results)
 
 
 @upload_blueprint.route('/up_task', methods=['POST'])

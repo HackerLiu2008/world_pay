@@ -296,12 +296,15 @@ def bind_account():
     account = request.args.get('account')
     task_code = request.args.get('task_code')
     buy_account = request.args.get('buy_account')
+    label = request.args.get('label')
     results_ok = {'code': RET.OK, 'msg': MSG.OK}
     results_er = {'code': RET.SERVERERROR, 'msg': MSG.NODATA}
+
     if buy_account:
         SqlData().update_account_state_one('', buy_account)
     try:
         password = SqlData().search_account_ps(account)
+        SqlData().update_order_one_field('brush_hand', label, task_code)
         SqlData().update_order_account(account, password, '已分配', task_code)
         SqlData().update_account_state_one('使用中', account)
         return jsonify(results_ok)

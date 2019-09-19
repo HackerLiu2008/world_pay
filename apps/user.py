@@ -12,7 +12,13 @@ from tools_me.mysql_tools import SqlData
 def pay_middle():
     if request.method == 'GET':
         sum_order_code = request.args.get('sum_order_code')
-        SqlData().update_task_one('pay_middle', '已支付', sum_order_code)
+        terrace = g.terrace
+        if terrace == 'AMZ':
+            SqlData().update_task_one('pay_middle', '已支付', sum_order_code)
+        if terrace == 'SMT':
+            pay_method = SqlData().search_task_one_field('pay_middle', sum_order_code)
+            s = pay_method + ', 已支付'
+            SqlData().update_task_one('pay_middle', s, sum_order_code)
         return jsonify({'code': RET.OK, 'msg': MSG.OK})
 
 
