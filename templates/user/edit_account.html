@@ -28,49 +28,40 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">密码</label>
+            <label class="layui-form-label">卡号: </label>
             <div class="layui-input-block">
-                <input type="text" name="password" required lay-verify="required" placeholder="请输入账号密码" autocomplete="off"
-                       class="layui-input" id="password">
+            <span id="card_num" style="font-weight: normal;line-height: 40px; font-size: 18px;color: firebrick;"></span>
             </div>
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">卡名: </label>
+            <div class="layui-input-block">
+                <input type="text" name="card_name" placeholder="" autocomplete="off"
+                       class="layui-input" id="card_name">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">卡余额($): </label>
+            <div class="layui-input-block">
+               <span id="balance" style="font-weight: normal;line-height: 40px; font-size: 18px;color: goldenrod;"></span>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">充值金额</label>
+            <div class="layui-input-block">
+                <input type="number" name="top_money" required lay-verify="required" placeholder="$00.00" autocomplete="off"
+                       class="layui-input" id="top_money">
+            </div>
+        </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">标签</label>
             <div class="layui-input-block">
-                <input type="text" name="label" placeholder="请输入账号标签" autocomplete="off"
+                <input type="text" name="label" placeholder="请输入账号会员状态" autocomplete="off"
                        class="layui-input" id="label">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">平台</label>
-            <div class="layui-input-block">
-                <input type="text" name="terrace" required lay-verify="required" placeholder="请输入账号使用平台" autocomplete="off"
-                       class="layui-input" id="terrace">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">国家</label>
-            <div class="layui-input-block">
-                <input type="text" name="country" required lay-verify="required" placeholder="请输入账号国家" autocomplete="off"
-                       class="layui-input" id="country">
-            </div>
-        </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">会员状态</label>
-            <div class="layui-input-block">
-                <input type="text" name="member_state" placeholder="请输入账号会员状态" autocomplete="off"
-                       class="layui-input" id="member_state">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">备注</label>
-            <div class="layui-input-block">
-                <input type="text" name="note" placeholder="备注信息" autocomplete="off"
-                       class="layui-input" id="note">
-            </div>
-        </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="formDemo" id="sub" type="submit">立即提交</button>

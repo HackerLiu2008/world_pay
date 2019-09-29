@@ -24,14 +24,6 @@ logging.basicConfig(level=logging.ERROR,
 
 # 注册路由,以url_prefix区分功能(蓝图)
 
-from apps.task import task_blueprint
-
-app.register_blueprint(task_blueprint)
-
-from apps.account import account_blueprint
-
-app.register_blueprint(account_blueprint)
-
 from apps.upload import upload_blueprint
 
 app.register_blueprint(upload_blueprint)
@@ -40,20 +32,12 @@ from apps.user import user_blueprint
 
 app.register_blueprint(user_blueprint)
 
-from apps.order import order_blueprint
-
-app.register_blueprint(order_blueprint)
-
-from apps.customer import customer_blueprint
-
-app.register_blueprint(customer_blueprint)
-
 from apps.middle import middle_blueprint
 
 app.register_blueprint(middle_blueprint)
 
-from apps.dome import dome_blueprint
+from apps.admin import admin_blueprint
 
-app.register_blueprint(dome_blueprint)
+app.register_blueprint(admin_blueprint)
 
 

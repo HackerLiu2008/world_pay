@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>BEST·登陆</title>
+		<title>WORLD-PAY·ADMIN</title>
         <link rel="icon" href="/static/img/buy-icon.png" type="image/x-icon"/>
 		<link rel="stylesheet" href="/static/layui/css/layui.css" media="all"/>
 		<link rel="stylesheet" href="/static/css/login_middle.css" media="all"/>
@@ -18,7 +18,7 @@
 		<div class="layui-fluid">
 			<div class="layui-row layui-col-space15">
 				<div class="layui-col-sm12 layui-col-md12 zyl_mar_01">
-					<blockquote class="layui-elem-quote">BEST·渠道商登陆界面</blockquote>
+					<blockquote class="layui-elem-quote">WORLD-PAY·终端登陆界面</blockquote>
 				</div>
 			</div>
 		</div>
@@ -55,7 +55,7 @@
 		<!-- Footer -->
 		<div class="layui-row">
 			<div class="layui-col-sm12 layui-col-md12 zyl_center zyl_mar_01">
-				© 2019 - 简约登陆界面
+				© 2019 - 全球付终端登录界面
 			</div>
 		</div>
 		<!-- Footer End -->
@@ -65,25 +65,19 @@
 		<!-- LoginForm -->
 		<div class="zyl_lofo_main">
 			<fieldset class="layui-elem-field layui-field-title zyl_mar_02">
-				<legend>欢迎登陆 - BEST·订单管理平台</legend>
+				<legend>欢迎登陆 - WORLD-PAY·终端管理平台</legend>
 			</fieldset>
 			<div class="layui-row layui-col-space15">
 				<form class="layui-form zyl_pad_01" action="">
-                    <div class="layui-col-sm12 layui-col-md12">
+					<div class="layui-col-sm12 layui-col-md12">
 						<div class="layui-form-item">
-							<input type="text" name="mainName" lay-verify="required|userName" autocomplete="off" placeholder="主账号" class="layui-input">
+							<input type="text" name="account" lay-verify="required|userName" autocomplete="off" placeholder="账号" class="layui-input">
 							<i class="layui-icon layui-icon-username zyl_lofo_icon"></i>
 						</div>
 					</div>
 					<div class="layui-col-sm12 layui-col-md12">
 						<div class="layui-form-item">
-							<input type="text" name="userName" lay-verify="required|userName" autocomplete="off" placeholder="账号" class="layui-input">
-							<i class="layui-icon layui-icon-username zyl_lofo_icon"></i>
-						</div>
-					</div>
-					<div class="layui-col-sm12 layui-col-md12">
-						<div class="layui-form-item">
-							<input type="password" name="nuse" lay-verify="required|pass" autocomplete="off" placeholder="密码" class="layui-input">
+							<input type="password" name="password" lay-verify="required|pass" autocomplete="off" placeholder="密码" class="layui-input">
 							<i class="layui-icon layui-icon-password zyl_lofo_icon"></i>
 						</div>
 					</div>
@@ -115,7 +109,7 @@
 					var data_info = {data:JSON.stringify(data.field)};
 					$.ajax({
                         type : 'POST',
-                        url : '/middle/login',
+                        url : '/admin/login',
                         data : data_info,
                         dataType : 'json',
                         success : function(data) {
@@ -127,7 +121,7 @@
                                 parent.layer.msg('登录成功!', {
                                 icon : 6,
                             });*/
-                            location.href='/middle/'; //关闭弹框
+                            location.href='/admin/'; //关闭弹框
                             }else if(data.code == 502){
                                 parent.layer.msg('账户或密码错误!', {
                                 icon : 5
