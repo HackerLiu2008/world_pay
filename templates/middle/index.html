@@ -33,10 +33,10 @@
   </ul>
   <div class="layui-tab-content" style="height: 100px;">
     <div class="layui-tab-item layui-show">
-        <div id="today" style="width: 48%; height: 800px; margin: 0 auto;float: left;"></div>
-        <div id="week" style="width: 48%; height: 800px; margin: 0 auto;float: right"></div>
+        <div id="today" style="width: 100%; height: 800px; margin: 0 auto"></div>
+
         <hr class="layui-bg-gray" style="height: 100px;">
-        <div id="month" style="width: 100%; height: 800px; margin: 0 auto"></div>
+        <div id="week" style="width: 100%; height: 800px; margin: 0 auto"></div>
     </div>
     <div class="layui-tab-item">
         <table class="layui-hide" id="customer_info" lay-filter="customer_info"></table>
@@ -263,91 +263,6 @@
             $('#week').highcharts(json);
         });
 
-
-        <!-- 此为本月开卡折线图js -->
-        $(document).ready(function () {
-            var chart = {
-                type: 'spline'
-            };
-            var title = {
-                text: '近30天开卡统计({{ year }}年)'
-            };
-            var subtitle = {
-                text: '说明: 每条线代表不同客户!'
-            };
-
-            var xAxis = {
-                categories: {{ day_list }},
-                lineWidth: 4
-            };
-            var yAxis = {
-                title: {
-                    text: '开卡数量:'
-                },
-                labels: {
-                    formatter: function () {
-                        return this.value;
-                    }
-                },
-                lineWidth: 4,
-            };
-            var tooltip = {
-                crosshairs: true,
-                shared: true
-            };
-            var plotOptions = {
-                spline: {
-                    marker: {
-                        radius: 4,
-                        lineColor: '#666666',
-                        lineWidth: 1
-                    }
-                }
-            };
-
-            var series = [];
-
-            $.ajax({
-                type : 'GET',
-                url : '/middle/line_chart',
-                dataType : 'json',
-                success : function(data) {
-                    // 成功提示框
-                    if (data.code == 0){
-                        var info = data.data;
-                        for (var i=0; i<info.length;i++){
-                            var name = info[i].name;
-                            var data1 = info[i].data;
-                            var s = {name:name,data:data1};
-                            series.push(s)
-                        }
-                        var json = {};
-                        json.chart = chart;
-                        json.title = title;
-                        json.subtitle = subtitle;
-                        json.tooltip = tooltip;
-                        json.xAxis = xAxis;
-                        json.yAxis = yAxis;
-                        json.series = series;
-                        json.plotOptions = plotOptions;
-                        $('#month').highcharts(json);
-                    }else if(data.code == 502){
-                        parent.layer.msg(data.msg, {
-                        icon : 5
-                    });
-                    }
-
-                },
-                error : function(data) {
-                    // 异常提示
-                    parent.layer.msg('出现网络故障', {
-                        icon : 5
-                    });
-                }
-                    });
-
-
-        });
 
         //执行一个 table 实例
         table.render({

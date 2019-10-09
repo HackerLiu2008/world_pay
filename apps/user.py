@@ -1,10 +1,32 @@
 import json
 import logging
+import operator
 from tools_me.other_tools import verify_login_time, xianzai_time, login_required
 from tools_me.parameter import RET, MSG
 from . import user_blueprint
 from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
+
+
+@user_blueprint.route('/top_history/', methods=['GET'])
+@login_required
+def top_history():
+    page = request.args.get('page')
+    limit = request.args.get('limit')
+    user_id = g.user_id
+    task_info = SqlData().search_top_history_acc(user_id)
+    task_info = sorted(task_info, key=operator.itemgetter('time'))
+    results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
+    if len(task_info) == 0:
+        results['MSG'] = MSG.NODATA
+        return results
+    page_list = list()
+    task_info = list(reversed(task_info))
+    for i in range(0, len(task_info), int(limit)):
+        page_list.append(task_info[i:i + int(limit)])
+    results['data'] = page_list[int(page) - 1]
+    results['count'] = len(task_info)
+    return results
 
 
 @user_blueprint.route('/', methods=['GET'])

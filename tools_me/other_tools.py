@@ -1,12 +1,15 @@
 import datetime
 import json
 import os
+import random
 import time
 from functools import wraps
 from flask import current_app, session, g, render_template
 from xlrd import xldate_as_tuple
 from config import logging
 import uuid
+from tools_me.mysql_tools import SqlData
+
 
 ALLOWED_EXTENSIONS = ['xls', 'xlsx']
 
@@ -136,7 +139,7 @@ def admin_required(view_func):
         admin_id = session.get('admin_id')
         admin_name = session.get('admin_name')
         if not admin_id:
-            return render_template('customer/login_customer.html')
+            return render_template('admin/admin_login.html')
         else:
             # 当用户已登录，使用g变量记录用户的user_id，方便被装饰是的视图函数中可以直接使用
             g.admin_id = admin_id
@@ -158,7 +161,7 @@ def middle_required(view_func):
         """具体实现判断用户是否登录的逻辑"""
         middle_id = session.get('middle_id')
         if not middle_id:
-            return render_template('middle/login.html')
+            return render_template('middle/login_middle.html')
         else:
             # 当用户已登录，使用g变量记录用户的user_id，方便被装饰是的视图函数中可以直接使用
             g.middle_id = middle_id
@@ -222,6 +225,22 @@ def get_nday_list(n):
     for i in range(1, n + 1)[::-1]:
         time_str = str(datetime.date.today() - datetime.timedelta(days=i))
         t_s = time_str.split('-')
-        s = float(t_s[1] + '.' + t_s[2])
+        day_time = t_s[1] + '.' + t_s[2]
+        s = float(day_time)
         before_n_days.append(s)
     return before_n_days
+
+
+def make_name(n):
+    name_dict = SqlData().search_name_info()
+    last_name = name_dict.get('last_name')
+    female = name_dict.get('female')
+    female_len = len(female)
+    last_len = len(last_name)
+    name_list = list()
+    for i in range(n):
+        name = female[random.randint(0, female_len-1)] + " " + last_name[random.randint(0, last_len-1)]
+        name_list.append(name)
+    return name_list
+
+make_name(1000)

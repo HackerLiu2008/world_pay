@@ -4,13 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>WORLD-PAY·全球付(admin)</title>
+    <title>WORLD-PAY·全球付(ADMIN)</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="icon" href="/static/img/buy-icon.png" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
     <script src="/static/layui/layui.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
     <style>
         .divForm{
             {#position: absolute;/*绝对定位*/#}
@@ -24,27 +26,14 @@
             margin-top: 100px;
             margin-left: 36%;
         }
-
-        .divForm2{
-            {#position: absolute;/*绝对定位*/#}
-            width: 500px;
-            height: 600px;
-            {#border: 3px solid gray;#}
-            {#text-align: center;/*(让div中的内容居中)*/#}
-            top: 50%;
-            left: 50%;
-            margin-bottom: 300px;
-            margin-top: 100px;
-            margin-left: 35%;
-        }
     </style>
 </head>
 <body>
 
 <div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
+  <div class="layui-header layui-bg-black" >
     <div class="layui-logo">WORLD_PAY[全球付]</div>
-    <ul class="layui-nav layui-bg-blue layui-layout-right">
+    <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item"><span style="font-weight: normal;font-size: 16px;color: ghostwhite;">账户余额: </span><span style="font-weight: normal;font-size: 16px;color: red">$ {{ balance }}</span></li>
       <li class="layui-nav-item">
         <a href="javascript:">
@@ -56,7 +45,7 @@
           <dd id="change_info"><a href="javascript:">更改信息</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="/user/logout">注销</a></li>
+      <li class="layui-nav-item"><a href="/admin/logout">注销</a></li>
     </ul>
   </div>
 
@@ -65,112 +54,50 @@
 
 <div class="layui-tab layui-tab-card" lay-filter="demo">
   <ul class="layui-tab-title">
-    <li class="layui-this" lay-id="1">创建虚拟卡</li>
-    <li lay-id="2">创建批量虚拟卡</li>
-    <li lay-id="3">所有虚拟卡</li>
-    <li lay-id="4">交易记录</li>
-    <li lay-id="5">充值记录</li>
+    <li class="layui-this" lay-id="1">近期预览</li>
+    <li lay-id="2">所有客户</li>
+    <li lay-id="3">账户充值记录</li>
+    <li lay-id="4">新增客户</li>
+    <li lay-id="5">新增中介</li>
+    <li lay-id="6">中介管理</li>
   </ul>
   <div class="layui-tab-content" style="height: 100%;">
       <div class="layui-tab-item layui-show">
-    <div class="divForm">
-    <form class="layui-form" lay-filter="example" id="example" enctype="multipart/form-data">
-        <div class="layui-form-item">
-            <label class="layui-form-label">卡姓名</label>
-            <div class="layui-input-inline">
-                <input type="text" name="name" required lay-verify="required" placeholder="绑定到卡上的姓名" autocomplete="off"
-                       class="layui-input"  id="name">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">充值金额</label>
-            <div class="layui-input-inline">
-                <input type="text" id="limit" name="limit" required lay-verify="required" placeholder="00.00" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span style="font-weight: normal;font-size: 16px;color: blue;">充值范围:</span>$ {{ min_top }} - $ {{ max_top }}
-        <div class="layui-form-item">
-            <label class="layui-form-label">标签</label>
-            <div class="layui-input-inline">
-                <input type="text" id="label" name="label" placeholder="虚拟卡标签" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span style="font-weight: normal;font-size: 16px;color: #188479;">开卡费用: </span> $ {{ create_card }}
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button  class="layui-btn layui-btn-lg" lay-submit="" lay-filter="formDemo" id="sub" type="submit">确认</button>
-            </div>
-        </div>
-    </form>
-    </div>
+        <div id="month" style="width: 100%; height: 800px; margin: 0 auto"></div>
   </div>
     <div class="layui-tab-item">
-        <div class="divForm2">
-    <form class="layui-form" lay-filter="example" id="example" enctype="multipart/form-data">
-        <div class="layui-form-item">
-            <label class="layui-form-label">建卡数量</label>
-            <div class="layui-input-inline">
-                <input type="number" name="card_num" required lay-verify="required" placeholder="请输入建卡的数量" autocomplete="off"
-                       class="layui-input"  id="card_num">
-            </div>
-        </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">自填/随机(名字)</label>
-            <div class="layui-input-block" id="IsPurchased">
-              <input type="radio" name="n" value="write" title="自填" checked="" lay-filter="aaa">
-              <input type="radio" name="n" value="random" title="随机" lay-filter="aaa">
-            </div>
-        </div>
-
-        <div class="layui-form-item layui-form-text" id="text">
-            <label class="layui-form-label">姓名</label>
-            <div class="layui-input-block">
-              <textarea placeholder="例如:samchel|ab|...|...,以'|'分割" class="layui-textarea" id="LAY_demo_editor" name="content"></textarea>
-            </div>
-          </div>
-
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">充值金额</label>
-            <div class="layui-input-inline">
-                <input type="text" id="limit" name="limit" required lay-verify="required" placeholder="卡的最大消费额度" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span style="font-weight: normal;font-size: 16px;color: blue;">充值范围:</span>$ {{ min_top }} - $ {{ max_top }}
-        <div class="layui-form-item">
-            <label class="layui-form-label">标签</label>
-            <div class="layui-input-inline">
-                <input type="text" id="label" name="label" placeholder="虚拟卡标签" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span style="font-weight: normal;font-size: 16px;color: #188479;">开卡费用(单价): </span> $ {{ create_card }}
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button  class="layui-btn" lay-submit="" lay-filter="formDemo" id="sub" type="submit">确认</button>
-            </div>
-        </div>
-    </form>
-    </div>
-    </div>
-    <div class="layui-tab-item">
         <form class="layui-form" action="" lay-filter="example" id="example">
             <div class="demoTable">
-                卡名：
+                客户：
             <div class="layui-inline">
                 <input class="layui-input" name="s_card_name" id="s_card_name" autocomplete="off">
             </div>
-                卡号:
-            <div class="layui-inline">
-                <input type="number"  class="layui-input" name="s_card_num" id="s_card_num" autocomplete="off">
+
+            <button class="layui-btn" data-type="reload" id="sub_card">搜索</button>
+            <button class="layui-btn layui-btn-primary" id="">重置</button>
             </div>
-                标签:
+        </form>
+        <table class="layui-hide" id="account_all" lay-filter="account_all"></table>
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-xs" lay-event="top_up">充值</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">编辑</a>
+{#            <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="lock">冻结</a>#}
+{#            <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="del">删卡</a>#}
+        </script>
+    </div>
+
+
+    <div class="layui-tab-item">
+        <form class="layui-form" action="" lay-filter="example" id="example">
+            <div class="demoTable">
+                客户：
             <div class="layui-inline">
-                <input class="layui-input" name="s_label" id="s_label" autocomplete="off">
+                <input class="layui-input" name="s_card_name" id="s_card_name" autocomplete="off">
+            </div>
+                流水号:
+            <div class="layui-inline">
+                <input type="text"  class="layui-input" name="s_card_num" id="s_card_num" autocomplete="off">
             </div>
                 时间范围:
                 <div class="layui-inline">
@@ -181,25 +108,162 @@
             </div>
         </form>
 
-        <table class="layui-hide" id="card_info" lay-filter="card_info"></table>
-        <script type="text/html" id="barDemo">
-{#            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>#}
-            <a class="layui-btn layui-btn-xs" lay-event="edit">充值</a>
-            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="refund">退款</a>
-            <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="lock">冻结</a>
-            <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="del">删卡</a>
-        </script>
+        <tablse class="layui-hide" id="top_up" lay-filter="top_up"></tablse>
     </div>
     <div class="layui-tab-item">
-            时间范围:
-            <div class="layui-inline">
-            <input type="text" class="layui-input" id="test7" placeholder=" - ">
-        </div>
-        <button class="layui-btn" data-type="reload" id="sub">搜索</button>
-        <button type="reset" class="layui-btn layui-btn-primary" id="reset">重置</button>
 
-        <table class="layui-hide" id="pay_history" lay-filter="pay_history"></table>
+        <div class="divForm">
+        <form class="layui-form" lay-filter=""  enctype="multipart/form-data">
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓   名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" required lay-verify="required" placeholder="客户姓名" autocomplete="off"
+                           class="layui-input"  id="name">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">账   号</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="account" name="account" required lay-verify="required" placeholder="客户登录账号" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">密   码</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="password" name="password" placeholder="客户登录密码" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">电   话</label>
+                <div class="layui-input-inline">
+                    <input type="number" id="phone_num" name="phone_num" placeholder="接收短息通知号码" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">开 卡 费</label>
+                <div class="layui-input-inline">
+                    <input type="number" id="create_price" name="create_price" placeholder="开卡费" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">取现手续费</label>
+                <div class="layui-input-inline">
+                    <input type="number" id="refund" name="refund" placeholder="取现的手续费(例:0.05)" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">最低充值金额</label>
+                <div class="layui-input-inline">
+                    <input type="number" id="min_top" name="min_top" placeholder="最低充值到卡的金额" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">最高充值金额</label>
+                <div class="layui-input-inline">
+                    <input type="number" id="max_top" name="max_top" placeholder="最高充值到卡的金额" autocomplete="off" required lay-verify="required"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">备     注</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="note" name="note" placeholder="备注信息可填可不填" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button  class="layui-btn layui-btn-lg" lay-submit="" lay-filter="formDemo" type="submit">确认</button>
+                </div>
+            </div>
+        </form>
     </div>
+
+    </div>
+
+      <div class="layui-tab-item">
+
+          <div class="divForm">
+        <form class="layui-form" lay-filter=""  enctype="multipart/form-data">
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓   名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" required lay-verify="required" placeholder="客户姓名" autocomplete="off"
+                           class="layui-input"  id="name">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">账   号</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="account" name="account" required lay-verify="required" placeholder="客户登录账号" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">密   码</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="password" name="password" placeholder="客户登录密码" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">电   话</label>
+                <div class="layui-input-inline">
+                    <input type="number" id="phone_num" name="phone_num" placeholder="接收短息通知号码" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">开卡利润</label>
+                <div class="layui-input-inline">
+                    <input type="number" id="create_price" name="create_price" placeholder="开一张卡中介多少钱" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">备     注</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="note1" name="note1" placeholder="备注可填不可填" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button  class="layui-btn layui-btn-lg" lay-submit="" lay-filter="add_middle" type="submit">确认</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+      </div>
+      <div class="layui-tab-item">
+          <tablse class="layui-hide" id="middle_info" lay-filter="middle_info"></tablse>
+          <script type="text/html" id="middle_bar">
+{#            <a class="layui-btn layui-btn-xs" lay-event="top_up">充值</a>#}
+{#            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">编辑</a>#}
+            <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="mid_edit">编辑</a>
+            <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="del">提成</a>
+        </script>
+      </div>
   </div>
 </div>
 
@@ -208,20 +272,30 @@
     <div class="layui-side-scroll">
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:">管理卡</a>
+          <a class="" href="javascript:">客户信息</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:" id="make_vir">创建虚拟卡</a></dd>
-            <dd><a href="javascript:" id="make_vir_some">创建批量虚拟卡</a></dd>
-            <dd><a href="javascript:" id="all_vir">所有虚拟卡</a></dd>
+            <dd><a href="javascript:" id="make_vir">近期预览</a></dd>
+            <dd><a href="javascript:" id="make_vir_some">所有客户</a></dd>
+            <dd><a href="javascript:" id="all_vir">账户充值记录</a></dd>
           </dl>
         </li>
       </ul>
 
         <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:">管理资金</a>
+          <a class="" href="javascript:">客户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:" id="show_history">交易记录</a></dd>
+            <dd><a href="javascript:" id="add_acc">新增客户</a></dd>
+          </dl>
+        </li>
+      </ul>
+
+        <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:">中介管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:" id="add_mid">新增中介</a></dd>
+            <dd><a href="javascript:" id="mid_info">中介管理</a></dd>
           </dl>
         </li>
       </ul>
@@ -253,16 +327,89 @@
             , $ = layui.$
             , form = layui.form;
 
-        form.on('radio(aaa)', function (data) {
+        <!-- 此为本月开卡折线图js -->
+        $(document).ready(function () {
+            var chart = {
+                type: 'spline'
+            };
+            var title = {
+                text: '今日开卡统计预览'
+            };
+            var subtitle = {
+                text: '说明: 每条线代表不同客户!'
+            };
 
-            if ($('#IsPurchased input[name="n"]:checked ').val() == "random") {
-                $("#LAY_demo_editor").attr('disabled','disabled');
-            }
-            else {
-                $("#LAY_demo_editor").removeAttr('disabled')
-            }
-            form.render();
+            var xAxis = {
+                categories: ['00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00','24:00'],
+                lineWidth: 4
+            };
+            var yAxis = {
+                title: {
+                    text: '开卡数量:'
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value;
+                    }
+                },
+                lineWidth: 4,
+            };
+            var tooltip = {
+                crosshairs: true,
+                shared: true
+            };
+            var plotOptions = {
+                spline: {
+                    marker: {
+                        radius: 4,
+                        lineColor: '#666666',
+                        lineWidth: 1
+                    }
+                }
+            };
+
+            var series = [];
+
+            $.ajax({
+                type : 'GET',
+                url : '/admin/line_chart',
+                dataType : 'json',
+                success : function(data) {
+                    // 成功提示框
+                    if (data.code == 0){
+                        var info = data.data;
+                        for (var i=0; i<info.length;i++){
+                            var name = info[i].name;
+                            var data1 = info[i].data;
+                            var s = {name:name,data:data1};
+                            series.push(s)
+                        }
+                        var json = {};
+                        json.chart = chart;
+                        json.title = title;
+                        json.subtitle = subtitle;
+                        json.tooltip = tooltip;
+                        json.xAxis = xAxis;
+                        json.yAxis = yAxis;
+                        json.series = series;
+                        json.plotOptions = plotOptions;
+                        $('#month').highcharts(json);
+                    }else if(data.code == 502){
+                        parent.layer.msg(data.msg, {
+                        icon : 5
+                    });
+                    }
+
+                },
+                error : function(data) {
+                    // 异常提示
+                    parent.layer.msg('出现网络故障', {
+                        icon : 5
+                    });
+                }
+                    });
         });
+
 
         $(".layui-tab-title li").click(function(){
             {#var picTabNum = $(this).index();#}
@@ -294,25 +441,24 @@
 
         //执行一个 table 实例
         table.render({
-            elem: '#card_info'
+            elem: '#account_all'
             , height: ''
-            , url: '/user/card_info' //数据接口
+            , url: '/admin/account_info' //数据接口
             , title: '账号表'
-            , limit:20
+            , limit:50
+            , limits:[50,100,150,200,250,300,350,400,450,500]
             , toolbar: "r" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
                 {type:'numbers'}
-                , {field: 'card_name', title: '卡姓名', align: 'center', sort: true,  totalRowText: '合计：'}
-                , {field: 'card_num', title: '卡号', align: 'center', sort: true,}
-                , {field: 'card_exp', title: '有效期', align: 'center', sort: true}
-                , {field: 'cvv', title: '安全码', align: 'center', sort: true}
-                , {field: 'amount', title: '充值总额($)', align: 'center', totalRow: true, sort: true}
-                , {field: 'balance', title: '余额($)', align: 'center', totalRow: true, sort: true}
-                , {field: 'label', title: '标签', align: 'center', totalRow: true, sort: true}
-                , {field: 'close_date', title: '到期时间', align: 'center', sort: true}
-                , {field: 'status', title: '状态', align: 'center', sort: true}
-                , {field: 'crete_date', title: '建卡时间', align: 'center', sort: true}
+                , {field: 'name', title: '客户', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'create_price', title: '开卡费', align: 'center', sort: true,}
+                , {field: 'refund', title: '取现手续费', align: 'center', sort: true,}
+                , {field: 'min_top', title: '最低充值金额', align: 'center', sort: true,}
+                , {field: 'max_top', title: '最高充值金额', align: 'center', sort: true,}
+                , {field: 'card_num', title: '开卡数量', align: 'center', sort: true,}
+                , {field: 'sum_balance', title: '已消费金额', align: 'center', sort: true}
+                , {field: 'balance', title: '卡上余额', align: 'center', sort: true}
                 , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo'}
             ]]
             , id: 'card_info'
@@ -322,32 +468,48 @@
 
         //执行一个 table 实例
         table.render({
-            elem: '#pay_history'
+            elem: '#top_up'
             , height: ''
-            , url: '/account/detail' //数据接口
+            , url: '/admin/top_history' //数据接口
             , title: '账号表'
             , limit:20
             , toolbar: "true" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
                 {type:'numbers'}
-                ,{type: 'checkbox'}
-                , {field: 'do_date', title: '操作日期', align: 'center', sort: true,  totalRowText: '合计：'}
-                , {field: 'do_type', title: '交易类型', align: 'center', sort: true,}
-                , {field: 'do_method', title: '操作类型', align: 'center', sort: true}
-                , {field: 'card', title: '卡数量', align: 'center', sort: true}
-                , {field: 'card_num', title: '卡号', align: 'center', totalRow: true, sort: true}
-                , {field: 'do_money', title: '操作金额', align: 'center', totalRow: true, sort: true}
-                , {field: 'hand_money', title: '手续费', align: 'center', totalRow: true, sort: true}
-                , {field: 'sum_money', title: '总费用', align: 'center', sort: true}
-                , {field: 'before_balance', title: '之前余额', align: 'center', sort: true}
-                , {field: 'balance', title: '之后余额', align: 'center', sort: true}
+                , {field: 'name', title: '客户', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'pay_num', title: '流水号', align: 'center', sort: true,}
+                , {field: 'time', title: '充值时间', align: 'center', sort: true,}
+                , {field: 'money', title: '充值金额', align: 'center', sort: true}
+                , {field: 'before_balance', title: '充值前余额', align: 'center', sort: true}
+                , {field: 'balance', title: '充值后余额', align: 'center', sort: true}
             ]]
             , id: 'pay_history'
             , page: true
         });
 
-
+        table.render({
+            elem: '#middle_info'
+            , height: ''
+            , url: '/admin/middle_info' //数据接口
+            , title: '中介信息表'
+            , limit:20
+            , toolbar: "true" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'name', title: '中介名', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'cus_num', title: '客户数量', align: 'center', sort: true,}
+                , {field: 'account', title: '账号', align: 'center', sort: true,}
+                , {field: 'password', title: '密码', align: 'center', sort: true,}
+                , {field: 'phone_num', title: '电话', align: 'center', sort: true}
+                , {field: 'card_price', title: '开卡提成', align: 'center', sort: true}
+                , {field: 'balance', title: '备注', align: 'center', sort: true}
+                , {fixed: 'right', width: 220, align: 'center', toolbar: '#middle_bar'}
+            ]]
+            , id: 'pay_history'
+            , page: true
+        });
 
 
         //监听右侧导航栏点击事件
@@ -361,24 +523,29 @@
         $('#all_vir').on('click',function () {
            element.tabChange('demo', 3);
         });
-        $('#show_history').on('click',function () {
+        $('#add_acc').on('click',function () {
            element.tabChange('demo', 4);
+        });
+        $('#add_mid').on('click',function () {
+           element.tabChange('demo', 5);
+        });
+        $('#mid_info').on('click',function () {
+           element.tabChange('demo', 6);
         });
 
 
-
-        table.on('rowDouble(card_info)', function(obj){
+        table.on('rowDouble(account_all)', function(obj){
         var data = obj.data;
             layer.open({
                 type: 2
-                ,offset: 'r' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
                 ,skin:'layui-layer-demo'
-                ,id: 'layerUser'//防止重复弹出
-                ,title: '卡号为 ' + data.card_num + ' 的详细信息'
-                ,area: ['780px','80%']
+                ,id: 'account_info'//防止重复弹出
+                ,title: '客户为 ' + data.card_num + ' 的详细信息'
+                ,area: ['90%','80%']
                 ,anim: 2
                 ,shadeClose:true
-                ,content: '/user/one_card_detail'
+                ,content: '/admin/card_list_html'
                 ,btn: '关闭全部'
                 ,btnAlign: 'c' //按钮居中a
                 ,shade:  [0.8, '#393D49'] //弹框背景选项
@@ -390,6 +557,34 @@
                         body.contents().find("#cvv").html(data.cvv);
                     }
 
+              });
+
+            //标注选中样式
+            obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+        });
+
+        table.on('rowDouble(middle_info)', function(obj){
+        var data = obj.data;
+            layer.open({
+                type: 2
+                ,offset: 'auto'
+                ,skin:'layui-layer-demo'
+                ,id: 'account_info'//防止重复弹出
+                ,title: '客户为 ' + data.card_num + ' 的详细信息'
+                ,area: ['90%','80%']
+                ,anim: 2
+                ,shadeClose:true
+                ,content: '/admin/card_list_html'
+                ,btn: '关闭全部'
+                ,btnAlign: 'c' //按钮居中a
+                ,shade:  [0.8, '#393D49'] //弹框背景选项
+                ,success: function(layero, index) {
+                        var body = layer.getChildFrame('body', index);
+                        body.contents().find("#card_num").html(data.card_num);
+                        body.contents().find("#card_name").html(data.card_name);
+                        body.contents().find("#card_exp").html(data.card_exp);
+                        body.contents().find("#cvv").html(data.cvv);
+                    }
               });
 
             //标注选中样式
@@ -410,7 +605,7 @@
                 ,shadeClose: true
                 ,btnAlign: 'c'
                 ,moveType: 1 //拖拽模式，0或者1
-                ,content: '/user/user_info'
+                ,content: '/admin/admin_info'
 
               });
         });
@@ -419,7 +614,7 @@
         $('#change_word').on('click', function () {
             layer.open({
                 type: 2
-                ,title: false //不显示标题栏
+                ,title: false //不显示标题栏s
                 ,closeBtn: false
                 ,area: ['500px','400px']
                 ,shade: 0.8
@@ -428,72 +623,29 @@
                 ,btn: ['关闭']
                 ,btnAlign: 'c'
                 ,moveType: 1 //拖拽模式，0或者1
-                ,content: '/user/edit_user'
+                ,content: '/admin/change_pass'
 
               });
         });
 
-        //修改推送短信电话
-        $('#change_info').on('click', function () {
-            var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(17[0]{1})|(15[0-3]{1})|(15[5-9]{1})|(18[0-9]{1}))+\d{8})$/;
-            layer.prompt({title: '更改接收短信通知电话号码。'}, function(num, index){
-
-                    if (isNaN(num)){
-                        layer.msg('请输入数字!')
-                    }else if (num.length != 11){
-                        layer.msg('请输入标准的电话号码!')
-                    }else if (!myreg.test(num)){
-                        layer.msg('请输入标准的电话号码!')
-                    } else{
-                        $.ajax({
-                        type : 'GET',
-                        url : '/user/change_phone' + '?phone_num=' + num,
-                        dataType : 'json',
-                        success : function(data) {
-                            // 成功提示框
-                            if (data.code == 0){
-                                parent.layer.msg(data.msg, {
-                                icon : 6,
-                            });
-                            }else if(data.code == 502){
-                                parent.layer.msg(data.msg, {
-                                icon : 5
-                            });
-                            }
-
-                        },
-                        error : function(data) {
-                            // 异常提示
-                            parent.layer.msg('出现网络故障', {
-                                icon : 5
-                            });
-                        }
-                            });
-                    }
-                    layer.close(index);
-
-                });
-        });
-
         /*根据搜索条件重载表格*/
-        var sub = $('#sub_card');
+        var sub = $('#sub');
         sub.on('click',function () {
-            var card_name = $('#s_card_name').val(),
-                card_num = $('#s_card_num').val(),
-                label = $('#s_label').val(),
-                range_time = $('#s_test6').val();
-            table.reload('card_info', {
+            var label = $('input:radio:checked').val(),
+                account = $('#account').val(),
+                terrace = $('#terrace').val();
+            table.reload('account', {
                 page: {
                   curr: 1 //重新从第 1 页开始
                 },where: {
-                    card_name: card_name,
-                    card_num: card_num,
                     label:label,
-                    range_time: range_time
+                    account: account,
+                    terrace: terrace,
                   }
-              }, '/user/card_info');
+              }, '/account/detail/');
             return false
         });
+
 
       $('.demoTable .layui-btn').on('click', function(){
         var type = $(this).data('type');
@@ -501,70 +653,101 @@
       });
 
         //监听行工具事件
-        table.on('tool(card_info)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
+        table.on('tool(account_all)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
 
-            if (layEvent === 'refund') {
-                layer.prompt({title: '当前退款手续费为{{ refund }}%'}, function(num, index){
+            if (layEvent === 'top_up') {
+                layer.prompt({title: '请输入充值金额'}, function(num, index){
 
                     if (isNaN(num)){
-                        layer.msg('请输入数字!最大支持两位小数!')
+                        layer.msg('请输入数字!')
                     }else{
-                        layer.msg('演示完毕！您的口令：'+ num);
+
+                        $.ajax({
+                            type : 'POST',
+                            url : '/admin/top_up',
+                            data : {'money':num, 'name': data.name},
+                            dataType : 'json',
+                            success : function(data) {
+                                // 成功提示框
+                                if (data.code == 0){
+                                    parent.layer.msg(data.msg, {
+                                    icon : 6,
+                                });
+                                    parent.layer.closeAll('iframe'); //关闭弹框
+                                    window.parent.location.reload()
+                                }else if(data.code == 502){
+                                    parent.layer.msg(data.msg, {
+                                    icon : 5
+                                });
+                                }
+
+                            },
+                            error : function(data) {
+                                // 异常提示
+                                parent.layer.msg('出现网络故障', {
+                                    icon : 5
+                                });
+                                parent.layer.closeAll('iframe'); //关闭弹框
+                            }
+                        });
+
                     }
                     layer.close(index);
 
                 });
-            } else if (layEvent === 'del') {
-                layer.confirm('确定删除卡号为:'+data.card_num+'的卡吗?如果卡内还有余额将以手续费为:{{ refund }}%,回收到账户余额.', {title:'删卡信息提示!!!'}, function (index) {
-                    obj.del(); //删除对应行（tr）的DOM结构
-                    layer.close(index);
-                    //向服务端发送删除指令
-                    $.ajax({
-                        type : 'GET',
-                        url : '/account/del_account' + '?account=' + data.account,
-                        dataType : 'json',
-                        success : function(data) {
-                            // 成功提示框
-                            if (data.code == 0){
-
-                                parent.layer.msg('删除成功!', {
-                                icon : 6,
-                            });
-                            }else if(data.code == 502){
-                                parent.layer.msg('删除失败!', {
-                                icon : 5
-                            });
-                            }
-
-                        },
-                        error : function(data) {
-                            // 异常提示
-                            parent.layer.msg('出现网络故障', {
-                                icon : 5
-                            });
-                        }
-                            });
-                    location.reload();
-                    return false
-                });
-            }else if (layEvent === 'lock'){
+            } else if (layEvent === 'lock'){
                 layer.msg('冻结卡操作!')
             } else if (layEvent === 'edit') {
                 layui.layer.open({
-                    title: '修改卡号为 [ ' + data.card_num + ' ] 的相关信息',
+                    title: '修改卡号为 [ ' + data.name + ' ] 的相关信息',
                     type: 2,
                     anim: 3,
                     area: ['20%', '35%'],//宽高
                     shadeClose: true, //点击遮罩关闭
-                    content: '/user/change_detail',
+                    content: '/admin/edit_parameter',
                     success: function(layero, index) {
                         var body = layer.getChildFrame('body', index);
-                        body.contents().find("#card_num").html(data.card_num);
-                        body.contents().find("#card_name").val(data.card_name);
-                        body.contents().find("#balance").html(data.balance);
-                        body.contents().find("#label").val(data.label);
+                        body.contents().find("#name_str").val(data.name)
+                    }
+                });
+                return false
+            }
+        });
+
+
+
+        table.on('tool(middle_info)', function (obj) {
+            var data = obj.data
+                , layEvent = obj.event;
+
+            if (layEvent === 'mid_edit') {
+                layui.layer.open({
+                    title: '修改卡号为 [ ' + data.name + ' ] 的相关信息',
+                    type: 2,
+                    anim: 3,
+                    area: ['27%', '30%'],//宽高
+                    shadeClose: true, //点击遮罩关闭
+                    content: '/admin/acc_to_middle',
+                    success: function(layero, index) {
+                        var body = layer.getChildFrame('body', index);
+                        body.contents().find("#name").val(data.name)
+                    }
+                });
+            } else if (layEvent === 'lock'){
+                layer.msg('冻结卡操作!')
+            } else if (layEvent === 'edit') {
+                layui.layer.open({
+                    title: '修改卡号为 [ ' + data.name + ' ] 的相关信息',
+                    type: 2,
+                    anim: 3,
+                    area: ['20%', '35%'],//宽高
+                    shadeClose: true, //点击遮罩关闭
+                    content: '/admin/edit_parameter',
+                    success: function(layero, index) {
+                        var body = layer.getChildFrame('body', index);
+                        body.contents().find("#name_str").val(data.name)
                     }
                 });
                 return false
@@ -583,6 +766,71 @@
                 }
             }
         });
+
+        form.on('submit(formDemo)', function(data){
+            var data_info = {data:JSON.stringify(data.field)};
+            var $ = layui.jquery;
+            $.ajax({
+				type : 'POST',
+				url : '/admin/add_account/',
+				data : data_info,
+				dataType : 'json',
+				success : function(data) {
+					// 成功提示框
+                    if (data.code == 0){
+                        parent.layer.msg("添加成功!请刷新界面!", {
+						icon : 6,
+					});
+
+                    }else if(data.code == 502){
+                        parent.layer.msg(data.msg, {
+						icon : 5
+					});
+                    }
+
+				},
+				error : function(data) {
+					// 异常提示
+					parent.layer.msg('出现网络故障', {
+						icon : 5
+					});
+					parent.layer.closeAll('iframe'); //关闭弹框
+				}
+			});
+			return false;
+            });
+
+        form.on('submit(add_middle)', function(data){
+            var data_info = {data:JSON.stringify(data.field)};
+            var $ = layui.jquery;
+            $.ajax({
+				type : 'POST',
+				url : '/admin/add_middle/',
+				data : data_info,
+				dataType : 'json',
+				success : function(data) {
+					// 成功提示框
+                    if (data.code == 0){
+                        parent.layer.msg("添加成功!请刷新界面!", {
+						icon : 6,
+					});
+
+                    }else if(data.code == 502){
+                        parent.layer.msg(data.msg, {
+						icon : 5
+					});
+                    }
+				},
+				error : function(data) {
+					// 异常提示
+					parent.layer.msg('出现网络故障', {
+						icon : 5
+					});
+					parent.layer.closeAll('iframe'); //关闭弹框
+				}
+			});
+			return false;
+            });
 
     })
 </script>

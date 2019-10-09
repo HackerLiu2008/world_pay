@@ -200,6 +200,10 @@
 
         <table class="layui-hide" id="pay_history" lay-filter="pay_history"></table>
     </div>
+
+      <div class="layui-tab-item">
+          <table class="layui-hide" id="top_up" lay-filter="top_up"></table>
+      </div>
   </div>
 </div>
 
@@ -222,6 +226,7 @@
           <a class="" href="javascript:">管理资金</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:" id="show_history">交易记录</a></dd>
+            <dd><a href="javascript:" id="top">充值记录</a></dd>
           </dl>
         </li>
       </ul>
@@ -348,6 +353,27 @@
         });
 
 
+        table.render({
+            elem: '#top_up'
+            , height: ''
+            , url: '/user/top_history/' //数据接口
+            , title: '账号表'
+            , limit:20
+            , toolbar: "true" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'pay_num', title: '流水号', align: 'center', sort: true,totalRowText: '合计：'}
+                , {field: 'time', title: '充值时间', align: 'center', sort: true,}
+                , {field: 'money', title: '充值金额', align: 'center', sort: true, totalRow:true}
+                , {field: 'before_balance', title: '充值前余额', align: 'center', sort: true}
+                , {field: 'balance', title: '充值后余额', align: 'center', sort: true}
+            ]]
+            , id: 'top_history'
+            , page: true
+        });
+
+
 
 
         //监听右侧导航栏点击事件
@@ -363,6 +389,9 @@
         });
         $('#show_history').on('click',function () {
            element.tabChange('demo', 4);
+        });
+        $('#top').on('click',function () {
+           element.tabChange('demo', 5);
         });
 
 

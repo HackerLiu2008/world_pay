@@ -19,7 +19,7 @@ DATE_FORMAT = '%Y-%m-%d  %H:%M:%S %a '  # 配置输出时间的格式，注意�
 logging.basicConfig(level=logging.ERROR,
                     format=LOG_FORMAT,
                     datefmt=DATE_FORMAT,
-                    filename=r"G:/order_flask/static/log/buy.log"  # 有了filename参数就不会直接输出显示到控制台，而是直接写入文件
+                    filename=r"G:/world_pay/static/log/card.log"  # 有了filename参数就不会直接输出显示到控制台，而是直接写入文件
                     )
 
 # 注册路由,以url_prefix区分功能(蓝图)
