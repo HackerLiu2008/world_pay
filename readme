@@ -1,6 +1,1 @@
-系统说明:目前是两个平台(AMZ,SMT)共同数据表格,导致一下数据库字段信息共用导致,表头
-不对应内容"good_search_money=AMZ.good_name, sku=AMZ.pay_method, mail_money=AMZ.serve_class,
-text_review=AMZ.review_title, image_review=AMZ.review_info, default_review=AMZ.feedback_info"
-解释说明,等于号前应为SMT字段名,后为真实AMZ字段名(导致数据歧义)
-
-系统为,一个账号一个平台,不可一个账号公用一个平台(因为数据内容,服务费收取规则不同导致!)
+暂无
