@@ -22,7 +22,7 @@
 <div class="layui-form-item" style="display: none">
     <label class="layui-form-label">隐藏域</label>
     <div class="layui-input-block">
-        <input type ="text" name="sum_order_code"  id="sum_order_code" value="{{ sum_code }}">
+        <input type ="text" name="user_id"  id="user_id" value="{{ user_id }}">
     </div>
 </div>
 
@@ -41,25 +41,26 @@
             , $ = layui.jquery;
 
 
-        //监听行双击事件（单击事件为：row,双击事件为: rowDouble）
         table.on('rowDouble(task_list)', function(obj){
-        var data = obj.data,
-            task_code = data.task_code;
-            console.log(task_code);
+        var data = obj.data;
             layer.open({
-                    type: 2
-                    ,title: '订单任务详细信息'
-                    ,closeBtn: false
-                    ,area: ['1200px','1000px']
-                    ,shade: 0.8
-                    ,id: 'task_detail' //设定一个id，防止重复弹出
-                    ,shadeClose: true
-                    ,btn: ['关闭']
-                    ,btnAlign: 'c'
-                    ,moveType: 0 //拖拽模式，0或者1
-                    ,content: '/order/one_detail/?task_code=' + task_code
-                  });
-
+                type: 2
+                ,offset: 'r' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                ,skin:'layui-layer-demo'
+                ,id: 'layerUser'//防止重复弹出
+                ,title: '卡号为 ' + data.card_no + ' 的详细信息'
+                ,area: ['40%','80%']
+                ,anim: 2
+                ,shadeClose:true
+                ,content: '/user/one_card_detail?card_no=' + data.card_no
+                ,btn: '关闭全部'
+                ,btnAlign: 'c' //按钮居中a
+                ,shade:  [0.8, '#393D49'] //弹框背景选项
+                ,success: function(layero, index) {
+                        var body = layer.getChildFrame('body', index);
+                        body.contents().find("#card_num").html(data.card_no);
+                    }
+              });
 
             //标注选中样式
             obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
@@ -73,86 +74,33 @@
             });
         });
 
-        var sum_order_code = $('#sum_order_code').val();
+        var u_id = $('#user_id').val();
+
 
         //执行一个 table 实例
         table.render({
             elem: '#task_list'
             , height: ''
-            , url: '/task/task_detail/?sum_order_code=' + sum_order_code //数据接口
+            , url: '/admin/card_info/?u_id=' + u_id //数据接口
             , title: '订单列表'
             , limit: 50
             , toolbar: true //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
                 {type:'numbers'}
-                , {field: 'task_code', title: '卡号', width:200, align: 'center', sort: true,  totalRowText: '合计：'}
-                , {field: 'country', title: '卡名', align: 'center', sort: true,}
-                , {field: 'asin', title: 'ASIN', align: 'center', sort: true,}
-                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+                , {field: 'card_no', title: '卡号', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'card_name', title: '卡名', align: 'center', sort: true,}
+                , {field: 'expire', title: '有效期', align: 'center', sort: true}
+                , {field: 'cvv', title: '安全码', align: 'center', sort: true}
+                , {field: 'label', title: '标签', align: 'center', totalRow: true, sort: true}
+                , {field: 'act_time', title: '建卡时间', align: 'center', sort: true}
+                {#, {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo'}#}
             ]]
             , id: 'task_list'
             , page: true
         });
 
-        //监听行工具事件
-        table.on('tool(task_list)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
-            var data = obj.data //获得当前行数据
-                , layEvent = obj.event; //获得 lay-event 对应的值
 
-            if (layEvent === 'del') {
-                layer.confirm('确定取消订单吗?', function (index) {
-                    obj.del(); //删除对应行（tr）的DOM结构
-                    layer.close(index);
-                    //向服务端发送删除指令
-                    $.ajax({
-                        type : 'GET',
-                        url : '/task/del_task' + '?task_code=' + data.task_code,
-                        dataType : 'json',
-                        success : function(data) {
-                            {#var data1 = JSON.parse(data);#}
-                            {#console.log(data.code);#}
-                            // 成功提示框
-                            if (data.code == 0){
-
-                                parent.layer.msg('删除成功!', {
-                                icon : 6,
-                            });
-                            }else if(data.code == 502){
-                                parent.layer.msg('删除失败!', {
-                                icon : 5
-                            });
-                            }
-
-                        },
-                        error : function(data) {
-                            // 异常提示
-                            parent.layer.msg('出现网络故障', {
-                                icon : 5
-                            });
-                        }
-                            }).always(location.reload());
-                    return false
-
-                });
-            } else if (layEvent === 'edit') {
-                layui.layer.open({
-                    title: '修改订单为 [ ' + data.task_code + ' ] 的相关信息',
-                    type: 2,
-                    anim: 3,
-                    area: ['800px', '600px'],//宽高
-                    shadeClose: true, //点击遮罩关闭
-                    content: '/task/edit_run_time',
-                    success: function(layero, index) {
-                        var body = layer.getChildFrame('body', index);
-                        body.contents().find("#task_code").val(data.task_code);
-                        body.contents().find("#brush_hand").val(data.brush_hand);
-                        body.contents().find("#note").val(data.note);
-                    },
-
-                });
-            }
-        });
 
     });
 

@@ -43,3 +43,16 @@ class ORDER:
     ASIN = ''
     STORE_GROUP = ''
     ASIN_GROUP = ''
+
+
+TRANS_STATUS = {
+    'WAIT': '待付款',
+    'PROCESS': '处理中',
+    'PAID': '已付款',
+    'SUBBANK': '已提交银行卡',
+    'SUCC': '交易成功',
+    'FINISH': '交易成功',
+    'AUTH': '已授权',
+    'FAIL': '交易失败',
+    'CLOSED': '交易关闭'
+}

@@ -1,4 +1,5 @@
 import datetime
+from datetime import timedelta
 import json
 import os
 import random
@@ -224,10 +225,7 @@ def get_nday_list(n):
     before_n_days = []
     for i in range(1, n + 1)[::-1]:
         time_str = str(datetime.date.today() - datetime.timedelta(days=i))
-        t_s = time_str.split('-')
-        day_time = t_s[1] + '.' + t_s[2]
-        s = float(day_time)
-        before_n_days.append(s)
+        before_n_days.append(time_str)
     return before_n_days
 
 
@@ -243,4 +241,13 @@ def make_name(n):
         name_list.append(name)
     return name_list
 
-make_name(1000)
+
+def wed_to_tu():
+    today = datetime.date.today()
+    day_list = list()
+    for n in range(2, 9):
+        day_str = today - datetime.timedelta(days=today.weekday()-n)
+        day_list.append(day_str)
+    return day_list
+
+

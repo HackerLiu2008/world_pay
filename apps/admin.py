@@ -1,12 +1,100 @@
 import json
 import logging
+import operator
 import re
 from flask import request, render_template, jsonify, session, g
 from tools_me.mysql_tools import SqlData
-from tools_me.other_tools import admin_required, sum_code, xianzai_time
+from tools_me.other_tools import admin_required, sum_code, xianzai_time, get_nday_list
 from tools_me.parameter import RET, MSG
 from tools_me.send_sms.send_sms import CCP
 from . import admin_blueprint
+
+
+@admin_blueprint.route('/card_all', methods=['GET'])
+@admin_required
+def card_info_all():
+    try:
+        limit = request.args.get('limit')
+        page = request.args.get('page')
+        results = dict()
+        results['code'] = RET.OK
+        results['msg'] = MSG.OK
+        info_list = SqlData().search_card_info_admin()
+        if not info_list:
+            results['code'] = RET.OK
+            results['msg'] = MSG.NODATA
+            return jsonify(results)
+        # info_list = sorted(info_list, key=operator.itemgetter('start_time'))
+        page_list = list()
+        info_list = list(reversed(info_list))
+        for i in range(0, len(info_list), int(limit)):
+            page_list.append(info_list[i:i + int(limit)])
+        results['data'] = page_list[int(page) - 1]
+        results['count'] = len(info_list)
+        return jsonify(results)
+    except Exception as e:
+        logging.error(str(e))
+        return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@admin_blueprint.route('/sub_middle_money', methods=['POST'])
+@admin_required
+def sub_middle_money():
+    info_id = request.args.get('id')
+    n_time = xianzai_time()
+    SqlData().update_middle_sub('已确认', n_time, int(info_id))
+    return jsonify({"code": RET.OK, "msg": MSG.OK})
+
+
+@admin_blueprint.route('/middle_money', methods=['GET'])
+@admin_required
+def middle_money():
+    try:
+        limit = request.args.get('limit')
+        page = request.args.get('page')
+        results = dict()
+        results['code'] = RET.OK
+        results['msg'] = MSG.OK
+        info_list = SqlData().search_middle_money_admin()
+        if not info_list:
+            results['code'] = RET.OK
+            results['msg'] = MSG.NODATA
+            return jsonify(results)
+        info_list = sorted(info_list, key=operator.itemgetter('start_time'))
+        page_list = list()
+        info_list = list(reversed(info_list))
+        for i in range(0, len(info_list), int(limit)):
+            page_list.append(info_list[i:i + int(limit)])
+        results['data'] = page_list[int(page) - 1]
+        results['count'] = len(info_list)
+        return jsonify(results)
+    except Exception as e:
+        logging.error(str(e))
+        return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@admin_blueprint.route('/card_info/', methods=['GET'])
+@admin_required
+def card_info():
+    limit = request.args.get('limit')
+    page = request.args.get('page')
+    user_id = request.args.get('u_id')
+    results = dict()
+    results['code'] = RET.OK
+    results['msg'] = MSG.OK
+    data = SqlData().search_card_info(user_id)
+    if len(data) == 0:
+        results['code'] = RET.SERVERERROR
+        results['msg'] = MSG.NODATA
+        return results
+    data = sorted(data, key=operator.itemgetter('act_time'))
+    page_list = list()
+    data = list(reversed(data))
+    for i in range(0, len(data), int(limit)):
+        page_list.append(data[i:i + int(limit)])
+    results['data'] = page_list[int(page) - 1]
+    results['count'] = len(data)
+    return jsonify(results)
 
 
 @admin_blueprint.route('/acc_to_middle/', methods=['GET', 'POST'])
@@ -264,10 +352,16 @@ def account_info():
     page = request.args.get('page')
     limit = request.args.get('limit')
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
-    task_info = SqlData().search_account_info()
-    if len(task_info) == 0:
+    task_one = SqlData().search_account_info()
+    if len(task_one) == 0:
         results['MSG'] = MSG.NODATA
         return results
+    task_info = list()
+    for u in task_one:
+        u_id = u.get('u_id')
+        card_count = SqlData().search_card_count(u_id, '')
+        u['card_num'] = card_count
+        task_info.append(u)
     page_list = list()
     task_info = list(reversed(task_info))
     for i in range(0, len(task_info), int(limit)):
@@ -280,23 +374,38 @@ def account_info():
 @admin_blueprint.route('/card_list_html', methods=['GET'])
 @admin_required
 def card_list_html():
-    return render_template('admin/card_list.html')
+    user_id = request.args.get('user_id')
+    context = dict()
+    context['user_id'] = user_id
+    return render_template('admin/card_list.html', **context)
 
 
 @admin_blueprint.route('/line_chart', methods=['GET'])
 @admin_required
 def test():
-    l = []
-    for i in range(30):
-        l.append(i)
-    s = []
-    for i in range(25, 40):
-        s.append(i)
-    month = [{'name': 'liuxiao', 'data': l},{'name':'刘总', 'data': s}]
+    day_list = get_nday_list(30)
+    account_list = SqlData().search_user_field_admin()
+    data = list()
+    if account_list:
+        for u_id in account_list:
+            info_dict = dict()
+            count_list = list()
+            for i in day_list:
+                sql_str = "AND act_time BETWEEN '" + str(i) + ' 00:00:00' + "'" + " and '" + str(i) + " 23:59:59'"
+                account_id = u_id.get('id')
+                card_count = SqlData().search_card_count(account_id, sql_str)
+                count_list.append(card_count)
+            info_dict['name'] = u_id.get('name')
+            info_dict['data'] = count_list
+            data.append(info_dict)
+    else:
+        data = [{'name': '无客户', 'data': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}]
+
     results = dict()
     results['code'] = RET.OK
     results['msg'] = MSG.OK
-    results['data'] = month
+    results['data'] = data
+    results['xAx'] = day_list
     return jsonify(results)
 
 

@@ -109,6 +109,73 @@ class SqlData(object):
                 info_list.append(info_dict)
             return info_list
 
+    def search_activation(self):
+        sql = "SELECT activation from card_info WHERE card_no is null AND account_id is null LIMIT 1"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        return rows[0][0]
+
+    def search_card_field(self, field, crad_no):
+        sql = "SELECT {} from card_info WHERE card_no='{}'".format(field, crad_no)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        return rows[0][0]
+
+    def update_card_info(self, card_no, pay_passwd, act_time, card_name, label, expire, cvv, account_id, activation):
+        sql = "UPDATE card_info SET card_no = '{}', pay_passwd='{}', act_time='{}', card_name='{}', label='{}' expire = '{}'," \
+              " cvv = '{}', account_id = {} WHERE activation = '{}'".format(card_no, pay_passwd, act_time, card_name, label,
+                                                                            expire, cvv, account_id, activation)
+        print(sql)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新卡信息失败!")
+            self.connect.rollback()
+        self.close_connect()
+
+    def search_card_info(self, user_id):
+        sql = "SELECT * FROM card_info WHERE account_id={}".format(user_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        info_list = list()
+        if not rows:
+            return info_list
+        else:
+            for i in rows:
+                info_dict = dict()
+                info_dict['card_no'] = i[2]
+                info_dict['act_time'] = str(i[4])
+                info_dict['card_name'] = i[5]
+                info_dict['label'] = i[6]
+                info_dict['expire'] = i[7]
+                info_dict['cvv'] = i[8]
+                info_list.append(info_dict)
+            return info_list
+
+    def search_card_select(self, user_id, name_sql, card_sql, label, time_sql):
+        sql = "SELECT * FROM card_info WHERE account_id={} {} {} {} {}".format(user_id, name_sql, card_sql, label, time_sql)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        info_list = list()
+        if not rows:
+            return info_list
+        else:
+            for i in rows:
+                info_dict = dict()
+                info_dict['card_no'] = i[2]
+                info_dict['act_time'] = str(i[4])
+                info_dict['card_name'] = i[5]
+                info_dict['label'] = i[6]
+                info_dict['expire'] = i[7]
+                info_dict['cvv'] = i[8]
+                info_list.append(info_dict)
+            return info_list
+
     # 一下是中介使用方法-------------------------------------------------------------------------------------------------
 
     # 查询中介登录信息
@@ -149,6 +216,84 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
+    def search_user_field_middle(self, middle_id):
+        sql = "SELECT id, name FROM account WHERE middle_id = {}".format(middle_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        account_list = list()
+        if not rows:
+            return account_list
+        for i in rows:
+            info_dict = dict()
+            info_dict['id'] = i[0]
+            info_dict['name'] = i[1]
+            account_list.append(info_dict)
+        return account_list
+
+    def search_user_middle_info(self, middle_id):
+        sql = "SELECT id, name, sum_balance, balance FROM account WHERE middle_id = {}".format(middle_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        account_list = list()
+        if not rows:
+            return account_list
+        for i in rows:
+            info_dict = dict()
+            info_dict['id'] = i[0]
+            info_dict['name'] = i[1]
+            info_dict['sum_balance'] = i[2]
+            info_dict['balance'] = i[3]
+            account_list.append(info_dict)
+        return account_list
+
+    def search_card_count(self, account_id, time_range):
+        sql = "SELECT COUNT(*) FROM card_info WHERE account_id={} {}".format(account_id, time_range)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
+
+    def insert_middle_money(self, middle_id, start_time, end_time, card_num, create_price, sum_money, create_time, pay_status, detail):
+        sql = "INSERT INTO middle_money(middle_id, start_time, end_time, card_num, create_price, sum_money," \
+              " create_time, pay_status, detail) VALUES ({},'{}','{}',{},{},{},'{}','{}','{}')".format(
+               middle_id, start_time, end_time, card_num, create_price, sum_money, create_time, pay_status, detail)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("插入中介开卡费记录失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def search_middle_money(self, middle_id):
+        sql = "SELECT * FROM middle_money WHERE middle_id={}".format(middle_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        info_list = list()
+        if not rows:
+            return info_list
+        for i in rows:
+            info_dict = dict()
+            info_dict['id'] = i[0]
+            info_dict['start_time'] = str(i[2])
+            info_dict['end_time'] = str(i[3])
+            info_dict['card_num'] = i[4]
+            info_dict['create_price'] = i[5]
+            info_dict['sum_money'] = i[6]
+            info_dict['create_time'] = str(i[7])
+            info_dict['pay_status'] = i[8]
+            if i[9]:
+                info_dict['pay_time'] = str(i[9])
+            else:
+                info_dict['pay_time'] = ""
+            info_list.append(info_dict)
+        return info_list
+
+    def search_middle_money_field(self, field, info_id):
+        sql = "SELECT {} FROM middle_money WHERE id={}".format(field, info_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
+
     # 以下是终端使用接口-------------------------------------------------------------------------------------------------
 
     # 验证登录
@@ -168,6 +313,7 @@ class SqlData(object):
         else:
             for i in rows:
                 account_dict = dict()
+                account_dict['u_id'] = i[0]
                 account_dict['name'] = i[4]
                 account_dict['create_price'] = i[5]
                 account_dict['refund'] = i[6]
@@ -361,6 +507,92 @@ class SqlData(object):
         info_dict['last_name'] = last_name
         info_dict['female'] = female
         return info_dict
+
+    def search_middle_id(self):
+        sql = "SELECT id FROM middle"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        info_list = list()
+        if not rows:
+            return info_list
+        for i in rows:
+            info_list.append(i[0])
+        return info_list
+
+    def search_user_field_admin(self):
+        sql = "SELECT id, name FROM account".format()
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        account_list = list()
+        if not rows:
+            return account_list
+        for i in rows:
+            info_dict = dict()
+            info_dict['id'] = i[0]
+            info_dict['name'] = i[1]
+            account_list.append(info_dict)
+        return account_list
+
+    def search_middle_money_admin(self):
+        sql = "SELECT middle_money.*, middle.`name` FROM middle_money LEFT JOIN middle ON middle.id = middle_money.middle_id"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        info_list = list()
+        if not rows:
+            return info_list
+        for i in rows:
+            info_dict = dict()
+            info_dict['id'] = i[0]
+            info_dict['start_time'] = str(i[2])
+            info_dict['end_time'] = str(i[3])
+            info_dict['card_num'] = i[4]
+            info_dict['create_price'] = i[5]
+            info_dict['sum_money'] = i[6]
+            info_dict['create_time'] = str(i[7])
+            info_dict['pay_status'] = i[8]
+            if i[9]:
+                info_dict['pay_time'] = str(i[9])
+            else:
+                info_dict['pay_time'] = ""
+            info_dict['name'] = i[12]
+            info_list.append(info_dict)
+        return info_list
+
+    def update_middle_sub(self, pay_status, pay_time, info_id):
+        sql = "UPDATE middle_money SET pay_status = '{}', pay_time = '{}' WHERE id = {}".format(pay_status, pay_time, info_id)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新中介费确认失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def search_card_info_admin(self):
+        sql = "SELECT * FROM card_info"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        info_list = list()
+        for i in rows:
+            info_dict = dict()
+            info_dict['activation'] = i[1]
+            info_dict['card_no'] = i[2]
+            info_dict['pay_passwd'] = i[3]
+            if i[4]:
+                info_dict['act_time'] = str(i[4])
+            else:
+                info_dict['act_time'] = ""
+            info_dict['card_name'] = i[5]
+            info_dict['label'] = i[6]
+            info_dict['expire'] = i[7]
+            info_dict['cvv'] = i[8]
+            if i[9]:
+                name = self.search_user_field('name', i[9])
+                info_dict['account_name'] = name
+            else:
+                info_dict['account_name'] = ""
+            info_list.append(info_dict)
+        return info_list
 
 
 if __name__ == "__main__":

@@ -46,7 +46,7 @@
             <span >说明: 如果今天是周三,将自动计算上周三到本周二所有客户的开卡数量,计算中介费</span>
             <br>——如有不明请咨询终端。
         </blockquote>
-        <table class="layui-hide" id="middle_money" lay-filter="middle_moeny"></table>
+        <table class="layui-hide" id="middle_money" lay-filter="middle_money"></table>
     </div>
   </div>
 </div>
@@ -181,25 +181,47 @@
                     }
                 }
             };
-            var series = [{
-                name:'Tokyo',
-                data: [7.0, 6.9, 9.5,3]
-            }, {
-                name: 'London',
-                data: [ 0, 8.5, 11.9,5]
-            }
-            ];
+            var series = [];
 
-            var json = {};
-            json.chart = chart;
-            json.title = title;
-            json.subtitle = subtitle;
-            json.tooltip = tooltip;
-            json.xAxis = xAxis;
-            json.yAxis = yAxis;
-            json.series = series;
-            json.plotOptions = plotOptions;
-            $('#today').highcharts(json);
+            $.ajax({
+                type : 'GET',
+                url : '/middle/line_chart/?today=yes',
+                dataType : 'json',
+                success : function(data) {
+                    // 成功提示框
+                    if (data.code == 0){
+                        var info = data.data;
+                        for (var i=0; i<info.length;i++){
+                            var name = info[i].name;
+                            var data1 = info[i].data;
+                            var s = {name:name,data:data1};
+                            series.push(s)
+                        }
+                        var json = {};
+                        json.chart = chart;
+                        json.title = title;
+                        json.subtitle = subtitle;
+                        json.tooltip = tooltip;
+                        json.xAxis = xAxis;
+                        json.yAxis = yAxis;
+                        json.series = series;
+                        json.plotOptions = plotOptions;
+                        $('#today').highcharts(json);
+                    }else if(data.code == 502){
+                        parent.layer.msg(data.msg, {
+                        icon : 5
+                    });
+                    }
+
+                },
+                error : function(data) {
+                    // 异常提示
+                    parent.layer.msg('出现网络故障', {
+                        icon : 5
+                    });
+                }
+            });
+
         });
 
 
@@ -209,7 +231,7 @@
                 type: 'spline'
             };
             var title = {
-                text: '本周数量统计。tip:上周三到本周二(七天)'
+                text: '本周数量统计。tip:周三到周二(七天)'
             };
             var subtitle = {
                 text: '说明: 每条线代表不同客户!'
@@ -242,25 +264,46 @@
                     }
                 }
             };
-            var series = [{
-                name:'Tokyo',
-                data: [7.0, 6.9, 9.5,3, 4]
-            }, {
-                name: 'London',
-                data: [ 0, 8.5, 11.9,5]
-            }
-            ];
+            var series = [];
 
-            var json = {};
-            json.chart = chart;
-            json.title = title;
-            json.subtitle = subtitle;
-            json.tooltip = tooltip;
-            json.xAxis = xAxis;
-            json.yAxis = yAxis;
-            json.series = series;
-            json.plotOptions = plotOptions;
-            $('#week').highcharts(json);
+            $.ajax({
+                type : 'GET',
+                url : '/middle/line_chart/?week=yes',
+                dataType : 'json',
+                success : function(data) {
+                    // 成功提示框
+                    if (data.code == 0){
+                        var info = data.data;
+                        for (var i=0; i<info.length;i++){
+                            var name = info[i].name;
+                            var data1 = info[i].data;
+                            var s = {name:name,data:data1};
+                            series.push(s)
+                        }
+                        var json = {};
+                        json.chart = chart;
+                        json.title = title;
+                        json.subtitle = subtitle;
+                        json.tooltip = tooltip;
+                        json.xAxis = xAxis;
+                        json.yAxis = yAxis;
+                        json.series = series;
+                        json.plotOptions = plotOptions;
+                        $('#week').highcharts(json);
+                    }else if(data.code == 502){
+                        parent.layer.msg(data.msg, {
+                        icon : 5
+                    });
+                    }
+
+                },
+                error : function(data) {
+                    // 异常提示
+                    parent.layer.msg('出现网络故障', {
+                        icon : 5
+                    });
+                }
+            });
         });
 
 
@@ -275,10 +318,10 @@
             , totalRow: true //开启合计行
             , cols: [[ //表头
                 {type:'numbers'}
-                , {field: 'name', title: '客户姓名', align: 'center', sort: true,  totalRowText: '合计：'}
-                , {field: 'card_num', title: '共计开卡数量', align: 'center', sort: true,}
-                , {field: 'sum_balance', title: '共计充值余额', align: 'center', sort: true}
-                , {field: 'balance', title: '账户剩余余额', align: 'center', sort: true}
+                , {field: 'name', title: '客户姓名', align: 'center', totalRowText: '合计：'}
+                , {field: 'card_num', title: '共计开卡数量', align: 'center', totalRow:true}
+                , {field: 'sum_balance', title: '共计充值余额', align: 'center', totalRow:true}
+                , {field: 'balance', title: '账户剩余余额', align: 'center', totalRow:true}
             ]]
             , id: 'card_info'
             , page: true
@@ -291,22 +334,45 @@
             , height: ''
             , url: '/middle/middle_money' //数据接口
             , title: '中介费统计表'
-            , limit:20
+            , limit:50
+            , limits:[50,100,150,200,250,300,350,400,450,500]
             , toolbar: "r" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
                 {type:'numbers'}
                 , {field: 'start_time', title: '开始时间(周三)', align: 'center', sort: true,  totalRowText: '合计：'}
-                , {field: 'end_time', title: '结束时间(周二)', align: 'center', }
-                , {field: 'card_num', title: '开卡量', align: 'center', sort: true,}
-                , {field: 'create_price', title: '开卡费', align: 'center', sort: true}
-                , {field: 'create_time', title: '系统统计时间', align: 'center', sort: true}
-                , {field: 'sum_money', title: '提成总额', align: 'center', sort: true}
-                , {field: 'pay_middle', title: '是否支付提成', align: 'center', sort: true}
+                , {field: 'end_time', title: '结束时间(周二)', align: 'center', sort: true, }
+                , {field: 'card_num', title: '开卡量', align: 'center', sort: true,totalRow:true}
+                , {field: 'create_price', title: '开卡费', align: 'center', sort: true,totalRow:true}
+                , {field: 'create_time', title: '系统统计时间', align: 'center', sort: true,}
+                , {field: 'sum_money', title: '提成总额', align: 'center', style:"color:red;", sort: true, totalRow:true}
+                , {field: 'pay_status', title: '是否支付提成', align: 'center', sort: true}
                 , {field: 'pay_time', title: '终端确认时间', align: 'center', sort: true}
             ]]
             , id: 'card_info'
             , page: true
+        });
+
+        table.on('rowDouble(middle_money)', function(obj){
+        var data = obj.data;
+            layer.open({
+                type: 2
+                ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                ,skin:'layui-layer-demo'
+                ,id: 'layerUser'//防止重复弹出
+                ,title: '提成总额明细'
+                ,area: ['20%','30%']
+                ,anim: 2
+                ,shadeClose:true
+                ,content: '/middle/money_detail?info_id=' + data.id
+                ,btn: '关闭全部'
+                ,btnAlign: 'c' //按钮居中a
+                ,shade:  [0.8, '#393D49'] //弹框背景选项
+
+              });
+
+            //标注选中样式
+            obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
         });
 
 

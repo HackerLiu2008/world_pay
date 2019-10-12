@@ -2,6 +2,7 @@ from datetime import timedelta
 from flask import Flask
 import logging
 
+
 app = Flask(__name__)
 # 使用缓存,缓存大量查出来的信息
 # cache = Cache(app, config={'CACHE_TYPE': 'simple'})

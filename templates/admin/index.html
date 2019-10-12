@@ -60,6 +60,8 @@
     <li lay-id="4">新增客户</li>
     <li lay-id="5">新增中介</li>
     <li lay-id="6">中介管理</li>
+    <li lay-id="7">中介提成</li>
+    <li lay-id="8">所有卡信息</li>
   </ul>
   <div class="layui-tab-content" style="height: 100%;">
       <div class="layui-tab-item layui-show">
@@ -74,8 +76,8 @@
                 <input class="layui-input" name="s_card_name" id="s_card_name" autocomplete="off">
             </div>
 
-            <button class="layui-btn" data-type="reload" id="sub_card">搜索</button>
-            <button class="layui-btn layui-btn-primary" id="">重置</button>
+            <button class="layui-btn" id="sub_account">搜索</button>
+            <button class="layui-btn layui-btn-primary" data-type="reload" >重置</button>
             </div>
         </form>
         <table class="layui-hide" id="account_all" lay-filter="account_all"></table>
@@ -103,8 +105,8 @@
                 <div class="layui-inline">
                 <input type="text" class="layui-input" id="s_test6" placeholder=" - ">
             </div>
-            <button class="layui-btn" data-type="reload" id="sub_card">搜索</button>
-            <button class="layui-btn layui-btn-primary" id="">重置</button>
+            <button class="layui-btn"  id="sub_account">搜索</button>
+            <button class="layui-btn layui-btn-primary" data-type="reload">重置</button>
             </div>
         </form>
 
@@ -264,6 +266,38 @@
             <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="del">提成</a>
         </script>
       </div>
+
+      <div class="layui-tab-item">
+          <table class="layui-show" id="middle_money" lay-filter="middle_money"></table>
+          <script type="text/html" id="middle_money_bar">
+            <a class="layui-btn layui-btn-xs" lay-event="payed" id="pay">确认支付</a>
+        </script>
+      </div>
+
+      <div class="layui-tab-item">
+
+          <form class="layui-form" action="" lay-filter="example" id="example">
+            <div class="demoTable">
+                持有人：
+            <div class="layui-inline">
+                <input class="layui-input" name="card_all_account" id="card_all_account" autocomplete="off">
+            </div>
+                卡   号:
+            <div class="layui-inline">
+                <input type=number  class="layui-input" name="card_all_cardnum" id="card_all_cardnum" autocomplete="off">
+            </div>
+                激活码:
+                <div class="layui-inline">
+                    <input type="text"  class="layui-input" name="activation" id="activation" autocomplete="off">
+                </div>
+            <button class="layui-btn" id="sub_card">搜索</button>
+            <button class="layui-btn layui-btn-primary" data-type="reload">重置</button>
+            </div>
+          </form>
+          <table class="layui-show" id="card_all" lay-filter="card_all"></table>
+
+      </div>
+
   </div>
 </div>
 
@@ -296,6 +330,16 @@
           <dl class="layui-nav-child">
             <dd><a href="javascript:" id="add_mid">新增中介</a></dd>
             <dd><a href="javascript:" id="mid_info">中介管理</a></dd>
+            <dd><a href="javascript:" id="mid_money">中介提成</a></dd>
+          </dl>
+        </li>
+      </ul>
+
+        <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:">卡管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:" id="card_admin">所有卡信息</a></dd>
           </dl>
         </li>
       </ul>
@@ -333,16 +377,12 @@
                 type: 'spline'
             };
             var title = {
-                text: '今日开卡统计预览'
+                text: '近30天客户开卡统计'
             };
             var subtitle = {
                 text: '说明: 每条线代表不同客户!'
             };
 
-            var xAxis = {
-                categories: ['00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00','24:00'],
-                lineWidth: 4
-            };
             var yAxis = {
                 title: {
                     text: '开卡数量:'
@@ -377,7 +417,9 @@
                 success : function(data) {
                     // 成功提示框
                     if (data.code == 0){
-                        var info = data.data;
+                        var info = data.data,
+                            xax = data.xAx,
+                            xaxis = {categories:xax,lineWidth: 4};
                         for (var i=0; i<info.length;i++){
                             var name = info[i].name;
                             var data1 = info[i].data;
@@ -389,7 +431,7 @@
                         json.title = title;
                         json.subtitle = subtitle;
                         json.tooltip = tooltip;
-                        json.xAxis = xAxis;
+                        json.xAxis = xaxis;
                         json.yAxis = yAxis;
                         json.series = series;
                         json.plotOptions = plotOptions;
@@ -407,7 +449,7 @@
                         icon : 5
                     });
                 }
-                    });
+            });
         });
 
 
@@ -438,6 +480,53 @@
             ,range: true
           });
 
+        //执行一个 table 实例
+        table.render({
+            elem: '#card_all'
+            , height: ''
+            , url: '/admin/card_all' //数据接口
+            , title: '账号表'
+            , limit:50
+            , limits:[50,100,150,200,250,300,350,400,450,500]
+            , toolbar: "r" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'activation', title: '激活码', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'card_no', title: '卡号', align: 'center', sort: true,}
+                , {field: 'pay_passwd', title: '支付密码', align: 'center', sort: true,}
+                , {field: 'act_time', title: '激活时间', align: 'center', sort: true,}
+                , {field: 'card_name', title: '卡姓名', align: 'center', sort: true,}
+                , {field: 'label', title: '标签', align: 'center', sort: true,}
+                , {field: 'expire', title: '有效期', align: 'center', sort: true}
+                , {field: 'cvv', title: '安全码', align: 'center', sort: true}
+                , {field: 'account_name', title: '持有人', align: 'center', sort: true}
+            ]]
+            , id: 'account_info'
+            , page: true
+        });
+
+        /*
+        根据搜索条件重载表格
+        var sub = $('#sub_card');
+        sub.on('click',function () {
+            var account = $('#card_all_account').val(),
+                card_num = $('#card_all_cardnum').val(),
+                card_activation = $('#activation').val();
+            console.log(account, card_activation, card_num);
+
+            table.reload("card_all", {
+                page: {
+                  curr: 1 //重新从第 1 页开始
+                },where: {
+                    label:label,
+                    account: account,
+                    terrace: terrace,
+                  }
+              }, '/admin/card_all');
+
+        });
+        */
 
         //执行一个 table 实例
         table.render({
@@ -461,7 +550,7 @@
                 , {field: 'balance', title: '卡上余额', align: 'center', sort: true}
                 , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo'}
             ]]
-            , id: 'card_info'
+            , id: 'account_info'
             , page: true
         });
 
@@ -511,6 +600,99 @@
             , page: true
         });
 
+        //执行一个 table 实例
+        table.render({
+            elem: '#middle_money'
+            , height: ''
+            , url: '/admin/middle_money' //数据接口
+            , title: '中介费统计表'
+            , limit:50
+            , limits:[50,100,150,200,250,300,350,400,450,500]
+            , toolbar: "r" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'name', title: '中介名称', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'start_time', title: '开始时间(周三)', align: 'center', sort: true,}
+                , {field: 'end_time', title: '结束时间(周二)', align: 'center', sort: true, }
+                , {field: 'card_num', title: '开卡量', align: 'center', sort: true,totalRow:true}
+                , {field: 'create_price', title: '开卡费', align: 'center', sort: true,totalRow:true}
+                , {field: 'create_time', title: '系统统计时间', align: 'center', sort: true,}
+                , {field: 'sum_money', title: '提成总额', align: 'center', style:"color:red;", sort: true, totalRow:true}
+                , {field: 'pay_status', title: '是否支付提成', align: 'center', sort: true}
+                , {field: 'pay_time', title: '终端确认时间', align: 'center', sort: true}
+                , {fixed: 'right', width: 160, align: 'center', toolbar: '#middle_money_bar'}
+            ]]
+            , id: 'card_info'
+            , page: true
+            , done: function (res, curr, count) {
+                    for (var i = 0; i < res.data.length; i++) {
+                        if (res.data[i].pay_status == '已确认') {
+                            $('table tbody tr td a[id=pay]').eq(i).css('display', 'none')
+                        }
+                    }
+                }
+        });
+
+        table.on('tool(middle_money)', function (obj) {
+            var data = obj.data
+                , layEvent = obj.event;
+
+            if (layEvent === 'payed') {
+                layer.confirm('确认支付?', function (index) {
+                    layer.close(index);
+                    //向服务端发送删除指令
+                    $.ajax({
+                        type: 'POST',
+                        url: '/admin/sub_middle_money?id=' + data.id,
+                        dataType: 'json',
+                        success: function (data) {
+                            // 成功提示框
+                            if (data.code == 0) {
+                                parent.layer.msg(data.msg, {
+                                    icon: 6,time:1000
+                                });
+                                location.reload()
+                            } else if (data.code == 502) {
+                                parent.layer.msg(data.msg, {
+                                    icon: 5
+                                });
+                            }
+
+                        },
+                        error: function (data) {
+                            // 异常提示
+                            parent.layer.msg('出现网络故障', {
+                                icon: 2
+                            });
+                        }
+                    });
+                });
+
+            }});
+
+        table.on('rowDouble(middle_money)', function(obj){
+        var data = obj.data;
+            layer.open({
+                type: 2
+                ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                ,skin:'layui-layer-demo'
+                ,id: 'layerUser'//防止重复弹出
+                ,title: '提成总额明细'
+                ,area: ['20%','30%']
+                ,anim: 3
+                ,shadeClose:true
+                ,content: '/middle/money_detail?info_id=' + data.id
+                ,btn: '关闭全部'
+                ,btnAlign: 'c' //按钮居中a
+                ,shade:  [0.8, '#393D49'] //弹框背景选项
+
+              });
+
+            //标注选中样式
+            obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+        });
+
 
         //监听右侧导航栏点击事件
         $('#make_vir').on('click',function () {
@@ -532,6 +714,12 @@
         $('#mid_info').on('click',function () {
            element.tabChange('demo', 6);
         });
+        $('#mid_money').on('click',function () {
+           element.tabChange('demo', 7);
+        });
+        $('#card_admin').on('click',function () {
+           element.tabChange('demo', 8);
+        });
 
 
         table.on('rowDouble(account_all)', function(obj){
@@ -541,22 +729,18 @@
                 ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
                 ,skin:'layui-layer-demo'
                 ,id: 'account_info'//防止重复弹出
-                ,title: '客户为 ' + data.card_num + ' 的详细信息'
-                ,area: ['90%','80%']
+                ,title: '客户为 ' + data.name + ' 的卡信息'
+                ,area: ['90%','88%']
                 ,anim: 2
                 ,shadeClose:true
-                ,content: '/admin/card_list_html'
+                ,content: '/admin/card_list_html?user_id=' + data.u_id
                 ,btn: '关闭全部'
                 ,btnAlign: 'c' //按钮居中a
                 ,shade:  [0.8, '#393D49'] //弹框背景选项
                 ,success: function(layero, index) {
                         var body = layer.getChildFrame('body', index);
-                        body.contents().find("#card_num").html(data.card_num);
-                        body.contents().find("#card_name").html(data.card_name);
-                        body.contents().find("#card_exp").html(data.card_exp);
-                        body.contents().find("#cvv").html(data.cvv);
+                        body.contents().find("#user_id").val(data.u_id);
                     }
-
               });
 
             //标注选中样式
@@ -628,24 +812,6 @@
               });
         });
 
-        /*根据搜索条件重载表格*/
-        var sub = $('#sub');
-        sub.on('click',function () {
-            var label = $('input:radio:checked').val(),
-                account = $('#account').val(),
-                terrace = $('#terrace').val();
-            table.reload('account', {
-                page: {
-                  curr: 1 //重新从第 1 页开始
-                },where: {
-                    label:label,
-                    account: account,
-                    terrace: terrace,
-                  }
-              }, '/account/detail/');
-            return false
-        });
-
 
       $('.demoTable .layui-btn').on('click', function(){
         var type = $(this).data('type');
@@ -701,7 +867,7 @@
                 layer.msg('冻结卡操作!')
             } else if (layEvent === 'edit') {
                 layui.layer.open({
-                    title: '修改卡号为 [ ' + data.name + ' ] 的相关信息',
+                    title: '修改客户为 [ ' + data.name + ' ] 的相关信息',
                     type: 2,
                     anim: 3,
                     area: ['20%', '35%'],//宽高

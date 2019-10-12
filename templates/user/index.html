@@ -69,7 +69,7 @@
     <li lay-id="2">创建批量虚拟卡</li>
     <li lay-id="3">所有虚拟卡</li>
     <li lay-id="4">交易记录</li>
-    <li lay-id="5">充值记录</li>
+    <li lay-id="5">账户充值记录</li>
   </ul>
   <div class="layui-tab-content" style="height: 100%;">
       <div class="layui-tab-item layui-show">
@@ -78,14 +78,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">卡姓名</label>
             <div class="layui-input-inline">
-                <input type="text" name="name" required lay-verify="required" placeholder="绑定到卡上的姓名" autocomplete="off"
-                       class="layui-input"  id="name">
+                <input type="text" name="card_name" required lay-verify="required" placeholder="绑定到卡上的姓名" autocomplete="off"
+                       class="layui-input"  id="card_name">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">充值金额</label>
             <div class="layui-input-inline">
-                <input type="text" id="limit" name="limit" required lay-verify="required" placeholder="00.00" autocomplete="off"
+                <input type="number" id="top_money" name="top_money" required lay-verify="required" placeholder="00.00" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
@@ -100,7 +100,7 @@
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span style="font-weight: normal;font-size: 16px;color: #188479;">开卡费用: </span> $ {{ create_card }}
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button  class="layui-btn layui-btn-lg" lay-submit="" lay-filter="formDemo" id="sub" type="submit">确认</button>
+                <button  class="layui-btn layui-btn-lg" lay-submit="" lay-filter="create_one" id="sub" type="submit">确认</button>
             </div>
         </div>
     </form>
@@ -172,7 +172,7 @@
             <div class="layui-inline">
                 <input class="layui-input" name="s_label" id="s_label" autocomplete="off">
             </div>
-                时间范围:
+                开卡时间:
                 <div class="layui-inline">
                 <input type="text" class="layui-input" id="s_test6" placeholder=" - ">
             </div>
@@ -258,6 +258,38 @@
             , $ = layui.$
             , form = layui.form;
 
+        form.on('submit(create_one)', function(data){
+            var data_info = {data:JSON.stringify(data.field)};
+            $.ajax({
+				type : 'POST',
+				url : '/user/create_card/',
+				data : data_info,
+				dataType : 'json',
+				success : function(data) {
+					// 成功提示框
+                    if (data.code == 0){
+                        parent.layer.msg("添加成功!请刷新界面!", {
+						icon : 6,
+					});
+
+                    }else if(data.code == 502){
+                        parent.layer.msg(data.msg, {
+						icon : 5
+					});
+                    }
+
+				},
+				error : function(data) {
+					// 异常提示
+					parent.layer.msg('出现网络故障', {
+						icon : 5
+					});
+					parent.layer.closeAll('iframe'); //关闭弹框
+				}
+			});
+			return false;
+            });
+
         form.on('radio(aaa)', function (data) {
 
             if ($('#IsPurchased input[name="n"]:checked ').val() == "random") {
@@ -302,22 +334,18 @@
             elem: '#card_info'
             , height: ''
             , url: '/user/card_info' //数据接口
-            , title: '账号表'
+            , title: '卡列表'
             , limit:20
             , toolbar: "r" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
                 {type:'numbers'}
-                , {field: 'card_name', title: '卡姓名', align: 'center', sort: true,  totalRowText: '合计：'}
-                , {field: 'card_num', title: '卡号', align: 'center', sort: true,}
-                , {field: 'card_exp', title: '有效期', align: 'center', sort: true}
+                , {field: 'card_no', title: '卡号', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'card_name', title: '卡名', align: 'center', sort: true,}
+                , {field: 'expire', title: '有效期', align: 'center', sort: true}
                 , {field: 'cvv', title: '安全码', align: 'center', sort: true}
-                , {field: 'amount', title: '充值总额($)', align: 'center', totalRow: true, sort: true}
-                , {field: 'balance', title: '余额($)', align: 'center', totalRow: true, sort: true}
                 , {field: 'label', title: '标签', align: 'center', totalRow: true, sort: true}
-                , {field: 'close_date', title: '到期时间', align: 'center', sort: true}
-                , {field: 'status', title: '状态', align: 'center', sort: true}
-                , {field: 'crete_date', title: '建卡时间', align: 'center', sort: true}
+                , {field: 'act_time', title: '建卡时间', align: 'center', sort: true}
                 , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo'}
             ]]
             , id: 'card_info'
@@ -344,7 +372,6 @@
                 , {field: 'card_num', title: '卡号', align: 'center', totalRow: true, sort: true}
                 , {field: 'do_money', title: '操作金额', align: 'center', totalRow: true, sort: true}
                 , {field: 'hand_money', title: '手续费', align: 'center', totalRow: true, sort: true}
-                , {field: 'sum_money', title: '总费用', align: 'center', sort: true}
                 , {field: 'before_balance', title: '之前余额', align: 'center', sort: true}
                 , {field: 'balance', title: '之后余额', align: 'center', sort: true}
             ]]
@@ -403,20 +430,17 @@
                 ,offset: 'r' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
                 ,skin:'layui-layer-demo'
                 ,id: 'layerUser'//防止重复弹出
-                ,title: '卡号为 ' + data.card_num + ' 的详细信息'
-                ,area: ['780px','80%']
+                ,title: '卡号为 ' + data.card_no + ' 的详细信息'
+                ,area: ['40%','80%']
                 ,anim: 2
                 ,shadeClose:true
-                ,content: '/user/one_card_detail'
+                ,content: '/user/one_card_detail?card_no=' + data.card_no
                 ,btn: '关闭全部'
                 ,btnAlign: 'c' //按钮居中a
                 ,shade:  [0.8, '#393D49'] //弹框背景选项
                 ,success: function(layero, index) {
                         var body = layer.getChildFrame('body', index);
-                        body.contents().find("#card_num").html(data.card_num);
-                        body.contents().find("#card_name").html(data.card_name);
-                        body.contents().find("#card_exp").html(data.card_exp);
-                        body.contents().find("#cvv").html(data.cvv);
+                        body.contents().find("#card_num").html(data.card_no);
                     }
 
               });
@@ -582,7 +606,7 @@
                 layer.msg('冻结卡操作!')
             } else if (layEvent === 'edit') {
                 layui.layer.open({
-                    title: '修改卡号为 [ ' + data.card_num + ' ] 的相关信息',
+                    title: '修改卡号为 [ ' + data.card_no + ' ] 的相关信息',
                     type: 2,
                     anim: 3,
                     area: ['20%', '35%'],//宽高
@@ -590,7 +614,7 @@
                     content: '/user/change_detail',
                     success: function(layero, index) {
                         var body = layer.getChildFrame('body', index);
-                        body.contents().find("#card_num").html(data.card_num);
+                        body.contents().find("#card_num").html(data.card_no);
                         body.contents().find("#card_name").val(data.card_name);
                         body.contents().find("#balance").html(data.balance);
                         body.contents().find("#label").val(data.label);
