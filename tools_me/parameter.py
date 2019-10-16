@@ -4,6 +4,13 @@
 # 保存excel文件的路径
 
 
+ACCOUNT_DIR = ""
+TASK_DIR = ""
+DW_TASK = ""
+DW_ACCOUNT = ""
+SMT_TASK = ""
+
+
 class DIR_PATH:
     LOG_PATH = "G:/world_pay/static/log/card.log"
     # LOG_PATH = "/static/log/card.log"
