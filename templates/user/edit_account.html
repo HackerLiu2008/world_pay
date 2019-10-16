@@ -24,7 +24,7 @@
         <div class="layui-form-item" style="display: none">
             <label class="layui-form-label">隐藏域</label>
             <div class="layui-input-block">
-                <input type ="text" name="account"  id="account" value="0">
+                <input type ="text" name="card_no"  id="card_no" value="0">
             </div>
         </div>
         <div class="layui-form-item">
@@ -34,27 +34,13 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">卡名: </label>
-            <div class="layui-input-block">
-                <input type="text" name="card_name" placeholder="" autocomplete="off"
-                       class="layui-input" id="card_name">
-            </div>
-        </div>
-        <div class="layui-form-item">
             <label class="layui-form-label">充值金额</label>
             <div class="layui-input-block">
-                <input type="number" name="top_money" required lay-verify="required" placeholder="$00.00" autocomplete="off"
+                <input type="number" name="top_money" required lay-verify="required" placeholder="充值的金额不能为小数" autocomplete="off"
                        class="layui-input" id="top_money">
             </div>
         </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">标签</label>
-            <div class="layui-input-block">
-                <input type="text" name="label" placeholder="请输入账号会员状态" autocomplete="off"
-                       class="layui-input" id="label">
-            </div>
-        </div>
 
         <div class="layui-form-item">
             <div class="layui-input-block">
@@ -64,28 +50,32 @@
     </form>
 </div>
 <script>
-    layui.use('form', function(){
-        var form = layui.form;
+    layui.use(['form', 'layer'], function(){
+        var form = layui.form,
+            layer = layui.layer ;
       //监听提交
         form.on('submit(formDemo)', function(data){
             {#layer.msg(JSON.stringify(data.field));#}
             var data_info = {data:JSON.stringify(data.field)};
             var $ = layui.jquery;
-
+            console.log(data_info);
             $.ajax({
 				type : 'POST',
-				url : '/account/put_account/',
+				url : '/user/top_up/',
 				data : data_info,
 				dataType : 'json',
+                beforeSend:function () {
+                layer.load(1, {shade: false})
+                },
 				success : function(data) {
 					// 成功提示框
                     if (data.code == 0){
-                        parent.layer.msg('添加成功', {
+                        parent.layer.msg('充值成功!', {
 						icon : 6,
 					});
 					    parent.layer.closeAll('iframe'); //关闭弹框
-                        window.parent.location.reload()
                     }else if(data.code == 502){
+                        layer.closeAll();
                         parent.layer.msg('出现网络故障', {
 						icon : 5
 					});

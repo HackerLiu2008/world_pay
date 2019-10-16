@@ -72,9 +72,28 @@ def sum_middle_money():
         logging.error('计算中介费,插入中介费失败!' + str(e))
 
 
+def customer_money_log():
+    try:
+        task_one = SqlData().search_account_info("")
+        if len(task_one) == 0:
+            return
+        for u in task_one:
+            u_id = u.get('u_id')
+            out_money = SqlData().search_trans_sum(u_id)
+            balance = u.get('balance')
+            sum_balance = u.get('sum_balance')
+            customer = u.get('name')
+            n_time = xianzai_time()
+            SqlData().insert_account_log(n_time, customer, balance, out_money, sum_balance)
+    except Exception as e:
+        logging.error("记录客户当前余额信息失败!"+str(e))
+
+
 # sum_middle_money()
 if __name__ == '__main__':
-    schedule.every().wednesday.at('03:00').do(sum_middle_money)
+    # customer_money_log()
+    schedule.every().wednesday.at('00:00:01').do(sum_middle_money)
+    schedule.every().day.at('23:59:52').do(customer_money_log)
     while True:
         schedule.run_pending()
 

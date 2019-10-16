@@ -10,23 +10,107 @@ from tools_me.send_sms.send_sms import CCP
 from . import admin_blueprint
 
 
+@admin_blueprint.route('/cus_log', methods=['GET'])
+@admin_required
+def cus_log():
+    page = request.args.get('page')
+    limit = request.args.get('limit')
+
+    cus_name = request.args.get('cus_name')
+    time_range = request.args.get('time_range')
+    time_sql = ""
+    cus_sql = ""
+    if time_range:
+        min_time = time_range.split(' - ')[0]
+        max_time = time_range.split(' - ')[1] + ' 23:59:59'
+        time_sql = "AND log_time BETWEEN " + "'" + min_time + "'" + " and " + "'" + max_time + "'"
+    if cus_name:
+        cus_sql = "AND customer='" + cus_name + "'"
+
+    task_info = SqlData().search_account_log(cus_sql, time_sql)
+    results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
+    if len(task_info) == 0:
+        results['MSG'] = MSG.NODATA
+        return results
+    page_list = list()
+    task_info = sorted(task_info, key=operator.itemgetter('log_time'))
+    task_info = list(reversed(task_info))
+    for i in range(0, len(task_info), int(limit)):
+        page_list.append(task_info[i:i + int(limit)])
+    results['data'] = page_list[int(page) - 1]
+    results['count'] = len(task_info)
+    return results
+
+
+@admin_blueprint.route('/account_trans/', methods=['GET'])
+@admin_required
+def account_trans():
+    page = request.args.get('page')
+    limit = request.args.get('limit')
+
+    time_range = request.args.get('time_range')
+    cus_name = request.args.get('cus_name')
+    trans_card = request.args.get('trans_card')
+    trans_type = request.args.get('trans_type')
+    time_sql = ""
+    card_sql = ""
+    cus_sql = ""
+    type_sql = ""
+    if time_range:
+        min_time = time_range.split(' - ')[0]
+        max_time = time_range.split(' - ')[1] + ' 23:59:59'
+        time_sql = "AND account_trans.do_date BETWEEN " + "'" + min_time + "'" + " and " + "'" + max_time + "'"
+    if trans_card:
+        card_sql = "AND account_trans.card_no = '" + trans_card + "'"
+    if cus_name:
+        cus_sql = "AND account.name='" + cus_name + "'"
+    if trans_type:
+        type_sql = "AND account_trans.trans_type = '" + trans_type + "'"
+
+    task_info = SqlData().search_trans_admin(cus_sql, card_sql, time_sql, type_sql)
+    results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
+    if len(task_info) == 0:
+        results['MSG'] = MSG.NODATA
+        return results
+    page_list = list()
+    task_info = sorted(task_info, key=operator.itemgetter('date'))
+
+    task_info = list(reversed(task_info))
+    for i in range(0, len(task_info), int(limit)):
+        page_list.append(task_info[i:i + int(limit)])
+    results['data'] = page_list[int(page) - 1]
+    results['count'] = len(task_info)
+    return results
+
+
 @admin_blueprint.route('/card_all', methods=['GET'])
 @admin_required
 def card_info_all():
     try:
         limit = request.args.get('limit')
         page = request.args.get('page')
+
+        field = request.args.get('field')
+        value = request.args.get('value')
+
+        if field == "card_cus":
+            account_id = SqlData().search_user_field_name('id', value)
+            sql = "WHERE account_id=" + str(account_id)
+        elif field:
+            sql = "WHERE " + field + "='" + value + "'"
+        else:
+            sql = ""
+
         results = dict()
         results['code'] = RET.OK
         results['msg'] = MSG.OK
-        info_list = SqlData().search_card_info_admin()
+        info_list = SqlData().search_card_info_admin(sql)
         if not info_list:
             results['code'] = RET.OK
             results['msg'] = MSG.NODATA
             return jsonify(results)
         # info_list = sorted(info_list, key=operator.itemgetter('start_time'))
         page_list = list()
-        info_list = list(reversed(info_list))
         for i in range(0, len(info_list), int(limit)):
             page_list.append(info_list[i:i + int(limit)])
         results['data'] = page_list[int(page) - 1]
@@ -271,12 +355,49 @@ def admin_info():
 def top_history():
     page = request.args.get('page')
     limit = request.args.get('limit')
-    task_info = SqlData().search_top_history()
+
+    acc_name = request.args.get('acc_name')
+    order_num = request.args.get('order_num')
+    time_range = request.args.get('time_range')
+
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
+
+    name_sql = ""
+    order_sql = ""
+    time_sql = ""
+    if acc_name:
+        name_sql = "account.name ='" + acc_name + "'"
+    if order_num:
+        order_sql = "top_up.pay_num = '" + order_num + "'"
+    if time_range:
+        min_time = time_range.split(' - ')[0]
+        max_time = time_range.split(' - ')[1] + ' 23:59:59'
+        time_sql = "top_up.time BETWEEN " + "'" + min_time + "'" + " and " + "'" + max_time + "'"
+
+    if name_sql and time_sql and order_sql:
+        sql_all = "WHERE " + name_sql + " AND " + order_sql + " AND " + time_sql
+    elif name_sql and order_sql:
+        sql_all = "WHERE " + name_sql + " AND " + order_sql
+    elif time_sql and order_sql:
+        sql_all = "WHERE " + time_sql + " AND " + order_sql
+    elif name_sql and time_sql:
+        sql_all = "WHERE " + name_sql + " AND " + time_sql
+    elif name_sql:
+        sql_all = "WHERE " + name_sql
+    elif order_sql:
+        sql_all = "WHERE " + order_sql
+    elif time_range:
+        sql_all = "WHERE " + time_sql
+    else:
+        sql_all = ""
+
+    task_info = SqlData().search_top_history(sql_all)
+
     if len(task_info) == 0:
         results['MSG'] = MSG.NODATA
         return results
     page_list = list()
+    task_info = sorted(task_info, key=operator.itemgetter('time'))
     task_info = list(reversed(task_info))
     for i in range(0, len(task_info), int(limit)):
         page_list.append(task_info[i:i + int(limit)])
@@ -351,8 +472,13 @@ def edit_parameter():
 def account_info():
     page = request.args.get('page')
     limit = request.args.get('limit')
+    customer = request.args.get('customer')
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
-    task_one = SqlData().search_account_info()
+    if customer:
+        sql = "WHERE name = '" + customer + "'"
+    else:
+        sql = ''
+    task_one = SqlData().search_account_info(sql)
     if len(task_one) == 0:
         results['MSG'] = MSG.NODATA
         return results
@@ -360,7 +486,9 @@ def account_info():
     for u in task_one:
         u_id = u.get('u_id')
         card_count = SqlData().search_card_count(u_id, '')
+        out_money = SqlData().search_trans_sum(u_id)
         u['card_num'] = card_count
+        u['out_money'] = out_money
         task_info.append(u)
     page_list = list()
     task_info = list(reversed(task_info))
@@ -446,6 +574,14 @@ def admin_login():
 @admin_required
 def index():
     admin_name = g.admin_name
+    spent = SqlData().search_trans_sum_admin()
+    sum_balance = SqlData().search_user_sum_balance()
+    card_use = SqlData().search_card_status("WHERE account_id != ''")
+    card_no = SqlData().search_card_status("WHERE account_id is null AND activation != ''")
     context = dict()
     context['admin_name'] = admin_name
+    context['spent'] = spent
+    context['advance'] = sum_balance
+    context['card_use'] = card_use
+    context['card_no'] = card_no
     return render_template('admin/index.html', **context)

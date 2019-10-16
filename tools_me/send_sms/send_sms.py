@@ -1,4 +1,5 @@
 # coding=utf-8
+import logging
 
 from tools_me.send_sms.CCPRestSDK import REST
 
@@ -60,6 +61,7 @@ class CCP(object):
         if status_code:
             return int(status_code)
         else:
+            logging.error(result)
             return status_code
 
 

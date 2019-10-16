@@ -56,3 +56,15 @@ TRANS_STATUS = {
     'FAIL': '交易失败',
     'CLOSED': '交易关闭'
 }
+
+
+class TRANS_TYPE:
+    IN = "收入"
+    OUT = "支出"
+
+
+class DO_TYPE:
+    CREATE_CARD = "开卡"
+    TOP_UP = "充值"
+    REFUND = "退款"
+

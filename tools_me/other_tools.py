@@ -5,12 +5,12 @@ import os
 import random
 import time
 from functools import wraps
-from flask import current_app, session, g, render_template
+from flask import current_app, session, g, render_template, jsonify
 from xlrd import xldate_as_tuple
 from config import logging
 import uuid
 from tools_me.mysql_tools import SqlData
-
+from tools_me.parameter import RET
 
 ALLOWED_EXTENSIONS = ['xls', 'xlsx']
 
@@ -103,6 +103,23 @@ def verify_login_time(before_time, now_time):
         return True
     else:
         return
+
+
+def choke_required(view_func):
+
+    @wraps(view_func)
+    def wraaper(*args, **kwargs):
+        create = session.get('create')
+        if create == "T":
+            results = {"code": RET.SERVERERROR, "msg": "服务器繁忙请稍后重试!"}
+            return jsonify(results)
+        else:
+            session['create'] = "T"
+            res = view_func(*args, **kwargs)
+            session.pop('create')
+            return res
+
+    return wraaper
 
 
 def login_required(view_func):
@@ -243,11 +260,31 @@ def make_name(n):
 
 
 def wed_to_tu():
-    today = datetime.date.today()
+    today = datetime.date.today() - datetime.timedelta(days=2)
     day_list = list()
     for n in range(2, 9):
         day_str = today - datetime.timedelta(days=today.weekday()-n)
         day_list.append(day_str)
     return day_list
 
+
+def check_float(string):
+    #支付时，输入的金额可能是小数，也可能是整数
+    s = str(string)
+    if s.count('.') == 1:  # 判断小数点个数
+        sl = s.split('.')  # 按照小数点进行分割
+        left = sl[0]  # 小数点前面的
+        right = sl[1]  # 小数点后面的
+        if left.startswith('-') and left.count('-') == 1 and right.isdigit():
+            lleft = left.split('-')[1]  # 按照-分割，然后取负号后面的数字
+            if lleft.isdigit():
+                return False
+        elif left.isdigit() and right.isdigit():
+            # 判断是否为正小数
+            return False
+    elif s.isdigit():
+        s = int(s)
+        if s != 0:
+            return True
+    return False
 

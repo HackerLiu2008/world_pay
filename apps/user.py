@@ -1,18 +1,228 @@
 import json
 import logging
 import operator
-import uuid
-
-from tools_me.other_tools import verify_login_time, xianzai_time, login_required
-from tools_me.parameter import RET, MSG, TRANS_STATUS
+from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code
+from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE
 from tools_me.RSA_NAME.helen import QuanQiuFu
+from tools_me.send_sms.send_sms import CCP
 from . import user_blueprint
 from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
 
 
+@user_blueprint.route('/refund/', methods=['POST'])
+@login_required
+def refund_balance():
+    try:
+        data = json.loads(request.form.get('data'))
+        card_no = json.loads(request.form.get('card_no'))
+        pay_passwd = SqlData().search_card_field('pay_passwd', card_no)
+        refund_money = str(float(data) * 100)
+        resp = QuanQiuFu().trans_account_cinsume(card_no, pay_passwd, refund_money)
+        resp_code = resp.get('resp_code')
+        resp_msg = resp.get('resp_msg')
+        results = {"code": RET.OK, "msg": MSG.OK}
+        if resp_code == "0000":
+            user_id = g.user_id
+            refund = SqlData().search_user_field('refund', user_id)
+            hand_money = refund * float(data)
+            do_money = round(float(data) - hand_money, 2)
+            before_balance = SqlData().search_user_field('balance', user_id)
+            balance = round(before_balance + do_money, 2)
+            # 更新账户余额
+            SqlData().update_user_balance(do_money, user_id)
+
+            n_time = xianzai_time()
+            SqlData().insert_account_trans(n_time, TRANS_TYPE.IN, DO_TYPE.REFUND, 1, card_no, do_money, hand_money,
+                                           before_balance,
+                                           balance, user_id)
+
+            # 更新客户充值记录
+            pay_num = sum_code()
+            t = xianzai_time()
+            SqlData().insert_top_up(pay_num, t, do_money, before_balance, balance, user_id)
+
+            results['msg'] = resp_msg
+        else:
+            results['code'] = RET.SERVERERROR
+            results['msg'] = resp_msg
+        return jsonify(results)
+    except Exception as e:
+        logging.error(str(e))
+        results = {"code": RET.SERVERERROR, "msg": MSG.SERVERERROR}
+        return jsonify(results)
+
+
+@user_blueprint.route('/account_trans/', methods=['GET'])
+@login_required
+def account_trans():
+    page = request.args.get('page')
+    limit = request.args.get('limit')
+
+    time_range = request.args.get('time_range')
+    card_num = request.args.get('card_num')
+    time_sql = ""
+    card_sql = ""
+    if time_range:
+        min_time = time_range.split(' - ')[0]
+        max_time = time_range.split(' - ')[1] + ' 23:59:59'
+        time_sql = "AND date BETWEEN " + "'" + min_time + "'" + " and " + "'" + max_time + "'"
+    if card_num:
+        card_sql = "AND card_no = '" + card_num + "'"
+
+    user_id = g.user_id
+    task_info = SqlData().search_account_trans(user_id, card_sql, time_sql)
+    results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
+    if len(task_info) == 0:
+        results['MSG'] = MSG.NODATA
+        return results
+    page_list = list()
+    task_info = list(reversed(task_info))
+    for i in range(0, len(task_info), int(limit)):
+        page_list.append(task_info[i:i + int(limit)])
+    results['data'] = page_list[int(page) - 1]
+    results['count'] = len(task_info)
+    return results
+
+
+@user_blueprint.route('/top_up/', methods=['POST'])
+@login_required
+def top_up():
+    data = json.loads(request.form.get('data'))
+    user_id = g.user_id
+    card_no = data.get('card_no')
+    top_money = data.get('top_money')
+    if not check_float(top_money):
+        results = {"code": RET.SERVERERROR, "msg": "充值金额不能为小数!"}
+        return jsonify(results)
+    money = str(int(top_money) * 100)
+    resp = QuanQiuFu().trans_account_recharge(card_no, money)
+    resp_code = resp.get('resp_code')
+    if resp_code == '0000':
+        before_balance = SqlData().search_user_field('balance', user_id)
+        balance = round(before_balance - int(top_money), 2)
+        SqlData().update_user_field_int('balance', balance, user_id)
+        n_time = xianzai_time()
+        SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.TOP_UP, 1, card_no, float(top_money), 0, before_balance,
+                                       balance, user_id)
+
+        return jsonify({"code": RET.OK, "msg": "充值成功!请刷新界面!"})
+    else:
+        return jsonify({"code": RET.SERVERERROR, "msg": "充值失败!请联系服务商解决!"})
+
+
+@user_blueprint.route('/create_some/', methods=['POST'])
+@login_required
+@choke_required
+def create_some():
+
+    # print(session.get('create'))
+    data = json.loads(request.form.get('data'))
+    card_num = data.get('card_num')
+    name_status = data.get('n')
+    content = data.get('content')
+    limit = data.get('limit')
+    label = data.get('label')
+    user_id = g.user_id
+    user_data = SqlData().search_user_index(user_id)
+    create_price = user_data.get('create_card')
+    min_top = user_data.get('min_top')
+    max_top = user_data.get('max_top')
+    balance = user_data.get('balance')
+
+    card_num = int(card_num)
+    if card_num > 500:
+        results = {"code": RET.SERVERERROR, "msg": "批量开卡数量不得超过500张!"}
+        return jsonify(results)
+
+    if name_status == "write":
+        name_list = content.split("|")
+        if len(name_list) < card_num:
+            results = {"code": RET.SERVERERROR, "msg": "名字数量小于建卡数量!"}
+            return jsonify(results)
+    else:
+        name_list = make_name(card_num)
+
+    if not check_float(limit):
+        results = {"code": RET.SERVERERROR, "msg": "充值金额不能为小数!"}
+        return jsonify(results)
+    sum_money = card_num * int(limit) + card_num * create_price
+
+    # 本次开卡需要的费用,计算余额是否充足
+    if sum_money > balance:
+        results = {"code": RET.SERVERERROR, "msg": "本次消费金额:" + str(sum_money) + ",账号余额不足!"}
+        return jsonify(results)
+
+    # 计算充值金额是否在允许范围
+    if not min_top < int(limit) < max_top:
+        results = {"code": RET.SERVERERROR, "msg": "充值金额不在允许范围内!"}
+        return jsonify(results)
+
+    act_count = SqlData().search_activation_count()
+
+    if act_count < card_num:
+        results = {"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"}
+        return jsonify(results)
+
+    try:
+        for i in range(card_num):
+            activation = SqlData().search_activation()
+            if not activation:
+                return jsonify({"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"})
+            SqlData().update_card_info_field('card_name', 'USING', activation)
+            pay_passwd = "04A5E788"
+            resp = QuanQiuFu().create_card(activation, pay_passwd)
+            # print(resp)
+            resp_code = resp.get('resp_code')
+            # print(resp_code)
+            if resp_code != '0000':
+                logging.error('卡激活失败,激活码为: ' + activation)
+                return jsonify({"code": RET.SERVERERROR, "msg": "API异常请联系服务商处理!"})
+
+            card_no = resp.get('response_detail').get('card_no')
+            before_balance = SqlData().search_user_field('balance', user_id)
+            balance = before_balance - create_price
+            n_time = xianzai_time()
+            SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.CREATE_CARD, 1, card_no, create_price, 0, before_balance,
+                                           balance, user_id)
+            SqlData().update_user_field_int('balance', balance, user_id)
+
+            resp_card_info = QuanQiuFu().query_card_info(card_no)
+            # print(resp_card_info)
+            if resp_card_info.get('resp_code') != '0000':
+                expire_date = ''
+                card_verify_code = ''
+            else:
+                re_de = resp_card_info.get('response_detail')
+                expire_date = re_de.get('expire_date')
+                card_verify_code = re_de.get('card_verify_code')
+            act_time = xianzai_time()
+            card_name = name_list.pop()
+            SqlData().update_card_info(card_no, pay_passwd, act_time, card_name, label, expire_date, card_verify_code, user_id, activation)
+
+            before_balance = SqlData().search_user_field('balance', user_id)
+            money = str(int(limit) * 100)
+            resp = QuanQiuFu().trans_account_recharge(card_no, money)
+            resp_code = resp.get('resp_code')
+            # print(resp)
+            if resp_code == '0000':
+                top_money = int(limit)
+                balance = round(before_balance - top_money, 2)
+                SqlData().update_user_field_int('balance', balance, user_id)
+                n_time = xianzai_time()
+                SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.TOP_UP, 1, card_no, top_money, 0, before_balance, balance, user_id)
+            else:
+                return jsonify({"code": RET.SERVERERROR, "msg": "开卡成功,充值失败!请联系服务商解决!"})
+        return jsonify({"code": RET.OK, "msg": "开卡成功!请刷新界面!"})
+    except Exception as e:
+        logging.error(e)
+        results = {"code": RET.SERVERERROR, "msg": MSG.SERVERERROR}
+        return jsonify(results)
+
+
 @user_blueprint.route('/create_card/', methods=['POST'])
 @login_required
+@choke_required
 def create_card():
     data = json.loads(request.form.get('data'))
     card_name = data.get('card_name')
@@ -25,32 +235,46 @@ def create_card():
     max_top = user_data.get('max_top')
     balance = user_data.get('balance')
 
+    if not check_float(top_money):
+        results = {"code": RET.SERVERERROR, "msg": "充值金额不能为小数!"}
+        return jsonify(results)
+
     # 本次开卡需要的费用,计算余额是否充足
-    money_all = float(top_money) + create_price
+    money_all = int(top_money) + create_price
     if money_all > balance:
         results = {"code": RET.SERVERERROR, "msg": "本次消费金额:" + str(money_all) + ",账号余额不足!"}
         return jsonify(results)
 
     # 计算充值金额是否在允许范围
-    if not min_top < float(top_money) < max_top:
+    if not min_top < int(top_money) < max_top:
         results = {"code": RET.SERVERERROR, "msg": "充值金额不在允许范围内!"}
         return jsonify(results)
+
 
     try:
         activation = SqlData().search_activation()
         if not activation:
             return jsonify({"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"})
-        pay_passwd = str(uuid.uuid1())[:6]
-        print(pay_passwd)
+        SqlData().update_card_info_field('card_name', 'USING', activation)
+        pay_passwd = "04A5E788"
         resp = QuanQiuFu().create_card(activation, pay_passwd)
+        # print(resp)
         resp_code = resp.get('resp_code')
+        # print(resp_code)
         if resp_code != '0000':
             logging.error('卡激活失败,激活码为: ' + activation)
             return jsonify({"code": RET.SERVERERROR, "msg": "API异常请联系服务商处理!"})
 
         card_no = resp.get('response_detail').get('card_no')
+        before_balance = SqlData().search_user_field('balance', user_id)
+        balance = before_balance - create_price
+        n_time = xianzai_time()
+        SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.CREATE_CARD, 1, card_no, create_price, 0, before_balance,
+                                       balance, user_id)
+        SqlData().update_user_field_int('balance', balance, user_id)
 
         resp_card_info = QuanQiuFu().query_card_info(card_no)
+        # print(resp_card_info)
         if resp_card_info.get('resp_code') != '0000':
             expire_date = ''
             card_verify_code = ''
@@ -61,10 +285,18 @@ def create_card():
         act_time = xianzai_time()
         SqlData().update_card_info(card_no, pay_passwd, act_time, card_name, label, expire_date, card_verify_code, user_id, activation)
 
-        money = float(top_money) * 100
+        before_balance = SqlData().search_user_field('balance', user_id)
+        money = str(int(float(top_money) * 100))
         resp = QuanQiuFu().trans_account_recharge(card_no, money)
         resp_code = resp.get('resp_code')
-        if resp_code != '0000':
+        # print(resp)
+        if resp_code == '0000':
+            top_money = float(top_money)
+            balance = round(before_balance - top_money, 2)
+            SqlData().update_user_field_int('balance', balance, user_id)
+            n_time = xianzai_time()
+            SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.TOP_UP, 1, card_no, top_money, 0, before_balance, balance, user_id)
+
             return jsonify({"code": RET.OK, "msg": "开卡成功!请刷新界面!"})
         else:
             return jsonify({"code": RET.SERVERERROR, "msg": "开卡成功,充值失败!请联系服务商解决!"})
@@ -153,7 +385,7 @@ def one_detail():
             context['freeze_fee_all'] = f_freeze
             context['remain'] = remain
 
-        resp = QuanQiuFu(). auth_trade_query(card_no)
+        resp = QuanQiuFu().auth_trade_query(card_no)
         if resp.get('resp_code') == '0000':
             result_set = resp.get('response_detail').get('result_set')
             info_list = list()
@@ -161,7 +393,10 @@ def one_detail():
             for i in result_set:
                 info_dict = dict()
                 info_dict['trade_no'] = i.get('trade_no')
-                info_dict['merchant_name'] = i.get('merchant_name')
+                if i.get('merchant_name') == "香港龙日实业有限公司":
+                    info_dict['merchant_name'] = "全球付"
+                else:
+                    info_dict['merchant_name'] = i.get('merchant_name')
                 trans_type = i.get('trans_type')[0:2]
                 if trans_type == '01':
                     info_dict['trans_type'] = '充值'
@@ -171,6 +406,7 @@ def one_detail():
                     info_dict['trans_type'] = '暂未定义消费类型'
                 status_code = i.get('trans_status')
                 info_dict['trans_status'] = TRANS_STATUS.get(status_code)
+
                 info_dict['trans_amount'] = i.get('trans_amount')
                 info_dict['trans_currency_type'] = i.get('trans_currency_type')
                 info_dict['trans_local_time'] = i.get('app_time')

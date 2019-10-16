@@ -91,6 +91,16 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
+    def update_user_bala(self, field, value, user_id):
+        sql = "UPDATE account SET {} = {} WHERE id = {}".format(field, value, user_id)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新用户字段" + field + "失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
     def search_top_history_acc(self, user_id):
         sql = "SELECT * FROM top_up WHERE account_id={}".format(user_id)
         self.cursor.execute(sql)
@@ -110,12 +120,30 @@ class SqlData(object):
             return info_list
 
     def search_activation(self):
-        sql = "SELECT activation from card_info WHERE card_no is null AND account_id is null LIMIT 1"
+        sql = "SELECT activation from card_info WHERE card_no is null AND account_id is null AND card_name is null AND account_id is null LIMIT 1"
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows:
             return False
         return rows[0][0]
+
+    def search_activation_count(self):
+        sql = "SELECT COUNT(activation) from card_info WHERE card_no is null AND account_id is null AND card_name is null AND account_id is null LIMIT 1"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        return rows[0][0]
+
+    def update_card_info_field(self, field, value, activation):
+        sql = "UPDATE card_info SET {}='{}' WHERE activation='{}'".format(field, value, activation)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新卡信息失败!")
+            self.connect.rollback()
+        self.close_connect()
 
     def search_card_field(self, field, crad_no):
         sql = "SELECT {} from card_info WHERE card_no='{}'".format(field, crad_no)
@@ -126,10 +154,10 @@ class SqlData(object):
         return rows[0][0]
 
     def update_card_info(self, card_no, pay_passwd, act_time, card_name, label, expire, cvv, account_id, activation):
-        sql = "UPDATE card_info SET card_no = '{}', pay_passwd='{}', act_time='{}', card_name='{}', label='{}' expire = '{}'," \
+        sql = "UPDATE card_info SET card_no = '{}', pay_passwd='{}', act_time='{}', card_name='{}', label='{}', expire = '{}'," \
               " cvv = '{}', account_id = {} WHERE activation = '{}'".format(card_no, pay_passwd, act_time, card_name, label,
                                                                             expire, cvv, account_id, activation)
-        print(sql)
+
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -175,6 +203,50 @@ class SqlData(object):
                 info_dict['cvv'] = i[8]
                 info_list.append(info_dict)
             return info_list
+
+    def insert_account_trans(self, date, trans_type, do_type, num, card_no, do_money, hand_money, before_balance, balance, account_id):
+        sql = "INSERT INTO account_trans(do_date, trans_type, do_type, num, card_no, do_money, hand_money, before_balance," \
+              " balance, account_id) VALUES('{}','{}','{}',{},'{}',{},{},{},{},{})".format(date, trans_type, do_type,
+                                                num, card_no, do_money, hand_money, before_balance, balance, account_id)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("添加用户交易记录失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def search_account_trans(self, account_id, card_sql, time_sql):
+        sql = "SELECT * FROM account_trans WHERE account_id = {} {} {}".format(account_id, card_sql, time_sql)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        info_list = list()
+        if not rows:
+            return info_list
+        for i in rows:
+            info_dict = dict()
+            info_dict['date'] = str(i[1])
+            info_dict['trans_type'] = i[2]
+            info_dict['do_type'] = i[3]
+            info_dict['num'] = i[4]
+            info_dict['card_no'] = i[5]
+            info_dict['do_money'] = i[6]
+            info_dict['hand_money'] = i[7]
+            info_dict['before_balance'] = i[8]
+            info_dict['balance'] = i[9]
+            info_list.append(info_dict)
+        return info_list
+
+    def search_trans_sum(self, account_id):
+        sql = "SELECT SUM(do_money), SUM(hand_money) FROM account_trans WHERE account_id={}".format(account_id)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows[0][0]:
+            return 0
+        do_money = rows[0][0]
+        hand_money = rows[0][1]
+        sum_money = do_money + hand_money
+        return sum_money
 
     # 一下是中介使用方法-------------------------------------------------------------------------------------------------
 
@@ -303,8 +375,8 @@ class SqlData(object):
         rows = self.cursor.fetchall()
         return rows[0][0], rows[0][1]
 
-    def search_account_info(self):
-        sql = "SELECT * FROM account"
+    def search_account_info(self, info):
+        sql = "SELECT * FROM account {}".format(info)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         account_list = list()
@@ -362,8 +434,8 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
-    def search_top_history(self):
-        sql = "SELECT * FROM top_up LEFT JOIN account ON account.id=top_up.account_id"
+    def search_top_history(self, sql_line):
+        sql = "SELECT * FROM top_up LEFT JOIN account ON account.id=top_up.account_id {}".format(sql_line)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         info_list = list()
@@ -568,8 +640,8 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
-    def search_card_info_admin(self):
-        sql = "SELECT * FROM card_info"
+    def search_card_info_admin(self, sql_line):
+        sql = "SELECT * FROM card_info {}".format(sql_line)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         info_list = list()
@@ -593,6 +665,79 @@ class SqlData(object):
                 info_dict['account_name'] = ""
             info_list.append(info_dict)
         return info_list
+
+    def search_trans_admin(self, cus_sql, card_sql, time_sql, type_sql):
+        sql = "SELECT account_trans.*, account.name FROM account_trans LEFT JOIN account ON account_trans.account_id" \
+              " = account.id WHERE account_trans.do_date != '' {} {} {} {}".format(cus_sql, card_sql, time_sql, type_sql)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        info_list = list()
+        if not rows:
+            return info_list
+        for i in rows:
+            info_dict = dict()
+            info_dict['date'] = str(i[1])
+            info_dict['trans_type'] = i[2]
+            info_dict['do_type'] = i[3]
+            info_dict['num'] = i[4]
+            info_dict['card_no'] = i[5]
+            info_dict['do_money'] = i[6]
+            info_dict['hand_money'] = i[7]
+            info_dict['before_balance'] = i[8]
+            info_dict['balance'] = i[9]
+            info_dict['cus_name'] = i[11]
+            info_list.append(info_dict)
+        return info_list
+
+    def search_trans_sum_admin(self):
+        sql = "SELECT SUM(do_money), SUM(hand_money) FROM account_trans WHERE trans_type='支出'"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows[0][0]:
+            return 0
+        do_money = rows[0][0]
+        hand_money = rows[0][1]
+        sum_money = do_money + hand_money
+        return sum_money
+
+    def search_user_sum_balance(self):
+        sql = "SELECT SUM(sum_balance) FROM account"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
+
+    def insert_account_log(self, n_time, customer, balance, out_money, sum_balance):
+        sql = "INSERT INTO account_log(log_time, customer, balance, out_money, sum_balance) VALUES ('{}','{}',{},{},{})".format(n_time, customer, balance, out_money, sum_balance)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("添加用户余额记录失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def search_account_log(self, cus_sql, time_sql):
+        sql = "SELECT * FROM account_log WHERE log_time != '' {} {}".format(cus_sql, time_sql)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        info_list = list()
+        if not rows:
+            return info_list
+        for i in rows:
+            info_dict = dict()
+            info_dict['log_time'] = str(i[1])
+            info_dict['customer'] = i[2]
+            info_dict['balance'] = i[3]
+            info_dict['out_money'] = i[4]
+            info_dict['sum_balance'] = i[5]
+            info_list.append(info_dict)
+        return info_list
+
+    def search_card_status(self, sql_line):
+        sql = "SELECT COUNT(*) FROM card_info {}".format(sql_line)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
 
 
 if __name__ == "__main__":

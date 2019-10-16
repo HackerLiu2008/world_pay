@@ -1,5 +1,4 @@
 import hashlib
-import uuid
 import rsa
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
@@ -16,7 +15,7 @@ class QuanQiuFu(object):
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
-        res = requests.post(self.url, data=data, headers=headers)
+        res = requests.post(self.url, data=data, headers=headers, timeout=None)
         return res
 
     def rsa_sign(self, data):
@@ -42,9 +41,10 @@ class QuanQiuFu(object):
         :param pay_passwd:   加密的数据
         :param is_pass:  对 是否密码o
         '''
+
         with open('G:\\world_pay\\tools_me\\RSA_NAME\\pro_epaylinks_publickey.pem', 'r') as file_pub:
             f_pub = file_pub.read()
-        pubkey = rsa.PublicKey.load_pkcs1_openssl_pem(f_pub)
+        pubkey = rsa.PublicKey.load_pkcs1_openssl_pem(f_pub.encode())
         if is_pass:
             # 若是密码则MD5
             m = hashlib.md5()
@@ -55,7 +55,7 @@ class QuanQiuFu(object):
 
     def pay_passwd(self, pass_word):
         pay_passwd = self.md5_rsa(pass_word, is_pass=True)
-        return pay_passwd
+        return pay_passwd.decode()
 
     def my_hash(self, data):
         return MD5.new(data.encode('utf-8'))
@@ -73,7 +73,7 @@ class QuanQiuFu(object):
     def create_card(self, activation, pass_word):
         # 卡开通
         # 流水号item_id
-        itme_id = str(int(time.time() * 1000)) + str(int(time.clock() * 1000000))
+        itme_id = self.get_order_code()
         data = {
             'api_name': 'epaylinks_umps_user_open_account',
             'ver': '1.0',
@@ -144,7 +144,7 @@ class QuanQiuFu(object):
     def trans_account_recharge(self, card_num, money):
         # 代充值
         # mer_order商户订单号
-        mer_order = str(int(time.time() * 1000)) + str(int(time.clock() * 1000000))
+        mer_order = self.get_order_code()
         data = {
             'api_name': 'epaylinks_trans_account_recharge',
             'ver': '1.0',
@@ -161,12 +161,13 @@ class QuanQiuFu(object):
         sign = self.kv_list(data)
         data['sign'] = sign.decode()
         res = self.api_requests(data)
-        return res.json
+        return res.json()
 
     def trans_account_cinsume(self, card_num, pass_word, money):
         # 卡余额消费
         # mer_order商户订单号
-        mer_order = str(int(time.time() * 1000)) + str(int(time.clock() * 1000000))
+        mer_order = self.get_order_code()
+        pay_passwd = self.pay_passwd(pass_word)
         data = {
             'api_name': 'epaylinks_trans_account_consume',
             'ver': '1.0',
@@ -179,7 +180,7 @@ class QuanQiuFu(object):
             'trans_sub_type': "03",
             'mer_order_no': mer_order,
             'order_amount': money,
-            'pay_passwd': pass_word
+            'pay_passwd': pay_passwd
         }
         sign = self.kv_list(data)
         data['sign'] = sign.decode()
@@ -197,6 +198,6 @@ class QuanQiuFu(object):
 
 if __name__ == '__main__':
     qqf = QuanQiuFu()
-    resp = qqf.query_card_info('5295871073412162')
+    resp = qqf.trans_account_cinsume('5295871076554747', '04A5E788', '100')
     print(resp)
 

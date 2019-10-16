@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'Gute9878934'
 
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=3)
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
 
 app.app_context().push()
 # CSRFProtect(app)
