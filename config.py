@@ -2,6 +2,7 @@ from datetime import timedelta
 from flask import Flask
 import logging
 
+from tools_me.parameter import DIR_PATH
 
 app = Flask(__name__)
 # 使用缓存,缓存大量查出来的信息
@@ -20,7 +21,7 @@ DATE_FORMAT = '%Y-%m-%d  %H:%M:%S %a '  # 配置输出时间的格式，注意�
 logging.basicConfig(level=logging.ERROR,
                     format=LOG_FORMAT,
                     datefmt=DATE_FORMAT,
-                    filename=r"G:/world_pay/static/log/card.log"  # 有了filename参数就不会直接输出显示到控制台，而是直接写入文件
+                    filename=DIR_PATH.LOG_PATH  # 有了filename参数就不会直接输出显示到控制台，而是直接写入文件
                     )
 
 # 注册路由,以url_prefix区分功能(蓝图)

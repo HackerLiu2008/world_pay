@@ -4,7 +4,6 @@ import operator
 from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code
 from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE
 from tools_me.RSA_NAME.helen import QuanQiuFu
-from tools_me.send_sms.send_sms import CCP
 from . import user_blueprint
 from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
@@ -131,8 +130,8 @@ def create_some():
     balance = user_data.get('balance')
 
     card_num = int(card_num)
-    if card_num > 500:
-        results = {"code": RET.SERVERERROR, "msg": "批量开卡数量不得超过500张!"}
+    if card_num > 10:
+        results = {"code": RET.SERVERERROR, "msg": "批量开卡数量不得超过10张!"}
         return jsonify(results)
 
     if name_status == "write":

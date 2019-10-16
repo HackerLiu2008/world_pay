@@ -5,6 +5,8 @@ from Crypto.Signature import PKCS1_v1_5
 from Crypto.Hash import MD5
 import base64, requests, datetime, time
 
+from tools_me.parameter import DIR_PATH
+
 
 class QuanQiuFu(object):
     def __init__(self):
@@ -20,7 +22,7 @@ class QuanQiuFu(object):
 
     def rsa_sign(self, data):
         # MD5withrsa加密方式
-        private_key_file = open('G:\\world_pay\\tools_me\\RSA_NAME\\privkey_henry.pem', 'r')
+        private_key_file = open(DIR_PATH.PRI_PEM, 'r')
         pri_key = RSA.importKey(private_key_file.read())
         signer = PKCS1_v1_5.new(pri_key)
         hash_obj = self.my_hash(data)
@@ -42,7 +44,7 @@ class QuanQiuFu(object):
         :param is_pass:  对 是否密码o
         '''
 
-        with open('G:\\world_pay\\tools_me\\RSA_NAME\\pro_epaylinks_publickey.pem', 'r') as file_pub:
+        with open(DIR_PATH.PUB_PEM, 'r') as file_pub:
             f_pub = file_pub.read()
         pubkey = rsa.PublicKey.load_pkcs1_openssl_pem(f_pub.encode())
         if is_pass:
@@ -198,6 +200,6 @@ class QuanQiuFu(object):
 
 if __name__ == '__main__':
     qqf = QuanQiuFu()
-    resp = qqf.trans_account_cinsume('5295871076554747', '04A5E788', '100')
+    resp = qqf.query_card_info('5295871076554747')
     print(resp)
 

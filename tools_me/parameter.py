@@ -3,12 +3,16 @@
 
 # 保存excel文件的路径
 
-ACCOUNT_DIR = '/order_flask/static/excel_account/'
-TASK_DIR = '/order_flask/static/excel_task/'
-PHOTO_DIR = 'G:/order_flask/static/photo'
-DW_ACCOUNT = 'G:/order_flask/static/download/买家号导入模板.xlsx'
-DW_TASK = 'G:/order_flask/static/download/AMZ任务导入模板.xlsx'
-SMT_TASK = 'G:/order_flask/static/download/SMT任务导入模板.xlsx'
+
+class DIR_PATH:
+    LOG_PATH = "G:/world_pay/static/log/card.log"
+    # LOG_PATH = "/static/log/card.log"
+
+    PRI_PEM = "'G:\\world_pay\\tools_me\\RSA_NAME\\privkey_henry.pem'"
+    # PRI_PEM = "'tools_me/RSA_NAME/privkey_henry.pem'"
+
+    PUB_PEM = 'G:\\world_pay\\tools_me\\RSA_NAME\\pro_epaylinks_publickey.pem'
+    # PUB_PEM = 'tools_me/RSA_NAME/pro_epaylinks_publickey.pem'
 
 
 class RET:
@@ -67,4 +71,3 @@ class DO_TYPE:
     CREATE_CARD = "开卡"
     TOP_UP = "充值"
     REFUND = "退款"
-
