@@ -200,7 +200,7 @@ class QuanQiuFu(object):
 if __name__ == '__main__':
     qqf = QuanQiuFu()
     print(time.time())
-    resp = qqf.query_card_info('5295871078736177')
+    resp = qqf.auth_trade_query('5295871078736177')
     print(resp)
     print(time.time())
 

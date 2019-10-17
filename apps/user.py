@@ -405,7 +405,6 @@ def one_detail():
         if resp.get('resp_code') == '0000':
             result_set = resp.get('response_detail').get('result_set')
             info_list = list()
-            # print(result_set)
             for i in result_set:
                 info_dict = dict()
                 info_dict['trade_no'] = i.get('trade_no')
@@ -425,7 +424,11 @@ def one_detail():
 
                 info_dict['trans_amount'] = i.get('trans_amount')
                 info_dict['trans_currency_type'] = i.get('trans_currency_type')
+                # info_dict['trans_local_time'] = i.get('trans_local_time')
                 info_dict['trans_local_time'] = i.get('app_time')
+                info_dict['auth_settle_amount'] = i.get('auth_settle_amount')
+                info_dict['settle_amount'] = i.get('settle_amount')
+                info_dict['settle_currency_type'] = i.get('settle_currency_type')
                 info_list.append(info_dict)
             context['pay_list'] = info_list
         return render_template('user/card_detail.html', **context)

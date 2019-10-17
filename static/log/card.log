@@ -8137,3 +8137,87 @@
 2019-10-16  18:45:33 Wed  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
 2019-10-16  18:45:33 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
 2019-10-16  18:45:33 Wed  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-10-17  16:06:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-10-17  16:06:29 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-10-17  16:06:29 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-10-17  16:06:29 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /user/ HTTP/1.1" 200 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/layui/css/layui.css HTTP/1.1" 304 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/css/index.css HTTP/1.1" 304 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/img/1.jpg HTTP/1.1" 304 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/layui/layui.js HTTP/1.1" 304 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/img/a.png HTTP/1.1" 304 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/img/yhm.png HTTP/1.1" 304 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/img/mm.png HTTP/1.1" 304 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/layui/layui.all.js HTTP/1.1" 304 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/layui/css/modules/laydate/default/laydate.css?v=5.0.9 HTTP/1.1" 304 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/layui/css/modules/layer/default/layer.css?v=3.1.1 HTTP/1.1" 304 - 
+2019-10-17  16:06:39 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:39] "GET /static/layui/css/modules/code.css HTTP/1.1" 304 - 
+2019-10-17  16:06:44 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:44] "POST /user/login HTTP/1.1" 200 - 
+2019-10-17  16:06:44 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:44] "GET /static/layui/css/modules/layer/default/icon.png HTTP/1.1" 304 - 
+2019-10-17  16:06:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:50] "POST /user/login HTTP/1.1" 200 - 
+2019-10-17  16:06:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:50] "GET /user/ HTTP/1.1" 200 - 
+2019-10-17  16:06:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:50] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:06:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:50] "GET /user/account_trans/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:06:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:50] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:06:50 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:50] "GET /static/layui/font/iconfont.woff2?v=250 HTTP/1.1" 304 - 
+2019-10-17  16:06:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:52] "GET /static/layui/css/modules/layer/default/loading-1.gif HTTP/1.1" 304 - 
+2019-10-17  16:06:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:53] "GET /user/one_card_detail?card_no=5295871076778155 HTTP/1.1" 200 - 
+2019-10-17  16:06:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:53] "GET /static/css/carddetail.css HTTP/1.1" 304 - 
+2019-10-17  16:06:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:06:53] "GET /static/css/mainpage.css HTTP/1.1" 304 - 
+2019-10-17  16:07:27 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-10-17  16:07:28 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-10-17  16:07:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-10-17  16:07:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-10-17  16:07:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:07:28] "GET /user/ HTTP/1.1" 200 - 
+2019-10-17  16:07:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:07:28] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:07:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:07:28] "GET /user/account_trans/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:07:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:07:28] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:07:29 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:07:29] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-10-17  16:07:30 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:07:30] "GET /user/one_card_detail?card_no=5295871075567401 HTTP/1.1" 200 - 
+2019-10-17  16:10:11 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-10-17  16:10:12 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-10-17  16:10:12 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-10-17  16:10:12 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-10-17  16:10:12 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:12] "GET /user/ HTTP/1.1" 200 - 
+2019-10-17  16:10:12 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:12] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:10:12 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:12] "GET /user/account_trans/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:10:13 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:13] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:10:13 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:13] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-10-17  16:10:18 Thu  root ERROR G:\world_pay\apps\user.py HTTPSConnectionPool(host='www.globalcash.hk', port=443): Read timed out. (read timeout=5) 
+2019-10-17  16:10:18 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:18] "GET /user/one_card_detail?card_no=5295871079282932 HTTP/1.1" 200 - 
+2019-10-17  16:10:24 Thu  root ERROR G:\world_pay\apps\user.py HTTPSConnectionPool(host='www.globalcash.hk', port=443): Read timed out. (read timeout=5) 
+2019-10-17  16:10:24 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:24] "GET /user/one_card_detail?card_no=5295871075567401 HTTP/1.1" 200 - 
+2019-10-17  16:10:28 Thu  root ERROR G:\world_pay\apps\user.py HTTPSConnectionPool(host='www.globalcash.hk', port=443): Read timed out. (read timeout=5) 
+2019-10-17  16:10:28 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:28] "GET /user/one_card_detail?card_no=5295871078796171 HTTP/1.1" 200 - 
+2019-10-17  16:10:33 Thu  root ERROR G:\world_pay\apps\user.py HTTPSConnectionPool(host='www.globalcash.hk', port=443): Read timed out. (read timeout=5) 
+2019-10-17  16:10:33 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:33] "GET /user/one_card_detail?card_no=5295871078775605 HTTP/1.1" 200 - 
+2019-10-17  16:10:40 Thu  root ERROR G:\world_pay\apps\user.py HTTPSConnectionPool(host='www.globalcash.hk', port=443): Read timed out. (read timeout=5) 
+2019-10-17  16:10:40 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:40] "GET /user/one_card_detail?card_no=5295871075567401 HTTP/1.1" 200 - 
+2019-10-17  16:10:47 Thu  root ERROR G:\world_pay\apps\user.py HTTPSConnectionPool(host='www.globalcash.hk', port=443): Read timed out. (read timeout=5) 
+2019-10-17  16:10:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:10:47] "GET /user/one_card_detail?card_no=5295871079282932 HTTP/1.1" 200 - 
+2019-10-17  16:10:52 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-10-17  16:10:53 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-10-17  16:10:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-10-17  16:10:53 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-10-17  16:11:17 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:17] "GET /user/ HTTP/1.1" 200 - 
+2019-10-17  16:11:17 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:17] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:11:17 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:17] "GET /user/account_trans/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:11:17 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:17] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:11:17 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:17] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-10-17  16:11:23 Thu  root ERROR G:\world_pay\apps\user.py HTTPSConnectionPool(host='www.globalcash.hk', port=443): Read timed out. (read timeout=5) 
+2019-10-17  16:11:23 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:23] "GET /user/one_card_detail?card_no=5295871075567401 HTTP/1.1" 200 - 
+2019-10-17  16:11:45 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-10-17  16:11:46 Thu  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-10-17  16:11:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-10-17  16:11:46 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-10-17  16:11:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:47] "GET /user/ HTTP/1.1" 200 - 
+2019-10-17  16:11:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:47] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:11:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:47] "GET /user/account_trans/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:11:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:47] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-10-17  16:11:47 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:47] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-10-17  16:11:54 Thu  root ERROR G:\world_pay\apps\user.py HTTPSConnectionPool(host='www.globalcash.hk', port=443): Read timed out. (read timeout=5) 
+2019-10-17  16:11:54 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:11:54] "GET /user/one_card_detail?card_no=5295871075567401 HTTP/1.1" 200 - 
+2019-10-17  16:12:04 Thu  root ERROR G:\world_pay\apps\user.py HTTPSConnectionPool(host='www.globalcash.hk', port=443): Read timed out. (read timeout=5) 
+2019-10-17  16:12:04 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:12:04] "GET /user/one_card_detail?card_no=5295871079282932 HTTP/1.1" 200 - 
+2019-10-17  16:12:19 Thu  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [17/Oct/2019 16:12:19] "GET /user/one_card_detail?card_no=5295871075567401 HTTP/1.1" 200 - 
