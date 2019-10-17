@@ -89,9 +89,7 @@ def customer_money_log():
         logging.error("记录客户当前余额信息失败!"+str(e))
 
 
-# sum_middle_money()
 if __name__ == '__main__':
-    # customer_money_log()
     schedule.every().wednesday.at('00:00:01').do(sum_middle_money)
     schedule.every().day.at('23:59:52').do(customer_money_log)
     while True:

@@ -4,7 +4,6 @@ from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
 from Crypto.Hash import MD5
 import base64, requests, datetime, time
-
 from tools_me.parameter import DIR_PATH
 
 
@@ -17,7 +16,7 @@ class QuanQiuFu(object):
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
-        res = requests.post(self.url, data=data, headers=headers, timeout=None)
+        res = requests.post(self.url, data=data, headers=headers, timeout=5)
         return res
 
     def rsa_sign(self, data):
@@ -200,6 +199,8 @@ class QuanQiuFu(object):
 
 if __name__ == '__main__':
     qqf = QuanQiuFu()
-    resp = qqf.query_card_info('5295871076554747')
+    print(time.time())
+    resp = qqf.query_card_info('5295871078736177')
     print(resp)
+    print(time.time())
 

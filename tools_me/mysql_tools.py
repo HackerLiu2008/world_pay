@@ -120,7 +120,7 @@ class SqlData(object):
             return info_list
 
     def search_activation(self):
-        sql = "SELECT activation from card_info WHERE card_no is null AND account_id is null AND card_name is null AND account_id is null LIMIT 1"
+        sql = "SELECT activation from card_info WHERE card_no is null AND card_name = '' null AND account_id is null LIMIT 1"
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows:
@@ -128,7 +128,7 @@ class SqlData(object):
         return rows[0][0]
 
     def search_activation_count(self):
-        sql = "SELECT COUNT(activation) from card_info WHERE card_no is null AND account_id is null AND card_name is null AND account_id is null LIMIT 1"
+        sql = "SELECT COUNT(activation) from card_info WHERE card_no is null AND account_id is null AND card_name = ''"
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows:

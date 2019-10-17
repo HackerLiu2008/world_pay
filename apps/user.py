@@ -43,6 +43,9 @@ def refund_balance():
 
             results['msg'] = resp_msg
         else:
+            resp_msg = resp.get('resp_msg')
+            s = '卡余额领回失败,状态码: ' + resp_code + ',信息: ' + resp_msg
+            logging.error(s)
             results['code'] = RET.SERVERERROR
             results['msg'] = resp_msg
         return jsonify(results)
@@ -104,9 +107,11 @@ def top_up():
         n_time = xianzai_time()
         SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.TOP_UP, 1, card_no, float(top_money), 0, before_balance,
                                        balance, user_id)
-
         return jsonify({"code": RET.OK, "msg": "充值成功!请刷新界面!"})
     else:
+        resp_msg = resp.get('resp_msg')
+        s = '充值卡余额失败,状态码: ' + resp_code + ',信息: ' + resp_msg
+        logging.error(s)
         return jsonify({"code": RET.SERVERERROR, "msg": "充值失败!请联系服务商解决!"})
 
 
@@ -153,7 +158,7 @@ def create_some():
         return jsonify(results)
 
     # 计算充值金额是否在允许范围
-    if not min_top < int(limit) < max_top:
+    if not min_top <= int(limit) <= max_top:
         results = {"code": RET.SERVERERROR, "msg": "充值金额不在允许范围内!"}
         return jsonify(results)
 
@@ -175,7 +180,9 @@ def create_some():
             resp_code = resp.get('resp_code')
             # print(resp_code)
             if resp_code != '0000':
-                logging.error('卡激活失败,激活码为: ' + activation)
+                resp_msg = resp.get('resp_msg')
+                s = '激活卡失败,状态码: ' + resp_code + ',信息: ' + resp_msg + ',激活码为:' + activation
+                logging.error(s)
                 return jsonify({"code": RET.SERVERERROR, "msg": "API异常请联系服务商处理!"})
 
             card_no = resp.get('response_detail').get('card_no')
@@ -211,8 +218,13 @@ def create_some():
                 n_time = xianzai_time()
                 SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.TOP_UP, 1, card_no, top_money, 0, before_balance, balance, user_id)
             else:
-                return jsonify({"code": RET.SERVERERROR, "msg": "开卡成功,充值失败!请联系服务商解决!"})
-        return jsonify({"code": RET.OK, "msg": "开卡成功!请刷新界面!"})
+                resp_msg = resp.get('resp_msg')
+                s = '充值卡余额失败,状态码: ' + resp_code + ',信息: ' + resp_msg
+                logging.error(s)
+                card_num = str(i+1)
+                s = "成功开卡"+card_num+"张,充值第"+card_num+"失败!请单独充值卡号:"+card_no+"!"
+                return jsonify({"code": RET.SERVERERROR, "msg": s})
+        return jsonify({"code": RET.OK, "msg": "成功开卡"+str(card_num)+"张!请刷新界面!"})
     except Exception as e:
         logging.error(e)
         results = {"code": RET.SERVERERROR, "msg": MSG.SERVERERROR}
@@ -245,7 +257,7 @@ def create_card():
         return jsonify(results)
 
     # 计算充值金额是否在允许范围
-    if not min_top < int(top_money) < max_top:
+    if not min_top <= int(top_money) <= max_top:
         results = {"code": RET.SERVERERROR, "msg": "充值金额不在允许范围内!"}
         return jsonify(results)
 
@@ -261,7 +273,9 @@ def create_card():
         resp_code = resp.get('resp_code')
         # print(resp_code)
         if resp_code != '0000':
-            logging.error('卡激活失败,激活码为: ' + activation)
+            resp_msg = resp.get('resp_msg')
+            s = '卡激活失败! 状态码: ' + resp_code + ',信息: ' + resp_msg + '激活码为: ' + activation
+            logging.error(s)
             return jsonify({"code": RET.SERVERERROR, "msg": "API异常请联系服务商处理!"})
 
         card_no = resp.get('response_detail').get('card_no')
@@ -288,7 +302,7 @@ def create_card():
         money = str(int(float(top_money) * 100))
         resp = QuanQiuFu().trans_account_recharge(card_no, money)
         resp_code = resp.get('resp_code')
-        # print(resp)
+
         if resp_code == '0000':
             top_money = float(top_money)
             balance = round(before_balance - top_money, 2)
@@ -298,7 +312,10 @@ def create_card():
 
             return jsonify({"code": RET.OK, "msg": "开卡成功!请刷新界面!"})
         else:
-            return jsonify({"code": RET.SERVERERROR, "msg": "开卡成功,充值失败!请联系服务商解决!"})
+            resp_msg = resp.get('resp_msg')
+            s = '充值卡余额失败,状态码: ' + resp_code + ',信息: ' + resp_msg
+            logging.error(s)
+            return jsonify({"code": RET.SERVERERROR, "msg": "开卡成功,充值失败!"})
 
     except Exception as e:
         logging.error(e)
