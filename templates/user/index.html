@@ -45,7 +45,7 @@
   <div class="layui-header">
     <div class="layui-logo">WORLD_PAY[全球付]</div>
     <ul class="layui-nav layui-layout-right">
-        <li class="layui-nav-item"><span style="font-weight: normal;font-size: 16px;color: ghostwhite;">账户余额: </span><span style="font-weight: normal;font-size: 16px;color: red">$ {{ balance }}</span></li>
+        <li class="layui-nav-item"  title="所剩余额 = 累计充值 - 累计消费"><span style="font-weight: normal;font-size: 16px;color: ghostwhite;">所剩余额: </span><span style="font-weight: normal;font-size: 16px;color: gold"> {{ balance }}</span> 累计消费: <span style="font-weight: normal;font-size: 16px;color: palegreen"> {{ out_money }}</span>累计充值: <span style="font-weight: normal;font-size: 16px;color: darkkhaki"> {{ sum_balance }}</span></li>
       <li class="layui-nav-item">
         <a href="javascript:">
           {{ user_name }}
@@ -158,6 +158,8 @@
     </div>
     </div>
     <div class="layui-tab-item">
+        <div style="padding-bottom: 40px">
+        <div style="float: left">
         <form class="layui-form" action="" lay-filter="example" id="example">
             <div class="demoTable">
                 卡名：
@@ -178,10 +180,15 @@
             </div>
             <button class="layui-btn" data-type="reload" id="sub_card">搜索</button>
             <button class="layui-btn layui-btn-primary" id="">重置</button>
+
             </div>
         </form>
-
-        <table class="layui-hide" id="card_info" lay-filter="card_info"></table>
+            </div>
+        <blockquote class="layui-elem-quote layui-quote-nm" style="float: right">
+            <span >提示: 此界面涉及查询卡余额信息!导致页面加载较慢,请耐心等待!</span>
+        </blockquote>
+        </div>
+        <table class="layui-table" id="card_info" lay-filter="card_info"></table>
         <script type="text/html" id="barDemo">
 {#            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>#}
             <a class="layui-btn layui-btn-xs" lay-event="edit">充值</a>
@@ -382,57 +389,78 @@
         //执行一个 table 实例
         table.render({
             elem: '#card_info'
-            , height: ''
+            , height: 'full-250'
+            , cellMinWidth: '80'
             , url: '/user/card_info' //数据接口
             , title: '卡列表'
+            , skin: 'line'
             , limit:20
-            , toolbar: "r" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , limits:[20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
+            , toolbar: '#search_remain' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
                 {type:'numbers'}
-                , {field: 'card_no', title: '卡号', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'card_no', title: '卡号', align: 'center', sort: true,  style:"mso-number-format:'\@';",}
                 , {field: 'card_name', title: '卡名', align: 'center', sort: true,}
                 , {field: 'expire', title: '有效期', align: 'center', sort: true}
                 , {field: 'cvv', title: '安全码', align: 'center', sort: true}
                 , {field: 'label', title: '标签', align: 'center', sort: true}
                 , {field: 'act_time', title: '建卡时间', align: 'center', sort: true}
+                , {field: 'remain', title: '余额', align: 'center', sort: true, style: "color: red"}
                 , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo'}
             ]]
             , id: 'card_info'
             , page: true
         });
 
+        var remain = $('#search_re');
+        remain.on('click',function () {
+            var card_info = layui.table.cache['card_info'];
+            var data_info = JSON.stringify(card_info);
+            table.reload('card_info', {
+                url: '/user/card_remain/'
+                ,where: {
+                    data: data_info
+                    }
+              });
+        });
+
+
 
         //执行一个 table 实例
         table.render({
             elem: '#pay_history'
-            , height: ''
+            , height: 'full-250'
+            , cellMinWidth: '80'
             , url: '/user/account_trans/' //数据接口
             , title: '交易记录表'
-            , limit:20
+            , limit:100
+            , limits:[100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
             , toolbar: "true" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
                 {type:'numbers'}
                 ,{type: 'checkbox'}
                 , {field: 'date', title: '操作日期', align: 'center', sort: true,  totalRowText: '合计：'}
-                , {field: 'trans_type', title: '交易类型', align: 'center', sort: true,}
+                , {field: 'trans_type', title: '交易类型', align: 'center', sort: true,style:'color: green'}
                 , {field: 'do_type', title: '操作类型', align: 'center', sort: true,}
                 , {field: 'num', title: '卡数量', align: 'center', sort: true}
                 , {field: 'card_no', title: '卡号', align: 'center', sort: true}
-                , {field: 'do_money', title: '操作金额', align: 'center', totalRow: true, sort: true}
+                , {field: 'do_money', title: '操作金额', align: 'center', totalRow: true, sort: true, style:'color: red'}
                 , {field: 'hand_money', title: '手续费', align: 'center', totalRow: true, sort: true}
                 , {field: 'before_balance', title: '之前余额', align: 'center', sort: true}
                 , {field: 'balance', title: '之后余额', align: 'center', sort: true}
             ]]
             , id: 'pay_history'
             , page: true
+
         });
 
 
         table.render({
             elem: '#top_up'
-            , height: ''
+            , height: 'full-250'
+            , cellMinWidth: '80'
             , url: '/user/top_history/' //数据接口
             , title: '账号表'
             , limit:20
@@ -442,7 +470,7 @@
                 {type:'numbers'}
                 , {field: 'pay_num', title: '流水号', align: 'center', sort: true,totalRowText: '合计：'}
                 , {field: 'time', title: '充值时间', align: 'center', sort: true,}
-                , {field: 'money', title: '充值金额', align: 'center', sort: true, totalRow:true}
+                , {field: 'money', title: '充值金额', align: 'center', sort: true, totalRow:true, style:'color: red'}
                 , {field: 'before_balance', title: '充值前余额', align: 'center', sort: true}
                 , {field: 'balance', title: '充值后余额', align: 'center', sort: true}
             ]]

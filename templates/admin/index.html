@@ -186,7 +186,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">电   话</label>
                 <div class="layui-input-inline">
-                    <input type="number" id="phone_num" name="phone_num" placeholder="接收短息通知号码" required lay-verify="required" autocomplete="off"
+                    <input type="number" id="phone_num" name="phone_num" placeholder="接收短息通知号码"  autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -271,7 +271,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">电   话</label>
                 <div class="layui-input-inline">
-                    <input type="number" id="phone_num" name="phone_num" placeholder="接收短息通知号码" required lay-verify="required" autocomplete="off"
+                    <input type="number" id="phone_num" name="phone_num" placeholder="接收短息通知号码"  autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -551,7 +551,8 @@
 
         table.render({
             elem: '#cus_money_log'
-            , height: ''
+            , height: 'full-250'
+            , cellMinWidth: '80'
             , url: '/admin/cus_log' //数据接口
             , title: '客户账户金额表'
             , limit:50
@@ -573,7 +574,8 @@
         //执行一个 table 实例
         table.render({
             elem: '#card_all'
-            , height: ''
+            , height: 'full-250'
+            , cellMinWidth: '80'
             , url: '/admin/card_all' //数据接口
             , title: '卡信息'
             , toolbar: '#toolbarDemo'
@@ -625,10 +627,12 @@
         //执行一个 table 实例
         table.render({
             elem: '#cus_trans_log'
-            , height: ''
+            , height: 'full-250'
+            , cellMinWidth: '80'
             , url: '/admin/account_trans/' //数据接口
             , title: '客户交易记录'
-            , limit:20
+            , limit:50
+            , limits:[50,100,150,200,250,300,350,400,450,500]
             , toolbar: "true" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
@@ -636,11 +640,11 @@
                 ,{type: 'checkbox'}
                 , {field: 'cus_name', title: '客户', align: 'center', sort: true,  totalRowText: '合计：'}
                 , {field: 'date', title: '操作日期', align: 'center', sort: true,}
-                , {field: 'trans_type', title: '交易类型', align: 'center', sort: true,}
+                , {field: 'trans_type', title: '交易类型', align: 'center', sort: true,style: "color: green"}
                 , {field: 'do_type', title: '操作类型', align: 'center', sort: true,}
                 , {field: 'num', title: '卡数量', align: 'center', sort: true}
                 , {field: 'card_no', title: '卡号', align: 'center', sort: true}
-                , {field: 'do_money', title: '操作金额', align: 'center', totalRow: true, sort: true}
+                , {field: 'do_money', title: '操作金额', align: 'center', totalRow: true, sort: true, style: "color: red"}
                 , {field: 'hand_money', title: '手续费', align: 'center', totalRow: true, sort: true}
                 , {field: 'before_balance', title: '之前余额', align: 'center', sort: true}
                 , {field: 'balance', title: '之后余额', align: 'center', sort: true}
@@ -652,7 +656,8 @@
         //执行一个 table 实例
         table.render({
             elem: '#account_all'
-            , height: ''
+            , height: 'full-250'
+            , cellMinWidth: '80'
             , url: '/admin/account_info' //数据接口
             , title: '客户信息'
             , limit:50
@@ -662,13 +667,15 @@
             , cols: [[ //表头
                 {type:'numbers'}
                 , {field: 'name', title: '客户', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'account', title: '账号', align: 'center', sort: true,}
+                , {field: 'password', title: '密码', align: 'center', sort: true,}
                 , {field: 'create_price', title: '开卡费', align: 'center', sort: true,}
                 , {field: 'refund', title: '取现手续费', align: 'center', sort: true,}
                 , {field: 'min_top', title: '最低充值金额', align: 'center', sort: true,}
                 , {field: 'max_top', title: '最高充值金额', align: 'center', sort: true,}
-                , {field: 'card_num', title: '开卡数量', align: 'center', sort: true,totalRow:true}
-                , {field: 'out_money', title: '总消费金额', align: 'center', sort: true, totalRow:true}
-                , {field: 'balance', title: '账户余额', align: 'center', sort: true, totalRow:true}
+                , {field: 'card_num', title: '开卡数量', align: 'center', sort: true,totalRow:true,style: "color: #000000"}
+                , {field: 'out_money', title: '总消费金额', align: 'center', sort: true, totalRow:true,style: "color: red"}
+                , {field: 'balance', title: '账户余额', align: 'center', sort: true, totalRow:true, style: "color: purple"}
                 , {field: 'sum_balance', title: '总充值金额', align: 'center', sort: true, totalRow:true}
                 , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo'}
             ]]
@@ -680,7 +687,8 @@
         //执行一个 table 实例
         table.render({
             elem: '#top_up'
-            , height: ''
+            , height: 'full-250'
+            , cellMinWidth: '80'
             , url: '/admin/top_history' //数据接口
             , title: '客户充值记录'
             , limit:20
@@ -690,8 +698,8 @@
                 {type:'numbers'}
                 , {field: 'name', title: '客户', align: 'center', sort: true,  totalRowText: '合计：'}
                 , {field: 'pay_num', title: '流水号', align: 'center', sort: true,}
-                , {field: 'time', title: '充值时间', align: 'center', sort: true,}
-                , {field: 'money', title: '充值金额', align: 'center', sort: true, totalRow: true}
+                , {field: 'time', title: '充值时间', align: 'center', sort: true, }
+                , {field: 'money', title: '充值金额', align: 'center', sort: true, totalRow: true,style:'color: red'}
                 , {field: 'before_balance', title: '充值前余额', align: 'center', sort: true, totalRow: true}
                 , {field: 'balance', title: '充值后余额', align: 'center', sort: true, totalRow: true}
             ]]
@@ -701,7 +709,8 @@
 
         table.render({
             elem: '#middle_info'
-            , height: ''
+            , height: 'full-250'
+            , cellMinWidth: '80'
             , url: '/admin/middle_info' //数据接口
             , title: '中介信息'
             , limit:20
@@ -725,7 +734,8 @@
         //执行一个 table 实例
         table.render({
             elem: '#middle_money'
-            , height: ''
+            , height: 'full-250'
+            , cellMinWidth: '80'
             , url: '/admin/middle_money' //数据接口
             , title: '中介费统计表'
             , limit:50
@@ -1204,7 +1214,6 @@
                }, '/admin/cus_log');
             return false;
          });
-
 
     })
 </script>

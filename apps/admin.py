@@ -300,11 +300,14 @@ def add_account():
             results['code'] = RET.SERVERERROR
             results['msg'] = '该用户名已存在!'
             return jsonify(results)
-        ret = re.match(r"^1[35789]\d{9}$", phone_num)
-        if not ret:
-            results['code'] = RET.SERVERERROR
-            results['msg'] = '请输入符合规范的电话号码!'
-            return jsonify(results)
+        if phone_num:
+            ret = re.match(r"^1[35789]\d{9}$", phone_num)
+            if not ret:
+                results['code'] = RET.SERVERERROR
+                results['msg'] = '请输入符合规范的电话号码!'
+                return jsonify(results)
+        else:
+            phone_num = ""
         SqlData().insert_account(account, password, phone_num, name, create_price, refund, min_top, max_top, note)
         return jsonify(results)
     except Exception as e:
@@ -426,7 +429,9 @@ def top_up():
 
         phone = SqlData().search_user_field_name('phone_num', name)
 
-        CCP().send_Template_sms(phone, [name, t, money], 478898)
+        if phone:
+
+            CCP().send_Template_sms(phone, [name, t, money], 478898)
 
         return jsonify(results)
 
@@ -451,6 +456,7 @@ def edit_parameter():
             refund = data.get('refund')
             min_top = data.get('min_top')
             max_top = data.get('max_top')
+            password = data.get('password')
             if create_price:
                 SqlData().update_account_field('create_price', create_price, name)
             if refund:
@@ -459,6 +465,8 @@ def edit_parameter():
                 SqlData().update_account_field('min_top', min_top, name)
             if max_top:
                 SqlData().update_account_field('max_top', max_top, name)
+            if password:
+                SqlData().update_account_field('password', password, name)
             return jsonify(results)
         except Exception as e:
             logging.error(e)
@@ -542,7 +550,7 @@ def test():
 def logout():
     session.pop('admin_id')
     session.pop('admin_name')
-    return render_template('user/login.html')
+    return render_template('admin/admin_login.html')
 
 
 @admin_blueprint.route('/login', methods=['GET', 'POST'])

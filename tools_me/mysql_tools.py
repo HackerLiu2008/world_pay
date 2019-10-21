@@ -4,10 +4,12 @@ import logging
 
 class SqlData(object):
     def __init__(self):
-        host = "127.0.0.1"
+        host = "114.116.236.27"
+        # host = "127.0.0.1"
         port = 3306
         user = "root"
-        password = "admin"
+        password = "gute123"
+        # password = "admin"
         database = "world_pay"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
@@ -41,7 +43,7 @@ class SqlData(object):
 
     # 查询用户首页数据信息
     def search_user_index(self, user_id):
-        sql = "SELECT create_price, refund, min_top, max_top, balance FROM account WHERE id = {}".format(user_id)
+        sql = "SELECT create_price, refund, min_top, max_top, balance, sum_balance FROM account WHERE id = {}".format(user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         user_info = dict()
@@ -50,6 +52,7 @@ class SqlData(object):
         user_info['min_top'] = rows[0][2]
         user_info['max_top'] = rows[0][3]
         user_info['balance'] = rows[0][4]
+        user_info['sum_balance'] = rows[0][5]
         return user_info
 
     # 用户基本信息资料
@@ -120,7 +123,7 @@ class SqlData(object):
             return info_list
 
     def search_activation(self):
-        sql = "SELECT activation from card_info WHERE card_no is null AND card_name = '' null AND account_id is null LIMIT 1"
+        sql = "SELECT activation from card_info WHERE card_no is null AND card_name = '' AND account_id is null LIMIT 1"
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows:
@@ -176,12 +179,16 @@ class SqlData(object):
         else:
             for i in rows:
                 info_dict = dict()
-                info_dict['card_no'] = i[2]
+                info_dict['card_no'] = "\t" + i[2]
                 info_dict['act_time'] = str(i[4])
                 info_dict['card_name'] = i[5]
                 info_dict['label'] = i[6]
-                info_dict['expire'] = i[7]
-                info_dict['cvv'] = i[8]
+                expire = i[7]
+                if expire:
+                    info_dict['expire'] = expire[4:6] + "/" + expire[2:4]
+                else:
+                    info_dict['expire'] = ""
+                info_dict['cvv'] = "\t" + i[8]
                 info_list.append(info_dict)
             return info_list
 
@@ -195,17 +202,22 @@ class SqlData(object):
         else:
             for i in rows:
                 info_dict = dict()
-                info_dict['card_no'] = i[2]
+                info_dict['card_no'] = "\t" + i[2]
                 info_dict['act_time'] = str(i[4])
                 info_dict['card_name'] = i[5]
                 info_dict['label'] = i[6]
+                expire = i[7]
+                if expire:
+                    info_dict['expire'] = expire[4:6] + "/" + expire[2:4]
+                else:
+                    info_dict['expire'] = ""
                 info_dict['expire'] = i[7]
-                info_dict['cvv'] = i[8]
+                info_dict['cvv'] = "\t" + i[8]
                 info_list.append(info_dict)
             return info_list
 
     def insert_account_trans(self, date, trans_type, do_type, num, card_no, do_money, hand_money, before_balance, balance, account_id):
-        sql = "INSERT INTO account_trans(do_date, trans_type, do_type, num, card_no, do_money, hand_money, before_balance," \
+        sql = "INSERT INTO account_trans(do_date, trans_type, do_type, num, :wq, do_money, hand_money, before_balance," \
               " balance, account_id) VALUES('{}','{}','{}',{},'{}',{},{},{},{},{})".format(date, trans_type, do_type,
                                                 num, card_no, do_money, hand_money, before_balance, balance, account_id)
         try:
@@ -229,7 +241,7 @@ class SqlData(object):
             info_dict['trans_type'] = i[2]
             info_dict['do_type'] = i[3]
             info_dict['num'] = i[4]
-            info_dict['card_no'] = i[5]
+            info_dict['card_no'] = "\t" + i[5]
             info_dict['do_money'] = i[6]
             info_dict['hand_money'] = i[7]
             info_dict['before_balance'] = i[8]
@@ -238,7 +250,7 @@ class SqlData(object):
         return info_list
 
     def search_trans_sum(self, account_id):
-        sql = "SELECT SUM(do_money), SUM(hand_money) FROM account_trans WHERE account_id={}".format(account_id)
+        sql = "SELECT SUM(do_money), SUM(hand_money) FROM account_trans WHERE trans_type='支出' AND account_id={}".format(account_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows[0][0]:
@@ -386,6 +398,8 @@ class SqlData(object):
             for i in rows:
                 account_dict = dict()
                 account_dict['u_id'] = i[0]
+                account_dict['account'] = i[1]
+                account_dict['password'] = i[2]
                 account_dict['name'] = i[4]
                 account_dict['create_price'] = i[5]
                 account_dict['refund'] = i[6]
@@ -648,7 +662,10 @@ class SqlData(object):
         for i in rows:
             info_dict = dict()
             info_dict['activation'] = i[1]
-            info_dict['card_no'] = i[2]
+            if i[2]:
+                info_dict['card_no'] = "\t" + i[2]
+            else:
+                info_dict['card_no'] = ""
             info_dict['pay_passwd'] = i[3]
             if i[4]:
                 info_dict['act_time'] = str(i[4])
@@ -680,7 +697,7 @@ class SqlData(object):
             info_dict['trans_type'] = i[2]
             info_dict['do_type'] = i[3]
             info_dict['num'] = i[4]
-            info_dict['card_no'] = i[5]
+            info_dict['card_no'] = "\t" + i[5]
             info_dict['do_money'] = i[6]
             info_dict['hand_money'] = i[7]
             info_dict['before_balance'] = i[8]

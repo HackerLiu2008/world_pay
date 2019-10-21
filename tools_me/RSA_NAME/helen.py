@@ -82,7 +82,7 @@ class QuanQiuFu(object):
             'app_id': 'tjvdm5wlX2oKN8rB8idvA2Fi',
             'terminal_no': '36248614',
             'timestamp': self.ts,
-            'pay_passwd': self.pay_passwd(pass_word).decode(),
+            'pay_passwd': self.pay_passwd(pass_word),
             'receive_card_no': activation,
             'busi_water_no': itme_id,
         }
@@ -199,8 +199,7 @@ class QuanQiuFu(object):
 
 if __name__ == '__main__':
     qqf = QuanQiuFu()
-    print(time.time())
-    resp = qqf.auth_trade_query('5295871078736177')
+    n = 1
+    resp = qqf.query_card_info('5295871073257542')
     print(resp)
-    print(time.time())
 

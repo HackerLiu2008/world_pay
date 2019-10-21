@@ -13,7 +13,7 @@ SMT_TASK = ""
 
 class DIR_PATH:
     LOG_PATH = "G:/world_pay/static/log/card.log"
-    # LOG_PATH = "/static/log/card.log"
+    # LOG_PATH = "static/log/card.log"
 
     PRI_PEM = "G:\\world_pay\\tools_me\\RSA_NAME\\privkey_henry.pem"
     # PRI_PEM = "tools_me/RSA_NAME/privkey_henry.pem"

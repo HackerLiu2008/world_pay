@@ -1,5 +1,7 @@
 import json
 import logging
+import time
+
 import schedule
 import datetime
 from tools_me.mysql_tools import SqlData
@@ -67,14 +69,17 @@ def sum_middle_money():
             thues_day = thues_day + " 23:59:59"
             SqlData().insert_middle_money(i, wed_day, thues_day, card_num, card_price, sum_money, now_time, '待确认', detail)
             # print(wed_day, thues_day, card_num, sum_money, now_time, card_price)
+        return
     except Exception as e:
         print(str(e))
         logging.error('计算中介费,插入中介费失败!' + str(e))
+        return
 
 
 def customer_money_log():
     try:
         task_one = SqlData().search_account_info("")
+        print('```````````')
         if len(task_one) == 0:
             return
         for u in task_one:
@@ -85,13 +90,16 @@ def customer_money_log():
             customer = u.get('name')
             n_time = xianzai_time()
             SqlData().insert_account_log(n_time, customer, balance, out_money, sum_balance)
+        return
     except Exception as e:
         logging.error("记录客户当前余额信息失败!"+str(e))
+        return
 
 
 if __name__ == '__main__':
     schedule.every().wednesday.at('00:00:01').do(sum_middle_money)
-    schedule.every().day.at('23:59:52').do(customer_money_log)
+    schedule.every().day.at('10:28').do(customer_money_log)
     while True:
         schedule.run_pending()
-
+        time.sleep(30)
+        print("```")

@@ -4,9 +4,30 @@ import operator
 from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code
 from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE
 from tools_me.RSA_NAME.helen import QuanQiuFu
+from tools_me.remain import get_card_remain
 from . import user_blueprint
 from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
+
+
+@user_blueprint.route('/card_remain/', methods=['GET'])
+def card_remain():
+    results = dict()
+    try:
+        results['code'] = RET.OK
+        results['msg'] = MSG.OK
+        data = request.args.get('data')
+        data = json.loads(data)
+        print(data)
+        info = get_card_remain(data)
+        results['data'] = info
+        results['count'] = len(info)
+        return results
+    except Exception as e:
+        logging.error(str(e))
+        results['code'] = RET.SERVERERROR
+        results['msg'] = MSG.SERVERERROR
+        return jsonify(results)
 
 
 @user_blueprint.route('/refund/', methods=['POST'])
@@ -16,6 +37,8 @@ def refund_balance():
         data = json.loads(request.form.get('data'))
         card_no = json.loads(request.form.get('card_no'))
         pay_passwd = SqlData().search_card_field('pay_passwd', card_no)
+        if "-" in str(data):
+            return jsonify({'code': RET.SERVERERROR, 'msg': '请输入正确金额!'})
         refund_money = str(float(data) * 100)
         resp = QuanQiuFu().trans_account_cinsume(card_no, pay_passwd, refund_money)
         resp_code = resp.get('resp_code')
@@ -50,6 +73,7 @@ def refund_balance():
             results['msg'] = resp_msg
         return jsonify(results)
     except Exception as e:
+        print(e)
         logging.error(str(e))
         results = {"code": RET.SERVERERROR, "msg": MSG.SERVERERROR}
         return jsonify(results)
@@ -355,6 +379,8 @@ def account_html():
     min_top = dict_info.get('min_top')
     max_top = dict_info.get('max_top')
     balance = dict_info.get('balance')
+    sum_balance = dict_info.get('sum_balance')
+    out_money = SqlData().search_trans_sum(user_id)
     context = dict()
     context['user_name'] = user_name
     context['balance'] = balance
@@ -362,6 +388,8 @@ def account_html():
     context['create_card'] = create_card
     context['min_top'] = min_top
     context['max_top'] = max_top
+    context['sum_balance'] = sum_balance
+    context['out_money'] = out_money
     return render_template('user/index.html', **context)
 
 
@@ -464,13 +492,6 @@ def card_info():
             results['msg'] = MSG.NODATA
             return results
         data = sorted(data, key=operator.itemgetter('act_time'))
-        page_list = list()
-        data = list(reversed(data))
-        for i in range(0, len(data), int(limit)):
-            page_list.append(data[i:i + int(limit)])
-        results['data'] = page_list[int(page) - 1]
-        results['count'] = len(data)
-        return jsonify(results)
     else:
         name_sql = ''
         if card_name:
@@ -491,13 +512,15 @@ def card_info():
             results['code'] = RET.SERVERERROR
             results['msg'] = MSG.NODATA
             return results
-        page_list = list()
-        data = list(reversed(data))
-        for i in range(0, len(data), int(limit)):
-            page_list.append(data[i:i + int(limit)])
-        results['data'] = page_list[int(page) - 1]
-        results['count'] = len(data)
-        return jsonify(results)
+    page_list = list()
+    info = list(reversed(data))
+    for i in range(0, len(info), int(limit)):
+        page_list.append(info[i:i + int(limit)])
+    data = page_list[int(page) - 1]
+    data = get_card_remain(data)
+    results['data'] = data
+    results['count'] = len(info)
+    return jsonify(results)
 
 
 @user_blueprint.route('/edit_user', methods=['GET'])
