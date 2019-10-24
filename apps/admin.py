@@ -166,7 +166,7 @@ def card_info():
     results = dict()
     results['code'] = RET.OK
     results['msg'] = MSG.OK
-    data = SqlData().search_card_info(user_id)
+    data = SqlData().search_card_info(user_id, '', '', '', '')
     if len(data) == 0:
         results['code'] = RET.SERVERERROR
         results['msg'] = MSG.NODATA

@@ -217,7 +217,7 @@ def create_some():
             # print(resp)
             resp_code = resp.get('resp_code')
             # print(resp_code)
-            if resp_code != '0000' or resp_code != '0079':
+            if resp_code != '0000' and resp_code != '0079':
                 resp_msg = resp.get('resp_msg')
                 s = '激活卡失败,状态码: ' + resp_code + ',信息: ' + resp_msg + ',激活码为:' + activation
                 logging.error(s)
@@ -314,7 +314,7 @@ def create_card():
         # print(resp)
         resp_code = resp.get('resp_code')
         # print(resp_code)
-        if resp_code != '0000' or resp_code != '0079':
+        if resp_code != '0000' and resp_code != '0079':
             resp_msg = resp.get('resp_msg')
             s = '卡激活失败! 状态码: ' + resp_code + ',信息: ' + resp_msg + '激活码为: ' + activation
             logging.error(s)

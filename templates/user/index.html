@@ -713,11 +713,12 @@
                         success : function(data) {
                             // 成功提示框
                             if (data.code == 0){
-
+                                layer.closeAll();
                                 parent.layer.msg(data.msg, {
                                 icon : 6,
                             });
                             }else if(data.code == 502){
+                                layer.closeAll();
                                 parent.layer.msg(data.msg, {
                                 icon : 5
                             });

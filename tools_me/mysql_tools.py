@@ -1,8 +1,6 @@
 import pymysql
 import logging
 
-from tools_me.parameter import TRANS_TYPE, DO_TYPE
-
 
 class SqlData(object):
     def __init__(self):
