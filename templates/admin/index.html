@@ -691,7 +691,8 @@
             , cellMinWidth: '80'
             , url: '/admin/top_history' //数据接口
             , title: '客户充值记录'
-            , limit:20
+            , limit:500
+            , limits:[500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
             , toolbar: "true" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
@@ -713,7 +714,8 @@
             , cellMinWidth: '80'
             , url: '/admin/middle_info' //数据接口
             , title: '中介信息'
-            , limit:20
+            , limit:500
+            , limits:[500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
             , toolbar: "true" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
@@ -1005,7 +1007,7 @@
                     title: '修改客户为 [ ' + data.name + ' ] 的相关信息',
                     type: 2,
                     anim: 3,
-                    area: ['20%', '35%'],//宽高
+                    area: ['380px', '480px'],//宽高
                     shadeClose: true, //点击遮罩关闭
                     content: '/admin/edit_parameter',
                     success: function(layero, index) {

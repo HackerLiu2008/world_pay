@@ -1,4 +1,6 @@
 import hashlib
+import logging
+
 import rsa
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
@@ -9,14 +11,14 @@ from tools_me.parameter import DIR_PATH
 
 class QuanQiuFu(object):
     def __init__(self):
-        self.url = "https://www.globalcash.hk/openapi/service"
+        self.url = "https://www.globalcash.cn/openapi/service"
         self.ts = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     def api_requests(self, data):
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
-        res = requests.post(self.url, data=data, headers=headers, timeout=5)
+        res = requests.post(self.url, data=data, headers=headers, timeout=20)
         return res
 
     def rsa_sign(self, data):
@@ -88,8 +90,13 @@ class QuanQiuFu(object):
         }
         sign = self.kv_list(data)
         data['sign'] = sign.decode()
-        res = self.api_requests(data)
-        return res.json()
+        try:
+            res = self.api_requests(data)
+            return res.json()
+        except Exception as e:
+            logging.error("开卡接口异常:" + str(e) + "data: " + str(data))
+            info_dict = {'resp_code': '9999', "resp_msg": '服务器繁忙!'}
+            return info_dict
 
     def query_card_info(self, card_num):
         # 全球付卡信息查询
@@ -104,8 +111,12 @@ class QuanQiuFu(object):
         }
         sign = self.kv_list(data)
         data['sign'] = sign.decode()
-        res = self.api_requests(data)
-        return res.json()
+        try:
+            res = self.api_requests(data)
+            return res.json()
+        except Exception as e:
+            logging.error("卡信息查询接口异常:" + str(e) + "data: " + str(data))
+            return {'resp_code': '9999', 'resp_code': '服务器繁忙!'}
 
     def query_tran_detail(self, card_num):
         # 收支明细查询
@@ -121,8 +132,13 @@ class QuanQiuFu(object):
         }
         sign = self.kv_list(data)
         data['sign'] = sign.decode()
-        res = self.api_requests(data)
-        return res.json()
+        try:
+            res = self.api_requests(data)
+            return res.json()
+        except Exception as e:
+            logging.error("卡收支明细接口异常:" + str(e) + "data: " + str(data))
+            info_dict = {'resp_code': '9999', "resp_msg": '服务器繁忙!'}
+            return info_dict
 
     def auth_trade_query(self, card_num):
         # 交易记录查询
@@ -139,8 +155,13 @@ class QuanQiuFu(object):
         }
         sign = self.kv_list(data)
         data['sign'] = sign.decode()
-        res = self.api_requests(data)
-        return res.json()
+        try:
+            res = self.api_requests(data)
+            return res.json()
+        except Exception as e:
+            logging.error("卡交易记录接口异常:" + str(e) + "data: " + str(data))
+            info_dict = {'resp_code': '9999', "resp_msg": '服务器繁忙!'}
+            return info_dict
 
     def trans_account_recharge(self, card_num, money):
         # 代充值
@@ -161,8 +182,13 @@ class QuanQiuFu(object):
         }
         sign = self.kv_list(data)
         data['sign'] = sign.decode()
-        res = self.api_requests(data)
-        return res.json()
+        try:
+            res = self.api_requests(data)
+            return res.json()
+        except Exception as e:
+            logging.error("卡充值接口异常:" + str(e) + "data: " + str(data))
+            info_dict = {'resp_code': '9999', "resp_msg": '服务器繁忙!'}
+            return info_dict
 
     def trans_account_cinsume(self, card_num, pass_word, money):
         # 卡余额消费
@@ -185,8 +211,58 @@ class QuanQiuFu(object):
         }
         sign = self.kv_list(data)
         data['sign'] = sign.decode()
-        res = self.api_requests(data)
-        return res.json()
+        try:
+            res = self.api_requests(data)
+            return res.json()
+        except Exception as e:
+            logging.error("卡余额领会接口异常:" + str(e) + "data: " + str(data))
+            info_dict = {'resp_code': '9999', "resp_msg": '服务器繁忙!'}
+            return info_dict
+
+    def card_loss(self, card_num, pass_word, loss_type):
+        mer_order = self.get_order_code()
+        pay_passwd = self.pay_passwd(pass_word)
+        data = {
+            'api_name': 'epaylinks_umps_user_card_loss',
+            'ver': '1.0',
+            'format': 'json',
+            'app_id': 'tjvdm5wlX2oKN8rB8idvA2Fi',
+            'terminal_no': '36248614',
+            'timestamp': self.ts,
+            'card_no': card_num,
+            'pay_passwd': pay_passwd,
+            'busi_water_no': mer_order,
+            'oper_type': loss_type
+        }
+        sign = self.kv_list(data)
+        data['sign'] = sign.decode()
+        try:
+            res = self.api_requests(data)
+            return res.json()
+        except Exception as e:
+            logging.error("卡挂失接口异常:" + str(e) + "data: " + str(data))
+            info_dict = {'resp_code': '9999', "resp_msg": '服务器繁忙!'}
+            return info_dict
+
+    def card_status_query(self, card_no):
+        data = {
+            'api_name': 'epaylinks_umps_user_status_query',
+            'ver': '1.0',
+            'format': 'json',
+            'app_id': 'tjvdm5wlX2oKN8rB8idvA2Fi',
+            'terminal_no': '36248614',
+            'timestamp': self.ts,
+            'card_no': card_no,
+        }
+        sign = self.kv_list(data)
+        data['sign'] = sign.decode()
+        try:
+            res = self.api_requests(data)
+            return res.json()
+        except Exception as e:
+            logging.error("卡挂失接口异常:" + str(e) + "data: " + str(data))
+            info_dict = {'resp_code': '9999', "resp_msg": '服务器繁忙!'}
+            return info_dict
 
     def get_order_code(self):
         # 最后一位补上用户id
@@ -200,6 +276,9 @@ class QuanQiuFu(object):
 if __name__ == '__main__':
     qqf = QuanQiuFu()
     n = 1
-    resp = qqf.query_card_info('5295871073257542')
-    print(resp)
+    pay_passwd = "04A5E788"
+    while True:
+        resp = qqf.query_card_info("5295871073294982")
+        print(n, resp)
+        print(time.time())
 

@@ -190,10 +190,10 @@
         </div>
         <table class="layui-table" id="card_info" lay-filter="card_info"></table>
         <script type="text/html" id="barDemo">
-{#            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>#}
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">编辑</a>
             <a class="layui-btn layui-btn-xs" lay-event="edit">充值</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="refund">退款</a>
-{#            <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="lock">冻结</a>#}
+            <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="lock" id="do_lock">冻结</a>
 {#            <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="del">删卡</a>#}
         </script>
     </div>
@@ -278,7 +278,7 @@
 				data : data_info,
 				dataType : 'json',
                 beforeSend:function () {
-                layer.load(2, {shade: false})
+                layer.load()
                 },
 				success : function(data) {
 					// 成功提示框
@@ -406,11 +406,20 @@
                 , {field: 'cvv', title: '安全码', align: 'center', sort: true}
                 , {field: 'label', title: '标签', align: 'center', sort: true}
                 , {field: 'act_time', title: '建卡时间', align: 'center', sort: true}
+                , {field: 'card_status', title: '卡状态', align: 'center', sort: true}
                 , {field: 'remain', title: '余额', align: 'center', sort: true, style: "color: red"}
                 , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo'}
             ]]
             , id: 'card_info'
             , page: true
+            , done: function (res, curr, count) {
+                    for (var i = 0; i < res.data.length; i++) {
+                        if (res.data[i].card_status == '冻结') {
+                            $('table tbody tr').eq(i).css('color', '#B23AEE');
+                            $('table tbody tr td a[id=do_lock]').eq(i).html('解冻').css('background-color', 'black')
+                        }
+                    }
+                }
         });
 
         var remain = $('#search_re');
@@ -690,24 +699,26 @@
                     layer.close(index);
 
                 });
-            } else if (layEvent === 'del') {
-                layer.confirm('确定删除卡号为:'+data.card_num+'的卡吗?如果卡内还有余额将以手续费为:{{ refund }}%,回收到账户余额.', {title:'删卡信息提示!!!'}, function (index) {
-                    obj.del(); //删除对应行（tr）的DOM结构
+            } else if (layEvent === 'lock') {
+                layer.confirm('确定 (冻结/解冻) 卡号为:'+data.card_no+'的卡吗?', {title:'(冻结/解冻),卡信息提示!!!'}, function (index) {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        type : 'GET',
-                        url : '/account/del_account' + '?account=' + data.account,
+                        type : 'POST',
+                        url : '/user/card_lock/' + '?card_no=' + data.card_no,
                         dataType : 'json',
+                        beforeSend:function () {
+                        layer.load(2, {shade: false})
+                        },
                         success : function(data) {
                             // 成功提示框
                             if (data.code == 0){
 
-                                parent.layer.msg('删除成功!', {
+                                parent.layer.msg(data.msg, {
                                 icon : 6,
                             });
                             }else if(data.code == 502){
-                                parent.layer.msg('删除失败!', {
+                                parent.layer.msg(data.msg, {
                                 icon : 5
                             });
                             }
@@ -720,17 +731,31 @@
                             });
                         }
                             });
-                    location.reload();
                     return false
                 });
-            }else if (layEvent === 'lock'){
-                layer.msg('冻结卡操作!')
-            } else if (layEvent === 'edit') {
+            }else if (layEvent === 'detail'){
                 layui.layer.open({
-                    title: '修改卡号为 [ ' + data.card_no + ' ] 的相关信息',
+                    title: '编辑卡号为 [ ' + data.card_no + ' ] 的相关信息',
                     type: 2,
                     anim: 3,
-                    area: ['15%', '25%'],//宽高
+                    area: ['400px', '340px'],//宽高
+                    shadeClose: true, //点击遮罩关闭
+                    content: '/user/change_card_name',
+                    success: function(layero, index) {
+                        var body = layer.getChildFrame('body', index);
+                        body.contents().find("#card_num").html(data.card_no);
+                        body.contents().find("#card_name").val(data.card_name);
+                        body.contents().find("#card_label").val(data.label);
+                        body.contents().find("#card_no").val(data.card_no);
+                    }
+                });
+                return false
+            } else if (layEvent === 'edit') {
+                layui.layer.open({
+                    title: '充值卡号为 [ ' + data.card_no + ' ]',
+                    type: 2,
+                    anim: 3,
+                    area: ['400px', '280px'],//宽高
                     shadeClose: true, //点击遮罩关闭
                     content: '/user/change_detail',
                     success: function(layero, index) {

@@ -10,24 +10,38 @@ from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
 
 
-@user_blueprint.route('/card_remain/', methods=['GET'])
-def card_remain():
-    results = dict()
+@user_blueprint.route('/card_lock/', methods=['POST'])
+@login_required
+def card_lock():
     try:
-        results['code'] = RET.OK
-        results['msg'] = MSG.OK
-        data = request.args.get('data')
-        data = json.loads(data)
-        print(data)
-        info = get_card_remain(data)
-        results['data'] = info
-        results['count'] = len(info)
-        return results
+        card_no = request.args.get('card_no')
+        resp = QuanQiuFu().card_status_query(card_no)
+        resp_code = resp.get('resp_code')
+        if resp_code != "0000":
+            return jsonify({'code': RET.SERVERERROR, 'msg': '服务器繁忙请稍后在试!'})
+        resp_detail = resp.get('response_detail')
+        card_status = resp_detail.get('card_status')
+        pay_passwd = SqlData().search_card_field('pay_passwd', card_no)
+        if card_status == "00":
+            # 挂失
+            do_type = DO_TYPE.CARD_LOCK
+            card_status_field = '11'
+        elif card_status == '11':
+            # 解挂
+            do_type = DO_TYPE.CARD_OPEN
+            card_status_field = '0'
+        else:
+            return jsonify({'code': RET.SERVERERROR, 'msg': '服务器繁忙请稍后在试!'})
+        resp = QuanQiuFu().card_loss(card_no, pay_passwd, do_type)
+        resp_code = resp.get('resp_code')
+        if resp_code == '0000':
+            SqlData().update_card_info_card_no('card_status', card_status_field, card_no)
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        else:
+            return jsonify({'code': RET.SERVERERROR, 'msg': '服务器繁忙请稍后在试!'})
     except Exception as e:
         logging.error(str(e))
-        results['code'] = RET.SERVERERROR
-        results['msg'] = MSG.SERVERERROR
-        return jsonify(results)
+        return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
 
 
 @user_blueprint.route('/refund/', methods=['POST'])
@@ -39,7 +53,7 @@ def refund_balance():
         pay_passwd = SqlData().search_card_field('pay_passwd', card_no)
         if "-" in str(data):
             return jsonify({'code': RET.SERVERERROR, 'msg': '请输入正确金额!'})
-        refund_money = str(float(data) * 100)
+        refund_money = str(round(float(data) * 100))
         resp = QuanQiuFu().trans_account_cinsume(card_no, pay_passwd, refund_money)
         resp_code = resp.get('resp_code')
         resp_msg = resp.get('resp_msg')
@@ -47,7 +61,7 @@ def refund_balance():
         if resp_code == "0000":
             user_id = g.user_id
             refund = SqlData().search_user_field('refund', user_id)
-            hand_money = refund * float(data)
+            hand_money = round(refund * float(data), 2)
             do_money = round(float(data) - hand_money, 2)
             before_balance = SqlData().search_user_field('balance', user_id)
             balance = round(before_balance + do_money, 2)
@@ -94,7 +108,7 @@ def account_trans():
         max_time = time_range.split(' - ')[1] + ' 23:59:59'
         time_sql = "AND date BETWEEN " + "'" + min_time + "'" + " and " + "'" + max_time + "'"
     if card_num:
-        card_sql = "AND card_no = '" + card_num + "'"
+        card_sql = "AND card_no LIKE '%" + card_num + "%'"
 
     user_id = g.user_id
     task_info = SqlData().search_account_trans(user_id, card_sql, time_sql)
@@ -159,8 +173,8 @@ def create_some():
     balance = user_data.get('balance')
 
     card_num = int(card_num)
-    if card_num > 10:
-        results = {"code": RET.SERVERERROR, "msg": "批量开卡数量不得超过10张!"}
+    if card_num > 20:
+        results = {"code": RET.SERVERERROR, "msg": "批量开卡数量不得超过20张!"}
         return jsonify(results)
 
     if name_status == "write":
@@ -197,19 +211,23 @@ def create_some():
             activation = SqlData().search_activation()
             if not activation:
                 return jsonify({"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"})
-            SqlData().update_card_info_field('card_name', 'USING', activation)
             pay_passwd = "04A5E788"
             resp = QuanQiuFu().create_card(activation, pay_passwd)
             # print(resp)
             resp_code = resp.get('resp_code')
             # print(resp_code)
-            if resp_code != '0000':
+            if resp_code != '0000' or resp_code != '0079':
                 resp_msg = resp.get('resp_msg')
                 s = '激活卡失败,状态码: ' + resp_code + ',信息: ' + resp_msg + ',激活码为:' + activation
                 logging.error(s)
-                return jsonify({"code": RET.SERVERERROR, "msg": "API异常请联系服务商处理!"})
-
-            card_no = resp.get('response_detail').get('card_no')
+                return jsonify({"code": RET.SERVERERROR, "msg": resp_msg})
+            SqlData().update_card_info_field('account_id', user_id, activation)
+            try:
+                card_no = resp.get('response_detail').get('card_no')
+            except Exception as e:
+                logging.error('获取卡号失败!以下是返回的resp: ' + resp)
+                resp = QuanQiuFu().create_card(activation, pay_passwd)
+                card_no = resp.get('response_detail').get('card_no')
             before_balance = SqlData().search_user_field('balance', user_id)
             balance = before_balance - create_price
             n_time = xianzai_time()
@@ -219,7 +237,7 @@ def create_some():
 
             resp_card_info = QuanQiuFu().query_card_info(card_no)
             # print(resp_card_info)
-            if resp_card_info.get('resp_code') != '0000':
+            if resp_card_info.get('resp_code') != '0000' or resp_code != '0079':
                 expire_date = ''
                 card_verify_code = ''
             else:
@@ -290,19 +308,25 @@ def create_card():
         activation = SqlData().search_activation()
         if not activation:
             return jsonify({"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"})
-        SqlData().update_card_info_field('card_name', 'USING', activation)
         pay_passwd = "04A5E788"
         resp = QuanQiuFu().create_card(activation, pay_passwd)
         # print(resp)
         resp_code = resp.get('resp_code')
         # print(resp_code)
-        if resp_code != '0000':
+        if resp_code != '0000' or resp_code != '0079':
             resp_msg = resp.get('resp_msg')
             s = '卡激活失败! 状态码: ' + resp_code + ',信息: ' + resp_msg + '激活码为: ' + activation
             logging.error(s)
-            return jsonify({"code": RET.SERVERERROR, "msg": "API异常请联系服务商处理!"})
+            return jsonify({"code": RET.SERVERERROR, "msg": resp_msg})
 
-        card_no = resp.get('response_detail').get('card_no')
+        SqlData().update_card_info_field('account_id', user_id, activation)
+        try:
+            card_no = resp.get('response_detail').get('card_no')
+        except Exception as e:
+            logging.error('获取卡号失败!以下是返回的resp: ' + resp)
+            resp = QuanQiuFu().create_card(activation, pay_passwd)
+            card_no = resp.get('response_detail').get('card_no')
+
         before_balance = SqlData().search_user_field('balance', user_id)
         balance = before_balance - create_price
         n_time = xianzai_time()
@@ -471,6 +495,28 @@ def change_detail():
     return render_template('user/edit_account.html')
 
 
+@user_blueprint.route('/change_card_name', methods=['GET', 'POST'])
+@login_required
+def change_card_name():
+    if request.method == 'GET':
+        return render_template('user/card_name.html')
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.form.get('data'))
+            card_no = data.get('card_no')
+            card_name = data.get('card_name')
+            card_label = data.get('card_label')
+            card_no = card_no.strip()
+            if card_name:
+                SqlData().update_card_info_card_no('card_name', card_name, card_no)
+            if card_label:
+                SqlData().update_card_info_card_no('label', card_label, card_no)
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
 @user_blueprint.route('/card_info', methods=['GET'])
 @login_required
 def card_info():
@@ -486,7 +532,7 @@ def card_info():
     user_id = g.user_id
 
     if not card_name and not card_num and not label and not range_time:
-        data = SqlData().search_card_info(user_id)
+        data = SqlData().search_card_info(user_id, '', '', '', '')
         if len(data) == 0:
             results['code'] = RET.SERVERERROR
             results['msg'] = MSG.NODATA
@@ -495,19 +541,19 @@ def card_info():
     else:
         name_sql = ''
         if card_name:
-            name_sql = "AND card_name = '" + card_name + "'"
+            name_sql = "AND card_name LIKE '%" + card_name + "%'"
         card_sql = ''
         if card_num:
-            card_sql = "AND card_no = '" + card_num + "'"
+            card_sql = "AND card_no LIKE '%" + card_num + "%'"
         label_sql = ''
         if label:
-            label_sql = "AND label = '" + label + "'"
+            label_sql = "AND label LIKE '%" + label + "%'"
         time_sql = ''
         if range_time:
             min_time = range_time.split(' - ')[0]
             max_time = range_time.split(' - ')[1] + ' 23:59:59'
             time_sql = "AND act_time BETWEEN " + "'" + min_time + "'" + " and " + "'" + max_time + "'"
-        data = SqlData().search_card_select(user_id, name_sql, card_sql, label_sql, time_sql)
+        data = SqlData().search_card_info(user_id, name_sql, card_sql, label_sql, time_sql)
         if len(data) == 0:
             results['code'] = RET.SERVERERROR
             results['msg'] = MSG.NODATA

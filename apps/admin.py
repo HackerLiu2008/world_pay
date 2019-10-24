@@ -97,7 +97,7 @@ def card_info_all():
             account_id = SqlData().search_user_field_name('id', value)
             sql = "WHERE account_id=" + str(account_id)
         elif field:
-            sql = "WHERE " + field + "='" + value + "'"
+            sql = "WHERE " + field + " LIKE '%" + value + "%'"
         else:
             sql = ""
 
@@ -457,6 +457,7 @@ def edit_parameter():
             min_top = data.get('min_top')
             max_top = data.get('max_top')
             password = data.get('password')
+            user_name = data.get('user_name')
             if create_price:
                 SqlData().update_account_field('create_price', create_price, name)
             if refund:
@@ -467,6 +468,8 @@ def edit_parameter():
                 SqlData().update_account_field('max_top', max_top, name)
             if password:
                 SqlData().update_account_field('password', password, name)
+            if user_name:
+                SqlData().update_account_field('name', user_name, name)
             return jsonify(results)
         except Exception as e:
             logging.error(e)
@@ -483,7 +486,7 @@ def account_info():
     customer = request.args.get('customer')
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
     if customer:
-        sql = "WHERE name = '" + customer + "'"
+        sql = "WHERE name LIKE '%" + customer + "%'"
     else:
         sql = ''
     task_one = SqlData().search_account_info(sql)

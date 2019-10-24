@@ -78,3 +78,5 @@ class DO_TYPE:
     CREATE_CARD = "开卡"
     TOP_UP = "充值"
     REFUND = "退款"
+    CARD_LOCK = '11'
+    CARD_OPEN = '12'

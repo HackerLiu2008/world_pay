@@ -24,56 +24,30 @@
         <div class="layui-form-item" style="display: none">
             <label class="layui-form-label">隐藏域</label>
             <div class="layui-input-block">
-                <input type ="text" name="name_str" id="name_str" value="0">
+                <input type ="text" name="card_no"  id="card_no" value="0">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">卡号: </label>
+            <div class="layui-input-block">
+            <span id="card_num" style="font-weight: normal;line-height: 40px; font-size: 18px;color: firebrick;"></span>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">卡名:</label>
+            <div class="layui-input-block">
+                <input type="text" name="card_name" required lay-verify="required" placeholder="绑定卡的姓名" autocomplete="off"
+                       class="layui-input" id="card_name">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">开卡费: </label>
+            <label class="layui-form-label">标签:</label>
             <div class="layui-input-block">
-                <input type="number" name="create_price" placeholder="00.00" autocomplete="off"
-                       class="layui-input" id="create_price">
+                <input type="text" name="card_label" required lay-verify="required" placeholder="绑定卡的标签" autocomplete="off"
+                       class="layui-input" id="card_label">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">取现手续费: </label>
-            <div class="layui-input-block">
-                <input type="number" name="refund" placeholder="00.00" autocomplete="off"
-                       class="layui-input" id="refund">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">最低充值金额</label>
-            <div class="layui-input-block">
-                <input type="number" name="min_top" placeholder="$00.00" autocomplete="off"
-                       class="layui-input" id="min_top">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">最高充值金额</label>
-            <div class="layui-input-block">
-                <input type="number" name="max_top" placeholder="$00.00" autocomplete="off"
-                       class="layui-input" id="max_top">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">账号密码 </label>
-            <div class="layui-input-block">
-                <input type="text" name="password" placeholder="账号登录密码" autocomplete="off"
-                       class="layui-input" id="password">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">用户名 </label>
-            <div class="layui-input-block">
-                <input type="text" name="user_name" placeholder="用户名称" autocomplete="off"
-                       class="layui-input" id="user_name">
-            </div>
-        </div>
-
 
 
         <div class="layui-form-item">
@@ -84,19 +58,23 @@
     </form>
 </div>
 <script>
-    layui.use('form', function(){
-        var form = layui.form;
+    layui.use(['form', 'layer'], function(){
+        var form = layui.form,
+            layer = layui.layer ;
       //监听提交
         form.on('submit(formDemo)', function(data){
             {#layer.msg(JSON.stringify(data.field));#}
             var data_info = {data:JSON.stringify(data.field)};
             var $ = layui.jquery;
-
+            console.log(data_info);
             $.ajax({
 				type : 'POST',
-				url : '/admin/edit_parameter',
+				url : '/user/change_card_name',
 				data : data_info,
 				dataType : 'json',
+                beforeSend:function () {
+                layer.load(1, {shade: false})
+                },
 				success : function(data) {
 					// 成功提示框
                     if (data.code == 0){
@@ -104,9 +82,9 @@
 						icon : 6,
 					});
 					    parent.layer.closeAll('iframe'); //关闭弹框
-                        window.parent.location.reload()
                     }else if(data.code == 502){
-                        parent.layer.msg('出现网络故障', {
+                        layer.closeAll();
+                        parent.layer.msg(data.msg, {
 						icon : 5
 					});
                     }

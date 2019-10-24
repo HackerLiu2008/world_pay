@@ -1,6 +1,8 @@
 import pymysql
 import logging
 
+from tools_me.parameter import TRANS_TYPE, DO_TYPE
+
 
 class SqlData(object):
     def __init__(self):
@@ -148,6 +150,16 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
+    def update_card_info_card_no(self, field, value, card_no):
+        sql = "UPDATE card_info SET {}='{}' WHERE card_no='{}'".format(field, value, card_no)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新卡信息失败!")
+            self.connect.rollback()
+        self.close_connect()
+
     def search_card_field(self, field, crad_no):
         sql = "SELECT {} from card_info WHERE card_no='{}'".format(field, crad_no)
         self.cursor.execute(sql)
@@ -169,8 +181,9 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
-    def search_card_info(self, user_id):
-        sql = "SELECT * FROM card_info WHERE account_id={}".format(user_id)
+    def search_card_info(self, user_id, name_sql, card_sql, label, time_sql):
+        sql = "SELECT * FROM card_info WHERE account_id={} {} {} {} {}".format(user_id, name_sql, card_sql, label,
+                                                                               time_sql)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         info_list = list()
@@ -185,39 +198,21 @@ class SqlData(object):
                 info_dict['label'] = i[6]
                 expire = i[7]
                 if expire:
-                    info_dict['expire'] = expire[4:6] + "/" + expire[2:4]
+                    info_dict['expire'] = "\t" + expire[4:6] + "/" + expire[2:4]
                 else:
                     info_dict['expire'] = ""
                 info_dict['cvv'] = "\t" + i[8]
-                info_list.append(info_dict)
-            return info_list
+                card_status = i[10]
+                if card_status == '11':
+                    info_dict['card_status'] = '冻结'
+                else:
+                    info_dict['card_status'] = '正常'
 
-    def search_card_select(self, user_id, name_sql, card_sql, label, time_sql):
-        sql = "SELECT * FROM card_info WHERE account_id={} {} {} {} {}".format(user_id, name_sql, card_sql, label, time_sql)
-        self.cursor.execute(sql)
-        rows = self.cursor.fetchall()
-        info_list = list()
-        if not rows:
-            return info_list
-        else:
-            for i in rows:
-                info_dict = dict()
-                info_dict['card_no'] = "\t" + i[2]
-                info_dict['act_time'] = str(i[4])
-                info_dict['card_name'] = i[5]
-                info_dict['label'] = i[6]
-                expire = i[7]
-                if expire:
-                    info_dict['expire'] = expire[4:6] + "/" + expire[2:4]
-                else:
-                    info_dict['expire'] = ""
-                info_dict['expire'] = i[7]
-                info_dict['cvv'] = "\t" + i[8]
                 info_list.append(info_dict)
             return info_list
 
     def insert_account_trans(self, date, trans_type, do_type, num, card_no, do_money, hand_money, before_balance, balance, account_id):
-        sql = "INSERT INTO account_trans(do_date, trans_type, do_type, num, :wq, do_money, hand_money, before_balance," \
+        sql = "INSERT INTO account_trans(do_date, trans_type, do_type, num, card_no, do_money, hand_money, before_balance," \
               " balance, account_id) VALUES('{}','{}','{}',{},'{}',{},{},{},{},{})".format(date, trans_type, do_type,
                                                 num, card_no, do_money, hand_money, before_balance, balance, account_id)
         try:
@@ -411,7 +406,7 @@ class SqlData(object):
             return account_list
 
     def update_account_field(self, field, value, name):
-        sql = "UPDATE account SET {}={} WHERE name='{}'".format(field, value, name)
+        sql = "UPDATE account SET {}='{}' WHERE name='{}'".format(field, value, name)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -759,4 +754,5 @@ class SqlData(object):
 
 if __name__ == "__main__":
     s = SqlData()
-    s.search_name_info()
+
+
