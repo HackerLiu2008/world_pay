@@ -1,5 +1,4 @@
 import datetime
-from datetime import timedelta
 import json
 import os
 import random
@@ -105,18 +104,20 @@ def verify_login_time(before_time, now_time):
         return
 
 
-def choke_required(view_func):
+create = "F"
 
+
+def choke_required(view_func):
     @wraps(view_func)
     def wraaper(*args, **kwargs):
-        create = session.get('create')
+        global create
         if create == "T":
             results = {"code": RET.SERVERERROR, "msg": "服务器繁忙请稍后重试!"}
             return jsonify(results)
         else:
-            session['create'] = "T"
+            create = 'T'
             res = view_func(*args, **kwargs)
-            session.pop('create')
+            create = 'F'
             return res
 
     return wraaper
@@ -257,7 +258,7 @@ def make_name(n):
     last_len = len(last_name)
     name_list = list()
     for i in range(n):
-        name = female[random.randint(0, female_len-1)] + " " + last_name[random.randint(0, last_len-1)]
+        name = female[random.randint(0, female_len - 1)] + " " + last_name[random.randint(0, last_len - 1)]
         name_list.append(name)
     return name_list
 
@@ -266,13 +267,13 @@ def wed_to_tu():
     today = datetime.date.today() - datetime.timedelta(days=2)
     day_list = list()
     for n in range(2, 9):
-        day_str = today - datetime.timedelta(days=today.weekday()-n)
+        day_str = today - datetime.timedelta(days=today.weekday() - n)
         day_list.append(day_str)
     return day_list
 
 
 def check_float(string):
-    #支付时，输入的金额可能是小数，也可能是整数
+    # 支付时，输入的金额可能是小数，也可能是整数
     s = str(string)
     if s.count('.') == 1:  # 判断小数点个数
         sl = s.split('.')  # 按照小数点进行分割
@@ -290,4 +291,3 @@ def check_float(string):
         if s != 0:
             return True
     return False
-

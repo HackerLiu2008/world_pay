@@ -179,6 +179,7 @@ def create_some():
 
     if name_status == "write":
         name_list = content.split("|")
+        print(name_list)
         if len(name_list) < card_num:
             results = {"code": RET.SERVERERROR, "msg": "名字数量小于建卡数量!"}
             return jsonify(results)

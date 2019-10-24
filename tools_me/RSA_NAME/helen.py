@@ -277,8 +277,3 @@ if __name__ == '__main__':
     qqf = QuanQiuFu()
     n = 1
     pay_passwd = "04A5E788"
-    while True:
-        resp = qqf.query_card_info("5295871073294982")
-        print(n, resp)
-        print(time.time())
-
