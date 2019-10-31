@@ -39,7 +39,8 @@
         <dl class="layui-nav-child">
           <dd id="user_info"><a href="javascript:">基本资料</a></dd>
           <dd id="change_word"><a href="javascript:">安全设置</a></dd>
-          <dd id="change_info"><a href="javascript:">更改信息</a></dd>
+          <dd id="exchange"><a href="javascript:">汇率设置</a></dd>
+          <dd id="top_msg"><a href="javascript:">充值通知</a></dd>
         </dl>
       </li>
       <li class="layui-nav-item"><a href="/admin/logout">注销</a></li>
@@ -83,8 +84,7 @@
         <script type="text/html" id="barDemo">
             <a class="layui-btn layui-btn-xs" lay-event="top_up">充值</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">编辑</a>
-{#            <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="lock">冻结</a>#}
-{#            <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="del">删卡</a>#}
+            <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="del">删除</a>
         </script>
     </div>
 
@@ -409,7 +409,10 @@
 
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    全球付--WORLD_PAY
+      汇率: <span style="color: #BF3EFF;">{{ ex_change }}</span>
+      汇率波动溢价: <span style="color: #191970;">{{ ex_range }}</span>
+      手续费: <span style="color: #CD3278;">{{ hand }}</span>
+      美元充值手续费: <span style="color: #8B7765;"> {{ dollar_hand }} </span>
   </div>
 </div>
 </div>
@@ -703,6 +706,7 @@
                 , {field: 'money', title: '充值金额', align: 'center', sort: true, totalRow: true,style:'color: red'}
                 , {field: 'before_balance', title: '充值前余额', align: 'center', sort: true, totalRow: true}
                 , {field: 'balance', title: '充值后余额', align: 'center', sort: true, totalRow: true}
+                , {field: 'sum_balance', title: '总充值金额', align: 'center', sort: true, totalRow: true}
             ]]
             , id: 'top_history'
             , page: true
@@ -953,7 +957,42 @@
               });
         });
 
+        //修改汇款信息
+        $('#exchange').on('click', function () {
+            layer.open({
+                type: 2
+                ,title: false //不显示标题栏s
+                ,closeBtn: false
+                ,area: ['500px','400px']
+                ,shade: 0.8
+                ,shadeClose:true
+                ,id: 'exchange_money' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/admin/ex_change'
 
+              });
+        });
+
+
+        //修改客户充值邮件通知人
+        $('#top_msg').on('click', function () {
+            layer.open({
+                type: 2
+                ,title: '编辑客户充值通知人' //不显示标题栏s
+                ,closeBtn: false
+                ,area: ['500px','500px']
+                ,shade: 0.8
+                ,shadeClose:true
+                ,id: 'msg_to' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/admin/top_msg'
+
+              });
+        });
 
         //监听行工具事件
         table.on('tool(account_all)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
@@ -1000,8 +1039,40 @@
                     layer.close(index);
 
                 });
-            } else if (layEvent === 'lock'){
-                layer.msg('冻结卡操作!')
+            } else if (layEvent === 'del'){
+
+                layer.confirm('确认删除该用户?删除后该用户所有信息不可恢复。(卡信息, 充值信息, 交易信息)', function(index){
+
+                    data_info = {data: JSON.stringify({user_name:data.name,user_acc:data.account})};
+                    $.ajax({
+                    type : 'POST',
+                    url : '/admin/del_acc/',
+                    data : data_info,
+                    dataType : 'json',
+                    success : function(data) {
+                        // 成功提示框
+                        if (data.code == 0){
+                            parent.layer.msg(data.msg, {
+                            icon : 6,
+                        },obj.del());
+
+                        }else if(data.code == 502){
+                            parent.layer.msg(data.msg, {
+                            icon : 5
+                        });
+                        }
+
+                    },
+                    error : function(data) {
+                        // 异常提示
+                        parent.layer.msg('出现网络故障', {
+                            icon : 5
+                        });
+                        parent.layer.closeAll('iframe'); //关闭弹框
+                    }
+                });
+                })
+
             } else if (layEvent === 'edit') {
                 layui.layer.open({
                     title: '修改客户为 [ ' + data.name + ' ] 的相关信息',

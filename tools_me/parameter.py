@@ -21,6 +21,8 @@ class DIR_PATH:
     PUB_PEM = 'G:\\world_pay\\tools_me\\RSA_NAME\\pro_epaylinks_publickey.pem'
     # PUB_PEM = "tools_me/RSA_NAME/pro_epaylinks_publickey.pem"
 
+    PHOTO_DIR = 'G:/world_pay/static/pay_pic/'
+
 
 class RET:
     OK = 0

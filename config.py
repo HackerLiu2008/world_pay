@@ -42,4 +42,12 @@ from apps.admin import admin_blueprint
 
 app.register_blueprint(admin_blueprint)
 
+from apps.pay import pay_blueprint
+
+app.register_blueprint(pay_blueprint)
+
+from apps.verify_pay import verify_pay_blueprint
+
+app.register_blueprint(verify_pay_blueprint)
+
 

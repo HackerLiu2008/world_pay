@@ -1,10 +1,13 @@
+import datetime
 import json
 import logging
 import operator
-from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code
-from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE
+from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code, \
+    time_str
+from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE, DIR_PATH
 from tools_me.RSA_NAME.helen import QuanQiuFu
 from tools_me.remain import get_card_remain
+from tools_me.send_email import send
 from . import user_blueprint
 from flask import render_template, request, jsonify, session, g
 from tools_me.mysql_tools import SqlData
@@ -87,7 +90,6 @@ def refund_balance():
             results['msg'] = resp_msg
         return jsonify(results)
     except Exception as e:
-        print(e)
         logging.error(str(e))
         results = {"code": RET.SERVERERROR, "msg": MSG.SERVERERROR}
         return jsonify(results)
@@ -106,7 +108,7 @@ def account_trans():
     if time_range:
         min_time = time_range.split(' - ')[0]
         max_time = time_range.split(' - ')[1] + ' 23:59:59'
-        time_sql = "AND date BETWEEN " + "'" + min_time + "'" + " and " + "'" + max_time + "'"
+        time_sql = "AND do_date BETWEEN " + "'" + min_time + "'" + " and " + "'" + max_time + "'"
     if card_num:
         card_sql = "AND card_no LIKE '%" + card_num + "%'"
 
@@ -115,14 +117,14 @@ def account_trans():
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
     if len(task_info) == 0:
         results['MSG'] = MSG.NODATA
-        return results
+        return jsonify(results)
     page_list = list()
     task_info = list(reversed(task_info))
     for i in range(0, len(task_info), int(limit)):
         page_list.append(task_info[i:i + int(limit)])
     results['data'] = page_list[int(page) - 1]
     results['count'] = len(task_info)
-    return results
+    return jsonify(results)
 
 
 @user_blueprint.route('/top_up/', methods=['POST'])
@@ -134,6 +136,10 @@ def top_up():
     top_money = data.get('top_money')
     if not check_float(top_money):
         results = {"code": RET.SERVERERROR, "msg": "充值金额不能为小数!"}
+        return jsonify(results)
+    balance = SqlData().search_user_field('balance', user_id)
+    if float(top_money) > balance:
+        results = {"code": RET.SERVERERROR, "msg": "账户余额不足!"}
         return jsonify(results)
     money = str(int(top_money) * 100)
     resp = QuanQiuFu().trans_account_recharge(card_no, money)
@@ -238,7 +244,7 @@ def create_some():
 
             resp_card_info = QuanQiuFu().query_card_info(card_no)
             # print(resp_card_info)
-            if resp_card_info.get('resp_code') != '0000' or resp_code != '0079':
+            if resp_card_info.get('resp_code') != '0000':
                 expire_date = ''
                 card_verify_code = ''
             else:
@@ -383,14 +389,14 @@ def top_history():
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
     if len(task_info) == 0:
         results['MSG'] = MSG.NODATA
-        return results
+        return jsonify(results)
     page_list = list()
     task_info = list(reversed(task_info))
     for i in range(0, len(task_info), int(limit)):
         page_list.append(task_info[i:i + int(limit)])
     results['data'] = page_list[int(page) - 1]
     results['count'] = len(task_info)
-    return results
+    return jsonify(results)
 
 
 @user_blueprint.route('/', methods=['GET'])
@@ -406,6 +412,9 @@ def account_html():
     balance = dict_info.get('balance')
     sum_balance = dict_info.get('sum_balance')
     out_money = SqlData().search_trans_sum(user_id)
+    ex_change = SqlData().search_admin_field('ex_change')
+    ex_range = SqlData().search_admin_field('ex_range')
+    hand = SqlData().search_admin_field('hand')
     context = dict()
     context['user_name'] = user_name
     context['balance'] = balance
@@ -415,6 +424,9 @@ def account_html():
     context['max_top'] = max_top
     context['sum_balance'] = sum_balance
     context['out_money'] = out_money
+    context['ex_change'] = ex_change
+    context['ex_range'] = ex_range
+    context['hand'] = hand
     return render_template('user/index.html', **context)
 
 
@@ -537,7 +549,7 @@ def card_info():
         if len(data) == 0:
             results['code'] = RET.SERVERERROR
             results['msg'] = MSG.NODATA
-            return results
+            return jsonify(results)
         data = sorted(data, key=operator.itemgetter('act_time'))
     else:
         name_sql = ''
@@ -558,7 +570,7 @@ def card_info():
         if len(data) == 0:
             results['code'] = RET.SERVERERROR
             results['msg'] = MSG.NODATA
-            return results
+            return jsonify(results)
     page_list = list()
     info = list(reversed(data))
     for i in range(0, len(info), int(limit)):

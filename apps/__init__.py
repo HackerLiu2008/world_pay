@@ -13,4 +13,10 @@ middle_blueprint = Blueprint('middle', __name__, url_prefix='/middle',  template
 admin_blueprint = Blueprint('admin', __name__, url_prefix='/admin',  template_folder='../templates')
 
 
-from . import upload, user,  middle, admin
+pay_blueprint = Blueprint('pay', __name__, url_prefix='/pay',  template_folder='../templates')
+
+
+verify_pay_blueprint = Blueprint('verify_pay', __name__, url_prefix='/verify_pay', template_folder='../templates')
+
+
+from . import upload, user,  middle, admin, pay, verify_pay

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>订单修改界面</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <blockquote class="layui-elem-quote">上传支付截图(如是美元充值请直接上传截图): </blockquote>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">金额: </label>
+          <h2 id="sum_money" name="sum_money" style="line-height:35px; color: red"></h2>
+    </div>
+
+    <div class="layui-upload">
+      <div class="layui-upload-list">
+          <img src="https://i.loli.net/2019/10/28/CGE298gbAxz6Bd1.jpg" width=200px height=200px style="padding:1px 1px 1px 130px;">
+        <p id="demoText"></p>
+      </div>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="button" class="layui-btn layui-btn-danger" id="test1"><i class="layui-icon"></i>上传图片</button>
+    </div>
+
+    <div id="details" style="padding: 20px;" lay-filter="detail">
+    <form class="layui-form" lay-filter="example" id="example" enctype="multipart/form-data">
+        <div class="layui-form-item" style="display: none">
+            <label class="layui-form-label">隐藏域</label>
+            <div class="layui-input-block">
+                <input type ="text" name="sum_money" id="sum_m" value="{{ sum_money }}">
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="display: none">
+            <label class="layui-form-label">隐藏域</label>
+            <div class="layui-input-block">
+                <input type ="text" name="top_money"  id="top_money" value="{{ top_money }}">
+            </div>
+        </div>
+
+
+        <div class="layui-form-item" style="display: none">
+            <label class="layui-form-label">隐藏域</label>
+            <div class="layui-input-block">
+                <input type ="text" name="cus_name"  id="cus_name" value="{{ cus_name }}">
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="display: none">
+            <label class="layui-form-label">隐藏域</label>
+            <div class="layui-input-block">
+                <input type ="text" name="cus_account"  id="cus_account" value="{{ cus_account }}">
+            </div>
+        </div>
+
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="button" class="layui-btn" id="test9">确认完成</button>
+
+    </form>
+</div>
+<script src="/static/layui/layui.js"></script>
+<script src="/static/layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'laydate', 'upload'], function(){
+        var form = layui.form
+           , upload = layui.upload
+           , $ = layui.$;
+
+
+        var sum_money = $("#sum_m").val(),
+        top_money = $('#top_money').val(),
+        cus_name = $('#cus_name').val(),
+        cus_account = $('#cus_account').val(),
+        data_info = {sum_money:sum_money, top_money: top_money, cus_name: cus_name, cus_account: cus_account};
+
+
+
+         upload.render({
+             elem: '#test1'
+             ,url: '/pay/pay_pic/'
+             ,auto: false
+             ,accept: 'images'
+             ,acceptMime: 'image/*'
+             ,before: function () {
+                layer.load(2, {shade: false})
+                }
+             ,data: {data: JSON.stringify(data_info)}
+            ,bindAction: '#test9'
+            ,done: function(res){
+                 if (res.code == 0){
+                        layer.closeAll();
+                        parent.layer.msg(res.msg
+                            , {offset:['100px'],
+						icon : 6,
+					});
+                    }else if(res.code == 502){
+                        layer.closeAll();
+                        parent.layer.msg(data.msg, {
+                            offset:['100px'],
+						icon : 5
+					});
+                    }
+            }
+          });
+         return false
+    });
+</script>
+</body>
+</html>

@@ -116,7 +116,8 @@ class QuanQiuFu(object):
             return res.json()
         except Exception as e:
             logging.error("卡信息查询接口异常:" + str(e) + "data: " + str(data))
-            return {'resp_code': '9999', 'resp_code': '服务器繁忙!'}
+            info_dict = {'resp_code': '9999', "resp_msg": '服务器繁忙!'}
+            return info_dict
 
     def query_tran_detail(self, card_num):
         # 收支明细查询
@@ -275,5 +276,8 @@ class QuanQiuFu(object):
 
 if __name__ == '__main__':
     qqf = QuanQiuFu()
-    n = 1
-    pay_passwd = "04A5E788"
+    pay_passwd = '04A5E788'
+    card_no = '5295871075239068'
+    # resp = qqf.trans_account_cinsume('5295871077600242', pay_passwd, '2000')
+    # print(resp.get('resp_code'))
+    # print(resp)

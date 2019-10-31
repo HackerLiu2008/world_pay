@@ -1,3 +1,6 @@
+# coding:utf-8
+
+
 import operator
 import threading
 from tools_me.RSA_NAME.helen import QuanQiuFu
@@ -24,26 +27,31 @@ def loop(card_info):
     except:
         remain = '查询失败!'
     card_info['remain'] = remain
-    # print(card_info)
     info.append(card_info)
 
 
 def get_card_remain(loops):
-    global info
-    threads = []
     n = 1
     for i in loops:
         i['number'] = n
         n += 1
-    nloops = range(len(loops))
-    for i in nloops:
-        t = threading.Thread(target=loop, args=(loops[i], ))
-        threads.append(t)
-    for i in nloops:  # start threads 此处并不会执行线程，而是将任务分发到每个线程，同步线程。等同步完成后再开始执行start方法
-        threads[i].start()
-    for i in nloops:  # jion()方法等待线程完成
-        threads[i].join()
-
+    while True:
+        loops_len = len(loops)
+        num = 5
+        if loops_len < 5:
+            num = loops_len
+        threads = []
+        for i in range(num):
+            data = loops.pop()
+            t = threading.Thread(target=loop, args=(data, ))
+            threads.append(t)
+        for i in threads:  # start threads 此处并不会执行线程，而是将任务分发到每个线程，同步线程。等同步完成后再开始执行start方法
+            i.start()
+        for i in threads:  # jion()方法等待线程完成
+            i.join()
+        if len(loops) == 0:
+            break
+    global info
     res = sorted(info, key=operator.itemgetter('number'))
     info = list()
     return res

@@ -37,6 +37,21 @@
             margin-top: 100px;
             margin-left: 35%;
         }
+
+
+        .pay{
+            {#position: absolute;/*绝对定位*/#}
+            width: 700px;
+            height: 900px;
+            {#border: 3px solid gray;#}
+            {#text-align: center;/*(让div中的内容居中)*/#}
+            top: 50%;
+            left: 50%;
+            margin-bottom: 300px;
+            margin-top: 50px;
+            margin-left: 35%;
+        }
+
     </style>
 </head>
 <body>
@@ -128,7 +143,7 @@
         <div class="layui-form-item layui-form-text" id="text">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-block">
-              <textarea placeholder="例如: Brown |Amanda|Douglas|...,以'|'分割" class="layui-textarea" id="LAY_demo_editor" name="content"></textarea>
+              <textarea placeholder="例如: Brown | Amanda | Douglas | ...,以'|'分割" class="layui-textarea" id="LAY_demo_editor" name="content"></textarea>
             </div>
           </div>
 
@@ -194,7 +209,6 @@
             <a class="layui-btn layui-btn-xs" lay-event="edit">充值</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="refund">退款</a>
             <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="lock" id="do_lock">冻结</a>
-{#            <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="del">删卡</a>#}
         </script>
     </div>
     <div class="layui-tab-item">
@@ -214,8 +228,9 @@
     </div>
 
       <div class="layui-tab-item">
-          <table class="layui-hide" id="top_up" lay-filter="top_up"></table>
+        <table class="layui-hide" id="top_up" lay-filter="top_up"></table>
       </div>
+
   </div>
 </div>
 
@@ -270,6 +285,7 @@
             , $ = layui.$
             , form = layui.form;
 
+
         form.on('submit(create_one)', function(data){
             var data_info = {data:JSON.stringify(data.field)};
             $.ajax({
@@ -287,8 +303,6 @@
                         parent.layer.msg("开卡成功!请刷新界面!", {
 						icon : 6,
 					});
-					{#setTimeout(window.location.reload(), 2000)#}
-					;
                     }else if(data.code == 502){
                         layer.closeAll();
                         parent.layer.msg(data.msg, {
@@ -310,7 +324,6 @@
 
         form.on('submit(formDemo)', function(data){
             var data_info = {data:JSON.stringify(data.field)};
-            console.log(data_info)
             $.ajax({
 				type : 'POST',
 				url : '/user/create_some/',
@@ -326,8 +339,6 @@
                         parent.layer.msg("开卡成功!请刷新界面!", {
 						icon : 6,
 					});
-					{#setTimeout(window.location.reload(), 2000)#}
-					;
                     }else if(data.code == 502){
                         layer.closeAll();
                         parent.layer.msg(data.msg, {

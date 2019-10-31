@@ -1,15 +1,16 @@
 import pymysql
 import logging
+from tools_me.RSA_NAME.helen import QuanQiuFu
 
 
 class SqlData(object):
     def __init__(self):
-        host = "114.116.236.27"
-        # host = "127.0.0.1"
+        # host = "114.116.236.27"
+        host = "127.0.0.1"
         port = 3306
         user = "root"
-        password = "gute123"
-        # password = "admin"
+        # password = "gute123"
+        password = "admin"
         database = "world_pay"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
@@ -166,11 +167,18 @@ class SqlData(object):
             return False
         return rows[0][0]
 
+    def search_user_check(self, name, account):
+        sql = "SELECT id FROM account WHERE name='{}' AND account='{}'".format(name, account)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        return rows[0][0]
+
     def update_card_info(self, card_no, pay_passwd, act_time, card_name, label, expire, cvv, account_id, activation):
         sql = "UPDATE card_info SET card_no = '{}', pay_passwd='{}', act_time='{}', card_name='{}', label='{}', expire = '{}'," \
               " cvv = '{}', account_id = {} WHERE activation = '{}'".format(card_no, pay_passwd, act_time, card_name, label,
                                                                             expire, cvv, account_id, activation)
-
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -199,7 +207,11 @@ class SqlData(object):
                     info_dict['expire'] = "\t" + expire[4:6] + "/" + expire[2:4]
                 else:
                     info_dict['expire'] = ""
-                info_dict['cvv'] = "\t" + i[8]
+                cvv = i[8]
+                if cvv:
+                    info_dict['cvv'] = "\t" + cvv
+                else:
+                    info_dict['cvv'] = ""
                 card_status = i[10]
                 if card_status == '11':
                     info_dict['card_status'] = '冻结'
@@ -441,6 +453,23 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
+    def insert_pay_log(self, pay_time, pay_money, top_money, ver_code, status, account_id):
+        sql = "INSERT INTO pay_log(pay_time, pay_money, top_money, ver_code, status, account_id) " \
+              "VALUES ('{}',{},{},'{}','{}',{})".format(pay_time, pay_money, top_money, ver_code, status, account_id)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("插入用户请求充值信息失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def search_time_sum_money(self, x_time, user_id):
+        sql = "SELECT SUM(money) FROM top_up WHERE account_id={} AND time <= '{}'".format(user_id, x_time)
+        self.cursor.execute(sql)
+        row = self.cursor.fetchall()
+        return row[0][0]
+
     def search_top_history(self, sql_line):
         sql = "SELECT * FROM top_up LEFT JOIN account ON account.id=top_up.account_id {}".format(sql_line)
         self.cursor.execute(sql)
@@ -456,6 +485,7 @@ class SqlData(object):
                 info_dict['money'] = i[3]
                 info_dict['before_balance'] = i[4]
                 info_dict['balance'] = i[5]
+                info_dict['user_id'] = i[6]
                 info_dict['name'] = i[11]
                 info_list.append(info_dict)
             return info_list
@@ -491,6 +521,12 @@ class SqlData(object):
         except Exception as e:
             logging.error("添加用户失败!" + str(e))
             self.connect.rollback()
+        self.close_connect()
+
+    def del_account_info(self, user_id):
+        sql = "DELETE FROM account WHERE id = {}".format(user_id)
+        self.cursor.execute(sql)
+        self.connect.commit()
         self.close_connect()
 
     def search_middle_ed(self, name):
@@ -749,8 +785,67 @@ class SqlData(object):
         rows = self.cursor.fetchall()
         return rows[0][0]
 
+    def del_card_info(self, card_id):
+        sql = "DELETE FROM card_info WHERE id = {}".format(card_id)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("添加用户余额记录失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
 
 if __name__ == "__main__":
     s = SqlData()
+    q = QuanQiuFu()
+
+    # card_info = s.search_card_info_admin('WHERE account_id=45')
+    # card_list = list()
+    # for i in card_info:
+    #     card_no = i.get('card_no').strip()
+    #     card_id = i.get('card_id')
+    #     print(card_no)
+    #     if card_no not in card_list:
+    #         card_list.append(card_no)
+    #     else:
+    #         s.del_card_info(card_id)
+
+    # task_one = SqlData().search_account_info('')
+    # task_info = list()
+    # print(task_one)
+    # for u in task_one:
+    #     u_id = u.get('u_id')
+    #     card_count = SqlData().search_card_count(u_id, '')
+    #     out_money = SqlData().search_trans_sum(u_id)
+    #     u['card_num'] = card_count
+    #     u['out_money'] = out_money
+    #     balance = u['balance']
+    #     sum_balance = u['sum_balance']
+    #     name = u['name']
+    #     if balance + out_money == sum_balance:
+    #         res = '正常'
+    #     else:
+    #         res = '错误'
+    #         print(balance, out_money, sum_balance, res, name)
+
+    # while True:
+    #     info = s.search_card_info_admin("WHERE cvv ='' AND account_id != ''")
+    #     print(len(info))
+    #     for i in info:
+    #         card_no = i.get('card_no')
+    #         card_no = card_no.strip()
+    #         resp_card_info = QuanQiuFu().query_card_info(card_no)
+    #         print(resp_card_info)
+    #         if resp_card_info.get('resp_code') != '0000':
+    #             expire_date = ''
+    #             card_verify_code = ''
+    #         else:
+    #             re_de = resp_card_info.get('response_detail')
+    #             expire_date = re_de.get('expire_date')
+    #             card_verify_code = re_de.get('card_verify_code')
+    #         SqlData().update_card_info_card_no('cvv', card_verify_code, card_no)
+    #         SqlData().update_card_info_card_no('expire', expire_date, card_no)
+    #     time.sleep(10)
 
 

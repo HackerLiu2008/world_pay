@@ -60,6 +60,11 @@ def sum_code():
     return sum_order_code
 
 
+def time_str():
+    now_datetime = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    return now_datetime
+
+
 def save_file(file, filename, account_path):
     if allowe_file(filename):
         bigpath = os.path.join(current_app.root_path, account_path, now_filename())
@@ -191,6 +196,17 @@ def middle_required(view_func):
             return view_func(*args, **kwargs)
 
     return wraaper
+
+
+def Singleton(cls):
+    _instance = {}
+
+    def _singleton(*args, **kargs):
+        if cls not in _instance:
+            _instance[cls] = cls(*args, **kargs)
+        return _instance[cls]
+
+    return _singleton
 
 
 # 时间戳转换成datatime格式字符串,timeStamp必须是str类型

@@ -10,6 +10,20 @@ from tools_me.send_sms.send_sms import CCP
 from . import admin_blueprint
 
 
+@admin_blueprint.route('/del_acc/', methods=['POST'])
+@admin_required
+def del_account():
+    try:
+        data = json.loads(request.form.get('data'))
+        user_name = data.get('user_name')
+        user_id = SqlData().search_user_field_name('id', user_name)
+        SqlData().del_account_info(user_id)
+        return jsonify({"code": RET.OK, "msg": MSG.OK})
+    except Exception as e:
+        logging.error(str(e))
+        return jsonify({"code": RET.SERVERERROR, "msg": MSG.SERVERERROR})
+
+
 @admin_blueprint.route('/cus_log', methods=['GET'])
 @admin_required
 def cus_log():
@@ -31,7 +45,7 @@ def cus_log():
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
     if len(task_info) == 0:
         results['MSG'] = MSG.NODATA
-        return results
+        return jsonify(results)
     page_list = list()
     task_info = sorted(task_info, key=operator.itemgetter('log_time'))
     task_info = list(reversed(task_info))
@@ -39,7 +53,7 @@ def cus_log():
         page_list.append(task_info[i:i + int(limit)])
     results['data'] = page_list[int(page) - 1]
     results['count'] = len(task_info)
-    return results
+    return jsonify(results)
 
 
 @admin_blueprint.route('/account_trans/', methods=['GET'])
@@ -71,7 +85,7 @@ def account_trans():
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
     if len(task_info) == 0:
         results['MSG'] = MSG.NODATA
-        return results
+        return jsonify(results)
     page_list = list()
     task_info = sorted(task_info, key=operator.itemgetter('date'))
 
@@ -80,7 +94,7 @@ def account_trans():
         page_list.append(task_info[i:i + int(limit)])
     results['data'] = page_list[int(page) - 1]
     results['count'] = len(task_info)
-    return results
+    return jsonify(results)
 
 
 @admin_blueprint.route('/card_all', methods=['GET'])
@@ -170,7 +184,7 @@ def card_info():
     if len(data) == 0:
         results['code'] = RET.SERVERERROR
         results['msg'] = MSG.NODATA
-        return results
+        return jsonify(results)
     data = sorted(data, key=operator.itemgetter('act_time'))
     page_list = list()
     data = list(reversed(data))
@@ -239,14 +253,14 @@ def middle_info():
     task_info = SqlData().search_middle_info()
     if len(task_info) == 0:
         results['MSG'] = MSG.NODATA
-        return results
+        return jsonify(results)
     page_list = list()
     task_info = list(reversed(task_info))
     for i in range(0, len(task_info), int(limit)):
         page_list.append(task_info[i:i + int(limit)])
     results['data'] = page_list[int(page) - 1]
     results['count'] = len(task_info)
-    return results
+    return jsonify(results)
 
 
 @admin_blueprint.route('/add_middle/', methods=['POST'])
@@ -315,6 +329,73 @@ def add_account():
         results['code'] = RET.SERVERERROR
         results['msg'] = MSG.SERVERERROR
         return jsonify(results)
+
+
+@admin_blueprint.route('/top_msg', methods=['GET', 'POST'])
+@admin_required
+def top_msg():
+    if request.method == 'GET':
+        push_json = SqlData().search_admin_field('top_push')
+        info_list = list()
+        if push_json:
+            push_dict = json.loads(push_json)
+            for i in push_dict:
+                info_dict = dict()
+                info_dict['user'] = i
+                info_dict['email'] = push_dict.get(i)
+                info_list.append(info_dict)
+        context = dict()
+        context['info_list'] = info_list
+        return render_template('admin/top_msg.html', **context)
+    if request.method == 'POST':
+        try:
+            results = {"code": RET.OK, "msg": MSG.OK}
+            data = json.loads(request.form.get('data'))
+            top_people = data.get('top_people')
+            email = data.get('email')
+            push_json = SqlData().search_admin_field('top_push')
+            if not push_json:
+                info_dict = dict()
+                info_dict[top_people] = email
+            else:
+                info_dict = json.loads(push_json)
+                if top_people in info_dict and email == '删除':
+                    info_dict.pop(top_people)
+                else:
+                    info_dict[top_people] = email
+            json_info = json.dumps(info_dict, ensure_ascii=False)
+            SqlData().update_admin_field('top_push', json_info)
+            return jsonify(results)
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@admin_blueprint.route('/ex_change', methods=['GET', 'POST'])
+@admin_required
+def ex_change():
+    if request.method == 'GET':
+        return render_template('admin/exchange_edit.html')
+    if request.method == 'POST':
+        try:
+            results = {"code": RET.OK, "msg": MSG.OK}
+            data = json.loads(request.form.get('data'))
+            exchange = data.get('exchange')
+            ex_range = data.get('ex_range')
+            hand = data.get('hand')
+            dollar_hand = data.get('dollar_hand')
+            if exchange:
+                SqlData().update_admin_field('ex_change', float(exchange))
+            if ex_range:
+                SqlData().update_admin_field('ex_range', float(ex_range))
+            if hand:
+                SqlData().update_admin_field('hand', float(hand))
+            if dollar_hand:
+                SqlData().update_admin_field('dollar_hand', float(dollar_hand))
+            return jsonify(results)
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
 
 
 @admin_blueprint.route('/change_pass', methods=['GET', 'POST'])
@@ -398,15 +479,25 @@ def top_history():
 
     if len(task_info) == 0:
         results['MSG'] = MSG.NODATA
-        return results
+        return jsonify(results)
     page_list = list()
     task_info = sorted(task_info, key=operator.itemgetter('time'))
     task_info = list(reversed(task_info))
     for i in range(0, len(task_info), int(limit)):
         page_list.append(task_info[i:i + int(limit)])
-    results['data'] = page_list[int(page) - 1]
+    data = page_list[int(page) - 1]
+
+    # 查询当次充值时的账号总充值金额
+    info_list = list()
+    for o in data:
+        x_time = o.get('time')
+        user_id = o.get('user_id')
+        sum_money = SqlData().search_time_sum_money(x_time, user_id)
+        o['sum_balance'] = round(sum_money, 2)
+        info_list.append(o)
+    results['data'] = info_list
     results['count'] = len(task_info)
-    return results
+    return jsonify(results)
 
 
 @admin_blueprint.route('/top_up', methods=['POST'])
@@ -469,6 +560,9 @@ def edit_parameter():
             if password:
                 SqlData().update_account_field('password', password, name)
             if user_name:
+                password = SqlData().search_user_field_name('password', user_name)
+                if password:
+                    return jsonify({'code': RET.SERVERERROR, 'msg': '该用户名已存在,请更换用户名后重试!'})
                 SqlData().update_account_field('name', user_name, name)
             return jsonify(results)
         except Exception as e:
@@ -492,7 +586,7 @@ def account_info():
     task_one = SqlData().search_account_info(sql)
     if len(task_one) == 0:
         results['MSG'] = MSG.NODATA
-        return results
+        return jsonify(results)
     task_info = list()
     for u in task_one:
         u_id = u.get('u_id')
@@ -507,7 +601,7 @@ def account_info():
         page_list.append(task_info[i:i + int(limit)])
     results['data'] = page_list[int(page) - 1]
     results['count'] = len(task_info)
-    return results
+    return jsonify(results)
 
 
 @admin_blueprint.route('/card_list_html', methods=['GET'])
@@ -584,15 +678,27 @@ def admin_login():
 @admin_blueprint.route('/', methods=['GET'])
 @admin_required
 def index():
+    '''
+    查询主页面信息
+    :return:
+    '''
     admin_name = g.admin_name
     spent = SqlData().search_trans_sum_admin()
     sum_balance = SqlData().search_user_sum_balance()
     card_use = SqlData().search_card_status("WHERE account_id != ''")
     card_no = SqlData().search_card_status("WHERE account_id is null AND activation != ''")
+    ex_change = SqlData().search_admin_field('ex_change')
+    ex_range = SqlData().search_admin_field('ex_range')
+    hand = SqlData().search_admin_field('hand')
+    dollar_hand = SqlData().search_admin_field('dollar_hand')
     context = dict()
     context['admin_name'] = admin_name
     context['spent'] = spent
     context['advance'] = sum_balance
     context['card_use'] = card_use
     context['card_no'] = card_no
+    context['ex_change'] = ex_change
+    context['ex_range'] = ex_range
+    context['hand'] = hand
+    context['dollar_hand'] = dollar_hand
     return render_template('admin/index.html', **context)

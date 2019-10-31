@@ -76,7 +76,7 @@
 					    parent.layer.closeAll('iframe'); //关闭弹框
                     }else if(data.code == 502){
                         layer.closeAll();
-                        parent.layer.msg('出现网络故障', {
+                        parent.layer.msg(data.msg, {
 						icon : 5
 					});
                     }
