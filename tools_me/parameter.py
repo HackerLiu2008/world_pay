@@ -22,6 +22,7 @@ class DIR_PATH:
     # PUB_PEM = "tools_me/RSA_NAME/pro_epaylinks_publickey.pem"
 
     PHOTO_DIR = 'G:/world_pay/static/pay_pic/'
+    # PHOTO_DIR = "static/pay_pic/"
 
 
 class RET:
