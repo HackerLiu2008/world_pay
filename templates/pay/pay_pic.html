@@ -99,8 +99,10 @@
                         layer.closeAll();
                         parent.layer.msg(res.msg
                             , {offset:['100px'],
-						icon : 6,
-					});
+						        icon : 6,
+                                time:4000
+					    });
+                        parent.layer.closeAll('iframe');
                     }else if(res.code == 502){
                         layer.closeAll();
                         parent.layer.msg(data.msg, {

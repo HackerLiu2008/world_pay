@@ -5,12 +5,12 @@ from tools_me.RSA_NAME.helen import QuanQiuFu
 
 class SqlData(object):
     def __init__(self):
-        # host = "114.116.236.27"
-        host = "127.0.0.1"
+        host = "114.116.236.27"
+        # host = "127.0.0.1"
         port = 3306
         user = "root"
-        # password = "gute123"
-        password = "admin"
+        password = "gute123"
+        # password = "admin"
         database = "world_pay"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
@@ -793,6 +793,50 @@ class SqlData(object):
         except Exception as e:
             logging.error("添加用户余额记录失败!" + str(e))
             self.connect.rollback()
+        self.close_connect()
+
+    # 以下是带充值需要使用的方法----------------------------------------------------------------------------------------
+    def search_pay_log(self, status):
+        sql = "SELECT pay_time,pay_money,top_money,pay_log.`status`,ver_time,name from pay_log LEFT JOIN account ON" \
+              " pay_log.account_id=account.id  WHERE status='{}'".format(status)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return
+        info_list = list()
+        for i in rows:
+            info_dict = dict()
+            info_dict['pay_time'] = str(i[0])
+            info_dict['pay_money'] = i[1]
+            info_dict['top_money'] = i[2]
+            info_dict['status'] = i[3]
+            info_dict['ver_time'] = str(i[4])
+            info_dict['cus_name'] = i[5]
+            info_list.append(info_dict)
+        return info_list
+
+    def search_pay_code(self, field, cus_name, pay_time):
+        sql = "SELECT {} from pay_log LEFT JOIN account ON pay_log.account_id=account.id WHERE account.`name`='{}' AND pay_time='{}'".format(field, cus_name, pay_time)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return ''
+        return rows[0][0]
+
+    def update_pay_status(self, pay_status, t, cus_name, pay_time):
+        sql = "UPDATE pay_log SET status='{}',ver_time='{}' WHERE account_id={} AND pay_time='{}'".format(pay_status, t, cus_name, pay_time)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("确认充值状态失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def del_pay_log(self, user_id, pay_time):
+        sql = "DELETE FROM pay_log WHERE account_id = {} AND pay_time='{}'".format(user_id, pay_time)
+        self.cursor.execute(sql)
+        self.connect.commit()
         self.close_connect()
 
 

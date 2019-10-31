@@ -277,7 +277,14 @@ class QuanQiuFu(object):
 if __name__ == '__main__':
     qqf = QuanQiuFu()
     pay_passwd = '04A5E788'
-    card_no = '5295871075239068'
-    # resp = qqf.trans_account_cinsume('5295871077600242', pay_passwd, '2000')
-    # print(resp.get('resp_code'))
+    card_no = '64823085058061'
+
+    # resp = qqf.create_card('64823085354122', pay_passwd)
+    # resp = qqf.trans_account_recharge('5295871079074495', '2000')
     # print(resp)
+    # print(resp)
+
+    '5295871078908792'
+    '5295871078874713'
+    '5295871078899546'
+

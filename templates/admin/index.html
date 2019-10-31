@@ -1081,7 +1081,7 @@
                     area: ['380px', '480px'],//宽高
                     shadeClose: true, //点击遮罩关闭
                     content: '/admin/edit_parameter',
-                    success: function(layero, index) {
+                    success: function(layer, index) {
                         var body = layer.getChildFrame('body', index);
                         body.contents().find("#name_str").val(data.name)
                     }

@@ -118,6 +118,7 @@ def choke_required(view_func):
         global create
         if create == "T":
             results = {"code": RET.SERVERERROR, "msg": "服务器繁忙请稍后重试!"}
+            logging.error('出现批量开卡接口使用冲突!')
             return jsonify(results)
         else:
             create = 'T'

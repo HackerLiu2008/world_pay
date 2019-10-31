@@ -2,6 +2,7 @@ import datetime
 import json
 import logging
 import operator
+
 from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code, \
     time_str
 from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE, DIR_PATH
@@ -163,7 +164,6 @@ def top_up():
 @login_required
 @choke_required
 def create_some():
-
     # print(session.get('create'))
     data = json.loads(request.form.get('data'))
     card_num = data.get('card_num')
@@ -218,9 +218,9 @@ def create_some():
             activation = SqlData().search_activation()
             if not activation:
                 return jsonify({"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"})
+            SqlData().update_card_info_field('card_name', 'USING', activation)
             pay_passwd = "04A5E788"
             resp = QuanQiuFu().create_card(activation, pay_passwd)
-            # print(resp)
             resp_code = resp.get('resp_code')
             # print(resp_code)
             if resp_code != '0000' and resp_code != '0079':
@@ -316,6 +316,7 @@ def create_card():
         if not activation:
             return jsonify({"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"})
         pay_passwd = "04A5E788"
+        SqlData().update_card_info_field('card_name', 'USING', activation)
         resp = QuanQiuFu().create_card(activation, pay_passwd)
         # print(resp)
         resp_code = resp.get('resp_code')

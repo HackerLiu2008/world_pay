@@ -1,8 +1,6 @@
 import re
-import time
-import uuid
-
 import requests
+from tools_me.mysql_tools import SqlData
 
 
 def ex_change():
@@ -31,10 +29,8 @@ def ex_change():
         return '9999999'
 
 
-# while True:
-    # res = ex_change()
-    # print(res, time.strftime('%H:%M:%S'))
-    # time.sleep(10)
+res = ex_change()
+SqlData().update_admin_field('ex_change', float(res))
 
 
 
