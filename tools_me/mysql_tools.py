@@ -5,12 +5,12 @@ from tools_me.RSA_NAME.helen import QuanQiuFu
 
 class SqlData(object):
     def __init__(self):
-        host = "114.116.236.27"
-        # host = "127.0.0.1"
+        # host = "114.116.236.27"
+        host = "127.0.0.1"
         port = 3306
         user = "root"
-        password = "gute123"
-        # password = "admin"
+        # password = "gute123"
+        password = "admin"
         database = "world_pay"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
@@ -120,6 +120,7 @@ class SqlData(object):
                 info_dict['money'] = i[3]
                 info_dict['before_balance'] = i[4]
                 info_dict['balance'] = i[5]
+                info_dict['trans_type'] = i[7]
                 info_list.append(info_dict)
             return info_list
 
@@ -416,6 +417,16 @@ class SqlData(object):
             return account_list
 
     def update_account_field(self, field, value, name):
+        sql = "UPDATE account SET {}={} WHERE name='{}'".format(field, value, name)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新用户字段" + field + "失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def update_account_field_str(self, field, value, name):
         sql = "UPDATE account SET {}='{}' WHERE name='{}'".format(field, value, name)
         try:
             self.cursor.execute(sql)
@@ -443,8 +454,19 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
-    def insert_top_up(self, pay_num, now_time, money, before_balance, balance, account_id):
-        sql = "INSERT INTO top_up(pay_num, time, money, before_balance, balance, account_id) VALUES ('{}','{}',{},{},{},{})".format(pay_num, now_time, money, before_balance, balance, account_id)
+    def update_balance(self, money, id):
+        sql = "UPDATE account set balance=balance+{} WHERE id={}".format(money, money, id)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新用户余额失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def insert_top_up(self, pay_num, now_time, money, before_balance, balance, account_id, trans_type):
+        sql = "INSERT INTO top_up(pay_num, time, money, before_balance, balance, account_id, trans_type) " \
+              "VALUES ('{}','{}',{},{},{},{})".format(pay_num, now_time, money, before_balance, balance, account_id, trans_type)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -486,7 +508,8 @@ class SqlData(object):
                 info_dict['before_balance'] = i[4]
                 info_dict['balance'] = i[5]
                 info_dict['user_id'] = i[6]
-                info_dict['name'] = i[11]
+                info_dict['trans_type'] = i[7]
+                info_dict['name'] = i[12]
                 info_list.append(info_dict)
             return info_list
 
@@ -843,7 +866,6 @@ class SqlData(object):
 if __name__ == "__main__":
     s = SqlData()
     q = QuanQiuFu()
-
     # card_info = s.search_card_info_admin('WHERE account_id=45')
     # card_list = list()
     # for i in card_info:

@@ -1,17 +1,35 @@
 import datetime
 import logging
 import uuid
-
-from flask import render_template, request, json, jsonify
-
+from flask import render_template, request, json, jsonify, session
 from tools_me.mysql_tools import SqlData
-from tools_me.other_tools import time_str, xianzai_time
+from tools_me.other_tools import time_str, xianzai_time, pay_required
 from tools_me.parameter import RET, MSG, DIR_PATH
 from tools_me.send_email import send
 from . import pay_blueprint
 
 
+@pay_blueprint.route('/login/', methods=['POST', 'GET'])
+def login():
+    if request.method == 'GET':
+        return render_template('pay/login.html')
+    if request.method == 'POST':
+        data = json.loads(request.form.get('data'))
+        login = data.get('login')
+        pwd = data.get('pwd')
+        code = data.get('code')
+        ver_code = data.get('ver_code')
+        if ver_code != code:
+            return jsonify({'code': RET.SERVERERROR, 'msg': '验证码错误!区分大小写!'})
+        elif login == 'quanqiufu!' and pwd == 'trybest@':
+            session['pay_login'] = 'T'
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        else:
+            return jsonify({'code': RET.SERVERERROR, 'msg': '账号或密码错误!'})
+
+
 @pay_blueprint.route('/', methods=['GET'])
+@pay_required
 def index_pay():
     ex_change = SqlData().search_admin_field('ex_change')
     ex_range = SqlData().search_admin_field('ex_range')
@@ -26,6 +44,7 @@ def index_pay():
 
 
 @pay_blueprint.route('/acc_top_cn/', methods=['POST'])
+@pay_required
 def top_cn():
     if request.method == 'POST':
         '''
@@ -54,6 +73,7 @@ def top_cn():
 
 
 @pay_blueprint.route('/acc_top_dollar/', methods=['POST'])
+@pay_required
 def top_dollar():
     if request.method == 'POST':
         '''
@@ -80,6 +100,7 @@ def top_dollar():
 
 
 @pay_blueprint.route('/pay_pic/', methods=['GET', 'POST'])
+@pay_required
 def pay_pic():
     if request.method == 'GET':
         sum_money = request.args.get('sum_money')

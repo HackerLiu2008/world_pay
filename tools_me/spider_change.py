@@ -1,6 +1,6 @@
 import re
 import requests
-from tools_me.mysql_tools import SqlData
+from .mysql_tools import SqlData
 
 
 def ex_change():
@@ -30,6 +30,7 @@ def ex_change():
 
 
 res = ex_change()
+res = float(res)/100
 SqlData().update_admin_field('ex_change', float(res))
 
 

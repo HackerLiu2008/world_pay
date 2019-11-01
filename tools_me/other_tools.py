@@ -10,6 +10,10 @@ from config import logging
 import uuid
 from tools_me.mysql_tools import SqlData
 from tools_me.parameter import RET
+import threading
+
+
+my_lock = threading.Lock()
 
 ALLOWED_EXTENSIONS = ['xls', 'xlsx']
 
@@ -109,22 +113,14 @@ def verify_login_time(before_time, now_time):
         return
 
 
-create = "F"
-
 
 def choke_required(view_func):
     @wraps(view_func)
     def wraaper(*args, **kwargs):
-        global create
-        if create == "T":
-            results = {"code": RET.SERVERERROR, "msg": "服务器繁忙请稍后重试!"}
-            logging.error('出现批量开卡接口使用冲突!')
-            return jsonify(results)
-        else:
-            create = 'T'
-            res = view_func(*args, **kwargs)
-            create = 'F'
-            return res
+        my_lock.acquire()
+        res = view_func(*args, **kwargs)
+        my_lock.release()
+        return res
 
     return wraaper
 
@@ -193,6 +189,25 @@ def middle_required(view_func):
         else:
             # 当用户已登录，使用g变量记录用户的user_id，方便被装饰是的视图函数中可以直接使用
             g.middle_id = middle_id
+            # 执行被装饰的视图函数
+            return view_func(*args, **kwargs)
+
+    return wraaper
+
+
+def pay_required(view_func):
+    """自定义装饰器判断用户是否登录
+    使用装饰器装饰函数时，会修改被装饰的函数的__name属性和被装饰的函数的说明文档
+    为了不让装饰器影响被装饰的函数的默认的数据，我们会使用@wraps装饰器，提前对view_funcJ进行装饰
+    """
+
+    @wraps(view_func)
+    def wraaper(*args, **kwargs):
+        """具体实现判断用户是否登录的逻辑"""
+        middle_id = session.get('pay_login')
+        if not middle_id:
+            return render_template('pay/login.html')
+        else:
             # 执行被装饰的视图函数
             return view_func(*args, **kwargs)
 

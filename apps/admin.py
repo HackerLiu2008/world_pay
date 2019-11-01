@@ -280,11 +280,13 @@ def add_middle():
             results['code'] = RET.SERVERERROR
             results['msg'] = '该中介名已存在!'
             return jsonify(results)
+        '''
         ret = re.match(r"^1[35789]\d{9}$", phone_num)
         if not ret:
             results['code'] = RET.SERVERERROR
             results['msg'] = '请输入符合规范的电话号码!'
             return jsonify(results)
+        '''
         SqlData().insert_middle(account, password, name, phone_num, create_price, note)
         return jsonify(results)
     except Exception as e:
@@ -487,9 +489,20 @@ def top_history():
         page_list.append(task_info[i:i + int(limit)])
     data = page_list[int(page) - 1]
 
+    # 处理不同充值类型的显示方式(系统, 退款)
+    info_list_1 = list()
+    for n in data:
+        trans_type = n.get('trans_type')
+        if trans_type == '系统':
+            n['refund'] = ''
+        else:
+            n['refund'] = n.get('money')
+            n['money'] = ''
+        info_list_1.append(n)
+
     # 查询当次充值时的账号总充值金额
     info_list = list()
-    for o in data:
+    for o in info_list_1:
         x_time = o.get('time')
         user_id = o.get('user_id')
         sum_money = SqlData().search_time_sum_money(x_time, user_id)
@@ -516,7 +529,7 @@ def top_up():
         # 更新账户余额
         SqlData().update_user_balance(money, user_id)
         # 更新客户充值记录
-        SqlData().insert_top_up(pay_num, t, money, before, balance, user_id)
+        SqlData().insert_top_up(pay_num, t, money, before, balance, user_id, '系统')
 
         phone = SqlData().search_user_field_name('phone_num', name)
 
@@ -542,6 +555,7 @@ def edit_parameter():
         results = {"code": RET.OK, "msg": MSG.OK}
         try:
             data = json.loads(request.form.get('data'))
+            print(data)
             name = data.get('name_str')
             create_price = data.get('create_price')
             refund = data.get('refund')
@@ -550,20 +564,20 @@ def edit_parameter():
             password = data.get('password')
             user_name = data.get('user_name')
             if create_price:
-                SqlData().update_account_field('create_price', create_price, name)
+                SqlData().update_account_field('create_price', float(create_price), name)
             if refund:
-                SqlData().update_account_field('refund', refund, name)
+                SqlData().update_account_field('refund', float(refund), name)
             if min_top:
-                SqlData().update_account_field('min_top', min_top, name)
+                SqlData().update_account_field('min_top', float(min_top), name)
             if max_top:
-                SqlData().update_account_field('max_top', max_top, name)
+                SqlData().update_account_field('max_top', float(max_top), name)
             if password:
-                SqlData().update_account_field('password', password, name)
+                SqlData().update_account_field_str('password', password, name)
             if user_name:
                 password = SqlData().search_user_field_name('password', user_name)
                 if password:
                     return jsonify({'code': RET.SERVERERROR, 'msg': '该用户名已存在,请更换用户名后重试!'})
-                SqlData().update_account_field('name', user_name, name)
+                SqlData().update_account_field_str('name', user_name, name)
             return jsonify(results)
         except Exception as e:
             logging.error(e)

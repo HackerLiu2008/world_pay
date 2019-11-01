@@ -1,8 +1,6 @@
 import json
 import logging
-
 from flask import render_template, request, jsonify
-
 from tools_me.mysql_tools import SqlData
 from tools_me.other_tools import sum_code, xianzai_time
 from tools_me.parameter import RET, MSG
@@ -75,7 +73,7 @@ def top_up():
             # 更新账户余额
             SqlData().update_user_balance(money, user_id)
             # 更新客户充值记录
-            SqlData().insert_top_up(pay_num, t, money, before, balance, user_id)
+            SqlData().insert_top_up(pay_num, t, money, before, balance, user_id, '系统')
 
             # 更新pay_log的订单的充值状态
             cus_id = SqlData().search_user_field_name('id', cus_name)

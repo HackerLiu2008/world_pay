@@ -1,12 +1,12 @@
 import json
 import logging
 import operator
-from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code
+from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code, my_lock
 from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE
 from tools_me.RSA_NAME.helen import QuanQiuFu
 from tools_me.remain import get_card_remain
 from . import user_blueprint
-from flask import render_template, request, jsonify, session, g
+from flask import render_template, request, jsonify, session, g, redirect
 from tools_me.mysql_tools import SqlData
 
 
@@ -66,8 +66,10 @@ def refund_balance():
             before_balance = SqlData().search_user_field('balance', user_id)
             balance = round(before_balance + do_money, 2)
             # 更新账户余额
-            SqlData().update_user_balance(do_money, user_id)
+            SqlData().update_balance(do_money, user_id)
 
+            # 将退款金额转换为负数
+            do_money = do_money - do_money * 2
             n_time = xianzai_time()
             SqlData().insert_account_trans(n_time, TRANS_TYPE.IN, DO_TYPE.REFUND, 1, card_no, do_money, hand_money,
                                            before_balance,
@@ -76,7 +78,7 @@ def refund_balance():
             # 更新客户充值记录
             pay_num = sum_code()
             t = xianzai_time()
-            SqlData().insert_top_up(pay_num, t, do_money, before_balance, balance, user_id)
+            SqlData().insert_top_up(pay_num, t, do_money, before_balance, balance, user_id, '退款')
 
             results['msg'] = resp_msg
         else:
@@ -158,8 +160,9 @@ def top_up():
 
 @user_blueprint.route('/create_some/', methods=['POST'])
 @login_required
-@choke_required
+# @choke_required
 def create_some():
+
     # print(session.get('create'))
     data = json.loads(request.form.get('data'))
     card_num = data.get('card_num')
@@ -175,7 +178,7 @@ def create_some():
     balance = user_data.get('balance')
 
     card_num = int(card_num)
-    if card_num > 20:
+    if card_num > 1000:
         results = {"code": RET.SERVERERROR, "msg": "批量开卡数量不得超过20张!"}
         return jsonify(results)
 
@@ -211,10 +214,13 @@ def create_some():
 
     try:
         for i in range(card_num):
+            my_lock.acquire()
             activation = SqlData().search_activation()
             if not activation:
                 return jsonify({"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"})
             SqlData().update_card_info_field('card_name', 'USING', activation)
+            SqlData().update_card_info_field('account_id', user_id, activation)
+            my_lock.release()
             pay_passwd = "04A5E788"
             resp = QuanQiuFu().create_card(activation, pay_passwd)
             resp_code = resp.get('resp_code')
@@ -247,9 +253,8 @@ def create_some():
                 re_de = resp_card_info.get('response_detail')
                 expire_date = re_de.get('expire_date')
                 card_verify_code = re_de.get('card_verify_code')
-            act_time = xianzai_time()
             card_name = name_list.pop()
-            SqlData().update_card_info(card_no, pay_passwd, act_time, card_name, label, expire_date, card_verify_code, user_id, activation)
+            SqlData().update_card_info(card_no, pay_passwd, n_time, card_name, label, expire_date, card_verify_code, user_id, activation)
 
             before_balance = SqlData().search_user_field('balance', user_id)
             money = str(int(limit) * 100)
@@ -278,7 +283,7 @@ def create_some():
 
 @user_blueprint.route('/create_card/', methods=['POST'])
 @login_required
-@choke_required
+# @choke_required
 def create_card():
     data = json.loads(request.form.get('data'))
     card_name = data.get('card_name')
@@ -306,17 +311,18 @@ def create_card():
         results = {"code": RET.SERVERERROR, "msg": "充值金额不在允许范围内!"}
         return jsonify(results)
 
-
     try:
+        my_lock.acquire()
         activation = SqlData().search_activation()
         if not activation:
             return jsonify({"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"})
         pay_passwd = "04A5E788"
         SqlData().update_card_info_field('card_name', 'USING', activation)
+        my_lock.acquire()
+
+        # 开卡及更新相关信息(批量开卡为同一流程步骤)
         resp = QuanQiuFu().create_card(activation, pay_passwd)
-        # print(resp)
         resp_code = resp.get('resp_code')
-        # print(resp_code)
         if resp_code != '0000' and resp_code != '0079':
             resp_msg = resp.get('resp_msg')
             s = '卡激活失败! 状态码: ' + resp_code + ',信息: ' + resp_msg + '激活码为: ' + activation
@@ -338,8 +344,8 @@ def create_card():
                                        balance, user_id)
         SqlData().update_user_field_int('balance', balance, user_id)
 
+        # 查询卡信息,及更新相关信息
         resp_card_info = QuanQiuFu().query_card_info(card_no)
-        # print(resp_card_info)
         if resp_card_info.get('resp_code') != '0000':
             expire_date = ''
             card_verify_code = ''
@@ -347,14 +353,14 @@ def create_card():
             re_de = resp_card_info.get('response_detail')
             expire_date = re_de.get('expire_date')
             card_verify_code = re_de.get('card_verify_code')
-        act_time = xianzai_time()
-        SqlData().update_card_info(card_no, pay_passwd, act_time, card_name, label, expire_date, card_verify_code, user_id, activation)
+        SqlData().update_card_info(card_no, pay_passwd, n_time, card_name, label, expire_date, card_verify_code, user_id, activation)
 
         before_balance = SqlData().search_user_field('balance', user_id)
         money = str(int(float(top_money) * 100))
+
+        # 给卡里充值金额,及更新相关信息
         resp = QuanQiuFu().trans_account_recharge(card_no, money)
         resp_code = resp.get('resp_code')
-
         if resp_code == '0000':
             top_money = float(top_money)
             balance = round(before_balance - top_money, 2)
@@ -640,7 +646,7 @@ def user_info():
 def logout():
     session.pop('user_id')
     session.pop('name')
-    return render_template('user/login.html')
+    return redirect('/user/')
 
 
 @user_blueprint.route('/login', methods=['POST', 'GET'])

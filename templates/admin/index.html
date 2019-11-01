@@ -703,7 +703,9 @@
                 , {field: 'name', title: '客户', align: 'center', sort: true,  totalRowText: '合计：'}
                 , {field: 'pay_num', title: '流水号', align: 'center', sort: true,}
                 , {field: 'time', title: '充值时间', align: 'center', sort: true, }
+                , {field: 'trans_type', title: '充值类型', align: 'center', sort: true, style:'color: #104E8B'}
                 , {field: 'money', title: '充值金额', align: 'center', sort: true, totalRow: true,style:'color: red'}
+                , {field: 'refund', title: '退款金额', align: 'center', sort: true, totalRow: true,style:'color: #528B8B'}
                 , {field: 'before_balance', title: '充值前余额', align: 'center', sort: true, totalRow: true}
                 , {field: 'balance', title: '充值后余额', align: 'center', sort: true, totalRow: true}
                 , {field: 'sum_balance', title: '总充值金额', align: 'center', sort: true, totalRow: true}
@@ -1081,7 +1083,7 @@
                     area: ['380px', '480px'],//宽高
                     shadeClose: true, //点击遮罩关闭
                     content: '/admin/edit_parameter',
-                    success: function(layer, index) {
+                    success: function(layero, index) {
                         var body = layer.getChildFrame('body', index);
                         body.contents().find("#name_str").val(data.name)
                     }
