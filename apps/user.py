@@ -65,6 +65,7 @@ def refund_balance():
             do_money = round(float(data) - hand_money, 2)
             before_balance = SqlData().search_user_field('balance', user_id)
             balance = round(before_balance + do_money, 2)
+
             # 更新账户余额
             SqlData().update_balance(do_money, user_id)
 
@@ -214,13 +215,12 @@ def create_some():
 
     try:
         for i in range(card_num):
-            my_lock.acquire()
+            # my_lock.acquire()
             activation = SqlData().search_activation()
             if not activation:
                 return jsonify({"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"})
             SqlData().update_card_info_field('card_name', 'USING', activation)
-            SqlData().update_card_info_field('account_id', user_id, activation)
-            my_lock.release()
+            # my_lock.release()
             pay_passwd = "04A5E788"
             resp = QuanQiuFu().create_card(activation, pay_passwd)
             resp_code = resp.get('resp_code')
@@ -312,13 +312,13 @@ def create_card():
         return jsonify(results)
 
     try:
-        my_lock.acquire()
+        # my_lock.acquire()
         activation = SqlData().search_activation()
         if not activation:
             return jsonify({"code": RET.SERVERERROR, "msg": "请联系服务商添加库存!"})
         pay_passwd = "04A5E788"
         SqlData().update_card_info_field('card_name', 'USING', activation)
-        my_lock.acquire()
+        # my_lock.acquire()
 
         # 开卡及更新相关信息(批量开卡为同一流程步骤)
         resp = QuanQiuFu().create_card(activation, pay_passwd)
@@ -405,6 +405,9 @@ def top_history():
 @user_blueprint.route('/', methods=['GET'])
 @login_required
 def account_html():
+    '''
+    :return:  "系统临时升级，预计今晚12点前能恢复。做生成的卡可以继续使用。有问题可以联系各自管理员"
+    '''
     user_name = g.user_name
     user_id = g.user_id
     dict_info = SqlData().search_user_index(user_id)

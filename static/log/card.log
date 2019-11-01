@@ -18567,3 +18567,416 @@
 2019-11-01  20:13:15 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
 2019-11-01  20:13:15 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
 2019-11-01  20:13:15 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  20:18:43 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\mysql_tools.py', reloading 
+2019-11-01  20:18:43 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  20:18:44 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  20:18:44 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  20:18:44 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  20:26:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\apps\\user.py', reloading 
+2019-11-01  20:26:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  20:26:38 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  20:26:38 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  20:26:39 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  20:27:23 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\apps\\user.py', reloading 
+2019-11-01  20:27:23 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  20:27:24 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  20:27:24 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  20:27:24 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  20:32:11 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\apps\\user.py', reloading 
+2019-11-01  20:32:11 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  20:32:13 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  20:32:13 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  20:32:13 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  20:36:11 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\parameter.py', reloading 
+2019-11-01  20:36:11 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  20:36:12 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  20:36:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  20:36:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  20:36:17 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\parameter.py', reloading 
+2019-11-01  20:36:17 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  21:04:45 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  21:04:46 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  21:04:46 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  21:04:46 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  21:05:31 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\mysql_tools.py', reloading 
+2019-11-01  21:05:31 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  21:05:32 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  21:05:32 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  21:05:32 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  21:06:29 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\mysql_tools.py', reloading 
+2019-11-01  21:06:29 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  21:06:30 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  21:06:30 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  21:06:30 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  21:30:11 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:11] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:30:12 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:30:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:12] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 302 - 
+2019-11-01  21:30:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:12] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:30:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:12] "GET /user/login HTTP/1.1" 200 - 
+2019-11-01  21:30:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:12] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 302 - 
+2019-11-01  21:30:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:12] "GET /user/login HTTP/1.1" 200 - 
+2019-11-01  21:30:40 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  21:30:42 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  21:30:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  21:30:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  21:30:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:42] "GET /user/logout HTTP/1.1" 302 - 
+2019-11-01  21:30:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:42] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:30:49 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:49] "POST /user/login HTTP/1.1" 200 - 
+2019-11-01  21:30:50 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:50] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:30:50 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:30:50 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:50] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:30:50 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:50] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:30:53 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:53] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:30:59 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:30:59] "GET /static/layui/css/modules/layer/default/loading-0.gif HTTP/1.1" 200 - 
+2019-11-01  21:31:56 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  21:31:57 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  21:31:57 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  21:31:57 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  21:31:59 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:31:59] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:31:59 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:31:59] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-01  21:31:59 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:31:59 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:31:59] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:32:00 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:32:00] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:32:02 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:32:02] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:32:09 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:32:09] "POST /user/create_card/ HTTP/1.1" 200 - 
+2019-11-01  21:32:16 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:32:16] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:32:16 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:32:16] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-01  21:32:16 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:32:16 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:32:16] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:32:16 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:32:16] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:32:18 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:32:18] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:33:18 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\mysql_tools.py', reloading 
+2019-11-01  21:33:18 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  21:33:19 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  21:33:19 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  21:33:19 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  21:45:36 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  21:45:37 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  21:45:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  21:45:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  21:45:43 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:45:43] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:45:43 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:45:43] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-01  21:45:43 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:45:43 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:45:43] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:45:43 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:45:43] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:45:45 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:45:45] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:47:02 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:47:02] "POST /user/refund/ HTTP/1.1" 200 - 
+2019-11-01  21:47:05 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:47:05] "GET /static/layui/css/modules/layer/default/loading-1.gif HTTP/1.1" 200 - 
+2019-11-01  21:47:05 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:47:05] "GET /user/one_card_detail?card_no=5295871073893890 HTTP/1.1" 200 - 
+2019-11-01  21:47:05 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:47:05] "GET /static/css/mainpage.css HTTP/1.1" 200 - 
+2019-11-01  21:47:05 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:47:05] "GET /static/css/carddetail.css HTTP/1.1" 200 - 
+2019-11-01  21:47:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:47:12] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:47:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:47:12] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-01  21:47:12 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:47:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:47:12] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:47:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:47:12] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:47:14 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:47:14] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:32 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:32] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:59:33 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:59:33 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:33] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:33 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:33] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:59:35 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:35] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:59:35 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:35] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:35 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:59:35 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:35] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:35 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:35] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:59:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:37] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:37] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:59:37 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:59:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:37] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:37] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:59:39 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:39] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:41 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:41] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:59:41 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:41] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:41 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:41] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:59:44 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:59:46 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:46] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:47 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:47] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:59:48 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:48] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:59:48 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:59:48 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:48] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:49 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:49] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:59:50 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:50] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:51 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:51] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:59:51 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:59:51 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:51] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:51 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:51] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:59:53 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:53] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:59:53 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:53] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:53 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:59:53 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:53] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:53 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:53] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:59:54 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:54] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:59:55 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:59:55 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:55] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:55 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:55] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:59:55 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:55] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:56 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:56] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  21:59:56 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  21:59:56 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:56] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:57 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:57] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  21:59:57 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:57] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  21:59:58 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 21:59:58] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  22:01:11 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\apps\\user.py', reloading 
+2019-11-01  22:01:11 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  22:01:12 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  22:01:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  22:01:12 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  22:27:28 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  22:27:29 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  22:27:29 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  22:27:29 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  22:27:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:27:37] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  22:27:56 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:27:56] "POST /user/login HTTP/1.1" 200 - 
+2019-11-01  22:27:57 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:27:57] "POST /user/login HTTP/1.1" 200 - 
+2019-11-01  22:27:58 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:27:58] "POST /user/login HTTP/1.1" 500 - 
+2019-11-01  22:28:01 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:01] "POST /user/login HTTP/1.1" 500 - 
+2019-11-01  22:28:07 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:07] "GET /user/ HTTP/1.1" 302 - 
+2019-11-01  22:28:07 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:07] "POST /user/login HTTP/1.1" 500 - 
+2019-11-01  22:28:07 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:07] "POST /user/login HTTP/1.1" 500 - 
+2019-11-01  22:28:07 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:07] "GET /user/ HTTP/1.1" 302 - 
+2019-11-01  22:28:07 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:07] "GET /user/login HTTP/1.1" 200 - 
+2019-11-01  22:28:07 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:07] "POST /user/login HTTP/1.1" 500 - 
+2019-11-01  22:28:07 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:07] "POST /user/login HTTP/1.1" 200 - 
+2019-11-01  22:28:08 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:08] "POST /user/login HTTP/1.1" 500 - 
+2019-11-01  22:28:11 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:11] "POST /user/login HTTP/1.1" 500 - 
+2019-11-01  22:28:25 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  22:28:26 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  22:28:26 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  22:28:26 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  22:28:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:37] "POST /user/login HTTP/1.1" 200 - 
+2019-11-01  22:28:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:37] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  22:28:37 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  22:28:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:37] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 302 - 
+2019-11-01  22:28:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:37] "GET /user/login HTTP/1.1" 200 - 
+2019-11-01  22:28:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:37] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  22:28:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:37] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 302 - 
+2019-11-01  22:28:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:37] "GET /user/login HTTP/1.1" 200 - 
+2019-11-01  22:28:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:42] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  22:28:42 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=45     
+2019-11-01  22:28:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:42] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 302 - 
+2019-11-01  22:28:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:42] "GET /user/login HTTP/1.1" 200 - 
+2019-11-01  22:28:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:42] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-01  22:28:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:42] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  22:28:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:42] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 302 - 
+2019-11-01  22:28:43 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:28:43] "GET /user/login HTTP/1.1" 200 - 
+2019-11-01  22:30:35 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:30:35] "GET /user/logout HTTP/1.1" 302 - 
+2019-11-01  22:30:35 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:30:35] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  22:30:45 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:30:45] "POST /user/login HTTP/1.1" 200 - 
+2019-11-01  22:30:54 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:30:54] "POST /user/login HTTP/1.1" 200 - 
+2019-11-01  22:31:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:31:37] "POST /user/login HTTP/1.1" 200 - 
+2019-11-01  22:31:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:31:37] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  22:31:37 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=94     
+2019-11-01  22:31:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:31:37] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  22:31:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:31:37] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 302 - 
+2019-11-01  22:31:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:31:37] "GET /user/login HTTP/1.1" 200 - 
+2019-11-01  22:31:42 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:31:42] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  22:31:47 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:31:47] "POST /user/refund/ HTTP/1.1" 500 - 
+2019-11-01  22:33:39 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  22:33:43 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  22:33:43 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  22:33:43 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  22:33:43 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:33:43] "GET /user/ HTTP/1.1" 200 - 
+2019-11-01  22:33:44 Fri  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=94     
+2019-11-01  22:33:44 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:33:44] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 302 - 
+2019-11-01  22:33:44 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:33:44] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-01  22:33:44 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:33:44] "GET /user/login HTTP/1.1" 200 - 
+2019-11-01  22:33:44 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:33:44] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-01  22:33:46 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:33:46] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-01  22:33:51 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [01/Nov/2019 22:33:51] "POST /user/refund/ HTTP/1.1" 500 - 
+2019-11-01  22:34:25 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\mysql_tools.py', reloading 
+2019-11-01  22:34:25 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  22:34:28 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  22:34:28 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  22:34:28 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  22:36:36 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\mysql_tools.py', reloading 
+2019-11-01  22:36:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  22:36:37 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  22:36:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  22:36:37 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-01  23:57:10 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\apps\\user.py', reloading 
+2019-11-01  23:57:10 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-01  23:57:11 Fri  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-01  23:57:11 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-01  23:57:11 Fri  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  00:16:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\mysql_tools.py', reloading 
+2019-11-02  00:16:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  00:16:14 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  00:16:14 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  00:16:15 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  00:32:49 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\mysql_tools.py', reloading 
+2019-11-02  00:32:49 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  00:32:51 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  00:32:51 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  00:32:51 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  00:41:23 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  00:41:25 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  00:41:25 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  00:41:25 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /pay/ HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/css/styles.css HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/css/loaders.css HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/css/default.css HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/img/user_icon_copy.png HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/css/demo.css HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/img/tick.png HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/js/stopExecutionOnTimeout.js?t=1 HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/js/Particleground.js HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/js/Treatment.js HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/js/jquery.min.js HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/js/jquery.mockjax.js HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/img/key.png HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/img/lock_icon_copy.png HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/login_js/Detector.js HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/login_js/ThreeExtras.js HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/login_js/RequestAnimationFrame.js HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/js/jquery-ui.min.js HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /static/login_js/ThreeWebGL.js HTTP/1.1" 200 - 
+2019-11-02  00:42:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:05] "GET /favicon.ico HTTP/1.1" 404 - 
+2019-11-02  00:42:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:20] "POST /pay/login/ HTTP/1.1" 200 - 
+2019-11-02  00:42:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:20] "GET /pay/ HTTP/1.1" 200 - 
+2019-11-02  00:42:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:20] "GET /static/css/pay_index.css HTTP/1.1" 200 - 
+2019-11-02  00:42:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:20] "GET /static/assembly/zylVerificationCode/zylVerificationCode.js HTTP/1.1" 200 - 
+2019-11-02  00:42:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:20] "GET /static/assembly/jqarticle/jparticle.min.js HTTP/1.1" 200 - 
+2019-11-02  00:42:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:20] "GET /static/layui/lay/modules/carousel.js HTTP/1.1" 200 - 
+2019-11-02  00:42:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:20] "GET /static/layui/lay/modules/form.js HTTP/1.1" 200 - 
+2019-11-02  00:42:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:20] "GET /static/layui/lay/modules/element.js HTTP/1.1" 200 - 
+2019-11-02  00:42:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:42:20] "GET /static/layui/lay/modules/upload.js HTTP/1.1" 200 - 
+2019-11-02  00:43:34 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:43:34] "GET /pay/ HTTP/1.1" 200 - 
+2019-11-02  00:43:34 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:43:34] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-02  00:43:54 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:43:54] "POST /pay/acc_top_cn/ HTTP/1.1" 200 - 
+2019-11-02  00:43:54 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:43:54] "GET /pay/pay_pic/?sum_money=7434.105&top_money=1000&cus_name=大龙&cus_account=dalong HTTP/1.1" 200 - 
+2019-11-02  00:44:54 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:44:54] "POST /pay/acc_top_cn/ HTTP/1.1" 200 - 
+2019-11-02  00:44:54 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:44:54] "GET /pay/pay_pic/?sum_money=7434.105&top_money=1000&cus_name=大龙&cus_account=dalong HTTP/1.1" 200 - 
+2019-11-02  00:44:58 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:44:58] "POST /pay/acc_top_cn/ HTTP/1.1" 200 - 
+2019-11-02  00:44:58 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:44:58] "GET /pay/pay_pic/?sum_money=7434.105&top_money=1000&cus_name=大龙&cus_account=dalong HTTP/1.1" 200 - 
+2019-11-02  00:44:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:44:59] "GET /pay/ HTTP/1.1" 200 - 
+2019-11-02  00:44:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:44:59] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-02  00:45:11 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:45:11] "POST /pay/acc_top_cn/ HTTP/1.1" 200 - 
+2019-11-02  00:45:11 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:45:11] "GET /pay/pay_pic/?sum_money=7434.105&top_money=1000&cus_name=大龙&cus_account=dalong HTTP/1.1" 200 - 
+2019-11-02  00:45:40 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:45:40] "GET /pay/ HTTP/1.1" 200 - 
+2019-11-02  00:45:41 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:45:41] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-02  00:45:51 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:45:51] "POST /pay/acc_top_cn/ HTTP/1.1" 200 - 
+2019-11-02  00:45:51 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:45:51] "GET /pay/pay_pic/?sum_money=7434.105&top_money=1000&cus_name=大龙&cus_account=dalong HTTP/1.1" 200 - 
+2019-11-02  00:46:10 Sat  root ERROR G:\world_pay\apps\pay.py the JSON object must be str, bytes or bytearray, not NoneType 
+2019-11-02  00:46:10 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:46:10] "POST /pay/pay_pic/ HTTP/1.1" 200 - 
+2019-11-02  00:58:25 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:25] "GET /admin/ HTTP/1.1" 200 - 
+2019-11-02  00:58:25 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:25] "GET /static/css/login_middle.css HTTP/1.1" 200 - 
+2019-11-02  00:58:35 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:35] "POST /admin/login HTTP/1.1" 200 - 
+2019-11-02  00:58:35 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:35] "GET /admin/ HTTP/1.1" 200 - 
+2019-11-02  00:58:35 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:35] "GET /admin/cus_log?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:58:35 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:35] "GET /admin/middle_info?page=1&limit=500 HTTP/1.1" 308 - 
+2019-11-02  00:58:35 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:35] "GET /admin/middle_money?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:58:35 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:35] "GET /admin/middle_info/?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  00:58:36 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:36] "GET /admin/top_history?page=1&limit=500 HTTP/1.1" 500 - 
+2019-11-02  00:58:36 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:36] "GET /admin/top_history?page=1&limit=500 HTTP/1.1" 500 - 
+2019-11-02  00:58:38 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:38] "GET /admin/account_trans/?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:58:40 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:40] "GET /admin/account_info?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:58:48 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:58:48] "GET /admin/card_all?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:59:02 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:02] "GET /admin/line_chart HTTP/1.1" 200 - 
+2019-11-02  00:59:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  00:59:15 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  00:59:15 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  00:59:15 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  00:59:16 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:16] "GET /admin/ HTTP/1.1" 200 - 
+2019-11-02  00:59:16 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:16] "GET /admin/cus_log?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:59:16 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:16] "GET /admin/middle_money?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:59:16 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:16] "GET /admin/middle_info/?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  00:59:17 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:17] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-02  00:59:17 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:17] "GET /admin/top_history?page=1&limit=500 HTTP/1.1" 500 - 
+2019-11-02  00:59:17 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:17] "GET /admin/top_history?page=1&limit=500 HTTP/1.1" 500 - 
+2019-11-02  00:59:23 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:23] "GET /admin/account_trans/?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:59:25 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:25] "GET /admin/account_info?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:59:29 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:29] "GET /admin/card_all?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:59:43 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:43] "GET /admin/line_chart HTTP/1.1" 200 - 
+2019-11-02  00:59:51 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  00:59:52 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  00:59:52 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  00:59:52 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  00:59:55 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:55] "GET /admin/ HTTP/1.1" 200 - 
+2019-11-02  00:59:55 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:55] "GET /admin/cus_log?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:59:55 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:55] "GET /admin/middle_money?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  00:59:55 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:55] "GET /admin/middle_info/?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  00:59:55 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 00:59:55] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-02  01:00:02 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:00:02] "GET /admin/account_trans/?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:00:03 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:00:03] "GET /admin/account_info?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:00:04 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:00:04] "GET /admin/top_history?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  01:00:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:00:05] "GET /admin/line_chart HTTP/1.1" 500 - 
+2019-11-02  01:00:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:00:05] "GET /admin/top_history?page=1&limit=500 HTTP/1.1" 500 - 
+2019-11-02  01:00:07 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:00:07] "GET /admin/card_all?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:00:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:00:20] "GET /admin/top_history?page=1&limit=500&acc_name=大龙&order_num=&time_range= HTTP/1.1" 500 - 
+2019-11-02  01:04:09 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  01:04:10 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  01:04:10 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  01:04:10 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  01:04:12 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:04:12] "GET /admin/ HTTP/1.1" 200 - 
+2019-11-02  01:04:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:04:13] "GET /admin/cus_log?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:04:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:04:13] "GET /admin/middle_money?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:04:15 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:04:15] "GET /admin/middle_info/?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  01:04:16 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:04:16] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-02  01:04:18 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:04:18] "GET /admin/account_trans/?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:04:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:04:20] "GET /admin/top_history?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  01:04:20 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:04:20] "GET /admin/account_info?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:04:30 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:04:30] "GET /admin/card_all?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:04:43 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:04:43] "GET /admin/line_chart HTTP/1.1" 200 - 
+2019-11-02  01:05:42 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:05:42] "GET /admin/top_history?page=1&limit=500&acc_name=大龙&order_num=&time_range= HTTP/1.1" 200 - 
+2019-11-02  01:06:47 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  01:06:49 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  01:06:49 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  01:06:49 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  01:06:49 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:06:49] "GET /admin/ HTTP/1.1" 200 - 
+2019-11-02  01:06:50 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:06:50] "GET /admin/cus_log?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:06:50 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:06:50] "GET /admin/middle_money?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:06:50 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:06:50] "GET /admin/middle_info/?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  01:06:51 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:06:51] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-02  01:06:57 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:06:57] "GET /admin/account_trans/?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:06:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:06:59] "GET /admin/account_info?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:06:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:06:59] "GET /admin/top_history?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  01:07:08 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:07:08] "GET /admin/card_all?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:07:17 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:07:17] "GET /admin/line_chart HTTP/1.1" 200 - 
+2019-11-02  01:11:56 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:11:56] "GET /admin/ HTTP/1.1" 200 - 
+2019-11-02  01:11:56 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:11:56] "GET /admin/cus_log?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:11:56 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:11:56] "GET /admin/middle_money?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:11:56 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:11:56] "GET /admin/middle_info/?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  01:11:56 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:11:56] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-02  01:11:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:11:59] "GET /admin/account_trans/?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:12:01 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:12:01] "GET /admin/account_info?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:12:02 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:12:02] "GET /admin/top_history?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  01:12:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:12:05] "GET /admin/card_all?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:12:13 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:12:13] "GET /admin/line_chart HTTP/1.1" 200 - 
+2019-11-02  01:12:15 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:12:15] "GET /admin/top_history?page=1&limit=500&acc_name=大龙&order_num=&time_range= HTTP/1.1" 200 - 
+2019-11-02  01:13:58 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\apps\\admin.py', reloading 
+2019-11-02  01:13:58 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  01:14:01 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  01:14:01 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  01:14:01 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  01:14:08 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:14:08] "GET /user/ HTTP/1.1" 200 - 
+2019-11-02  01:14:08 Sat  root ERROR G:\world_pay\tools_me\mysql_tools.py SELECT * FROM card_info WHERE account_id=94     
+2019-11-02  01:14:08 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:14:08] "GET /user/account_trans/?page=1&limit=100 HTTP/1.1" 200 - 
+2019-11-02  01:14:08 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:14:08] "GET /user/top_history/?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-02  01:14:11 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:14:11] "GET /user/card_info?page=1&limit=20 HTTP/1.1" 200 - 
+2019-11-02  01:20:29 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\apps\\user.py', reloading 
+2019-11-02  01:20:29 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  01:20:30 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  01:20:30 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  01:20:30 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  01:21:29 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Detected change in 'G:\\world_pay\\tools_me\\mysql_tools.py', reloading 
+2019-11-02  01:21:29 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  01:21:30 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  01:21:30 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  01:21:30 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  01:22:58 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Restarting with stat 
+2019-11-02  01:22:59 Sat  werkzeug WARNING G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger is active! 
+2019-11-02  01:22:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Debugger PIN: 512-601-423 
+2019-11-02  01:22:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit) 
+2019-11-02  01:22:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:22:59] "GET /admin/ HTTP/1.1" 200 - 
+2019-11-02  01:22:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:22:59] "GET /admin/cus_log?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:22:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:22:59] "GET /admin/middle_money?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:22:59 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:22:59] "GET /admin/middle_info/?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  01:23:00 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:23:00] "GET /static/img/master.png HTTP/1.1" 200 - 
+2019-11-02  01:23:04 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:23:04] "GET /admin/account_trans/?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:23:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:23:05] "GET /admin/account_info?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:23:05 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:23:05] "GET /admin/top_history?page=1&limit=500 HTTP/1.1" 200 - 
+2019-11-02  01:23:10 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:23:10] "GET /admin/card_all?page=1&limit=50 HTTP/1.1" 200 - 
+2019-11-02  01:23:16 Sat  werkzeug INFO G:\order_flask\venv\lib\site-packages\werkzeug\_internal.py 127.0.0.1 - - [02/Nov/2019 01:23:16] "GET /admin/line_chart HTTP/1.1" 200 - 

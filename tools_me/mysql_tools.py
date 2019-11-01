@@ -39,7 +39,7 @@ class SqlData(object):
             user_data['name'] = rows[0][2]
             return user_data
         except Exception as e:
-            logging.error(str(e))
+            logging.warning(str(e))
             return '账号或密码错误!'
 
     # 查询用户首页数据信息
@@ -125,7 +125,8 @@ class SqlData(object):
             return info_list
 
     def search_activation(self):
-        sql = "SELECT activation from card_info WHERE card_no is null AND card_name = '' AND account_id is null LIMIT 1"
+        # sql = "SELECT activation from card_info WHERE card_no is null AND card_name = '' AND account_id is null LIMIT 1"
+        sql = "select activation from card_info  where card_no is null AND card_name = '' AND account_id is null order by rand() limit 1"
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows:
@@ -257,14 +258,14 @@ class SqlData(object):
         return info_list
 
     def search_trans_sum(self, account_id):
-        sql = "SELECT SUM(do_money), SUM(hand_money) FROM account_trans WHERE trans_type='支出' AND account_id={}".format(account_id)
+        # 2019-11-01 20:50:00 更该计费方式,退款不增加总充值金额,只变动账号余额和以消费金额,所以要按两个条件段搜索
+        sql = "SELECT SUM(do_money) FROM account_trans WHERE (account_id={} AND trans_type='收入' AND " \
+              "do_date>'2019-11-01 20:50:00' ) OR ( account_id={} AND trans_type='支出')".format(account_id, account_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows[0][0]:
             return 0
-        do_money = rows[0][0]
-        hand_money = rows[0][1]
-        sum_money = do_money + hand_money
+        sum_money = rows[0][0]
         return sum_money
 
     # 一下是中介使用方法-------------------------------------------------------------------------------------------------
@@ -456,7 +457,7 @@ class SqlData(object):
         self.close_connect()
 
     def update_balance(self, money, id):
-        sql = "UPDATE account set balance=balance+{} WHERE id={}".format(money, money, id)
+        sql = "UPDATE account set balance=balance+{} WHERE id={}".format(money, id)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -467,7 +468,7 @@ class SqlData(object):
 
     def insert_top_up(self, pay_num, now_time, money, before_balance, balance, account_id, trans_type):
         sql = "INSERT INTO top_up(pay_num, time, money, before_balance, balance, account_id, trans_type) " \
-              "VALUES ('{}','{}',{},{},{},{})".format(pay_num, now_time, money, before_balance, balance, account_id, trans_type)
+              "VALUES ('{}','{}',{},{},{},{},'{}')".format(pay_num, now_time, money, before_balance, balance, account_id, trans_type)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -488,10 +489,15 @@ class SqlData(object):
         self.close_connect()
 
     def search_time_sum_money(self, x_time, user_id):
-        sql = "SELECT SUM(money) FROM top_up WHERE account_id={} AND time <= '{}'".format(user_id, x_time)
+        sql = "SELECT money FROM top_up WHERE account_id={} AND time <= '{}'".format(user_id, x_time)
         self.cursor.execute(sql)
         row = self.cursor.fetchall()
-        return row[0][0]
+        res = 0
+        for i in row:
+            v = i[0]
+            if v >= 0:
+                res += v
+        return res
 
     def search_top_history(self, sql_line):
         sql = "SELECT * FROM top_up LEFT JOIN account ON account.id=top_up.account_id {}".format(sql_line)

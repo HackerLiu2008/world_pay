@@ -54,14 +54,15 @@
   <ul class="layui-tab-title">
       <li class="layui-this" lay-id="1">近期预览</li>
       <li lay-id="2">所有客户</li>
-      <li lay-id="3">客户充值记录</li>
-      <li lay-id="4">客户消费记录</li>
-      <li lay-id="5">客户历史余额记录</li>
-      <li lay-id="6">新增客户</li>
-      <li lay-id="7">新增中介</li>
-      <li lay-id="8">中介管理</li>
-      <li lay-id="9">中介提成</li>
-      <li lay-id="10">所有卡信息</li>
+      <li lay-id="3">系统充值记录</li>
+      <li lay-id="4">退款充值记录</li>
+      <li lay-id="5">客户消费记录</li>
+      <li lay-id="6">客户历史余额记录</li>
+      <li lay-id="7">新增客户</li>
+      <li lay-id="8">新增中介</li>
+      <li lay-id="9">中介管理</li>
+      <li lay-id="10">中介提成</li>
+      <li lay-id="11">所有卡信息</li>
   </ul>
   <div class="layui-tab-content" style="height: 100%;">
       <div class="layui-tab-item layui-show">
@@ -109,8 +110,16 @@
             </div>
         </form>
 
-        <tablse class="layui-hide" id="top_up" lay-filter="top_up"></tablse>
+        <table class="layui-hide" id="top_up" lay-filter="top_up"></table>
     </div>
+
+
+      <div class="layui-tab-item">
+
+          敬请期待!
+
+    </div>
+
       <div class="layui-tab-item">
 
           <form class="layui-form" action="" lay-filter="example" id="example">
@@ -368,7 +377,8 @@
           <dl class="layui-nav-child">
             <dd><a href="javascript:" id="make_vir">近期预览</a></dd>
             <dd><a href="javascript:" id="make_vir_some">所有客户</a></dd>
-            <dd><a href="javascript:" id="all_vir">客户充值记录</a></dd>
+            <dd><a href="javascript:" id="all_vir">系统充值记录</a></dd>
+            <dd><a href="javascript:" id="top_refund">退款充值记录</a></dd>
             <dd><a href="javascript:" id="cus_trans">客户消费记录</a></dd>
             <dd><a href="javascript:" id="cus_log">客户历史余额记录</a></dd>
           </dl>
@@ -714,6 +724,8 @@
             , page: true
         });
 
+
+
         table.render({
             elem: '#middle_info'
             , height: 'full-250'
@@ -845,26 +857,29 @@
         $('#all_vir').on('click',function () {
            element.tabChange('demo', 3);
         });
-        $('#cus_trans').on('click',function () {
+        $('#top_refund').on('click',function () {
            element.tabChange('demo', 4);
         });
-        $('#cus_log').on('click',function () {
+        $('#cus_trans').on('click',function () {
            element.tabChange('demo', 5);
         });
-        $('#add_acc').on('click',function () {
+        $('#cus_log').on('click',function () {
            element.tabChange('demo', 6);
         });
-        $('#add_mid').on('click',function () {
+        $('#add_acc').on('click',function () {
            element.tabChange('demo', 7);
         });
-        $('#mid_info').on('click',function () {
+        $('#add_mid').on('click',function () {
            element.tabChange('demo', 8);
         });
-        $('#mid_money').on('click',function () {
+        $('#mid_info').on('click',function () {
            element.tabChange('demo', 9);
         });
-        $('#card_admin').on('click',function () {
+        $('#mid_money').on('click',function () {
            element.tabChange('demo', 10);
+        });
+        $('#card_admin').on('click',function () {
+           element.tabChange('demo', 11);
         });
 
 
