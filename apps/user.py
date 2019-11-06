@@ -591,7 +591,6 @@ def card_info():
             min_time = range_time.split(' - ')[0]
             max_time = range_time.split(' - ')[1] + ' 23:59:59'
             time_sql = "AND act_time BETWEEN " + "'" + min_time + "'" + " and " + "'" + max_time + "'"
-        logging.error('用户id为:' + str(user_id))
         data = SqlData().search_card_info(user_id, name_sql, card_sql, label_sql, time_sql)
         if len(data) == 0:
             results['code'] = RET.SERVERERROR

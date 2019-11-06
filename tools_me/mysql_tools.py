@@ -193,7 +193,6 @@ class SqlData(object):
     def search_card_info(self, user_id, name_sql, card_sql, label, time_sql):
         sql = "SELECT * FROM card_info WHERE account_id={} {} {} {} {}".format(user_id, name_sql, card_sql, label,
                                                                                time_sql)
-        logging.error(sql)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         info_list = list()
