@@ -1,7 +1,7 @@
 import json
 import logging
 import datetime
-from .mysql_tools import SqlData
+from tools_me.mysql_tools import SqlData
 
 
 def xianzai_time():
@@ -32,7 +32,7 @@ def sum_middle_money():
             logging.error('统计时间异常, 开始时间为: ' + wed_day + ';结束时间为: ' + thues_day)
 
         logging.error('开始统计计算中介费用!开始时间为: ' + wed_day + ';结束时间为: ' + thues_day)
-        time_range = "AND act_time BETWEEN '" + wed_day + ' 00:00:00' + "'" + " and '" + thues_day + " 23:59:59'"
+        time_range = "AND card_info.act_time BETWEEN '" + wed_day + ' 00:00:00' + "'" + " and '" + thues_day + " 23:59:59'"
         middle_list = SqlData().search_middle_id()
 
         info_dict = dict()
@@ -43,7 +43,7 @@ def sum_middle_money():
             if account_list:
                 for u in account_list:
                     u_id = u.get('id')
-                    card_count = SqlData().search_card_count(u_id, time_range)
+                    card_count = SqlData().search_card_count_of_money(u_id, time_range)
                     u['count'] = card_count
                     sum_money = card_count * card_price
                     u['sum_money'] = sum_money

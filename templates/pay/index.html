@@ -14,7 +14,7 @@
 
             .pay{
             width: 500px;
-            height: 478px;
+            height: 518px;
             }
 		</style>
 	</head>
@@ -94,6 +94,14 @@
                         </div>
 
                         <div class="layui-form-item">
+                            <label class="layui-form-label">通知电话: </label>
+                            <div class="layui-input-inline">
+                                <input type="number" name="send_phone" placeholder="充值成功后短信推送!" autocomplete="off"
+                                       class="layui-input" id="send_phone" >
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
                             <label class="layui-form-label">当前汇率: </label>
                             <div class="layui-input-inline">
                                 <input id="vipdiscount"  readonly="true" value="{{ ex_change }}" class="layui-input">
@@ -151,6 +159,14 @@
                             <div class="layui-input-inline">
                                 <input type="text" name="cus_account_dollar" placeholder="客户的账号" required lay-verify="required" autocomplete="off"
                                        class="layui-input" id="cus_account_dollar" >
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">通知电话: </label>
+                            <div class="layui-input-inline">
+                                <input type="number" name="send_phone" placeholder="充值成功后短信推送!" autocomplete="off"
+                                       class="layui-input" id="send_phone" >
                             </div>
                         </div>
 
@@ -289,8 +305,9 @@
             var sum_money = $("#receipts").html(),
                 a = $('#accountReceivable').val(),
                 cus_name = $('#cus_name').val(),
-                cus_account = $('#cus_account').val();
-            var data_info = {sum_money:sum_money, top_money: a, cus_name: cus_name, cus_account:cus_account};
+                cus_account = $('#cus_account').val(),
+                phone = $('#send_phone').val();
+            var data_info = {sum_money:sum_money, top_money: a, cus_name: cus_name, cus_account:cus_account, phone:phone};
             $.ajax({
 				type : 'POST',
 				url : '/pay/acc_top_cn/',
@@ -308,7 +325,7 @@
                             ,area: ['600px','600px']
                             ,anim: 2
                             ,shadeClose:true
-                            ,content: '/pay/pay_pic/?sum_money=' + sum_money + "&top_money=" + a + '&cus_name=' +cus_name + '&cus_account=' + cus_account
+                            ,content: '/pay/pay_pic/?sum_money=' + sum_money + "&top_money=" + a + '&cus_name=' +cus_name + '&cus_account=' + cus_account + "&phone=" + phone
                             ,btn: '关闭全部'
                             ,btnAlign: 'c' //按钮居中a
                             ,shade:  [0.8, '#393D49'] //弹框背景选项
@@ -338,8 +355,9 @@
             var sum_money = $("#dollar").html(),
                 top_dollar = $('#top_money').val(),
                 cus_name = $('#cus_name_dollar').val(),
-                cus_account = $('#cus_account_dollar').val();
-            var data_info = {sum_money:sum_money, top_money: top_dollar, cus_name: cus_name, cus_account:cus_account};
+                cus_account = $('#cus_account_dollar').val(),
+                phone = $('#send_phone').val();
+            var data_info = {sum_money:sum_money, top_money: top_dollar, cus_name: cus_name, cus_account:cus_account, phone:phone};
             $.ajax({
 				type : 'POST',
 				url : '/pay/acc_top_dollar/',
@@ -357,7 +375,7 @@
                             ,area: ['40%','40%']
                             ,anim: 2
                             ,shadeClose:true
-                            ,content: '/pay/pay_pic/?sum_money=' + sum_money + "&top_money=" + top_dollar + '&cus_name=' +cus_name + '&cus_account=' + cus_account
+                            ,content: '/pay/pay_pic/?sum_money=' + sum_money + "&top_money=" + top_dollar + '&cus_name=' +cus_name + '&cus_account=' + cus_account + "&phone=" + phone
                             ,btn: '关闭全部'
                             ,btnAlign: 'c' //按钮居中a
                             ,shade:  [0.8, '#393D49'] //弹框背景选项

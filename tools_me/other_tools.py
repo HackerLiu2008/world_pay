@@ -214,6 +214,25 @@ def pay_required(view_func):
     return wraaper
 
 
+def verify_required(view_func):
+    """自定义装饰器判断用户是否登录
+    使用装饰器装饰函数时，会修改被装饰的函数的__name属性和被装饰的函数的说明文档
+    为了不让装饰器影响被装饰的函数的默认的数据，我们会使用@wraps装饰器，提前对view_funcJ进行装饰
+    """
+
+    @wraps(view_func)
+    def wraaper(*args, **kwargs):
+        """具体实现判断用户是否登录的逻辑"""
+        middle_id = session.get('verify_pay')
+        if not middle_id:
+            return render_template('verify_pay/login.html')
+        else:
+            # 执行被装饰的视图函数
+            return view_func(*args, **kwargs)
+
+    return wraaper
+
+
 def Singleton(cls):
     _instance = {}
 

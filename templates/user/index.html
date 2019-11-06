@@ -115,7 +115,7 @@
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span style="font-weight: normal;font-size: 16px;color: #188479;">开卡费用: </span> $ {{ create_card }}
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button  class="layui-btn layui-btn-lg" lay-submit="" lay-filter="create_one" id="sub" type="submit">确认</button>
+                <button  class="layui-btn layui-btn-lg demo-active" lay-submit="" lay-filter="create_one" id="sub" type="submit">确认</button>
             </div>
         </div>
     </form>
@@ -166,7 +166,7 @@
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span style="font-weight: normal;font-size: 16px;color: #188479;">开卡费用(单价): </span> $ {{ create_card }}
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button  class="layui-btn" lay-submit="" lay-filter="formDemo" id="sub" type="submit">确认</button>
+                <button type="button" class="layui-btn site-demo-active" lay-submit lay-filter="formDemo" id="sub_some">确认</button>
             </div>
         </div>
     </form>
@@ -263,7 +263,7 @@
 
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    全球付--WORLD_PAY
+    可平移卡数量: <span style="font-weight: normal;font-size: 16px;color: red"> {{ free }}</span>
   </div>
 </div>
 </div>
@@ -285,8 +285,13 @@
             , $ = layui.$
             , form = layui.form;
 
-
         form.on('submit(create_one)', function(data){
+            // 单击之后提交按钮不可选,防止重复提交
+            var DISABLED = 'layui-btn-disabled';
+            // 增加样式
+            $('.demo-active').addClass(DISABLED);
+            // 增加属性
+            $('.demo-active').attr('disabled', true);
             var data_info = {data:JSON.stringify(data.field)};
             $.ajax({
 				type : 'POST',
@@ -294,7 +299,7 @@
 				data : data_info,
 				dataType : 'json',
                 beforeSend:function () {
-                layer.load()
+                    layer.load()
                 },
 				success : function(data) {
 					// 成功提示框
@@ -317,12 +322,25 @@
 						icon : 5
 					});
 					parent.layer.closeAll('iframe'); //关闭弹框
-				}
+				},
+                complete:function () {
+                    // 增加样式
+                    $('.demo-active').removeClass(DISABLED);
+                    // 增加属性
+                    $('.demo-active').attr('disabled', false);
+                }
 			});
 			return false;
             });
 
         form.on('submit(formDemo)', function(data){
+            // 单击之后提交按钮不可选,防止重复提交
+            var DISABLED = 'layui-btn-disabled';
+            // 增加样式
+            $('.site-demo-active').addClass(DISABLED);
+            // 增加属性
+            $('.site-demo-active').attr('disabled', true);
+
             var data_info = {data:JSON.stringify(data.field)};
             $.ajax({
 				type : 'POST',
@@ -353,7 +371,13 @@
 						icon : 5
 					});
 					parent.layer.closeAll('iframe'); //关闭弹框
-				}
+				},
+                complete:function () {
+                    // 增加样式
+                    $('.site-demo-active').removeClass(DISABLED);
+                    // 增加属性
+                    $('.site-demo-active').attr('disabled', false);
+                }
 			});
 			return false;
             });

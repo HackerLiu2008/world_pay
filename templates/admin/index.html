@@ -113,10 +113,27 @@
         <table class="layui-hide" id="top_up" lay-filter="top_up"></table>
     </div>
 
+    <div class="layui-tab-item">
+        <form class="layui-form" action="" lay-filter="example" id="example">
+            <div class="demoTable">
+                客户：
+            <div class="layui-inline">
+                <input class="layui-input" name="a_name" id="a_name" autocomplete="off">
+            </div>
+                流水号:
+            <div class="layui-inline">
+                <input type="text"  class="layui-input" name="o_num" id="o_num" autocomplete="off">
+            </div>
+                时间范围:
+                <div class="layui-inline">
+                <input type="text" class="layui-input" id="test10" placeholder=" - ">
+            </div>
+            <button class="layui-btn" lay-submit="" lay-filter="sea_pay" type="submit">搜索</button>
+            <button class="layui-btn layui-btn-primary" >重置</button>
+            </div>
+        </form>
 
-      <div class="layui-tab-item">
-
-          敬请期待!
+          <table class="layui-hide" id="refund_top" lay-filter="refund_top"> </table>
 
     </div>
 
@@ -228,14 +245,6 @@
                 <label class="layui-form-label">最高充值金额</label>
                 <div class="layui-input-inline">
                     <input type="number" id="max_top" name="max_top" placeholder="最高充值到卡的金额" autocomplete="off" required lay-verify="required"
-                           class="layui-input">
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">备     注</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="note" name="note" placeholder="备注信息可填可不填" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -561,6 +570,10 @@
             elem: '#test9'
             ,range: true
           });
+        laydate.render({
+            elem: '#test10'
+            ,range: true
+          });
 
         table.render({
             elem: '#cus_money_log'
@@ -715,12 +728,37 @@
                 , {field: 'time', title: '充值时间', align: 'center', sort: true, }
                 , {field: 'trans_type', title: '充值类型', align: 'center', sort: true, style:'color: #104E8B'}
                 , {field: 'money', title: '充值金额', align: 'center', sort: true, totalRow: true,style:'color: red'}
-                , {field: 'refund', title: '退款金额', align: 'center', sort: true, totalRow: true,style:'color: #528B8B'}
                 , {field: 'before_balance', title: '充值前余额', align: 'center', sort: true, totalRow: true}
                 , {field: 'balance', title: '充值后余额', align: 'center', sort: true, totalRow: true}
                 , {field: 'sum_balance', title: '总充值金额', align: 'center', sort: true, totalRow: true}
             ]]
             , id: 'top_history'
+            , page: true
+        });
+
+
+        table.render({
+            elem: '#refund_top'
+            , height: 'full-250'
+            , cellMinWidth: '80'
+            , url: '/admin/top_history?trans_type=退款' //数据接口
+            , title: '客户充值记录'
+            , limit:500
+            , limits:[500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
+            , toolbar: "true" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'name', title: '客户', align: 'center', sort: true,  totalRowText: '合计：'}
+                , {field: 'pay_num', title: '流水号', align: 'center', sort: true,}
+                , {field: 'time', title: '充值时间', align: 'center', sort: true, }
+                , {field: 'trans_type', title: '充值类型', align: 'center', sort: true, style:'color: #104E8B'}
+                , {field: 'money', title: '充值金额', align: 'center', sort: true, totalRow: true,style:'color: red'}
+                , {field: 'before_balance', title: '充值前余额', align: 'center', sort: true, totalRow: true}
+                , {field: 'balance', title: '充值后余额', align: 'center', sort: true, totalRow: true}
+                , {field: 'sum_balance', title: '总充值金额', align: 'center', sort: true, totalRow: true}
+            ]]
+            , id: 'top_refund'
             , page: true
         });
 
@@ -916,20 +954,16 @@
                 ,offset: 'auto'
                 ,skin:'layui-layer-demo'
                 ,id: 'account_info'//防止重复弹出
-                ,title: '客户为 ' + data.card_num + ' 的详细信息'
-                ,area: ['90%','80%']
+                ,title: '客户为 ' + data.name + ' 的详细信息'
+                ,area: ['40%','40%']
                 ,anim: 2
                 ,shadeClose:true
-                ,content: '/admin/card_list_html'
+                ,content: '/admin/middle_list/?middle_name=' + data.name
                 ,btn: '关闭全部'
                 ,btnAlign: 'c' //按钮居中a
                 ,shade:  [0.8, '#393D49'] //弹框背景选项
                 ,success: function(layero, index) {
                         var body = layer.getChildFrame('body', index);
-                        body.contents().find("#card_num").html(data.card_num);
-                        body.contents().find("#card_name").html(data.card_name);
-                        body.contents().find("#card_exp").html(data.card_exp);
-                        body.contents().find("#cvv").html(data.cvv);
                     }
               });
 
@@ -1252,6 +1286,24 @@
                      time_range:time_range,
                    }
                }, '/admin/top_history');
+            return false;
+         });
+
+         form.on('submit(sea_pay)', function(data){
+
+             var $ = layui.jquery;
+             var acc_name = $('#a_name').val(),
+                order_num = $('#o_num').val(),
+                time_range = $('#test10').val();
+             table.reload("top_refund", {
+                 page: {
+                   curr: 1 //重新从第 1 页开始
+                 },where: {
+                     acc_name:acc_name,
+                     order_num:order_num,
+                     time_range:time_range,
+                   }
+               }, '/admin/top_history?trans_type=退款');
             return false;
          });
 

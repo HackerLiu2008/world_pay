@@ -1,9 +1,10 @@
 import datetime
 import logging
+import re
 import uuid
 from flask import render_template, request, json, jsonify, session
 from tools_me.mysql_tools import SqlData
-from tools_me.other_tools import time_str, xianzai_time, pay_required
+from tools_me.other_tools import time_str, xianzai_time, pay_required, sum_code
 from tools_me.parameter import RET, MSG, DIR_PATH
 from tools_me.send_email import send
 from . import pay_blueprint
@@ -57,9 +58,17 @@ def top_cn():
         top_money = data.get('top_money')
         cus_name = data.get('cus_name')
         cus_account = data.get('cus_account')
+        phone = data.get('phone')
         res = SqlData().search_user_check(cus_name, cus_account)
         if not res:
             return jsonify({'code': RET.SERVERERROR, 'msg': '没有该用户!请核实后重试!'})
+        if phone:
+            ret = re.match(r"^1[35789]\d{9}$", phone)
+            if not ret:
+                results = dict()
+                results['code'] = RET.SERVERERROR
+                results['msg'] = '请输入符合规范的电话号码!'
+                return jsonify(results)
         ex_change = SqlData().search_admin_field('ex_change')
         ex_range = SqlData().search_admin_field('ex_range')
         hand = SqlData().search_admin_field('hand')
@@ -86,9 +95,17 @@ def top_dollar():
         top_money = data.get('top_money')
         cus_name = data.get('cus_name')
         cus_account = data.get('cus_account')
+        phone = data.get('phone')
         res = SqlData().search_user_check(cus_name, cus_account)
         if not res:
             return jsonify({'code': RET.SERVERERROR, 'msg': '没有该用户!请核实后重试!'})
+        if phone:
+            ret = re.match(r"^1[35789]\d{9}$", phone)
+            if not ret:
+                results = dict()
+                results['code'] = RET.SERVERERROR
+                results['msg'] = '请输入符合规范的电话号码!'
+                return jsonify(results)
         dollar = SqlData().search_admin_field('dollar_hand')
         _money_self = float(top_money) * (dollar + 1)
         money_self = round(_money_self, 10)
@@ -107,29 +124,42 @@ def pay_pic():
         top_money = request.args.get('top_money')
         cus_name = request.args.get('cus_name')
         cus_account = request.args.get('cus_account')
+        phone = request.args.get('phone')
         context = dict()
         context['sum_money'] = sum_money
         context['top_money'] = top_money
         context['cus_name'] = cus_name
         context['cus_account'] = cus_account
+        context['phone'] = phone
         return render_template('pay/pay_pic.html', **context)
     if request.method == 'POST':
         '''
         获取充值金额, 保存付款截图. 发送邮件通知管理员
         '''
         try:
-
+            # 两组数据,1,表单信息充值金额,等一下客户信息 2,截图凭证最多可上传5张
+            # print(request.form)
+            # print(request.files)
             data = json.loads(request.form.get('data'))
             top_money = data.get('top_money')
             sum_money = data.get('sum_money')
             cus_name = data.get('cus_name')
             cus_account = data.get('cus_account')
+            phone = request.args.get('phone')
             results = {'code': RET.OK, 'msg': MSG.OK}
-            file = request.files.get('file')
-            now_time = time_str()
-            file_name = cus_name + "_" + now_time + ".png"
-            file_path = DIR_PATH.PHOTO_DIR + file_name
-            file.save(file_path)
+
+            # 保存所有图片
+            file_n = 'file_'
+            pic_list = list()
+            for i in range(5):
+                file_name = file_n + str(i+1)
+                file = request.files.get(file_name)
+                if file:
+                    now_time = sum_code()
+                    file_name = cus_name + "_" + now_time + ".png"
+                    file_path = DIR_PATH.PHOTO_DIR + file_name
+                    file.save(file_path)
+                    pic_list.append(file_name)
             n_time = xianzai_time()
             vir_code = str(uuid.uuid1())[:6]
             context = "客户:  " + cus_name + " , 于" + n_time + "在线申请充值: " + top_money + "美元, 折和人名币: " + sum_money + "元。 验证码为: " + vir_code
@@ -137,7 +167,7 @@ def pay_pic():
             cus_id = SqlData().search_user_check(cus_name, cus_account)
             sum_money = float(sum_money)
             top_money = float(top_money)
-            SqlData().insert_pay_log(n_time, sum_money, top_money, vir_code, '待充值', cus_id)
+            SqlData().insert_pay_log(n_time, sum_money, top_money, vir_code, '待充值', phone, cus_id)
 
             # 获取要推送邮件的邮箱
             top_push = SqlData().search_admin_field('top_push')
@@ -146,7 +176,7 @@ def pay_pic():
             for i in top_dict:
                 email_list.append(top_dict.get(i))
             for p in email_list:
-                send(context, file_name, p)
+                send(context, pic_list, p)
 
             return jsonify(results)
         except Exception as e:

@@ -310,7 +310,6 @@ def add_account():
         refund = float(data.get('refund'))
         min_top = float(data.get('min_top'))
         max_top = float(data.get('max_top'))
-        note = data.get('note')
         ed_name = SqlData().search_user_field_name('account', name)
         if ed_name:
             results['code'] = RET.SERVERERROR
@@ -324,7 +323,7 @@ def add_account():
                 return jsonify(results)
         else:
             phone_num = ""
-        SqlData().insert_account(account, password, phone_num, name, create_price, refund, min_top, max_top, note)
+        SqlData().insert_account(account, password, phone_num, name, create_price, refund, min_top, max_top)
         return jsonify(results)
     except Exception as e:
         logging.error(e)
@@ -445,6 +444,7 @@ def top_history():
     acc_name = request.args.get('acc_name')
     order_num = request.args.get('order_num')
     time_range = request.args.get('time_range')
+    trans_type = request.args.get('trans_type')
 
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
 
@@ -477,6 +477,15 @@ def top_history():
     else:
         sql_all = ""
 
+    if trans_type and 'WHERE' in sql_all:
+        sql_all = sql_all + " AND trans_type='退款'"
+    elif trans_type:
+        sql_all = sql_all + "WHERE trans_type='退款'"
+    elif not trans_type and 'WHERE' in sql_all:
+        sql_all = sql_all + " AND trans_type='系统'"
+    elif not trans_type:
+        sql_all = sql_all + "WHERE trans_type='系统'"
+
     task_info = SqlData().search_top_history(sql_all)
 
     if len(task_info) == 0:
@@ -489,20 +498,9 @@ def top_history():
         page_list.append(task_info[i:i + int(limit)])
     data = page_list[int(page) - 1]
 
-    # 处理不同充值类型的显示方式(系统, 退款)
-    info_list_1 = list()
-    for n in data:
-        trans_type = n.get('trans_type')
-        if trans_type == '系统':
-            n['refund'] = ''
-        else:
-            n['refund'] = n.get('money')
-            n['money'] = ''
-        info_list_1.append(n)
-
     # 查询当次充值时的账号总充值金额
     info_list = list()
-    for o in info_list_1:
+    for o in data:
         x_time = o.get('time')
         user_id = o.get('user_id')
         sum_money = SqlData().search_time_sum_money(x_time, user_id)
@@ -625,6 +623,46 @@ def card_list_html():
     context = dict()
     context['user_id'] = user_id
     return render_template('admin/card_list.html', **context)
+
+
+@admin_blueprint.route('/middle_list/', methods=['GET'])
+@admin_required
+def middle_list():
+    middle_name = request.args.get('middle_name')
+    context = dict()
+    context['middle_name'] = middle_name
+    return render_template('admin/middle_detail.html', **context)
+
+
+@admin_blueprint.route('/middle_detail/', methods=['GET'])
+@admin_required
+def middle_detail():
+    page = request.args.get('page')
+    limit = request.args.get('limit')
+    middle_name = request.args.get('middle_name')
+    middle_id = SqlData().search_middle_name('id', middle_name)
+    account_list = SqlData().search_user_field_middle(middle_id)
+    results = dict()
+    if not account_list:
+        results['code'] = RET.OK
+        results['msg'] = MSG.NODATA
+        return jsonify(results)
+    data = list()
+    for n in account_list:
+        u_id = n.get('id')
+        card_count = SqlData().search_card_count(u_id, '')
+        n['card_count'] = card_count
+        data.append(n)
+    page_list = list()
+    for i in range(0, len(data), int(limit)):
+        page_list.append(data[i:i + int(limit)])
+    results['code'] = RET.OK
+    results['data'] = page_list[int(page) - 1]
+    results['count'] = len(data)
+    return jsonify(results)
+
+
+
 
 
 @admin_blueprint.route('/line_chart', methods=['GET'])
