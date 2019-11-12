@@ -1,12 +1,14 @@
 # coding:utf-8
 
-
+from threading import Lock
 import operator
 import threading
 from tools_me.RSA_NAME.helen import QuanQiuFu
 
 
 info = list()
+
+lock = Lock()
 
 
 def loop(card_info):
@@ -35,6 +37,7 @@ def get_card_remain(loops):
     for i in loops:
         i['number'] = n
         n += 1
+    lock.acquire()
     while True:
         loops_len = len(loops)
         num = 5
@@ -51,6 +54,7 @@ def get_card_remain(loops):
             i.join()
         if len(loops) == 0:
             break
+    lock.release()
     global info
     res = sorted(info, key=operator.itemgetter('number'))
     info = list()

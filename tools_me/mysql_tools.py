@@ -1,16 +1,16 @@
 import pymysql
 import logging
-# from tools_me.RSA_NAME.helen import QuanQiuFu
+from tools_me.RSA_NAME.helen import QuanQiuFu
 
 
 class SqlData(object):
     def __init__(self):
-        host = "114.116.236.27"
-        # host = "127.0.0.1"
+        # host = "114.116.236.27"
+        host = "127.0.0.1"
         port = 3306
         user = "root"
-        password = "gute123"
-        # password = "admin"
+        # password = "gute123"
+        password = "admin"
         database = "world_pay"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
@@ -220,7 +220,6 @@ class SqlData(object):
                     info_dict['card_status'] = '冻结'
                 else:
                     info_dict['card_status'] = '正常'
-
                 info_list.append(info_dict)
             return info_list
 
@@ -422,6 +421,7 @@ class SqlData(object):
                 account_dict['max_top'] = i[8]
                 account_dict['balance'] = i[9]
                 account_dict['sum_balance'] = i[10]
+                account_dict['free'] = i[12]
                 account_list.append(account_dict)
             return account_list
 
@@ -473,8 +473,8 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
-    def update_remove_free(self, id):
-        sql = "UPDATE account set free=free-1 WHERE id={}".format(id)
+    def update_remove_free(self, user_id):
+        sql = "UPDATE account set free=free-1 WHERE id={}".format(user_id)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -494,9 +494,10 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
-    def insert_pay_log(self, pay_time, pay_money, top_money, ver_code, status, phone, account_id):
-        sql = "INSERT INTO pay_log(pay_time, pay_money, top_money, ver_code, status, phone, account_id) " \
-              "VALUES ('{}',{},{},'{}','{}','{}',{})".format(pay_time, pay_money, top_money, ver_code, status, phone, account_id)
+    def insert_pay_log(self, pay_time, pay_money, top_money, ver_code, status, phone, url, account_id):
+        sql = "INSERT INTO pay_log(pay_time, pay_money, top_money, ver_code, status, phone, url, account_id) " \
+              "VALUES ('{}',{},{},'{}','{}','{}', '{}',{})".format(pay_time, pay_money, top_money, ver_code,
+                                                                   status, phone, url, account_id)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -506,14 +507,15 @@ class SqlData(object):
         self.close_connect()
 
     def search_time_sum_money(self, x_time, user_id):
-        sql = "SELECT money FROM top_up WHERE account_id={} AND time <= '{}'".format(user_id, x_time)
+        sql = "SELECT money,trans_type FROM top_up WHERE account_id={} AND time <= '{}'".format(user_id, x_time)
         self.cursor.execute(sql)
         row = self.cursor.fetchall()
         res = 0
         for i in row:
-            v = i[0]
-            if v >= 0:
-                res += v
+            money = i[0]
+            trans_type = i[1]
+            if trans_type == '系统':
+                res += money
         return res
 
     def search_top_history(self, sql_line):
@@ -844,7 +846,7 @@ class SqlData(object):
 
     # 以下是带充值需要使用的方法----------------------------------------------------------------------------------------
     def search_pay_log(self, status):
-        sql = "SELECT pay_time,pay_money,top_money,pay_log.`status`,ver_time,name from pay_log LEFT JOIN account ON" \
+        sql = "SELECT pay_time,pay_money,top_money,pay_log.`status`,ver_time,url,name from pay_log LEFT JOIN account ON" \
               " pay_log.account_id=account.id  WHERE status='{}'".format(status)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
@@ -858,7 +860,8 @@ class SqlData(object):
             info_dict['top_money'] = i[2]
             info_dict['status'] = i[3]
             info_dict['ver_time'] = str(i[4])
-            info_dict['cus_name'] = i[5]
+            info_dict['url'] = i[5]
+            info_dict['cus_name'] = i[6]
             info_list.append(info_dict)
         return info_list
 
@@ -922,9 +925,74 @@ class SqlData(object):
             self.connect.rollback()
         # self.close_connect()
 
+    # 收款码的插入和查询方法---------------------------------------------------------------------------------------------
+    def insert_qr_code(self, url, up_date):
+        sql = "INSERT INTO qr_code(url, up_date) VALUES('{}', '{}')".format(url, up_date)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("添加收款二维码失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def search_qr_code(self, sql):
+        sql = "SELECT * FROM qr_code {}".format(sql)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        info_list = list()
+        for i in rows:
+            info_dict = dict()
+            info_dict['qr_code'] = i[1]
+            info_dict['qr_date'] = str(i[2])
+            info_dict['sum_money'] = i[3]
+            if i[4] == 0:
+                info_dict['status'] = '正常'
+            else:
+                info_dict['status'] = '锁定'
+            info_list.append(info_dict)
+        return info_list
+
+    def search_qr_field(self, field, url):
+        sql = "SELECT {} FROM qr_code WHERE url='{}'".format(field, url)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        return rows[0][0]
+
+    def update_qr_info(self, file, value, url):
+        sql = "UPDATE qr_code SET {}={} WHERE url='{}'".format(file, value, url)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新收款码状态失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def update_qr_money(self, file, value, url):
+        sql = "UPDATE qr_code SET {}={}+{} WHERE url='{}'".format(file, file, value, url)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新收款码金额失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def del_qr_code(self, url):
+        sql = "DELETE FROM qr_code WHERE url = '{}'".format(url)
+        self.cursor.execute(sql)
+        self.connect.commit()
+        self.close_connect()
+
 
 if __name__ == "__main__":
     s = SqlData()
+    s.search_qr_code()
     '''
     根据账户消费记录,重新计算当前余额(在扣费异常时使用)
     
@@ -959,7 +1027,6 @@ if __name__ == "__main__":
 
     '''
     计算客户消费金额和余额是否匹配总充值金额
-    '''
     
     task_one = SqlData().search_account_info('')
     task_info = list()
@@ -978,25 +1045,31 @@ if __name__ == "__main__":
         else:
             res = '错误'
             print(balance, out_money, balance + out_money, sum_balance, res, name)
+    '''
 
 
-    # while True:
-    #     info = s.search_card_info_admin("WHERE cvv ='' AND account_id != ''")
-    #     print(len(info))
-    #     for i in info:
-    #         card_no = i.get('card_no')
-    #         card_no = card_no.strip()
-    #         resp_card_info = QuanQiuFu().query_card_info(card_no)
-    #         print(resp_card_info)
-    #         if resp_card_info.get('resp_code') != '0000':
-    #             expire_date = ''
-    #             card_verify_code = ''
-    #         else:
-    #             re_de = resp_card_info.get('response_detail')
-    #             expire_date = re_de.get('expire_date')
-    #             card_verify_code = re_de.get('card_verify_code')
-    #         SqlData().update_card_info_card_no('cvv', card_verify_code, card_no)
-    #         SqlData().update_card_info_card_no('expire', expire_date, card_no)
-    #     time.sleep(10)
+    '''
+    补全空缺卡的有效期和激活码
+    
+    
+    while True:
+        info = s.search_card_info_admin("WHERE cvv ='' AND account_id != ''")
+        print(len(info))
+        for i in info:
+            card_no = i.get('card_no')
+            card_no = card_no.strip()
+            resp_card_info = QuanQiuFu().query_card_info(card_no)
+            print(resp_card_info)
+            if resp_card_info.get('resp_code') != '0000':
+                expire_date = ''
+                card_verify_code = ''
+            else:
+                re_de = resp_card_info.get('response_detail')
+                expire_date = re_de.get('expire_date')
+                card_verify_code = re_de.get('card_verify_code')
+            SqlData().update_card_info_card_no('cvv', card_verify_code, card_no)
+            SqlData().update_card_info_card_no('expire', expire_date, card_no)
+    '''
+
 
 

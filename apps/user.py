@@ -439,6 +439,7 @@ def account_html():
     ex_change = SqlData().search_admin_field('ex_change')
     ex_range = SqlData().search_admin_field('ex_range')
     hand = SqlData().search_admin_field('hand')
+    notice = SqlData().search_admin_field('notice')
     context = dict()
     context['user_name'] = user_name
     context['balance'] = balance
@@ -451,6 +452,7 @@ def account_html():
     context['ex_change'] = ex_change
     context['ex_range'] = ex_range
     context['hand'] = hand
+    context['notice'] = notice
     context['free'] = free
     return render_template('user/index.html', **context)
 

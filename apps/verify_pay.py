@@ -70,7 +70,7 @@ def top_up():
             cus_name = data.get('cus_name')
             check = data.get('check')
             ver_code = data.get('ver_code')
-            money = data.get('money')
+            # money = data.get('money')
 
             # 校验参数验证激活码
             if check != 'yes':
@@ -92,18 +92,27 @@ def top_up():
             # 验证成功后,做客户账户充值
             cus_id = SqlData().search_user_field_name('id', cus_name)
 
-            # 判断是否需要更改充值金额
+            '''
+            # 判断是否需要更改充值金额(取消改动充值金额权限)
             if not money:
                 money = SqlData().search_pay_code('top_money', cus_name, pay_time)
             else:
                 money = float(money)
                 # 更新新的充值金额
                 SqlData().update_pay_money(money, cus_id, pay_time)
+            '''
+
+            money = SqlData().search_pay_code('top_money', cus_name, pay_time)
             pay_num = sum_code()
             t = xianzai_time()
             before = SqlData().search_user_field_name('balance', cus_name)
             balance = before + money
             user_id = SqlData().search_user_field_name('id', cus_name)
+
+            # 更新首款码收款金额
+            pay_money = SqlData().search_pay_code('pay_money', cus_name, pay_time)
+            url = SqlData().search_pay_code('url', cus_name, pay_time)
+            SqlData().update_qr_money('top_money', pay_money, url)
 
             # 更新账户余额
             SqlData().update_user_balance(money, user_id)

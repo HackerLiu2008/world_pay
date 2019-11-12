@@ -36,7 +36,7 @@ for i in info_list:
         print(i)
     else:
         res = SqlData().search_user_field_name('account', cus_name)
-        print(cus_name, res)
+        SqlData().update_account_field('free', free, cus_name)
 
 '''
 index = 0

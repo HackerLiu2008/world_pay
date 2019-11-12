@@ -1,4 +1,3 @@
-import datetime
 import logging
 import re
 import uuid
@@ -125,12 +124,30 @@ def pay_pic():
         cus_name = request.args.get('cus_name')
         cus_account = request.args.get('cus_account')
         phone = request.args.get('phone')
+
+        # 取出目前当前收款金额最低的收款码
+        qr_info = SqlData().search_qr_code('WHERE status=0')
+        if not qr_info:
+            url = ''
+        else:
+            url = ''
+            value_list = list()
+            for i in qr_info:
+                value_list.append(i.get('sum_money'))
+            value = min(value_list)
+            for n in qr_info:
+                money = n.get('sum_money')
+                if value == money:
+                    url = n.get('qr_code')
+                    break
+
         context = dict()
         context['sum_money'] = sum_money
         context['top_money'] = top_money
         context['cus_name'] = cus_name
         context['cus_account'] = cus_account
         context['phone'] = phone
+        context['url'] = url
         return render_template('pay/pay_pic.html', **context)
     if request.method == 'POST':
         '''
@@ -145,7 +162,8 @@ def pay_pic():
             sum_money = data.get('sum_money')
             cus_name = data.get('cus_name')
             cus_account = data.get('cus_account')
-            phone = request.args.get('phone')
+            phone = data.get('phone')
+            url = json.loads(request.form.get('url'))
             results = {'code': RET.OK, 'msg': MSG.OK}
 
             # 保存所有图片
@@ -167,7 +185,7 @@ def pay_pic():
             cus_id = SqlData().search_user_check(cus_name, cus_account)
             sum_money = float(sum_money)
             top_money = float(top_money)
-            SqlData().insert_pay_log(n_time, sum_money, top_money, vir_code, '待充值', phone, cus_id)
+            SqlData().insert_pay_log(n_time, sum_money, top_money, vir_code, '待充值', phone, url, cus_id)
 
             # 获取要推送邮件的邮箱
             top_push = SqlData().search_admin_field('top_push')

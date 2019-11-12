@@ -38,6 +38,15 @@
 </div>
 
 
+<style type="text/css">
+    .layui-table-cell{
+	    text-align:center;
+	    height: auto;
+	    white-space: normal;
+    }
+</style>
+
+
 <script language="JavaScript">
     layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form'], function () {
 
@@ -86,6 +95,9 @@
                 , {field: 'top_money', title: '充值金额', align: 'center', }
                 , {field: 'pay_money', title: '折合金额', align: 'center', }
                 , {field: 'status', title: '充值状态', align: 'center', }
+                , {field: 'url', title: '收款码', width:'20%', align: 'center',templet: function (res) {
+                            return '<div><img src="' + res.url + '"></div>'
+                        }}
                 , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo'}
             ]]
             , id: 'wait_pay'
@@ -108,6 +120,9 @@
                 , {field: 'top_money', title: '充值金额', align: 'center', }
                 , {field: 'pay_money', title: '折合金额', align: 'center', }
                 , {field: 'status', title: '充值状态', align: 'center', }
+                , {field: 'url', title: '收款码', width:'20%', align: 'center',templet: function (res) {
+                            return '<div><img src="' + res.url + '"></div>'
+                        }}
                 , {field: 'ver_time', title: '确认时间', align: 'center', }
             ]]
             , id: 'payed'

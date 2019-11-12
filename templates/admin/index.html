@@ -40,9 +40,27 @@
           <dd id="user_info"><a href="javascript:">基本资料</a></dd>
           <dd id="change_word"><a href="javascript:">安全设置</a></dd>
           <dd id="exchange"><a href="javascript:">汇率设置</a></dd>
-          <dd id="top_msg"><a href="javascript:">充值通知</a></dd>
         </dl>
       </li>
+      <li class="layui-nav-item">
+          <a href="javascript:">
+              公告
+          </a>
+          <dl class="layui-nav-child">
+              <dd id="notice"><a href="javascript:">编辑内容</a></dd>
+          </dl>
+      </li>
+
+        <li class="layui-nav-item">
+            <a href="javascript:">
+                充值
+            </a>
+            <dl class="layui-nav-child">
+                <dd id="qr_code"><a href="javascript:">收款码</a></dd>
+                <dd id="top_msg"><a href="javascript:">充值通知</a></dd>
+            </dl>
+        </li>
+
       <li class="layui-nav-item"><a href="/admin/logout">注销</a></li>
     </ul>
   </div>
@@ -700,6 +718,7 @@
                 , {field: 'min_top', title: '最低充值金额', align: 'center', sort: true,}
                 , {field: 'max_top', title: '最高充值金额', align: 'center', sort: true,}
                 , {field: 'card_num', title: '开卡数量', align: 'center', sort: true,totalRow:true,style: "color: #000000"}
+                , {field: 'free', title: '可平移数量', align: 'center', sort: true,totalRow:true,style: "color: #4B0082"}
                 , {field: 'out_money', title: '总消费金额', align: 'center', sort: true, totalRow:true,style: "color: red"}
                 , {field: 'balance', title: '账户余额', align: 'center', sort: true, totalRow:true, style: "color: purple"}
                 , {field: 'sum_balance', title: '总充值金额', align: 'center', sort: true, totalRow:true}
@@ -1023,6 +1042,41 @@
                 ,moveType: 1 //拖拽模式，0或者1
                 ,content: '/admin/ex_change'
 
+              });
+        });
+
+
+        //修改公告推送内容
+        $('#notice').on('click', function () {
+            layer.open({
+                type: 2
+                ,title: false //不显示标题栏s
+                ,closeBtn: false
+                ,area: ['500px','300px']
+                ,shade: 0.8
+                ,shadeClose:true
+                ,id: 'exchange_notice' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/admin/notice_edit/'
+              });
+        });
+
+        //修改公告推送内容
+        $('#qr_code').on('click', function () {
+            layer.open({
+                type: 2
+                ,title: false //不显示标题栏s
+                ,closeBtn: false
+                ,area: ['80%','80%']
+                ,shade: 0.8
+                ,shadeClose:true
+                ,id: 'exchange_notice' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,btnAlign: 'c'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/admin/qr_code/'
               });
         });
 

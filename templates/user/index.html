@@ -257,6 +257,11 @@
           </dl>
         </li>
       </ul>
+        <div ><p>&nbsp;&nbsp;</p>
+            <p>&nbsp;&nbsp;</p>
+            <p>&nbsp;&nbsp;</p>
+            <p style="letter-spacing:5px;color: greenyellow;">通知:</p>
+            <p style="letter-spacing:5px;color:#54FF9F;padding: 8px 8px 8px 8px">&nbsp;&nbsp; {{ notice }}</p></div>
     </div>
 </div>
 
@@ -697,7 +702,7 @@
                 , layEvent = obj.event; //获得 lay-event 对应的值
 
             if (layEvent === 'refund') {
-                layer.prompt({title: '当前退款手续费为{{ refund }}%'}, function(num, index){
+                layer.prompt({title: '当前退款手续费为{{ refund }}%', value:data.remain}, function(num, index){
 
                     if (isNaN(num)){
                         layer.msg('请输入数字!')

@@ -1,13 +1,93 @@
 import json
 import logging
 import operator
+import os
 import re
 from flask import request, render_template, jsonify, session, g
 from tools_me.mysql_tools import SqlData
-from tools_me.other_tools import admin_required, sum_code, xianzai_time, get_nday_list
-from tools_me.parameter import RET, MSG
+from tools_me.other_tools import admin_required, sum_code, xianzai_time, get_nday_list, sum_code
+from tools_me.parameter import RET, MSG, DIR_PATH
 from tools_me.send_sms.send_sms import CCP
+from tools_me.sm_photo import sm_photo
 from . import admin_blueprint
+
+
+@admin_blueprint.route('/edit_code/', methods=['GET', 'POST'])
+@admin_required
+def edit_code():
+    if request.method == 'GET':
+        try:
+            url = request.args.get('url')
+            status = SqlData().search_qr_field('status', url)
+            if status == 1:
+                now_status = 0
+            else:
+                now_status = 1
+            SqlData().update_qr_info('status', now_status, url)
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+    if request.method == 'POST':
+        url = request.args.get('url')
+        SqlData().del_qr_code(url)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
+@admin_blueprint.route('/upload_code/', methods=['POST'])
+@admin_required
+def up_pay_pic():
+    results = {'code': RET.OK, 'msg': MSG.OK}
+    file = request.files.get('file')
+    file_name = sum_code() + ".png"
+    file_path = DIR_PATH.PHOTO_DIR + "/" + file_name
+    file.save(file_path)
+    filename = sm_photo(file_path)
+    if filename == 'F':
+        os.remove(file_path)
+        return jsonify({'code': RET.SERVERERROR, 'msg': '不可上传相同图片,请重新上传!'})
+    if filename:
+        # 上传成功后插入信息的新的收款方式信息
+        os.remove(file_path)
+        t = xianzai_time()
+        SqlData().insert_qr_code(filename, t)
+        return jsonify(results)
+    else:
+        return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@admin_blueprint.route('/qr_info/', methods=['GET'])
+@admin_required
+def qr_info():
+    results = dict()
+    results['code'] = RET.OK
+    results['msg'] = MSG.OK
+    info_list = SqlData().search_qr_code('')
+    results['data'] = info_list
+    results['count'] = len(info_list)
+    return jsonify(results)
+
+
+@admin_blueprint.route('/qr_code/', methods=['GET', 'POST'])
+@admin_required
+def qr_code():
+    if request.method == 'GET':
+        return render_template('admin/qr_code.html')
+
+
+@admin_blueprint.route('/notice_edit/', methods=['GET', 'POST'])
+@admin_required
+def notice():
+    if request.method == 'GET':
+        note = SqlData().search_admin_field('notice')
+        context = dict()
+        context['note'] = note
+        return render_template('admin/notice.html', **context)
+    if request.method == 'POST':
+        data = json.loads(request.form.get('data'))
+        note = data.get('note')
+        SqlData().update_admin_field('notice', note)
+        return jsonify({"code": RET.OK, "msg": MSG.OK})
 
 
 @admin_blueprint.route('/del_acc/', methods=['POST'])
