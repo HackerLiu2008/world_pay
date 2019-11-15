@@ -6,11 +6,11 @@ def sm_photo(path):
 
     file = open(path, 'rb')
 
-    smfile = {'smfile': file, 'file_id': 0}
+    smfile = {'smfile': file}
 
     header = {'Authorization': "y5Ddvk7l0eca8eyDJO70zyk6FdujIv3k"}
 
-    results = requests.post(url, headers=header,files=smfile)
+    results = requests.post(url, headers=header, files=smfile)
 
     dict_info = results.json()
 

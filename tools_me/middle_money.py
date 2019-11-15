@@ -34,7 +34,6 @@ def sum_middle_money():
         logging.error('开始统计计算中介费用!开始时间为: ' + wed_day + ';结束时间为: ' + thues_day)
         time_range = "AND card_info.act_time BETWEEN '" + wed_day + ' 00:00:00' + "'" + " and '" + thues_day + " 23:59:59'"
         middle_list = SqlData().search_middle_id()
-
         info_dict = dict()
         for middle_id in middle_list:
             card_price = SqlData().search_middle_field('card_price', middle_id)
@@ -44,6 +43,7 @@ def sum_middle_money():
                 for u in account_list:
                     u_id = u.get('id')
                     card_count = SqlData().search_card_count_of_money(u_id, time_range)
+                    print(card_count)
                     u['count'] = card_count
                     sum_money = card_count * card_price
                     u['sum_money'] = sum_money
@@ -63,8 +63,8 @@ def sum_middle_money():
                 sum_money += money
             now_time = xianzai_time()
             detail = json.dumps(detail, ensure_ascii=False)
-            thues_day = thues_day
-            SqlData().insert_middle_money(i, wed_day, thues_day, card_num, card_price, sum_money, now_time, '待确认', detail)
+            _day = thues_day + "23:59:59"
+            SqlData().insert_middle_money(i, wed_day, _day, card_num, card_price, sum_money, now_time, '待确认', detail)
             # print(wed_day, thues_day, card_num, sum_money, now_time, card_price)
         return
     except Exception as e:

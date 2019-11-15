@@ -5,11 +5,120 @@ import os
 import re
 from flask import request, render_template, jsonify, session, g
 from tools_me.mysql_tools import SqlData
-from tools_me.other_tools import admin_required, sum_code, xianzai_time, get_nday_list, sum_code
-from tools_me.parameter import RET, MSG, DIR_PATH
+from tools_me.other_tools import admin_required, xianzai_time, get_nday_list, sum_code
+from tools_me.parameter import RET, MSG, DIR_PATH, TRANS_TYPE_LOG, TRANS_STATUS
 from tools_me.send_sms.send_sms import CCP
 from tools_me.sm_photo import sm_photo
 from . import admin_blueprint
+
+
+@admin_blueprint.route('/push_log/', methods=['GET'])
+@admin_required
+def push_log():
+    try:
+        page = request.args.get('page')
+        limit = request.args.get('limit')
+
+        range_time = request.args.get('range_time')
+        card_no = request.args.get('card_no')
+        trans_type = request.args.get('trans_type')
+        sql = ""
+        if range_time:
+            start_time = range_time.split(" - ")[0]
+            end_time = range_time.split(" - ")[1] + ' 23:59:59'
+            time_sql = "WHERE timestamp BETWEEN '" + start_time + "' AND '" + end_time + "'"
+
+            card_sql = ""
+            if card_no:
+                card_sql = " AND card_no LIKE '%" + card_no + "%'"
+
+            trans_sql = ""
+            if trans_type:
+                trans_sql = " AND trans_type ='" + trans_type + "'"
+
+            sql = time_sql + card_sql + trans_sql
+
+        results = dict()
+        results['msg'] = MSG.OK
+        results['code'] = RET.OK
+        info = SqlData().search_push(sql)
+        if not info:
+            results['msg'] = MSG.NODATA
+            return jsonify(results)
+        task_info = list(reversed(info))
+        page_list = list()
+
+        # 判断是否使用了条件搜索,是则不分页.
+        if sql:
+            results['data'] = task_info
+        else:
+            for i in range(0, len(task_info), int(limit)):
+                page_list.append(task_info[i:i + int(limit)])
+            results['data'] = page_list[int(page) - 1]
+        results['count'] = len(task_info)
+        return jsonify(results)
+    except Exception as e:
+        logging.error('查询卡交易推送失败1' + str(e))
+        return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@admin_blueprint.route('/transation/', methods=['POST', 'GET'])
+def transation():
+    if request.method == 'POST':
+        data = request.form
+        # 易票联支付平台交易号
+        trade_no = data.get('trade_no')
+
+        # 交易金额
+        trans_amount = data.get('trans_amount')
+
+        # 交易币种
+        trans_currency_type = data.get('trans_currency_type')
+
+        # 商户名称
+        local_merchant_name = data.get('local_merchant_name')
+
+        # 卡号
+        card_no = data.get('card_no')
+
+        # 结算金额
+        settle_amount = data.get('settle_amount')
+
+        # 结算币种
+        settle_currency_type = data.get('settle_currency_type')
+
+        # 交易状态
+        trans_status = data.get('trans_status')
+
+        # 交易类型
+        trans_type = data.get('trans_type')
+
+        # 推送时间戳
+        timestamp = data.get('timestamp')
+
+        # 将交易类型码和交易状态转换位对应的文字信息,存储到数据库
+        trans_type_cn = TRANS_TYPE_LOG.get(trans_type)
+        if trans_type_cn is None:
+            trans_type_cn = trans_type
+
+        trans_status_cn = TRANS_STATUS.get(trans_status)
+        if trans_type_cn is None:
+            trans_status_cn = trans_status
+
+        # 有出现商户名称为none的情况
+        if local_merchant_name is None:
+            local_merchant_name = ""
+        elif local_merchant_name == '香港龙日实业有限公司':
+            local_merchant_name = '全球付'
+
+        account_id = SqlData().search_card_field('account_id', card_no)
+
+        if account_id:
+
+            SqlData().insert_push_log(trade_no, card_no, trans_type_cn, timestamp, local_merchant_name, trans_amount,
+                                      trans_currency_type, settle_amount, settle_currency_type, trans_status_cn, account_id)
+
+        return 'success'
 
 
 @admin_blueprint.route('/edit_code/', methods=['GET', 'POST'])
@@ -63,6 +172,9 @@ def qr_info():
     results['code'] = RET.OK
     results['msg'] = MSG.OK
     info_list = SqlData().search_qr_code('')
+    if not info_list:
+        results['msg'] = MSG.NODATA
+        return jsonify(results)
     results['data'] = info_list
     results['count'] = len(info_list)
     return jsonify(results)

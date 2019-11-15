@@ -147,6 +147,7 @@ class QuanQiuFu(object):
             'api_name': 'epaylinks_umps_user_auth_trade_query',
             'ver': '1.0',
             'format': 'json',
+            'count_per_page': '1000',
             'app_id': 'tjvdm5wlX2oKN8rB8idvA2Fi',
             'terminal_no': '36248614',
             'timestamp': self.ts,
@@ -279,12 +280,6 @@ if __name__ == '__main__':
     pay_passwd = '04A5E788'
     card_no = '64823085058061'
 
-    # resp = qqf.create_card('64823085354122', pay_passwd)
+    resp = qqf.auth_trade_query('5295871077853353')
     # resp = qqf.trans_account_recharge('5295871079074495', '2000')
-    # print(resp)
-    # print(resp)
-
-    '5295871078908792'
-    '5295871078874713'
-    '5295871078899546'
 

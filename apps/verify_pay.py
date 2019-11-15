@@ -46,8 +46,8 @@ def pay_log():
     page_list = list()
     for i in range(0, len(info), int(limit)):
         page_list.append(info[i:i + int(limit)])
-    data = page_list[int(page) - 1]
-    results['data'] = data
+    info_list = page_list[int(page) - 1]
+    results['data'] = info_list
     results['count'] = len(data)
     return jsonify(results)
 

@@ -81,11 +81,11 @@
       <li lay-id="9">中介管理</li>
       <li lay-id="10">中介提成</li>
       <li lay-id="11">所有卡信息</li>
+      <li lay-id="12">卡交易记录</li>
   </ul>
   <div class="layui-tab-content" style="height: 100%;">
       <div class="layui-tab-item layui-show">
         <div id="month" style="width: 100%; height: 800px; margin: 0 auto"></div>
-      </div>
   </div>
     <div class="layui-tab-item">
 
@@ -393,6 +393,47 @@
 
       </div>
 
+      <div class="layui-tab-item">
+
+          <div>
+            <div style="padding-bottom:60px">
+            <div id="details" style="padding: 0px;float:left " lay-filter="detail">
+                <form class="layui-form" id="myForm" enctype="multipart/form-data">
+
+                        时 间 范 围 :
+                        <div class="layui-inline">
+                          <input type="text" class="layui-input test-item" placeholder="请选择时间范围!" lay-verify="required" id="range_time">
+                        </div>
+
+                         搜 索 卡 号 :
+                        <div class="layui-inline">
+                          <input type="number" name="card_no" id="card_no" autocomplete="off" placeholder="前/后几位即可" class="layui-input">
+                        </div>
+
+                         交 易 类 型 :
+                        <div class="layui-inline">
+                          <select name="modules"  lay-search="" id="trans_type_push">
+                              <option value="">直接选择或搜索选择</option>
+                              <option value="消费">消费</option>
+                              <option value="授权消费">授权消费</option>
+                              <option value="充值">充值</option>
+                              <option value="手续费">手续费</option>
+                            </select>
+                        </div>
+
+                    <button class="layui-btn" lay-submit="" lay-filter="push_search" type="submit">搜索</button>
+                </form>
+            </div>
+
+            <blockquote class="layui-elem-quote layui-quote-nm" style="float: right">
+                    <span style="color:red;">提示: 交易记录仅记录近30天!如有需要请下载保存!</span>
+                </blockquote>
+            </div>
+            <table class="layui-hide" id="trans_log" lay-filter=""></table>
+        </div>
+
+      </div>
+
   </div>
 </div>
 
@@ -438,6 +479,15 @@
           <a class="" href="javascript:">卡管理</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:" id="card_admin">所有卡信息</a></dd>
+          </dl>
+        </li>
+      </ul>
+
+        <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:">卡交易推送</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:" id="push_but">推送信息</a></dd>
           </dl>
         </li>
       </ul>
@@ -939,6 +989,9 @@
         $('#card_admin').on('click',function () {
            element.tabChange('demo', 11);
         });
+        $('#push_but').on('click',function () {
+           element.tabChange('demo', 12);
+        });
 
 
 
@@ -1379,7 +1432,6 @@
          });
 
          form.on('submit(cus_trans)', function(data){
-             var $ = layui.jquery;
              var cus_name = $("#cus_name").val(),
                  trans_card = $('#trans_card').val(),
                  trans_type = $('#trans_type').val(),
@@ -1409,6 +1461,93 @@
                      time_range:time_range,
                    }
                }, '/admin/cus_log');
+            return false;
+         });
+
+         function getDay(day){
+           var today = new Date();
+
+           var targetday_milliseconds=today.getTime() + 1000*60*60*24*day;
+
+           today.setTime(targetday_milliseconds);
+
+           var tYear = today.getFullYear();
+           var tMonth = today.getMonth();
+           var tDate = today.getDate();
+           tMonth = doHandleMonth(tMonth + 1);
+           tDate = doHandleMonth(tDate);
+           return tYear+"-"+tMonth+"-"+tDate;
+        }
+
+        function doHandleMonth(month){
+           var m = month;
+           if(month.toString().length == 1){
+              m = "0" + month;
+           }
+           return m;
+        }
+
+        laydate.render({
+            elem: '#range_time'
+            ,value: getDay(-30) + " - " + getDay(0)
+            ,isInitValue: true
+            ,min: -30
+            ,max: 0
+            ,range:true
+            ,theme:'#7CCD7C'
+            ,calender: true
+          });
+
+
+        //执行一个 table 实例
+        table.render({
+            elem: '#trans_log'
+            , height: 'full-250'
+            , cellMinWidth: '80'
+            , url: '/admin/push_log/' //数据接口
+            , title: '卡交易记录信息'
+            , toolbar: true
+            , skin: 'line'
+            , limit:100
+            , limits:[100,200,300,400,500,600,700,800,900,1000]
+            {#, toolbar: "r" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档#}
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'trade_no', title: '交易订单号',width:'11%', align: 'center'}
+                , {field: 'card_no', title: '卡号', align: 'center',}
+                , {field: 'trans_type', title: '交易类型',align: 'center', style: "color: #CD0000"}
+                , {field: 'timestamp', title: '交易时间', align: 'center',}
+                , {field: 'local_merchant_name', title: '商户名称',width:'17%', align: 'center', style:"color: #8B0A50"}
+                , {field: 'trans_amount', title: '交易金额', width:'5%',align: 'center',style:"color: #8B2323"}
+                , {field: 'trans_currency_type', title: '交易币种', width:'5%',align: 'center',}
+                , {field: 'settle_amount', title: '结算金额', width:'5%',align: 'center',}
+                , {field: 'settle_currency_type', title: '结算币种', width:'5%',align: 'center',}
+                , {field: 'trans_status', title: '交易状态', align: 'center',style:"color: #030303"}
+                , {field: 'account_name', title: '持有人', align: 'center',}
+            ]]
+            , id: 'push_log'
+            , page: true
+        });
+
+
+        form.on('submit(push_search)', function(data){
+
+             var range_time = $("#range_time").val(),
+
+                card_no = $('#card_no').val(),
+
+                trans_type = $('#trans_type_push').val();
+
+             table.reload("push_log", {
+                 page: {
+                   curr: 1 //重新从第 1 页开始
+                 },where: {
+                     range_time: range_time,
+                     card_no: card_no,
+                     trans_type: trans_type,
+                   }
+               }, '/admin/push_log/');
             return false;
          });
 

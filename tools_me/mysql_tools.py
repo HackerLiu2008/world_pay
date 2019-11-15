@@ -5,12 +5,12 @@ from tools_me.RSA_NAME.helen import QuanQiuFu
 
 class SqlData(object):
     def __init__(self):
-        # host = "114.116.236.27"
-        host = "127.0.0.1"
+        host = "114.116.236.27"
+        # host = "127.0.0.1"
         port = 3306
         user = "root"
-        # password = "gute123"
-        password = "admin"
+        password = "gute123"
+        # password = "admin"
         database = "world_pay"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
@@ -44,7 +44,8 @@ class SqlData(object):
 
     # 查询用户首页数据信息
     def search_user_index(self, user_id):
-        sql = "SELECT create_price, refund, min_top, max_top, balance, sum_balance, free FROM account WHERE id = {}".format(user_id)
+        sql = "SELECT create_price, refund, min_top, max_top, balance, sum_balance, free FROM account WHERE id = {}".format(
+            user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         user_info = dict()
@@ -180,7 +181,8 @@ class SqlData(object):
 
     def update_card_info(self, card_no, pay_passwd, act_time, card_name, label, expire, cvv, account_id, activation):
         sql = "UPDATE card_info SET card_no = '{}', pay_passwd='{}', act_time='{}', card_name='{}', label='{}', expire = '{}'," \
-              " cvv = '{}', account_id = {} WHERE activation = '{}'".format(card_no, pay_passwd, act_time, card_name, label,
+              " cvv = '{}', account_id = {} WHERE activation = '{}'".format(card_no, pay_passwd, act_time, card_name,
+                                                                            label,
                                                                             expire, cvv, account_id, activation)
         try:
             self.cursor.execute(sql)
@@ -223,10 +225,13 @@ class SqlData(object):
                 info_list.append(info_dict)
             return info_list
 
-    def insert_account_trans(self, date, trans_type, do_type, num, card_no, do_money, hand_money, before_balance, balance, account_id):
+    def insert_account_trans(self, date, trans_type, do_type, num, card_no, do_money, hand_money, before_balance,
+                             balance, account_id):
         sql = "INSERT INTO account_trans(do_date, trans_type, do_type, num, card_no, do_money, hand_money, before_balance," \
               " balance, account_id) VALUES('{}','{}','{}',{},'{}',{},{},{},{},{})".format(date, trans_type, do_type,
-                                                num, card_no, do_money, hand_money, before_balance, balance, account_id)
+                                                                                           num, card_no, do_money,
+                                                                                           hand_money, before_balance,
+                                                                                           balance, account_id)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -244,6 +249,7 @@ class SqlData(object):
             return info_list
         for i in rows:
             info_dict = dict()
+            info_dict['u_id'] = i[0]
             info_dict['date'] = str(i[1])
             info_dict['trans_type'] = i[2]
             info_dict['do_type'] = i[3]
@@ -344,16 +350,20 @@ class SqlData(object):
         return rows[0][0]
 
     def search_card_count_of_money(self, u_id, time_range):
-        sql = "SELECT * FROM card_info LEFT JOIN account_trans ON card_info.card_no=account_trans.card_no WHERE " \
-              "card_info.account_id={} AND account_trans.do_type='开卡' AND account_trans.do_money != 0 {}".format(u_id, time_range)
+        sql = "SELECT COUNT(*) FROM card_info LEFT JOIN account_trans ON card_info.card_no=account_trans.card_no WHERE " \
+              "card_info.account_id={} AND account_trans.do_type='开卡' AND account_trans.do_money != 0 {}".format(u_id,
+                                                                                                                 time_range)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
+        if not rows:
+            return 0
         return rows[0][0]
 
-    def insert_middle_money(self, middle_id, start_time, end_time, card_num, create_price, sum_money, create_time, pay_status, detail):
+    def insert_middle_money(self, middle_id, start_time, end_time, card_num, create_price, sum_money, create_time,
+                            pay_status, detail):
         sql = "INSERT INTO middle_money(middle_id, start_time, end_time, card_num, create_price, sum_money," \
               " create_time, pay_status, detail) VALUES ({},'{}','{}',{},{},{},'{}','{}','{}')".format(
-               middle_id, start_time, end_time, card_num, create_price, sum_money, create_time, pay_status, detail)
+            middle_id, start_time, end_time, card_num, create_price, sum_money, create_time, pay_status, detail)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -485,7 +495,8 @@ class SqlData(object):
 
     def insert_top_up(self, pay_num, now_time, money, before_balance, balance, account_id, trans_type):
         sql = "INSERT INTO top_up(pay_num, time, money, before_balance, balance, account_id, trans_type) " \
-              "VALUES ('{}','{}',{},{},{},{},'{}')".format(pay_num, now_time, money, before_balance, balance, account_id, trans_type)
+              "VALUES ('{}','{}',{},{},{},{},'{}')".format(pay_num, now_time, money, before_balance, balance,
+                                                           account_id, trans_type)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -563,7 +574,8 @@ class SqlData(object):
 
     def insert_account(self, account, password, phone_num, name, create_price, refund, min_top, max_top):
         sql = "INSERT INTO account(account, password, phone_num, name, create_price, refund, min_top, max_top) " \
-              "VALUES ('{}','{}','{}','{}',{},{},{},{})".format(account, password, phone_num, name, create_price, refund, min_top, max_top)
+              "VALUES ('{}','{}','{}','{}',{},{},{},{})".format(account, password, phone_num, name, create_price,
+                                                                refund, min_top, max_top)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -723,7 +735,8 @@ class SqlData(object):
         return info_list
 
     def update_middle_sub(self, pay_status, pay_time, info_id):
-        sql = "UPDATE middle_money SET pay_status = '{}', pay_time = '{}' WHERE id = {}".format(pay_status, pay_time, info_id)
+        sql = "UPDATE middle_money SET pay_status = '{}', pay_time = '{}' WHERE id = {}".format(pay_status, pay_time,
+                                                                                                info_id)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -763,7 +776,8 @@ class SqlData(object):
 
     def search_trans_admin(self, cus_sql, card_sql, time_sql, type_sql):
         sql = "SELECT account_trans.*, account.name FROM account_trans LEFT JOIN account ON account_trans.account_id" \
-              " = account.id WHERE account_trans.do_date != '' {} {} {} {}".format(cus_sql, card_sql, time_sql, type_sql)
+              " = account.id WHERE account_trans.do_date != '' {} {} {} {}".format(cus_sql, card_sql, time_sql,
+                                                                                   type_sql)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         info_list = list()
@@ -802,7 +816,8 @@ class SqlData(object):
         return rows[0][0]
 
     def insert_account_log(self, n_time, customer, balance, out_money, sum_balance):
-        sql = "INSERT INTO account_log(log_time, customer, balance, out_money, sum_balance) VALUES ('{}','{}',{},{},{})".format(n_time, customer, balance, out_money, sum_balance)
+        sql = "INSERT INTO account_log(log_time, customer, balance, out_money, sum_balance) VALUES ('{}','{}',{},{},{})".format(
+            n_time, customer, balance, out_money, sum_balance)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -875,7 +890,9 @@ class SqlData(object):
         return rows[0][0]
 
     def update_pay_status(self, pay_status, t, cus_name, pay_time):
-        sql = "UPDATE pay_log SET status='{}',ver_time='{}' WHERE account_id={} AND pay_time='{}'".format(pay_status, t, cus_name, pay_time)
+        sql = "UPDATE pay_log SET status='{}',ver_time='{}' WHERE account_id={} AND pay_time='{}'".format(pay_status, t,
+                                                                                                          cus_name,
+                                                                                                          pay_time)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -989,10 +1006,68 @@ class SqlData(object):
         self.connect.commit()
         self.close_connect()
 
+    def update_1(self, hand_money, u_id):
+        sql = "UPDATE account_trans SET hand_money={} WHERE id={}".format(hand_money, u_id)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("确认充值状态失败!" + str(e))
+            self.connect.rollback()
+
+    def search_1(self):
+        sql = "SELECT id, hand_money FROM account_trans WHERE hand_money<0"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        for i in rows:
+            s.update_1(abs(i[1]), i[0])
+
+    # 推送信息相关----------------------
+    def insert_push_log(self, trade_no, card_no, trans_type, timestamp, local_merchant_name, trans_amount,
+                        trans_currency_type, settle_amount, settle_currency_type, trans_status, account_id):
+        sql = "INSERT INTO push_log(trade_no, card_no, trans_type, timestamp, local_merchant_name, trans_amount, " \
+              "trans_currency_type, settle_amount, settle_currency_type, trans_status, account_id) VALUES('{}','{}'," \
+              "'{}','{}','{}','{}','{}','{}','{}','{}',{})".format(trade_no, card_no, trans_type, timestamp,
+                                                                   local_merchant_name, trans_amount,
+                                                                   trans_currency_type, settle_amount,
+                                                                   settle_currency_type, trans_status, account_id)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("添加推送交易失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    def search_push(self, sql_line):
+        sql = "SELECT push_log.*, account.name FROM push_log LEFT JOIN account ON push_log.account_id = account.id {}".format(sql_line)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        info_list = list()
+        for i in rows:
+            info_dict = dict()
+            info_dict['trade_no'] = "\t" + i[1]
+            info_dict['card_no'] = "\t" + i[2]
+            info_dict['trans_type'] = i[3]
+            info_dict['timestamp'] = str(i[4])
+            info_dict['local_merchant_name'] = i[5]
+            info_dict['trans_amount'] = i[6]
+            info_dict['trans_currency_type'] = i[7]
+            info_dict['settle_amount'] = i[8]
+            info_dict['settle_currency_type'] = i[9]
+            info_dict['trans_status'] = i[10]
+            info_dict['account_name'] = i[12]
+            info_list.append(info_dict)
+        return info_list
+
 
 if __name__ == "__main__":
     s = SqlData()
-    s.search_qr_code()
+
     '''
     根据账户消费记录,重新计算当前余额(在扣费异常时使用)
     
@@ -1027,7 +1102,7 @@ if __name__ == "__main__":
 
     '''
     计算客户消费金额和余额是否匹配总充值金额
-    
+    '''
     task_one = SqlData().search_account_info('')
     task_info = list()
     print(task_one)
@@ -1044,9 +1119,7 @@ if __name__ == "__main__":
             res = '正常'
         else:
             res = '错误'
-            print(balance, out_money, balance + out_money, sum_balance, res, name)
-    '''
-
+            print(balance, out_money, balance + out_money, sum_balance, sum_balance - balance - out_money, res, name)
 
     '''
     补全空缺卡的有效期和激活码
@@ -1070,6 +1143,3 @@ if __name__ == "__main__":
             SqlData().update_card_info_card_no('cvv', card_verify_code, card_no)
             SqlData().update_card_info_card_no('expire', expire_date, card_no)
     '''
-
-
-
