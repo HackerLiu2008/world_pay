@@ -1,11 +1,17 @@
+from os import path
+
 import xlrd
+from openpyxl.drawing.image import Image
 from xlutils.copy import copy
 from tools_me.mysql_tools import SqlData
 import openpyxl
+import os
 
+print(os.path.abspath(''))
 
 file_path = "C:\\Users\\Think\\Desktop\\截止11月13全球付手续费统计.xlsx"
 
+'''
 data = xlrd.open_workbook(file_path, encoding_override='utf-8')
 table = data.sheets()[0]
 nrows = table.nrows  # 行数
@@ -40,26 +46,12 @@ for c in cus:
 
 
 '''
-index = 0
-cus_list = list()
-for card in card_list:
-    if card:
-        print(card)
-        res = SqlData().search_card_info_admin("WHERE card_no = '" + card + "'")
-        print(res)
-        if res:
-            cus_list.append(res[0].get('account_name'))
-        else:
-            card_list.append('')
-    else:
-        break
-
 wb = openpyxl.load_workbook(file_path)
 wb1 = wb.active
-n = 2
-for i in cus_list:
-    wb1.cell(n, 10, i)
-    n += 1
+img_path = "G:\\world_pay\\static\\pay_pic\\大龙_20191107101121e40ed.png"
+img = Image(img_path)
+img.width = 400
+img.height = 400
+wb1.add_image(img, 'K1')
 save_path = file_path
 wb.save(save_path)
-'''

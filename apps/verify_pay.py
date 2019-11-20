@@ -80,6 +80,7 @@ def top_up():
             cus_name = data.get('cus_name')
             check = data.get('check')
             ver_code = data.get('ver_code')
+            money = data.get('money')
 
             # 校验参数验证激活码
             if check != 'yes':
@@ -101,15 +102,13 @@ def top_up():
             # 验证成功后,做客户账户充值
             cus_id = SqlData().search_user_field_name('id', cus_name)
 
-            '''
-            # 判断是否需要更改充值金额(取消改动充值金额权限)
-            if not money:
-                money = SqlData().search_pay_code('top_money', cus_name, pay_time)
-            else:
+            # 判断是否需要根据输入的美元金额扣除手续费在充值
+            if money:
                 money = float(money)
                 # 更新新的充值金额
+                dollar_hand = SqlData().search_admin_field('dollar_hand')
+                money = round(money / (1+dollar_hand), 2)
                 SqlData().update_pay_money(money, cus_id, pay_time)
-            '''
 
             money = SqlData().search_pay_code('top_money', cus_name, pay_time)
             pay_num = sum_code()

@@ -176,7 +176,7 @@ def pay_pic():
                 file = request.files.get(file_name)
                 if file:
                     now_time = sum_code()
-                    file_name = cus_name + "_" + now_time + ".png"
+                    file_name = cus_account + "_" + now_time + ".png"
                     file_path = DIR_PATH.PHOTO_DIR + file_name
                     file.save(file_path)
                     pic_list.append(file_name)
