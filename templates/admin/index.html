@@ -85,7 +85,7 @@
   </ul>
   <div class="layui-tab-content" style="height: 100%;">
       <div class="layui-tab-item layui-show">
-        <div id="month" style="width: 100%; height: 800px; margin: 0 auto"></div>
+        <div id="month" style="width: 100%; height: 1000px; margin: 0 auto"></div>
   </div>
     <div class="layui-tab-item">
 
@@ -97,7 +97,7 @@
             </div>
 
             <button class="layui-btn" lay-submit="" lay-filter="sea_account" type="submit">搜索</button>
-            <button class="layui-btn layui-btn-primary" >重置</button>
+            <button type="reset" class="layui-btn layui-btn-primary" >重置</button>
             </div>
         </form>
         <table class="layui-hide" id="account_all" lay-filter="account_all"></table>
@@ -125,7 +125,7 @@
                 <input type="text" class="layui-input" id="s_test6" placeholder=" - ">
             </div>
             <button class="layui-btn" lay-submit="" lay-filter="sea_payed" type="submit">搜索</button>
-            <button class="layui-btn layui-btn-primary" >重置</button>
+            <button type="reset" class="layui-btn layui-btn-primary" >重置</button>
             </div>
         </form>
 
@@ -148,7 +148,7 @@
                 <input type="text" class="layui-input" id="test10" placeholder=" - ">
             </div>
             <button class="layui-btn" lay-submit="" lay-filter="sea_pay" type="submit">搜索</button>
-            <button class="layui-btn layui-btn-primary" >重置</button>
+            <button type="reset" class="layui-btn layui-btn-primary" >重置</button>
             </div>
         </form>
 
@@ -171,12 +171,16 @@
             <div class="layui-inline">
                 <input type="text" class="layui-input" name="trans_type" id="trans_type" autocomplete="off">
             </div>
+              操作类型:
+            <div class="layui-inline">
+                <input type="text" class="layui-input" name="trans_type" id="make_type" autocomplete="off">
+            </div>
             时间范围:
             <div class="layui-inline">
             <input type="text" class="layui-input" id="test8" autocomplete="off" placeholder=" - ">
         </div>
         <button class="layui-btn" lay-submit="" lay-filter="cus_trans" type="submit">搜索</button>
-        <button  class="layui-btn layui-btn-primary" id="">重置</button>
+        <button type="reset"  class="layui-btn layui-btn-primary" id="">重置</button>
         </form>
         <table class="layui-hide" id="cus_trans_log" lay-filter="cus_trans_log"></table>
 
@@ -195,7 +199,7 @@
                 <input type="text" class="layui-input" id="test9" placeholder=" - ">
             </div>
             <button class="layui-btn" lay-submit="" lay-filter="cus_log_ter" type="submit">搜索</button>
-            <button  class="layui-btn layui-btn-primary" id="">重置</button>
+            <button type="reset"  class="layui-btn layui-btn-primary" id="">重置</button>
             </form>
 
           <table class="layui-hide" id="cus_money_log" lay-filter="cus_money_log"></table>
@@ -379,7 +383,7 @@
                  </div>
                  <div class="layui-inline">
                      <button class="layui-btn" lay-submit="" lay-filter="sea_card" type="submit">搜索</button>
-                     <button class="layui-btn layui-btn-primary">重置</button>
+                     <button type="reset"  class="layui-btn layui-btn-primary">重置</button>
                  </div>
                  </div>
             </div>
@@ -526,7 +530,7 @@
         <!-- 此为本月开卡折线图js -->
         $(document).ready(function () {
             var chart = {
-                type: 'spline'
+                type: 'Combination chart',
             };
             var title = {
                 text: '近30天客户开卡统计'
@@ -570,13 +574,16 @@
                     // 成功提示框
                     if (data.code == 0){
                         var info = data.data,
+                            column = data.column,
                             xax = data.xAx,
                             xaxis = {categories:xax,lineWidth: 4};
+                        var c = {name:'合计',data:column, type:'column',pointWidth:10,dataLabels:{enabled:true , style:{color:'#080808',size:50}}};
+                        series.push(c);
                         for (var i=0; i<info.length;i++){
                             var name = info[i].name;
                             var data1 = info[i].data;
-                            var s = {name:name,data:data1};
-                            series.push(s)
+                            var s = {name:name,data:data1,type:'spline'};
+                            series.push(s);
                         }
                         var json = {};
                         json.chart = chart;
@@ -737,7 +744,7 @@
                 , {field: 'date', title: '操作日期', align: 'center', sort: true,}
                 , {field: 'trans_type', title: '交易类型', align: 'center', sort: true,style: "color: green"}
                 , {field: 'do_type', title: '操作类型', align: 'center', sort: true,}
-                , {field: 'num', title: '卡数量', align: 'center', sort: true}
+                , {field: 'num', title: '卡数量', align: 'center', sort: true, totalRow: true}
                 , {field: 'card_no', title: '卡号', align: 'center', sort: true}
                 , {field: 'do_money', title: '操作金额', align: 'center', totalRow: true, sort: true, style: "color: red"}
                 , {field: 'hand_money', title: '手续费', align: 'center', totalRow: true, sort: true}
@@ -852,7 +859,7 @@
                 , {field: 'password', title: '密码', align: 'center', sort: true,}
                 , {field: 'phone_num', title: '电话', align: 'center', sort: true}
                 , {field: 'card_price', title: '开卡提成', align: 'center', sort: true}
-                , {field: 'balance', title: '备注', align: 'center', sort: true}
+                , {field: 'note', title: '备注', align: 'center', sort: true}
                 , {fixed: 'right', width: 220, align: 'center', toolbar: '#middle_bar'}
             ]]
             , id: 'pay_history'
@@ -1260,9 +1267,10 @@
                     title: '修改中介为 [ ' + data.name + ' ] 的相关信息',
                     type: 2,
                     anim: 3,
-                    area: ['27%', '30%'],//宽高
+                    area: ['50%', '50%'],//宽高
+                    btnAlign:'c',
                     shadeClose: true, //点击遮罩关闭
-                    content: '/admin/acc_to_middle',
+                    content: '/admin/acc_to_middle/?middle_name='+data.name,
                     success: function(layero, index) {
                         var body = layer.getChildFrame('body', index);
                         body.contents().find("#name").val(data.name)
@@ -1435,6 +1443,7 @@
              var cus_name = $("#cus_name").val(),
                  trans_card = $('#trans_card').val(),
                  trans_type = $('#trans_type').val(),
+                 make_type = $('#make_type').val(),
                  time_range = $('#test8').val();
              table.reload("cus_trans_log", {
                  page: {
@@ -1444,6 +1453,7 @@
                      trans_card: trans_card,
                      time_range:time_range,
                      trans_type:trans_type,
+                     make_type:make_type,
                    }
                }, '/admin/account_trans/');
             return false;

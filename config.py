@@ -2,11 +2,13 @@ from datetime import timedelta
 from flask import Flask
 import logging
 
+from flask_caching import Cache
+
 from tools_me.parameter import DIR_PATH
 
 app = Flask(__name__)
 # 使用缓存,缓存大量查出来的信息
-# cache = Cache(app, config={'CACHE_TYPE': 'simple'})
+cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 app.config['SECRET_KEY'] = 'Gute9878934'
 

@@ -5,12 +5,12 @@ from tools_me.RSA_NAME.helen import QuanQiuFu
 
 class SqlData(object):
     def __init__(self):
-        host = "114.116.236.27"
-        # host = "127.0.0.1"
+        # host = "114.116.236.27"
+        host = "127.0.0.1"
         port = 3306
         user = "root"
-        password = "gute123"
-        # password = "admin"
+        # password = "gute123"
+        password = "admin"
         database = "world_pay"
         self.connect = pymysql.Connect(
             host=host, port=port, user=user,
@@ -632,8 +632,20 @@ class SqlData(object):
         rows = self.cursor.fetchall()
         return rows[0][0]
 
-    def search_cus_list(self):
-        sql = "SELECT name FROM account"
+    def search_acc_middle_null(self):
+        sql = "SELECT name FROM account WHERE middle_id is null"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        cus_list = list()
+        if not rows:
+            return cus_list
+        for i in rows:
+            cus_list.append(i[0])
+        return cus_list
+
+    def search_cus_list(self, middle_name):
+        sql = "SELECT account.`name` FROM account LEFT JOIN middle ON account.middle_id = middle.id WHERE " \
+              "middle.`name`='{}'".format(middle_name)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         cus_list = list()
@@ -746,7 +758,7 @@ class SqlData(object):
         self.close_connect()
 
     def search_card_info_admin(self, sql_line):
-        sql = "SELECT * FROM card_info {}".format(sql_line)
+        sql = "SELECT * FROM card_info {};".format(sql_line)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         info_list = list()
@@ -774,10 +786,10 @@ class SqlData(object):
             info_list.append(info_dict)
         return info_list
 
-    def search_trans_admin(self, cus_sql, card_sql, time_sql, type_sql):
+    def search_trans_admin(self, cus_sql, card_sql, time_sql, type_sql, make_sql):
         sql = "SELECT account_trans.*, account.name FROM account_trans LEFT JOIN account ON account_trans.account_id" \
-              " = account.id WHERE account_trans.do_date != '' {} {} {} {}".format(cus_sql, card_sql, time_sql,
-                                                                                   type_sql)
+              " = account.id WHERE account_trans.do_date != '' {} {} {} {} {}".format(cus_sql, card_sql, time_sql,
+                                                                                   type_sql, make_sql)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         info_list = list()
@@ -861,8 +873,9 @@ class SqlData(object):
 
     # 以下是带充值需要使用的方法----------------------------------------------------------------------------------------
     def search_pay_log(self, status):
-        sql = "SELECT pay_time,pay_money,top_money,pay_log.`status`,ver_time,url,name from pay_log LEFT JOIN account ON" \
-              " pay_log.account_id=account.id  WHERE status='{}'".format(status)
+        sql = "SELECT pay_time,pay_money,top_money,top_up.before_balance,top_up.balance,pay_log.`status`,ver_time,url," \
+              "account.`name`,account.id FROM pay_log LEFT JOIN account ON pay_log.account_id=account.id LEFT JOIN top_up on " \
+              "pay_log.account_id=top_up.account_id AND pay_log.ver_time=top_up.time WHERE pay_log.`status`='{}'".format(status)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows:
@@ -873,10 +886,13 @@ class SqlData(object):
             info_dict['pay_time'] = str(i[0])
             info_dict['pay_money'] = i[1]
             info_dict['top_money'] = i[2]
-            info_dict['status'] = i[3]
-            info_dict['ver_time'] = str(i[4])
-            info_dict['url'] = i[5]
-            info_dict['cus_name'] = i[6]
+            info_dict['before_balance'] = i[3]
+            info_dict['balance'] = i[4]
+            info_dict['status'] = i[5]
+            info_dict['ver_time'] = str(i[6])
+            info_dict['url'] = i[7]
+            info_dict['cus_name'] = i[8]
+            info_dict['cus_id'] = i[9]
             info_list.append(info_dict)
         return info_list
 
@@ -980,6 +996,12 @@ class SqlData(object):
             return False
         return rows[0][0]
 
+    def search_table_count(self, table_name):
+        sql = "SELECT COUNT(*) FROM {}".format(table_name)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        return rows[0][0]
+
     def update_qr_info(self, file, value, url):
         sql = "UPDATE qr_code SET {}={} WHERE url='{}'".format(file, value, url)
         try:
@@ -1067,7 +1089,8 @@ class SqlData(object):
 
 if __name__ == "__main__":
     s = SqlData()
-
+    re = s.search_table_count('card_info')
+    print(re)
     '''
     根据账户消费记录,重新计算当前余额(在扣费异常时使用)
     
@@ -1102,7 +1125,7 @@ if __name__ == "__main__":
 
     '''
     计算客户消费金额和余额是否匹配总充值金额
-    '''
+    
     task_one = SqlData().search_account_info('')
     task_info = list()
     print(task_one)
@@ -1120,7 +1143,7 @@ if __name__ == "__main__":
         else:
             res = '错误'
             print(balance, out_money, balance + out_money, sum_balance, sum_balance - balance - out_money, res, name)
-
+    '''
     '''
     补全空缺卡的有效期和激活码
     

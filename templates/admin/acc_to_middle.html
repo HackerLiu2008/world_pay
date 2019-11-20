@@ -49,28 +49,22 @@
 
 
          <div class="layui-form-item">
-          <label class="layui-form-label">绑定客户:</label>
-          <div class="layui-input-block">
-            <select name="bind_cus" lay-search="">
-              <option value="">直接选择或搜索选择</option>
-              {% for i in cus_list %}
-                <option value="{{ i }}">{{ i }}</option>
-              {% endfor %}
-            </select>
+            <label class="layui-form-label">绑定客户:</label>
+            <div class="layui-input-block">
+                {% for i in null_list %}
+                <input type="checkbox" name="{{ i }}" lay-skin="primary"  title="{{ i }}">
+                {% endfor %}
+            </div>
           </div>
-        </div>
 
         <div class="layui-form-item">
-          <label class="layui-form-label">解绑客户:</label>
-          <div class="layui-input-block">
-            <select name="del_cus" lay-search="">
-              <option value="">直接选择或搜索选择</option>
-              {% for i in cus_list %}
-                <option value="{{ i }}">{{ i }}</option>
-              {% endfor %}
-            </select>
+            <label class="layui-form-label">解绑客户:</label>
+            <div class="layui-input-block">
+                {% for i in cus_list %}
+                <input type="checkbox" name="{{ i }}" lay-skin="primary"  value="off" title="{{ i }}">
+                {% endfor %}
+            </div>
           </div>
-        </div>
 
         <div class="layui-form-item">
             <div class="layui-input-block">
@@ -90,21 +84,17 @@
         form.on('submit(formDemo)', function(data){
             var data_info = {data:JSON.stringify(data.field)};
             var $ = layui.jquery;
-            console.log(data_info)
             $.ajax({
 				type : 'POST',
 				url : '/admin/acc_to_middle/',
 				data : data_info,
 				dataType : 'json',
 				success : function(data) {
-				    {#var data1 = JSON.parse(data);#}
-			    	console.log(data.code);
 					// 成功提示框
                     if (data.code == 0){
                         parent.layer.msg(data.msg, {
 						icon : 6,
 					    });
-                        window.parent.location.reload();
 					    parent.layer.closeAll('iframe'); //关闭弹框
                     }else if(data.code == 502){
                         parent.layer.msg(data.msg, {

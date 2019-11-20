@@ -1,6 +1,6 @@
 import json
 import logging
-from flask import render_template, request, jsonify, redirect, session
+from flask import render_template, request, jsonify, session
 from tools_me.mysql_tools import SqlData
 from tools_me.other_tools import sum_code, xianzai_time, verify_required
 from tools_me.parameter import RET, MSG
@@ -47,7 +47,17 @@ def pay_log():
     for i in range(0, len(info), int(limit)):
         page_list.append(info[i:i + int(limit)])
     info_list = page_list[int(page) - 1]
-    results['data'] = info_list
+
+    # 查询当次充值时的账号总充值金额
+    new_list = list()
+    for o in info_list:
+        x_time = o.get('ver_time')
+        user_id = o.get('cus_id')
+        sum_money = SqlData().search_time_sum_money(x_time, user_id)
+        o['sum_balance'] = round(sum_money, 2)
+        new_list.append(o)
+
+    results['data'] = new_list
     results['count'] = len(data)
     return jsonify(results)
 
@@ -70,7 +80,6 @@ def top_up():
             cus_name = data.get('cus_name')
             check = data.get('check')
             ver_code = data.get('ver_code')
-            # money = data.get('money')
 
             # 校验参数验证激活码
             if check != 'yes':

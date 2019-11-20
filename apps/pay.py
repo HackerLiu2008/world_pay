@@ -124,7 +124,7 @@ def pay_pic():
         cus_name = request.args.get('cus_name')
         cus_account = request.args.get('cus_account')
         phone = request.args.get('phone')
-
+        ex_change = request.args.get('ex_change')
         # 取出目前当前收款金额最低的收款码
         qr_info = SqlData().search_qr_code('WHERE status=0')
         if not qr_info:
@@ -148,6 +148,7 @@ def pay_pic():
         context['cus_account'] = cus_account
         context['phone'] = phone
         context['url'] = url
+        context['ex_change'] = ex_change
         return render_template('pay/pay_pic.html', **context)
     if request.method == 'POST':
         '''
@@ -163,6 +164,7 @@ def pay_pic():
             cus_name = data.get('cus_name')
             cus_account = data.get('cus_account')
             phone = data.get('phone')
+            exchange = data.get('exchange')
             url = json.loads(request.form.get('url'))
             results = {'code': RET.OK, 'msg': MSG.OK}
 
@@ -180,7 +182,8 @@ def pay_pic():
                     pic_list.append(file_name)
             n_time = xianzai_time()
             vir_code = str(uuid.uuid1())[:6]
-            context = "客户:  " + cus_name + " , 于" + n_time + "在线申请充值: " + top_money + "美元, 折和人名币: " + sum_money + "元。 验证码为: " + vir_code
+            context = "客户:  " + cus_name + " , 于" + n_time + "在线申请充值: " + top_money + "美元, 折和人名币: " + \
+                      sum_money + "元。本次计算汇率为: " + exchange + ", 验证码为: " + vir_code
 
             cus_id = SqlData().search_user_check(cus_name, cus_account)
             sum_money = float(sum_money)

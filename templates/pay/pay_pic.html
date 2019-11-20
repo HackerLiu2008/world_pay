@@ -69,6 +69,13 @@
             </div>
         </div>
 
+        <div class="layui-form-item" style="display: none">
+            <label class="layui-form-label">隐藏域</label>
+            <div class="layui-input-block">
+                <input type ="text" name="ex_change"  id="ex_change" value="{{ ex_change }}">
+            </div>
+        </div>
+
         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="button" class="layui-btn site-demo-active" id="test9">确认完成</button>
 
     </form>
@@ -87,8 +94,9 @@
             top_money = $('#top_money').val(),
             cus_name = $('#cus_name').val(),
             cus_account = $('#cus_account').val(),
-            phone = $('#phone').val();
-        var data_info = {sum_money:sum_money, top_money: top_money, cus_name: cus_name, cus_account: cus_account, phone:phone};
+            phone = $('#phone').val(),
+            exchange = $('#ex_change').val();
+        var data_info = {sum_money:sum_money, top_money: top_money, cus_name: cus_name, cus_account: cus_account, phone:phone, exchange:exchange};
 
         /*
          upload.render({

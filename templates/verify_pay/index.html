@@ -107,7 +107,8 @@
         //执行一个 table 实例
         table.render({
             elem: '#payed'
-            , height: ''
+            , height: 'full-143'
+            , cellMinWidth: '80'
             , url: '/verify_pay/pay_log/?status=已充值' //数据接口
             , title: '已确认充值信息表'
             , limit: 20
@@ -118,6 +119,9 @@
                 , {field: 'cus_name', title: '客户', align: 'center', totalRowText: '合计：'}
                 , {field: 'pay_time', title: '下单时间', align: 'center',}
                 , {field: 'top_money', title: '充值金额', align: 'center', }
+                , {field: 'before_balance', title: '充值前金额', align: 'center',style:'color: #CD3700' }
+                , {field: 'balance', title: '充值后金额', align: 'center', style:'color: #8B0A50'}
+                , {field: 'sum_balance', title: '总充值金额', align: 'center', style:'color: #00868B' }
                 , {field: 'pay_money', title: '折合金额', align: 'center', }
                 , {field: 'status', title: '充值状态', align: 'center', }
                 , {field: 'url', title: '收款码', width:'20%', align: 'center',templet: function (res) {

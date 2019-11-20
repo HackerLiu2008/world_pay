@@ -308,7 +308,8 @@
                 a = $('#accountReceivable').val(),
                 cus_name = $('#cus_name').val(),
                 cus_account = $('#cus_account').val(),
-                phone = $('#send_phone').val();
+                phone = $('#send_phone').val(),
+                exchange = $('#vipdiscount').val();
             var data_info = {sum_money:sum_money, top_money: a, cus_name: cus_name, cus_account:cus_account, phone:phone};
             $.ajax({
 				type : 'POST',
@@ -327,7 +328,7 @@
                             ,area: ['600px','600px']
                             ,anim: 2
                             ,shadeClose:true
-                            ,content: '/pay/pay_pic/?sum_money=' + sum_money + "&top_money=" + a + '&cus_name=' +cus_name + '&cus_account=' + cus_account + "&phone=" + phone
+                            ,content: '/pay/pay_pic/?sum_money=' + sum_money + "&top_money=" + a + '&cus_name=' +cus_name + '&cus_account=' + cus_account + "&phone=" + phone  +"&ex_change=" + exchange
                             ,btn: '关闭全部'
                             ,btnAlign: 'c' //按钮居中a
                             ,shade:  [0.8, '#393D49'] //弹框背景选项

@@ -4,6 +4,8 @@ import operator
 import os
 import re
 from flask import request, render_template, jsonify, session, g
+from numpy import npv
+from config import cache
 from tools_me.mysql_tools import SqlData
 from tools_me.other_tools import admin_required, xianzai_time, get_nday_list, sum_code
 from tools_me.parameter import RET, MSG, DIR_PATH, TRANS_TYPE_LOG, TRANS_STATUS
@@ -37,6 +39,9 @@ def push_log():
                 trans_sql = " AND trans_type ='" + trans_type + "'"
 
             sql = time_sql + card_sql + trans_sql
+        else:
+            start_index = (int(page) - 1) * int(limit)
+            sql = 'limit ' + str(start_index) + ", " + limit + ';'
 
         results = dict()
         results['msg'] = MSG.OK
@@ -48,14 +53,16 @@ def push_log():
         task_info = list(reversed(info))
         page_list = list()
 
-        # 判断是否使用了条件搜索,是则不分页.
-        if sql:
+        if 'limit' in sql:
+            s = 'push_log'
             results['data'] = task_info
         else:
+            # 分页显示
             for i in range(0, len(task_info), int(limit)):
                 page_list.append(task_info[i:i + int(limit)])
             results['data'] = page_list[int(page) - 1]
-        results['count'] = len(task_info)
+            s = 'push_log ' + sql
+        results['count'] = SqlData().search_table_count(s)
         return jsonify(results)
     except Exception as e:
         logging.error('查询卡交易推送失败1' + str(e))
@@ -258,10 +265,12 @@ def account_trans():
     cus_name = request.args.get('cus_name')
     trans_card = request.args.get('trans_card')
     trans_type = request.args.get('trans_type')
+    make_type = request.args.get('make_type')
     time_sql = ""
     card_sql = ""
     cus_sql = ""
-    type_sql = ""
+    type_sql = ''
+    make_sql = ''
     if time_range:
         min_time = time_range.split(' - ')[0]
         max_time = time_range.split(' - ')[1] + ' 23:59:59'
@@ -272,20 +281,21 @@ def account_trans():
         cus_sql = "AND account.name='" + cus_name + "'"
     if trans_type:
         type_sql = "AND account_trans.trans_type = '" + trans_type + "'"
-
-    task_info = SqlData().search_trans_admin(cus_sql, card_sql, time_sql, type_sql)
+    if make_type:
+        make_sql = "AND account_trans.do_type='" + make_type + "'"
+    else:
+        start_index = (int(page) - 1) * int(limit)
+        type_sql = 'limit ' + str(start_index) + ", " + limit + ';'
+    task_info = SqlData().search_trans_admin(cus_sql, card_sql, time_sql, type_sql, make_sql)
     results = {"code": RET.OK, "msg": MSG.OK, "count": 0, "data": ""}
     if len(task_info) == 0:
         results['MSG'] = MSG.NODATA
         return jsonify(results)
-    page_list = list()
     task_info = sorted(task_info, key=operator.itemgetter('date'))
 
     task_info = list(reversed(task_info))
-    for i in range(0, len(task_info), int(limit)):
-        page_list.append(task_info[i:i + int(limit)])
-    results['data'] = page_list[int(page) - 1]
-    results['count'] = len(task_info)
+    results['data'] = task_info
+    results['count'] = SqlData().search_table_count('account_trans')
     return jsonify(results)
 
 
@@ -295,7 +305,6 @@ def card_info_all():
     try:
         limit = request.args.get('limit')
         page = request.args.get('page')
-
         field = request.args.get('field')
         value = request.args.get('value')
 
@@ -305,7 +314,9 @@ def card_info_all():
         elif field:
             sql = "WHERE " + field + " LIKE '%" + value + "%'"
         else:
-            sql = ""
+            # 如果没有搜索条件,则分页查询MYSQL,加快速度
+            start_index = (int(page) - 1) * int(limit)
+            sql = 'limit ' + str(start_index) + ", " + limit + ';'
 
         results = dict()
         results['code'] = RET.OK
@@ -315,12 +326,9 @@ def card_info_all():
             results['code'] = RET.OK
             results['msg'] = MSG.NODATA
             return jsonify(results)
-        # info_list = sorted(info_list, key=operator.itemgetter('start_time'))
-        page_list = list()
-        for i in range(0, len(info_list), int(limit)):
-            page_list.append(info_list[i:i + int(limit)])
-        results['data'] = page_list[int(page) - 1]
-        results['count'] = len(info_list)
+
+        results['data'] = info_list
+        results['count'] = SqlData().search_table_count('card_info')
         return jsonify(results)
     except Exception as e:
         logging.error(str(e))
@@ -391,9 +399,14 @@ def card_info():
 @admin_required
 def acc_to_middle():
     if request.method == 'GET':
-        cus_list = SqlData().search_cus_list()
+        middle_name = request.args.get('middle_name')
+        # 查询没有绑定中介的客户
+        null_cus = SqlData().search_acc_middle_null()
+        # 查询该中介下已经绑定的客户
+        cus_list = SqlData().search_cus_list(middle_name)
         context = dict()
         context['cus_list'] = cus_list
+        context['null_list'] = null_cus
         return render_template('admin/acc_to_middle.html', **context)
     if request.method == 'POST':
         results = {"code": RET.OK, "msg": MSG.OK}
@@ -401,8 +414,10 @@ def acc_to_middle():
         name = data.get('name')
         field = data.get('field')
         value = data.get('value')
-        bind_cus = data.get('bind_cus')
-        del_cus = data.get('del_cus')
+
+        # 获取多选要绑定或解绑的客户名称
+        bind_cus = [k for k, v in data.items() if v == 'on']
+        del_cus = [k for k, v in data.items() if v == 'off']
         if value:
             if field == 'card_price':
                 try:
@@ -414,25 +429,27 @@ def acc_to_middle():
                 SqlData().update_middle_field_str(field, value, name)
 
         if bind_cus:
-            middle_id_now = SqlData().search_user_field_name('middle_id', bind_cus)
-            # 判断该客户是否已经绑定中介账号
-            if middle_id_now:
-                results['code'] = RET.SERVERERROR
-                results['msg'] = '该客户已经绑定中介!请解绑后重新绑定!'
-                return jsonify(results)
-            middle_id = SqlData().search_middle_name('id', name)
-            user_id = SqlData().search_user_field_name('id', bind_cus)
-            SqlData().update_user_field_int('middle_id', middle_id, user_id)
+            for i in bind_cus:
+                middle_id_now = SqlData().search_user_field_name('middle_id', i)
+                # 判断该客户是否已经绑定中介账号
+                if middle_id_now:
+                    results['code'] = RET.SERVERERROR
+                    results['msg'] = '该客户已经绑定中介!请解绑后重新绑定!'
+                    return jsonify(results)
+                middle_id = SqlData().search_middle_name('id', name)
+                user_id = SqlData().search_user_field_name('id', i)
+                SqlData().update_user_field_int('middle_id', middle_id, user_id)
         if del_cus:
-            user_id = SqlData().search_user_field_name('id', del_cus)
-            middle_id_now = SqlData().search_user_field_name('middle_id', del_cus)
-            middle_id = SqlData().search_middle_name('id', name)
-            # 判断这个客户是不是当前中介的客户,不是则无权操作
-            if middle_id_now != middle_id:
-                results['code'] = RET.SERVERERROR
-                results['msg'] = '该客户不是当前中介客户!无权删除!'
-                return jsonify(results)
-            SqlData().update_user_field_int('middle_id', 'NULL', user_id)
+            for i in del_cus:
+                user_id = SqlData().search_user_field_name('id', i)
+                middle_id_now = SqlData().search_user_field_name('middle_id', i)
+                middle_id = SqlData().search_middle_name('id', name)
+                # 判断这个客户是不是当前中介的客户,不是则无权操作
+                if middle_id_now != middle_id:
+                    results['code'] = RET.SERVERERROR
+                    results['msg'] = '该客户不是当前中介客户!无权删除!'
+                    return jsonify(results)
+                SqlData().update_user_field_int('middle_id', 'NULL', user_id)
         return jsonify(results)
 
 
@@ -745,7 +762,6 @@ def edit_parameter():
         results = {"code": RET.OK, "msg": MSG.OK}
         try:
             data = json.loads(request.form.get('data'))
-            print(data)
             name = data.get('name_str')
             create_price = data.get('create_price')
             refund = data.get('refund')
@@ -786,7 +802,8 @@ def account_info():
     if customer:
         sql = "WHERE name LIKE '%" + customer + "%'"
     else:
-        sql = ''
+        start_index = (int(page) - 1) * int(limit)
+        sql = 'limit ' + str(start_index) + ", " + limit + ';'
     task_one = SqlData().search_account_info(sql)
     if len(task_one) == 0:
         results['MSG'] = MSG.NODATA
@@ -799,12 +816,9 @@ def account_info():
         u['card_num'] = card_count
         u['out_money'] = out_money
         task_info.append(u)
-    page_list = list()
     task_info = list(reversed(task_info))
-    for i in range(0, len(task_info), int(limit)):
-        page_list.append(task_info[i:i + int(limit)])
-    results['data'] = page_list[int(page) - 1]
-    results['count'] = len(task_info)
+    results['data'] = task_info
+    results['count'] = SqlData().search_table_count('account')
     return jsonify(results)
 
 
@@ -854,13 +868,13 @@ def middle_detail():
     return jsonify(results)
 
 
-
-
-
 @admin_blueprint.route('/line_chart', methods=['GET'])
 @admin_required
+@cache.cached(timeout=21600, key_prefix='GuteHelen')
 def test():
-    day_list = get_nday_list(30)
+    # 展示近三十天开卡数量
+    day_num = 30
+    day_list = get_nday_list(day_num)
     account_list = SqlData().search_user_field_admin()
     data = list()
     if account_list:
@@ -871,17 +885,34 @@ def test():
                 sql_str = "AND act_time BETWEEN '" + str(i) + ' 00:00:00' + "'" + " and '" + str(i) + " 23:59:59'"
                 account_id = u_id.get('id')
                 card_count = SqlData().search_card_count(account_id, sql_str)
+                if card_count == 0:
+                    card_count = ''
                 count_list.append(card_count)
             info_dict['name'] = u_id.get('name')
             info_dict['data'] = count_list
             data.append(info_dict)
     else:
-        data = [{'name': '无客户', 'data': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}]
+        data = [{'name': '无客户', 'data': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}]
+
+    sum_list = list()
+    for i in data:
+        one_cus = i.get('data')
+        sum_list.append(one_cus)
+
+    res_list = list()
+    for n in range(30):
+        res = 0
+        for i in range(len(sum_list)):
+            card_num = sum_list[i][n]
+            if card_num != "":
+               res += card_num
+        res_list.append(res)
 
     results = dict()
     results['code'] = RET.OK
     results['msg'] = MSG.OK
     results['data'] = data
+    results['column'] = res_list
     results['xAx'] = day_list
     return jsonify(results)
 
