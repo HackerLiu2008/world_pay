@@ -261,9 +261,10 @@
             <p>&nbsp;&nbsp;</p>
             <p>&nbsp;&nbsp;</p>
             <p>&nbsp;&nbsp;</p>
-            <p style="letter-spacing:5px;color: greenyellow;padding: 8px 8px 8px 8px">通知:</p>
-            <p style="letter-spacing:5px;color:#54FF9F;padding: 8px 8px 8px 8px">&nbsp;&nbsp; {{ notice }}</p></div>
+            <p style="letter-spacing:5px;color: #E6E6FA;padding: 8px 8px 8px 8px">通知:</p>
+            <p style="letter-spacing:5px;color:lightyellow;padding: 8px 8px 8px 8px;white-space:pre-wrap;">{{ notice }}</p>
         </div>
+</div>
 </div>
 
 
@@ -692,10 +693,6 @@
             return false
         });
 
-      $('.demoTable .layui-btn').on('click', function(){
-        var type = $(this).data('type');
-        active[type] ? active[type].call(this) : '';
-      });
 
         //监听行工具事件
         table.on('tool(card_info)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"

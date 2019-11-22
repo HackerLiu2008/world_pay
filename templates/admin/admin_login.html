@@ -122,6 +122,8 @@
                                 icon : 6,
                             });*/
                             location.href='/admin/'; //关闭弹框
+                            }else if (data.code==200) {
+                                location.href='/admin/vice_index/'
                             }else if(data.code == 502){
                                 parent.layer.msg('账户或密码错误!', {
                                 icon : 5

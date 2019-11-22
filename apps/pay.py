@@ -52,32 +52,38 @@ def top_cn():
         2:查看实时汇率有没有变动
         3:核实客户是否存在
         '''
-        data = json.loads(request.form.get('data'))
-        sum_money = data.get('sum_money')
-        top_money = data.get('top_money')
-        cus_name = data.get('cus_name')
-        cus_account = data.get('cus_account')
-        phone = data.get('phone')
-        res = SqlData().search_user_check(cus_name, cus_account)
-        if not res:
-            return jsonify({'code': RET.SERVERERROR, 'msg': '没有该用户!请核实后重试!'})
-        if phone:
-            ret = re.match(r"^1[35789]\d{9}$", phone)
-            if not ret:
-                results = dict()
-                results['code'] = RET.SERVERERROR
-                results['msg'] = '请输入符合规范的电话号码!'
-                return jsonify(results)
-        ex_change = SqlData().search_admin_field('ex_change')
-        ex_range = SqlData().search_admin_field('ex_range')
-        hand = SqlData().search_admin_field('hand')
-        _money_self = float(top_money) * (ex_change + ex_range) * (hand + 1)
-        money_self = round(_money_self, 10)
-        sum_money = round(float(sum_money), 10)
-        if money_self == sum_money:
-            return jsonify({'code': RET.OK, 'msg': MSG.OK})
-        else:
-            return jsonify({'code': RET.SERVERERROR, 'msg': '汇率已变动!请刷新界面后重试!'})
+        try:
+            data = json.loads(request.form.get('data'))
+            sum_money = data.get('sum_money')
+            top_money = data.get('top_money')
+            cus_name = data.get('cus_name')
+            cus_account = data.get('cus_account')
+            phone = data.get('phone')
+            res = SqlData().search_user_check(cus_name, cus_account)
+            if not res:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '没有该用户!请核实后重试!'})
+            if phone:
+                ret = re.match(r"^1[35789]\d{9}$", phone)
+                if not ret:
+                    results = dict()
+                    results['code'] = RET.SERVERERROR
+                    results['msg'] = '请输入符合规范的电话号码!'
+                    return jsonify(results)
+            ex_change = SqlData().search_admin_field('ex_change')
+            ex_range = SqlData().search_admin_field('ex_range')
+            hand = SqlData().search_admin_field('hand')
+            _money_self = float(top_money) * (ex_change + ex_range) * (hand + 1)
+            money_self = round(_money_self, 10)
+            sum_money = round(float(sum_money), 10)
+            if money_self == sum_money:
+                return jsonify({'code': RET.OK, 'msg': MSG.OK})
+            else:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '汇率已变动!请刷新界面后重试!'})
+        except Exception as e:
+            ip = request.headers['ip']
+            s = '请求IP是: ' + str(ip)
+            logging.error(s)
+            return jsonify({'code': RET.SERVERERROR, 'msg': '别玩了!都被你玩坏了!'})
 
 
 @pay_blueprint.route('/acc_top_dollar/', methods=['POST'])
@@ -173,12 +179,12 @@ def pay_pic():
             pic_list = list()
             for i in range(5):
                 file_name = file_n + str(i+1)
-                file = request.files.get(file_name)
-                if file:
+                file_img = request.files.get(file_name)
+                if file_img:
                     now_time = sum_code()
-                    file_name = cus_account + "_" + now_time + ".png"
+                    file_name = cus_account + "_" + now_time + str(i) + ".png"
                     file_path = DIR_PATH.PHOTO_DIR + file_name
-                    file.save(file_path)
+                    file_img.save(file_path)
                     pic_list.append(file_name)
             n_time = xianzai_time()
             vir_code = str(uuid.uuid1())[:6]

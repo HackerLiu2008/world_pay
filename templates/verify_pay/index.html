@@ -7,6 +7,15 @@
     <script src="/static/layui/layui.js" charset="utf-8"></script>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
+
+    <style type="text/css">
+    .layui-table-cell{
+	    text-align:center;
+	    height: auto;
+	    white-space: normal;
+    }
+</style>
+
 </head>
 <body>
 
@@ -36,15 +45,6 @@
     </div>
   </div>
 </div>
-
-
-<style type="text/css">
-    .layui-table-cell{
-	    text-align:center;
-	    height: auto;
-	    white-space: normal;
-    }
-</style>
 
 
 <script language="JavaScript">
@@ -82,7 +82,8 @@
         //执行一个 table 实例
         table.render({
             elem: '#wait_pay'
-            , height: ''
+            , height: 'full-143'
+            , cellMinWidth: '80'
             , url: '/verify_pay/pay_log/?status=待充值' //数据接口
             , title: '待确认充值信息表'
             , limit:20

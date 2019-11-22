@@ -114,7 +114,7 @@ def top_up():
             pay_num = sum_code()
             t = xianzai_time()
             before = SqlData().search_user_field_name('balance', cus_name)
-            balance = before + money
+
             user_id = SqlData().search_user_field_name('id', cus_name)
 
             # 更新首款码收款金额
@@ -124,6 +124,9 @@ def top_up():
 
             # 更新账户余额
             SqlData().update_user_balance(money, user_id)
+
+            # 实时查询当前余额不以理论计算为结果
+            balance = SqlData().search_user_field('balance', user_id)
 
             # 更新客户充值记录
             SqlData().insert_top_up(pay_num, t, money, before, balance, user_id, '系统')

@@ -1,6 +1,5 @@
 import pymysql
 import logging
-from tools_me.RSA_NAME.helen import QuanQiuFu
 
 
 class SqlData(object):
@@ -786,10 +785,9 @@ class SqlData(object):
             info_list.append(info_dict)
         return info_list
 
-    def search_trans_admin(self, cus_sql, card_sql, time_sql, type_sql, make_sql):
+    def search_trans_admin(self, sql_all):
         sql = "SELECT account_trans.*, account.name FROM account_trans LEFT JOIN account ON account_trans.account_id" \
-              " = account.id WHERE account_trans.do_date != '' {} {} {} {} {}".format(cus_sql, card_sql, time_sql,
-                                                                                   type_sql, make_sql)
+              " = account.id {}".format(sql_all)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         info_list = list()
@@ -1089,8 +1087,7 @@ class SqlData(object):
 
 if __name__ == "__main__":
     s = SqlData()
-    re = s.search_table_count('card_info')
-    print(re)
+
     '''
     根据账户消费记录,重新计算当前余额(在扣费异常时使用)
     

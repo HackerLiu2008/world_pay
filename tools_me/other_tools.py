@@ -152,7 +152,8 @@ def login_required(view_func):
 
 
 def admin_required(view_func):
-    """自定义装饰器判断用户是否登录
+    """
+    自定义装饰器判断用户是否登录
     使用装饰器装饰函数时，会修改被装饰的函数的__name属性和被装饰的函数的说明文档
     为了不让装饰器影响被装饰的函数的默认的数据，我们会使用@wraps装饰器，提前对view_funcJ进行装饰
     """

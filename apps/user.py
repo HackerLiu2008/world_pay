@@ -63,11 +63,11 @@ def refund_balance():
             refund = SqlData().search_user_field('refund', user_id)
             hand_money = round(refund * float(data), 2)
             do_money = round(float(data) - hand_money, 2)
-            before_balance = SqlData().search_user_field('balance', user_id)
-            balance = round(before_balance + do_money, 2)
 
+            before_balance = SqlData().search_user_field('balance', user_id)
             # 更新账户余额
             SqlData().update_balance(do_money, user_id)
+            balance = SqlData().search_user_field('balance', user_id)
 
             # 将退款金额转换为负数
             do_money = do_money - do_money * 2
@@ -145,9 +145,15 @@ def top_up():
     resp = QuanQiuFu().trans_account_recharge(card_no, money)
     resp_code = resp.get('resp_code')
     if resp_code == '0000':
+        top_money = int(top_money)
+        # 查询账户操作前的账户余额
         before_balance = SqlData().search_user_field('balance', user_id)
-        balance = round(before_balance - int(top_money), 2)
-        SqlData().update_user_field_int('balance', balance, user_id)
+        # 计算要扣除多少钱
+        do_money = top_money - top_money * 2
+        # 直接更新账户余额,不计算理论余额,用sql更新本次操作费用
+        SqlData().update_balance(do_money, user_id)
+        # 查询扣除后的余额
+        balance = SqlData().search_user_field('balance', user_id)
         n_time = xianzai_time()
         SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.TOP_UP, 1, card_no, float(top_money), 0, before_balance,
                                        balance, user_id)
@@ -247,13 +253,18 @@ def create_some():
                 elif free_num == 0:
                     create_price = SqlData().search_user_field('create_price', user_id)
 
-            # 查询账户余额, 计算使用费用,更新账户余额与消费金额
+            # 查询账户操作前的账户余额
             before_balance = SqlData().search_user_field('balance', user_id)
-            balance = before_balance - create_price
+
+            do_money = create_price - create_price * 2
+            # 直接更新账户余额,不计算理论余额,用sql更新本次操作费用
+            SqlData().update_balance(do_money, user_id)
+
+            balance = SqlData().search_user_field('balance', user_id)
+
             n_time = xianzai_time()
             SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.CREATE_CARD, 1, card_no, create_price, 0, before_balance,
                                            balance, user_id)
-            SqlData().update_user_field_int('balance', balance, user_id)
 
             resp_card_info = QuanQiuFu().query_card_info(card_no)
             # print(resp_card_info)
@@ -267,15 +278,22 @@ def create_some():
             card_name = name_list.pop()
             SqlData().update_card_info(card_no, pay_passwd, n_time, card_name, label, expire_date, card_verify_code, user_id, activation)
 
-            before_balance = SqlData().search_user_field('balance', user_id)
             money = str(int(limit) * 100)
             resp = QuanQiuFu().trans_account_recharge(card_no, money)
             resp_code = resp.get('resp_code')
             # print(resp)
             if resp_code == '0000':
                 top_money = int(limit)
-                balance = round(before_balance - top_money, 2)
-                SqlData().update_user_field_int('balance', balance, user_id)
+
+                # 查询账户操作前的账户余额
+                before_balance = SqlData().search_user_field('balance', user_id)
+
+                do_money_top = top_money - top_money * 2
+                # 直接更新账户余额,不计算理论余额,用sql更新本次操作费用
+                SqlData().update_balance(do_money_top, user_id)
+
+                balance = SqlData().search_user_field('balance', user_id)
+
                 n_time = xianzai_time()
                 SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.TOP_UP, 1, card_no, top_money, 0, before_balance, balance, user_id)
             else:
@@ -353,12 +371,18 @@ def create_card():
         elif free_num == 0:
             create_price = SqlData().search_user_field('create_price', user_id)
 
+        # 查询账户操作前的账户余额
         before_balance = SqlData().search_user_field('balance', user_id)
-        balance = before_balance - create_price
+
+        do_money = create_price - create_price * 2
+        # 直接更新账户余额,不计算理论余额,用sql更新本次操作费用
+        SqlData().update_balance(do_money, user_id)
+
+        balance = SqlData().search_user_field('balance', user_id)
+
         n_time = xianzai_time()
         SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.CREATE_CARD, 1, card_no, create_price, 0, before_balance,
                                        balance, user_id)
-        SqlData().update_user_field_int('balance', balance, user_id)
 
         # 查询卡信息,及更新相关信息
         resp_card_info = QuanQiuFu().query_card_info(card_no)
@@ -379,8 +403,14 @@ def create_card():
         resp_code = resp.get('resp_code')
         if resp_code == '0000':
             top_money = float(top_money)
-            balance = round(before_balance - top_money, 2)
-            SqlData().update_user_field_int('balance', balance, user_id)
+            # 查询账户操作前的账户余额
+            before_balance = SqlData().search_user_field('balance', user_id)
+
+            do_money_top = top_money - top_money * 2
+            # 直接更新账户余额,不计算理论余额,用sql更新本次操作费用
+            SqlData().update_balance(do_money_top, user_id)
+
+            balance = SqlData().search_user_field('balance', user_id)
             n_time = xianzai_time()
             SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.TOP_UP, 1, card_no, top_money, 0, before_balance, balance, user_id)
 
