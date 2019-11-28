@@ -4,7 +4,7 @@ from threading import Lock
 import operator
 import threading
 from tools_me.RSA_NAME.helen import QuanQiuFu
-from tools_me.mysql_tools import SqlData
+from mysql_tools import SqlData
 
 
 lock = Lock()
@@ -63,7 +63,7 @@ def get_card_remain(loops):
 
 
 if __name__ == '__main__':
-    print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    # print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     card_info = SqlData().search_card_info_admin('WHERE card_no is not null')
     get_card_remain(card_info)
-    print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    # print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))

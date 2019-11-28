@@ -4,7 +4,6 @@ import logging
 
 class SqlData(object):
     def __init__(self):
-        # host = "114.116.236.27"
         host = "127.0.0.1"
         port = 3306
         user = "root"

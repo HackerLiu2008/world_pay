@@ -1,11 +1,8 @@
 import json
 import logging
 import operator
-import time
-
 import xlrd
-from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code, \
-    my_lock, save_file
+from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, sum_code, save_file
 from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE, DIR_PATH
 from tools_me.RSA_NAME.helen import QuanQiuFu
 from tools_me.remain import get_card_remain
