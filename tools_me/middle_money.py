@@ -63,7 +63,7 @@ def sum_middle_money():
                 sum_money += money
             now_time = xianzai_time()
             detail = json.dumps(detail, ensure_ascii=False)
-            _day = thues_day + "23:59:59"
+            _day = thues_day + " 23:59:59"
             SqlData().insert_middle_money(i, wed_day, _day, card_num, card_price, sum_money, now_time, '待确认', detail)
             # print(wed_day, thues_day, card_num, sum_money, now_time, card_price)
         return

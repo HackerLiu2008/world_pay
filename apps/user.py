@@ -1,13 +1,160 @@
 import json
 import logging
 import operator
-from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code, my_lock
-from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE
+import time
+
+import xlrd
+from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, choke_required, sum_code, \
+    my_lock, save_file
+from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE, DIR_PATH
 from tools_me.RSA_NAME.helen import QuanQiuFu
 from tools_me.remain import get_card_remain
 from . import user_blueprint
-from flask import render_template, request, jsonify, session, g, redirect
+from flask import render_template, request, jsonify, session, g, redirect, send_file
 from tools_me.mysql_tools import SqlData
+
+
+@user_blueprint.route('/xls_top/', methods=['POST'])
+@login_required
+def xls_top():
+    if request.method == 'POST':
+        try:
+            file = request.files.get('file')
+            filename = file.filename
+            file_path = save_file(file, filename, DIR_PATH.XLS_PATH)
+            data = xlrd.open_workbook(file_path, encoding_override='utf-8')
+            table = data.sheets()[0]
+            nrows = table.nrows  # 行数
+            ncols = table.ncols  # 列数
+            row_list = [table.row_values(i) for i in range(0, nrows)]  # 所有行的数据
+            col_list = [table.col_values(i) for i in range(0, ncols)]  # 所有列的数据
+
+            # 定义返回信息
+            results = {'code': '', 'msg': ''}
+            user_id = g.user_id
+
+            # 判断是否填写充值信息或者大于一百次充值
+            if len(row_list) <= 1 or len(row_list) > 101:
+                results['code'] = RET.OK
+                results['msg'] = '请规范填写内容后上传!(单次批量充值不能超过100次)'
+                return jsonify(results)
+
+            # 判断总充值金额是否满足本次充值总额
+            money_list = col_list[1][1:]
+            sum_money = 0
+            for m in money_list:
+                if not check_float(m):
+                    results['code'] = RET.SERVERERROR
+                    results['msg'] = '充值金额不能为小数: ' + str(m)
+                    return jsonify(results)
+                try:
+                    sum_money += int(m)
+                except:
+                    results['code'] = RET.SERVERERROR
+                    results['msg'] = '请填写正确的充值金额!'
+                    return jsonify(results)
+            balance = SqlData().search_user_field('balance', user_id)
+            if sum_money > balance:
+                results['code'] = RET.SERVERERROR
+                results['msg'] = '账户余额不足,请充值后重试!'
+                return jsonify(results)
+
+            # 判断卡号是否规范!判断卡号是否属于该用户!判断充值金额是否符合要求
+            _card = row_list[1:]
+            for card_list in _card:
+                card_no = card_list[0].strip()
+                if len(card_no) != 16:
+                    results['code'] = RET.SERVERERROR
+                    results['msg'] = '卡号不规范: ' + card_no
+                    return results
+                account_id = SqlData().search_card_field('account_id', card_no)
+                if not account_id or account_id != user_id:
+                    results['code'] = RET.SERVERERROR
+                    results['msg'] = '没有该卡号: ' + card_no
+                    return results
+
+            # 给每张卡做充值
+            for card_list in _card:
+                card_no = card_list[0].strip()
+                top_money = int(card_list[1])
+                balance = SqlData().search_user_field('balance', user_id)
+                if float(top_money) > balance:
+                    results['code'] = RET.SERVERERROR
+                    results['msg'] = '充值卡号: ' + card_no + ", 失败! 账户余额不足!"
+                    return jsonify(results)
+                money = str(int(top_money) * 100)
+
+                # 防止API异常,异常则重复充值3次,直到充值成功,3次仍是失败则退出本次充值
+                top_num = 0
+                while True:
+                    resp = QuanQiuFu().trans_account_recharge(card_no, money)
+                    resp_code = resp.get('resp_code')
+                    if resp_code == '0000':
+                        top_money = int(top_money)
+                        # 查询账户操作前的账户余额
+                        before_balance = SqlData().search_user_field('balance', user_id)
+                        # 计算要扣除多少钱
+                        do_money = top_money - top_money * 2
+                        # 直接更新账户余额,不计算理论余额,用sql更新本次操作费用
+                        SqlData().update_balance(do_money, user_id)
+                        # 查询扣除后的余额
+                        balance = SqlData().search_user_field('balance', user_id)
+                        n_time = xianzai_time()
+                        SqlData().insert_account_trans(n_time, TRANS_TYPE.OUT, DO_TYPE.TOP_UP, 1, card_no, float(top_money),
+                                                       0, before_balance,
+                                                       balance, user_id)
+                        break
+                    elif top_num > 2:
+                        resp_msg = resp.get('resp_msg')
+                        s = '充值卡余额失败,状态码: ' + resp_code + ',信息: ' + resp_msg
+                        logging.error(s)
+                        results['code'] = RET.SERVERERROR
+                        results['msg'] = "卡号: " + card_no + ", 充值是失败!请尝试单笔充值!"
+                        return jsonify(results)
+                    else:
+                        top_num += 1
+            results['code'] = RET.OK
+            results['msg'] = MSG.OK
+            return jsonify(results)
+        except Exception as e:
+            logging.error(str(e))
+            results = {'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR}
+            return jsonify(results)
+
+
+@user_blueprint.route('/download/', methods=['GET'])
+@login_required
+def xls_download():
+    response = send_file(DIR_PATH.DOWNLOAD)
+    return response
+
+
+@user_blueprint.route('/make_up/', methods=['GET'])
+@login_required
+def make_up():
+    try:
+        user_id = g.user_id
+        sql = "WHERE cvv='' OR expire='' AND account_id={}".format(str(user_id))
+        info = SqlData().search_card_info_admin(sql)
+        if not info:
+            return jsonify({'code': RET.OK, 'msg': '无卡缺失信息!'})
+        for i in info:
+            card_no = i.get('card_no')
+            card_no = card_no.strip()
+            resp_card_info = QuanQiuFu().query_card_info(card_no)
+            if resp_card_info.get('resp_code') != '0000':
+                expire_date = ''
+                card_verify_code = ''
+            else:
+                re_de = resp_card_info.get('response_detail')
+                expire_date = re_de.get('expire_date')
+                card_verify_code = re_de.get('card_verify_code')
+            SqlData().update_card_info_card_no('cvv', card_verify_code, card_no)
+            SqlData().update_card_info_card_no('expire', expire_date, card_no)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+    except Exception as e:
+        logging.error(str(e))
+        return jsonify({'code': RET.OK, 'msg': MSG.SERVERERROR})
 
 
 @user_blueprint.route('/card_lock/', methods=['POST'])
@@ -25,17 +172,14 @@ def card_lock():
         if card_status == "00":
             # 挂失
             do_type = DO_TYPE.CARD_LOCK
-            card_status_field = '11'
         elif card_status == '11':
             # 解挂
             do_type = DO_TYPE.CARD_OPEN
-            card_status_field = '0'
         else:
             return jsonify({'code': RET.SERVERERROR, 'msg': '服务器繁忙请稍后在试!'})
         resp = QuanQiuFu().card_loss(card_no, pay_passwd, do_type)
         resp_code = resp.get('resp_code')
         if resp_code == '0000':
-            SqlData().update_card_info_card_no('card_status', card_status_field, card_no)
             return jsonify({'code': RET.OK, 'msg': MSG.OK})
         else:
             return jsonify({'code': RET.SERVERERROR, 'msg': '服务器繁忙请稍后在试!'})
@@ -470,9 +614,11 @@ def account_html():
     ex_range = SqlData().search_admin_field('ex_range')
     hand = SqlData().search_admin_field('hand')
     notice = SqlData().search_admin_field('notice')
+    pay_money = SqlData().search_card_remain(user_id)
     context = dict()
     context['user_name'] = user_name
     context['balance'] = balance
+    context['pay_money'] = pay_money
     context['refund'] = refund
     context['create_card'] = create_card
     context['min_top'] = min_top

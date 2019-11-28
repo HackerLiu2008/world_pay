@@ -162,6 +162,16 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
+    def update_card_remain(self, field, value, card_no):
+        sql = "UPDATE card_info SET {}={} WHERE card_no='{}'".format(field, value, card_no)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新卡信息失败!")
+            self.connect.rollback()
+        self.close_connect()
+
     def search_card_field(self, field, crad_no):
         sql = "SELECT {} from card_info WHERE card_no='{}'".format(field, crad_no)
         self.cursor.execute(sql)
@@ -216,11 +226,6 @@ class SqlData(object):
                     info_dict['cvv'] = "\t" + cvv
                 else:
                     info_dict['cvv'] = ""
-                card_status = i[10]
-                if card_status == '11':
-                    info_dict['card_status'] = '冻结'
-                else:
-                    info_dict['card_status'] = '正常'
                 info_list.append(info_dict)
             return info_list
 
@@ -352,6 +357,14 @@ class SqlData(object):
         sql = "SELECT COUNT(*) FROM card_info LEFT JOIN account_trans ON card_info.card_no=account_trans.card_no WHERE " \
               "card_info.account_id={} AND account_trans.do_type='开卡' AND account_trans.do_money != 0 {}".format(u_id,
                                                                                                                  time_range)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return 0
+        return rows[0][0]
+
+    def search_card_remain(self, user_id):
+        sql = "SELECT SUM(remain) FROM card_info WHERE account_id={}".format(user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows:
@@ -504,10 +517,10 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
-    def insert_pay_log(self, pay_time, pay_money, top_money, ver_code, status, phone, url, account_id):
-        sql = "INSERT INTO pay_log(pay_time, pay_money, top_money, ver_code, status, phone, url, account_id) " \
-              "VALUES ('{}',{},{},'{}','{}','{}', '{}',{})".format(pay_time, pay_money, top_money, ver_code,
-                                                                   status, phone, url, account_id)
+    def insert_pay_log(self, pay_time, pay_money, top_money, ver_code, status, phone, url, pic_list, account_id):
+        sql = "INSERT INTO pay_log(pay_time, pay_money, top_money, ver_code, status, phone, url, pic_list, account_id) " \
+              "VALUES ('{}',{},{},'{}','{}','{}', '{}','{}',{})".format(pay_time, pay_money, top_money, ver_code,
+                                                                   status, phone, url, pic_list, account_id)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -761,6 +774,8 @@ class SqlData(object):
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         info_list = list()
+        if not rows:
+            return info_list
         for i in rows:
             info_dict = dict()
             info_dict['activation'] = i[1]
@@ -859,21 +874,12 @@ class SqlData(object):
         rows = self.cursor.fetchall()
         return rows[0][0]
 
-    def del_card_info(self, card_id):
-        sql = "DELETE FROM card_info WHERE id = {}".format(card_id)
-        try:
-            self.cursor.execute(sql)
-            self.connect.commit()
-        except Exception as e:
-            logging.error("添加用户余额记录失败!" + str(e))
-            self.connect.rollback()
-        self.close_connect()
-
     # 以下是带充值需要使用的方法----------------------------------------------------------------------------------------
-    def search_pay_log(self, status):
+    def search_pay_log(self, status, sql_time=''):
         sql = "SELECT pay_time,pay_money,top_money,top_up.before_balance,top_up.balance,pay_log.`status`,ver_time,url," \
-              "account.`name`,account.id FROM pay_log LEFT JOIN account ON pay_log.account_id=account.id LEFT JOIN top_up on " \
-              "pay_log.account_id=top_up.account_id AND pay_log.ver_time=top_up.time WHERE pay_log.`status`='{}'".format(status)
+              "account.`name`,pic_json,account.id FROM pay_log LEFT JOIN account ON pay_log.account_id=account.id " \
+              "LEFT JOIN top_up on pay_log.account_id=top_up.account_id AND pay_log.ver_time=top_up.time " \
+              "WHERE pay_log.`status`='{}' {}".format(status, sql_time)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows:
@@ -890,7 +896,8 @@ class SqlData(object):
             info_dict['ver_time'] = str(i[6])
             info_dict['url'] = i[7]
             info_dict['cus_name'] = i[8]
-            info_dict['cus_id'] = i[9]
+            info_dict['pic_json'] = i[9]
+            info_dict['cus_id'] = i[10]
             info_list.append(info_dict)
         return info_list
 
@@ -1057,7 +1064,7 @@ class SqlData(object):
             self.cursor.execute(sql)
             self.connect.commit()
         except Exception as e:
-            logging.error("添加推送交易失败!" + str(e))
+            logging.error("添加推送交易失败!" + sql)
             self.connect.rollback()
         self.close_connect()
 
@@ -1143,10 +1150,10 @@ if __name__ == "__main__":
     '''
     '''
     补全空缺卡的有效期和激活码
-    
+    '''
     
     while True:
-        info = s.search_card_info_admin("WHERE cvv ='' AND account_id != ''")
+        info = s.search_card_info_admin("WHERE cvv ='' AND card_no != ''")
         print(len(info))
         for i in info:
             card_no = i.get('card_no')
@@ -1162,4 +1169,4 @@ if __name__ == "__main__":
                 card_verify_code = re_de.get('card_verify_code')
             SqlData().update_card_info_card_no('cvv', card_verify_code, card_no)
             SqlData().update_card_info_card_no('expire', expire_date, card_no)
-    '''
+

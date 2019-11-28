@@ -5,10 +5,14 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart  # 创建包含多个部分的邮件体
 from email.mime.image import MIMEImage
 from tools_me.parameter import DIR_PATH
+from config import asyn
 
 # msg_to = "2404052713@qq.com"  # 收件人邮箱
 
+# 使用celery异步任务发送邮件,避免阻塞
 
+
+@asyn.task
 def send(context, pic_list, msg_to):
     msg_from = "3223750580@qq.com"  # 发送方邮箱
     passwd = "avjubvfehybzcifg"  # 填入发送方邮箱的授权码

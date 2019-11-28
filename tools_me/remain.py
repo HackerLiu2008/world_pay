@@ -28,7 +28,29 @@ def loop(card_info):
             remain = msg
     except:
         remain = '查询失败!'
+
+    try:
+        card_status = QuanQiuFu().card_status_query(card_no)
+        if card_status.get('resp_code') == '0000':
+            detail = card_status.get('response_detail')
+            card_status = detail.get('card_status')
+            if card_status == '00':
+                c_s = '正常'
+            elif card_status == '11':
+                c_s = '冻结'
+            elif card_status == '99':
+                c_s = '注销'
+            elif card_status == '10':
+                c_s = '锁定'
+            else:
+                c_s = card_status
+        else:
+            c_s = card_status.get('resp_msg')
+    except:
+        c_s = '查询失败!'
+
     card_info['remain'] = remain
+    card_info['card_status'] = c_s
     info.append(card_info)
 
 

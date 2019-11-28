@@ -41,6 +41,18 @@
             <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="del">删除</a>
       </script>
     <div class="layui-tab-item">
+
+        <form class="layui-form" action="" lay-filter="example" id="example">
+            <div class="demoTable">
+                确认时间:
+                <div class="layui-inline">
+                <input type="text" class="layui-input" id="s_test6" placeholder=" - ">
+            </div>
+            <button class="layui-btn" lay-submit="" lay-filter="sea_payed" type="submit">搜索</button>
+            <button type="reset" class="layui-btn layui-btn-primary" >重置</button>
+            </div>
+        </form>
+
         <table class="layui-hide" id="payed" lay-filter="payed"></table>
     </div>
   </div>
@@ -78,6 +90,102 @@
         element.tabChange('docDemoTabBrief', getPicTabNum);
 
 
+        laydate.render({
+            elem: '#s_test6'
+            ,range: true
+          });
+
+        form.on('submit(sea_payed)', function(data){
+
+             var $ = layui.jquery;
+             var time_range = $('#s_test6').val();
+             table.reload("payed", {
+                 page: {
+                   curr: 1 //重新从第 1 页开始
+                 },where: {
+                     time_range:time_range,
+                   }
+               }, '/verify_pay/pay_log/?status=已充值');
+            return false;
+         });
+
+
+        table.on('rowDouble(wait_pay)', function(obj){
+            var data = obj.data;
+            $.ajax({
+                type : 'GET',
+                url : '/verify_pay/photo_base/?file_name='+data.pic_json,
+                dataType : 'json',
+                success : function(data) {
+                    // 成功提示框
+                    if (data.code == 0){
+                        layer.open({
+                        type: 1
+                        ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                        ,skin:'layui-layer-demo'
+                        ,id: 'layerUser'//防止重复弹出
+                        ,title: '支付截图'
+                        ,area: ['600px','800px']
+                        ,anim: 2
+                        ,shadeClose:true
+                        ,content: data.data
+                        ,btn: '关闭全部'
+                        ,btnAlign: 'c' //按钮居中a
+                        ,shade:  [0.8, '#393D49'] //弹框背景选项
+                      });
+
+                        //标注选中样式
+                        obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+
+
+                    }else if(data.code == 502){
+                        parent.layer.msg(data.msg, {
+                        icon : 5
+                    });
+                    }
+
+                }
+            });
+        });
+
+        table.on('rowDouble(payed)', function(obj){
+            var data = obj.data;
+            $.ajax({
+                type : 'GET',
+                url : '/verify_pay/photo_base/?file_name='+data.pic_json,
+                dataType : 'json',
+                success : function(data) {
+                    // 成功提示框
+                    if (data.code == 0){
+                        layer.open({
+                        type: 1
+                        ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                        ,skin:'layui-layer-demo'
+                        ,id: 'layerUser'//防止重复弹出
+                        ,title: '支付截图'
+                        ,area: ['600px','800px']
+                        ,anim: 2
+                        ,shadeClose:true
+                        ,content: data.data
+                        ,btn: '关闭全部'
+                        ,btnAlign: 'c' //按钮居中a
+                        ,shade:  [0.8, '#393D49'] //弹框背景选项
+                      });
+
+                        //标注选中样式
+                        obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+
+
+                    }else if(data.code == 502){
+                        parent.layer.msg(data.msg, {
+                        icon : 5
+                    });
+                    }
+
+                }
+            });
+        });
+
 
         //执行一个 table 实例
         table.render({
@@ -112,7 +220,8 @@
             , cellMinWidth: '80'
             , url: '/verify_pay/pay_log/?status=已充值' //数据接口
             , title: '已确认充值信息表'
-            , limit: 20
+            , limit: 100
+            , limits: [100,200,300,400,500,600,700,800,900,1000]
             , toolbar: "r" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头

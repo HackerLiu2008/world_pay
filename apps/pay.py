@@ -80,7 +80,7 @@ def top_cn():
             else:
                 return jsonify({'code': RET.SERVERERROR, 'msg': '汇率已变动!请刷新界面后重试!'})
         except Exception as e:
-            ip = request.headers['ip']
+            ip = request.headers.get('Host')
             s = '请求IP是: ' + str(ip)
             logging.error(s)
             return jsonify({'code': RET.SERVERERROR, 'msg': '别玩了!都被你玩坏了!'})
@@ -188,13 +188,14 @@ def pay_pic():
                     pic_list.append(file_name)
             n_time = xianzai_time()
             vir_code = str(uuid.uuid1())[:6]
-            context = "客户:  " + cus_name + " , 于" + n_time + "在线申请充值: " + top_money + "美元, 折和人名币: " + \
+            context = "客户:  " + cus_name + " , 于" + n_time + "在线申请充值: " + top_money + "美元, 折和人民币: " + \
                       sum_money + "元。本次计算汇率为: " + exchange + ", 验证码为: " + vir_code
 
             cus_id = SqlData().search_user_check(cus_name, cus_account)
             sum_money = float(sum_money)
             top_money = float(top_money)
-            SqlData().insert_pay_log(n_time, sum_money, top_money, vir_code, '待充值', phone, url, cus_id)
+            pic_json = json.dumps(pic_list)
+            SqlData().insert_pay_log(n_time, sum_money, top_money, vir_code, '待充值', phone, url, pic_json, cus_id)
 
             # 获取要推送邮件的邮箱
             top_push = SqlData().search_admin_field('top_push')

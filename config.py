@@ -1,9 +1,8 @@
 from datetime import timedelta
 from flask import Flask
 import logging
-
+from celery import Celery
 from flask_caching import Cache
-
 from tools_me.parameter import DIR_PATH
 
 app = Flask(__name__)
@@ -18,6 +17,8 @@ app.app_context().push()
 # CSRFProtect(app)
 
 
+asyn = Celery('task', broker='redis://localhost:6379')
+
 LOG_FORMAT = "%(asctime)s %(name)s %(levelname)s %(pathname)s %(message)s "  # 配置输出日志格式
 DATE_FORMAT = '%Y-%m-%d  %H:%M:%S %a '  # 配置输出时间的格式，注意月份和天数不要搞乱了
 logging.basicConfig(level=logging.ERROR,
@@ -27,10 +28,6 @@ logging.basicConfig(level=logging.ERROR,
                     )
 
 # 注册路由,以url_prefix区分功能(蓝图)
-
-from apps.upload import upload_blueprint
-
-app.register_blueprint(upload_blueprint)
 
 from apps.user import user_blueprint
 

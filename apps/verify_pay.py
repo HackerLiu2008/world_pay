@@ -1,9 +1,10 @@
+import base64
 import json
 import logging
 from flask import render_template, request, jsonify, session
 from tools_me.mysql_tools import SqlData
 from tools_me.other_tools import sum_code, xianzai_time, verify_required
-from tools_me.parameter import RET, MSG
+from tools_me.parameter import RET, MSG, DIR_PATH
 from tools_me.send_sms.send_sms import CCP
 from . import verify_pay_blueprint
 
@@ -38,15 +39,25 @@ def pay_log():
     limit = request.args.get('limit')
     page = request.args.get('page')
     status = request.args.get('status')
-    data = SqlData().search_pay_log(status)
+    time_range = request.args.get('time_range')
+    if time_range:
+        start_time = "'" + time_range.split(' - ')[0] + "'"
+        end_time = "'" + time_range.split(' - ')[1] + " 23:59:59'"
+        sql = "AND ver_time BETWEEN " + start_time + " AND " + end_time
+    else:
+        sql = ''
+    data = SqlData().search_pay_log(status, sql_time=sql)
     if not data:
         results['msg'] = MSG.NODATA
         return jsonify(results)
     info = list(reversed(data))
-    page_list = list()
-    for i in range(0, len(info), int(limit)):
-        page_list.append(info[i:i + int(limit)])
-    info_list = page_list[int(page) - 1]
+    if time_range:
+        info_list = info
+    else:
+        page_list = list()
+        for i in range(0, len(info), int(limit)):
+            page_list.append(info[i:i + int(limit)])
+        info_list = page_list[int(page) - 1]
 
     # 查询当次充值时的账号总充值金额
     new_list = list()
@@ -172,3 +183,27 @@ def del_pay():
         results['code'] = RET.SERVERERROR
         results['msg'] = MSG.SERVERERROR
         return jsonify(results)
+
+
+@verify_pay_blueprint.route('/photo_base/', methods=['GET'])
+@verify_required
+def photo_base():
+    try:
+        pic_json = request.args.get('file_name')
+        pic_list = json.loads(pic_json)
+        if pic_list == [] or pic_list is None:
+            return jsonify({'code': RET.SERVERERROR, 'msg': '该订单没有支付截图!'})
+        _html = "<!DOCTYPE html><html><head><title>支付截图</title></head><body>{}</body></html>"
+        img_all = ""
+        for i in pic_list:
+            photo_path = DIR_PATH.PHOTO_DIR + i
+            with open(photo_path, 'rb') as f:
+                base64_data = base64.b64encode(f.read())
+                s = bytes.decode(base64_data)
+                img = '<img src="data:image/png;base64,{}" height="1200" width="600">'.format(s)
+                img_all += img
+        html_all = _html.format(img_all)
+        return jsonify({'code': RET.OK, 'data': html_all})
+    except Exception as e:
+        logging.error(str(e))
+        return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})

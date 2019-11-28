@@ -19,4 +19,4 @@ pay_blueprint = Blueprint('pay', __name__, url_prefix='/pay',  template_folder='
 verify_pay_blueprint = Blueprint('verify_pay', __name__, url_prefix='/verify_pay', template_folder='../templates')
 
 
-from . import upload, user,  middle, admin, pay, verify_pay
+from . import user,  middle, admin, pay, verify_pay

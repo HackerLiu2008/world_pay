@@ -14,6 +14,7 @@ from . import admin_blueprint
 
 
 @admin_blueprint.route('/vice_index/', methods=['GET'])
+@admin_required
 def vice_index():
     return render_template('admin/vice_index.html')
 

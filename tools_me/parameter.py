@@ -4,13 +4,6 @@
 # 保存excel文件的路径
 
 
-ACCOUNT_DIR = ""
-TASK_DIR = ""
-DW_TASK = ""
-DW_ACCOUNT = ""
-SMT_TASK = ""
-
-
 class DIR_PATH:
     LOG_PATH = "G:/world_pay/static/log/card.log"
     # LOG_PATH = "static/log/card.log"
@@ -23,6 +16,12 @@ class DIR_PATH:
 
     PHOTO_DIR = 'G:/world_pay/static/pay_pic/'
     # PHOTO_DIR = "static/pay_pic/"
+
+    XLS_PATH = '/world_pay/static/top_xls/'
+    # XLS_PATH = '/static/top_xls/'
+
+    DOWNLOAD = 'G:\world_pay\static\download\world_pay_demo.xls'
+    # DOWNLOAD = 'static/download/world_pay_demo.xls'
 
 
 class RET:

@@ -280,6 +280,7 @@ if __name__ == '__main__':
     pay_passwd = '04A5E788'
     card_no = '64823085058061'
 
-    resp = qqf.auth_trade_query('5295871077853353')
+    resp = qqf.query_card_info('5295871075114527')
+    print(resp)
     # resp = qqf.trans_account_recharge('5295871079074495', '2000')
 

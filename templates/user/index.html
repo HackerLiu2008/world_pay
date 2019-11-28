@@ -60,7 +60,7 @@
   <div class="layui-header">
     <div class="layui-logo">WORLD_PAY[全球付]</div>
     <ul class="layui-nav layui-layout-right">
-        <li class="layui-nav-item"  title="所剩余额 = 累计充值 - 累计消费"><span style="font-weight: normal;font-size: 16px;color: ghostwhite;">所剩余额: </span><span style="font-weight: normal;font-size: 16px;color: gold"> {{ balance }}</span> 累计消费: <span style="font-weight: normal;font-size: 16px;color: palegreen"> {{ out_money }}</span>累计充值: <span style="font-weight: normal;font-size: 16px;color: darkkhaki"> {{ sum_balance }}</span></li>
+        <li class="layui-nav-item"  title="所剩余额 = 累计充值 - 累计消费"><span style="font-weight: normal;font-size: 16px;color: ghostwhite;">所剩余额: </span><span style="font-weight: normal;font-size: 16px;color: gold"> {{ balance }}</span> 累计消费: <span style="font-weight: normal;font-size: 16px;color: palegreen"> {{ out_money }}</span> 卡余额: <span style="font-weight: normal;font-size: 16px;color: #E6E6FA"> {{ pay_money }}</span> 累计充值: <span style="font-weight: normal;font-size: 16px;color: darkkhaki"> {{ sum_balance }}</span></li>
       <li class="layui-nav-item">
         <a href="javascript:">
           {{ user_name }}
@@ -71,6 +71,17 @@
           <dd id="change_info"><a href="javascript:">更改信息</a></dd>
         </dl>
       </li>
+
+        <li class="layui-nav-item">
+        <a href="javascript:">
+            卡批量充值
+        </a>
+        <dl class="layui-nav-child">
+            <dd><a href="/user/download/">下载充值模板</a></dd>
+            <dd id="test3"><a>上传模板充值</a></dd>
+        </dl>
+      </li>
+
       <li class="layui-nav-item"><a href="/user/logout">注销</a></li>
     </ul>
   </div>
@@ -292,6 +303,32 @@
             , $ = layui.$
             , form = layui.form;
 
+
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '#test3'
+            ,url: '/user/xls_top/'
+            ,accept: 'file' //普通文件
+            ,exts:'xls|xlsx'
+            ,before:function () {
+                layer.msg('充值数量,影响充值时间!请耐心等待...', {icon: 16,shade: [0.5, '#7A7A7A'],scrollbar: false,offset: 'auto', time:100000});
+            }
+            ,done: function(data){
+                // 成功提示框
+                if (data.code == 0){
+                    layer.closeAll();
+                    parent.layer.msg(data.msg, {
+                    icon : 6,time:2500
+                });
+                }else if(data.code == 502){
+                    layer.closeAll();
+                    parent.layer.alert(data.msg, {
+                    icon : 5, time: 30000, btn:['明白了'],btnAlign:'c',anim:6,skin:'layui-layer-molv'
+                });
+                }
+            }
+        });
+
         form.on('submit(create_one)', function(data){
             // 单击之后提交按钮不可选,防止重复提交
             var DISABLED = 'layui-btn-disabled';
@@ -436,9 +473,15 @@
             , url: '/user/card_info' //数据接口
             , title: '卡列表'
             , skin: 'line'
+            ,defaultToolbar: ['filter', 'exports', 'print', {
+              title: '补全卡信息'
+              ,layEvent: 'LAYTABLE_TIPS'
+              ,icon: 'layui-icon-face-surprised'
+            }]
             , limit:20
             , limits:[20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
-            , toolbar: '#search_remain' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , loading: true
+            , toolbar: true //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
                 {type:'numbers'}
@@ -450,7 +493,7 @@
                 , {field: 'act_time', title: '建卡时间', align: 'center', sort: true}
                 , {field: 'card_status', title: '卡状态', align: 'center', sort: true}
                 , {field: 'remain', title: '余额', align: 'center', sort: true, style: "color: red"}
-                , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo'}
+                , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo', id:'tools'}
             ]]
             , id: 'card_info'
             , page: true
@@ -459,10 +502,39 @@
                         if (res.data[i].card_status == '冻结') {
                             $('table tbody tr').eq(i).css('color', '#B23AEE');
                             $('table tbody tr td a[id=do_lock]').eq(i).html('解冻').css('background-color', 'black')
+                        }else if (res.data[i].card_status == '注销'){
+                            $('table tbody tr').eq(i).css('color', '#CD2626');
+                            $('table tbody tr td[data-field="9"]').eq(i).css('display', 'none')
                         }
                     }
                 }
         });
+
+        table.on('toolbar(card_info)', function(obj){
+            switch(obj.event){
+              //自定义头工具栏右侧图标 - 补全开卡时缺失的有效期
+              case 'LAYTABLE_TIPS':
+                $.ajax({
+                    type : 'GET',
+                    url : '/user/make_up/',
+                    dataType : 'json',
+                    success : function(data) {
+                        // 成功提示框
+                        if (data.code == 0){
+                            parent.layer.msg(data.msg, {
+                            icon : 6,
+                        });
+                        }else if(data.code == 502){
+                            parent.layer.msg(data.msg, {
+                            icon : 5
+                        });
+                        }
+
+                    }
+                });
+              break;
+            }
+          });
 
         var remain = $('#search_re');
         remain.on('click',function () {
