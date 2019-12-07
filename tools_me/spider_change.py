@@ -23,7 +23,7 @@ def ex_change():
 
         title = re.findall('<td>(.*?)</td>', resp_text)
 
-        country_iso = title[-16]
+        country_iso = title[-14]
 
         s = country_iso.encode('ISO-8859-1')
 
@@ -31,7 +31,7 @@ def ex_change():
 
         if country_cn == '美元':
 
-            return title[-13]
+            return title[-11]
         else:
             return '9999999'
 
@@ -48,6 +48,3 @@ if __name__ == '__main__':
     with open("/root/liuxiao/world_pay/tools_me/spider.txt", 'a') as f:
         t = xianzai_time()
         f.write(t + " " + str(res) + '\n')
-
-
-

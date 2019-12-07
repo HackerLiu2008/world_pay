@@ -1,87 +1,85 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-
-<head>
-<meta charset="utf-8" />
-<title>登录</title>
-<link rel="stylesheet" type="text/css" href="/static/css/index.css" />
-<link rel="icon" href="/static/img/buy-icon.png" type="image/x-icon"/>
-<link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
-<script src="/static/layui/layui.js"></script>
-<script src="/static/layui/layui.all.js"></script>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>全球付-用户登录</title>
+    <link rel="stylesheet" href="/static/css/base.css"/>
+    <link rel="stylesheet" href="/static/css/login_re.css"/>
+    <link rel="icon" href="/static/img/master.png" type="image/x-icon"/>
+    <script src="/static/layui/layui.all.js"></script>
 </head>
-
 <body>
-
-<img class="bgone" src="/static/img/1.jpg" />
-<img class="pic" src="/static/img/a.png" />
-
-<div class="table">
-	<div class="wel">WORLD·PAY[全球付]</div>
-	<div class="wel1">QUAN QIU FU DENG LU INDEX</div>
-    <form class="layui-form" action="">
-        <div class="layui-form-item layui-form-text">
-            <div class="user">
-                <div id="yonghu" style=""><img src="/static/img/yhm.png" /></div>
-                <input type="text" placeholder="请输入账号" name="user_name" lay-verify="required">
-            </div>
-        </div>
-
-        <div class="layui-form-item layui-form-text">
-            <div class="password">
-                <div id="yonghu"><img src="/static/img/mm.png" /></div>
-                <input type="password" name="pass_word" placeholder="请输入密码" lay-verify="required">
-            </div>
-        </div>
-
-        <button class="btn" lay-submit="" lay-filter="login">登录</button>
-    </form>
-</div>
-
 <script>
-    layui.use('form', function () {
-        var form = layui.form,
-            $ = layui.jquery;
+    var $ = layui.jquery;
 
-
-        form.on('submit(login)',function (data) {
-            var data_info = {data:JSON.stringify(data.field)};
-
-            $.ajax({
-				type : 'POST',
-				url : '/user/login',
-				data : data_info,
-				dataType : 'json',
-				success : function(data) {
-				    {#var data1 = JSON.parse(data);#}
-			    	{#console.log(data.code);#}
-					// 成功提示框
-                    if (data.code == 0){
-                        /*
-                        parent.layer.msg('登录成功!', {
-						icon : 6,
-					});*/
-					location.href='/user/'; //关闭弹框
-                    }else if(data.code == 502){
-                        parent.layer.msg('账户或密码错误!', {
-						icon : 5
-					});
-                    }
-
-				},
-				error : function(data) {
-					// 异常提示
-					parent.layer.msg('出现网络故障', {
-						icon : 5
-					});
-				}
-			});
-
-            return false;
+    function login() {
+        $.ajax({
+            type:'POST',
+            dataType: 'json',
+            url:'/user/login',
+            data:$('#form1').serialize(),
+            success:function (data) {
+                if (data.code==0){
+                    location.href='/user/'
+                }else {
+                    layer.msg(data.msg, {
+						icon : 5,
+                        offset:['100px']
+					})
+                }
+            }
         })
-
-    })
+    }
 </script>
+<div id="main">
+    <div class="container">
+        <img src="/static/img/bg_1.jpg" alt="" class="bgPic">
+        <div class="register">
+            <div class="title">
+                <span>全球付登录</span>
+                <a href="/user/register/{{ middle_key }}">去注册</a>
+            </div>
+
+
+            <form id="form1" action="##" onsubmit="return false" method="post" >
+                <div class="default">
+                    <p>请输入用户名或手机号码</p>
+                    <input id="uname" name="uname" data-form="uname" type="text" placeholder="用户名"/>
+                </div>
+                <div class="default">
+                    <p>请输入账号密码</p>
+                    <input id="upwd" name="upwd" data-form="upwd" type="password" placeholder="密码"/>
+                </div>
+                <div class="submit">
+                    <button class="s_hover" onclick="login()">登录</button>
+                </div>
+            </form>
+            <div class="other_login">
+                <div class="log">
+                    <span>社交账号登录</span>
+                </div>
+                <div class="icon">
+                    <ul>
+                        <li data-log="icon" class="i_hover" title="敬请期待">
+                            <img data-icon="wx" src="/static/img/wx.png" alt=""/>
+                            <span class="prompt" >微信登录</span>
+                        </li>
+                        <li data-log="icon" class="i_hover" title="敬请期待">
+                            <img data-icon="qq" src="/static/img/qq.png" alt=""/>
+                            <span class="prompt" >QQ登录</span>
+                        </li>
+                        <li data-log="icon" class="i_hover" title="敬请期待">
+                            <img data-icon="wb" src="/static/img/wb.png" alt=""/>
+                            <span class="prompt" >微博登录</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+    </div>
+</div>
 
 </body>
 </html>

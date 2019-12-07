@@ -1,11 +1,8 @@
 # coding:utf-8
-import datetime
 from threading import Lock
-import operator
 import threading
-from tools_me.RSA_NAME.helen import QuanQiuFu
+from helen import QuanQiuFu
 from mysql_tools import SqlData
-
 
 lock = Lock()
 
@@ -35,9 +32,8 @@ def loop(card_info):
                 search_num += 1
     except:
         remain = 0
-
-    # print(card_no, remain)
     SqlData().update_card_remain('remain', float(remain), card_no)
+    return
 
 
 def get_card_remain(loops):

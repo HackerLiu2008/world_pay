@@ -273,6 +273,13 @@
             </div>
 
             <div class="layui-form-item">
+              <label class="layui-form-label">到期时间</label>
+              <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="test5" name="stop_time" placeholder="yyyy-MM-dd HH:mm:ss" required lay-verify="required">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button  class="layui-btn layui-btn-lg" lay-submit="" lay-filter="formDemo" type="submit">确认</button>
                 </div>
@@ -627,6 +634,10 @@
 
         element.tabChange('demo', getPicTabNum);
 
+        laydate.render({
+            elem: '#test5'
+            ,type: 'datetime'
+          });
 
         laydate.render({
             elem: '#s_test6'

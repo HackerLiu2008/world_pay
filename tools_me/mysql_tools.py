@@ -27,18 +27,19 @@ class SqlData(object):
 
     # 登录查询
     def search_user_info(self, account):
-        sql = "SELECT id, password, name FROM account WHERE BINARY account = '{}'".format(account)
+        sql = "SELECT id, password, name, start_time, stop_time FROM account WHERE BINARY account = '{}'".format(account)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
-        try:
+        if not rows:
+            return False
+        else:
             user_data = dict()
             user_data['user_id'] = rows[0][0]
             user_data['password'] = rows[0][1]
             user_data['name'] = rows[0][2]
+            user_data['start_time'] = str(rows[0][3])
+            user_data['stop_time'] = str(rows[0][4])
             return user_data
-        except Exception as e:
-            logging.warning(str(e))
-            return '账号或密码错误!'
 
     # 查询用户首页数据信息
     def search_user_index(self, user_id):
@@ -516,10 +517,10 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
-    def insert_pay_log(self, pay_time, pay_money, top_money, ver_code, status, phone, url, pic_list, account_id):
-        sql = "INSERT INTO pay_log(pay_time, pay_money, top_money, ver_code, status, phone, url, pic_list, account_id) " \
+    def insert_pay_log(self, pay_time, pay_money, top_money, ver_code, status, phone, url, pic_json, account_id):
+        sql = "INSERT INTO pay_log(pay_time, pay_money, top_money, ver_code, status, phone, url, pic_json, account_id) " \
               "VALUES ('{}',{},{},'{}','{}','{}', '{}','{}',{})".format(pay_time, pay_money, top_money, ver_code,
-                                                                   status, phone, url, pic_list, account_id)
+                                                                   status, phone, url, pic_json, account_id)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -550,7 +551,7 @@ class SqlData(object):
         else:
             for i in rows:
                 info_dict = dict()
-                info_dict['pay_num'] = i[1]
+                info_dict['pay_num'] = '\t' + i[1]
                 info_dict['time'] = str(i[2])
                 info_dict['money'] = i[3]
                 info_dict['before_balance'] = i[4]
@@ -583,10 +584,10 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
-    def insert_account(self, account, password, phone_num, name, create_price, refund, min_top, max_top):
-        sql = "INSERT INTO account(account, password, phone_num, name, create_price, refund, min_top, max_top) " \
-              "VALUES ('{}','{}','{}','{}',{},{},{},{})".format(account, password, phone_num, name, create_price,
-                                                                refund, min_top, max_top)
+    def insert_account(self, account, password, phone_num, name, create_price, refund, min_top, max_top, start_time, stop_time):
+        sql = "INSERT INTO account(account, password, phone_num, name, create_price, refund, min_top, max_top, start_time, stop_time) " \
+              "VALUES ('{}','{}','{}','{}',{},{},{},{},'{}','{}')".format(account, password, phone_num, name, create_price,
+                                                                refund, min_top, max_top, start_time, stop_time)
         try:
             self.cursor.execute(sql)
             self.connect.commit()
@@ -1067,6 +1068,28 @@ class SqlData(object):
             self.connect.rollback()
         self.close_connect()
 
+    def search_user_push(self, user_id, sql):
+        sql = "SELECT * FROM push_log WHERE account_id={} {}".format(user_id, sql)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        info_list = list()
+        for i in rows:
+            info_dict = dict()
+            info_dict['trade_no'] = "\t" + i[1]
+            info_dict['card_no'] = "\t" + i[2]
+            info_dict['trans_type'] = i[3]
+            info_dict['timestamp'] = str(i[4])
+            info_dict['local_merchant_name'] = i[5]
+            info_dict['trans_amount'] = i[6]
+            info_dict['trans_currency_type'] = i[7]
+            info_dict['settle_amount'] = i[8]
+            info_dict['settle_currency_type'] = i[9]
+            info_dict['trans_status'] = i[10]
+            info_list.append(info_dict)
+        return info_list
+
     def search_push(self, sql_line):
         sql = "SELECT push_log.*, account.name FROM push_log LEFT JOIN account ON push_log.account_id = account.id {}".format(sql_line)
         self.cursor.execute(sql)
@@ -1088,7 +1111,94 @@ class SqlData(object):
             info_dict['trans_status'] = i[10]
             info_dict['account_name'] = i[12]
             info_list.append(info_dict)
+        return
+
+    def insert_account_reg(self, package, pay_time, start_time, reg_money, reg_days, stop_time, u_name, u_acc, u_pass,
+                           phone, url, middle_id, middle_name, pic_json, ver_code):
+        sql = "INSERT INTO account_reg(package, pay_time, start_time, reg_money, reg_days, stop_time, u_name, u_acc, u_pass," \
+              " phone ,url, middle_id, middle_name, pic_json, ver_code) VALUES ('{}','{}','{}',{},{},'{}','{}','{}','{}'," \
+              "'{}','{}',{},'{}','{}','{}')".format(package, pay_time, start_time, reg_money, reg_days, stop_time,
+                                                     u_name, u_acc, u_pass, phone, url, middle_id, middle_name,
+                                                     pic_json, ver_code)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("插入用户注册信息失败!" + str(e))
+            self.connect.rollback()
+        self.close_connect()
+
+    # ------------------操作注册套餐的方法-----
+
+    def search_reg_package(self):
+        sql = "SELECT package FROM reg_money"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return []
+        info_list = list()
+        for i in rows:
+            info_list.append(i[0])
         return info_list
+
+    def search_reg_money(self, package):
+        sql = "SELECT * FROM reg_money WHERE package='{}'".format(package)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return {}
+        else:
+            info_dict = dict()
+            info_dict['package'] = rows[0][1]
+            info_dict['money'] = rows[0][2]
+            info_dict['days'] = rows[0][3]
+            info_dict['price'] = rows[0][4]
+            info_dict['refund'] = rows[0][5]
+            info_dict['min_top'] = rows[0][6]
+            info_dict['max_top'] = rows[0][7]
+            return info_dict
+
+    def search_account_reg(self, status, sql_line=''):
+        sql = "SELECT * FROM account_reg WHERE status='{}' {}".format(status, sql_line)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        info_list = list()
+        for i in rows:
+            info_dict = dict()
+            info_dict['package'] = i[1]
+            info_dict['pay_time'] = str(i[2])
+            info_dict['start_time'] = str(i[3])
+            info_dict['reg_money'] = i[4]
+            info_dict['reg_days'] = i[5]
+            info_dict['stop_time'] = str(i[6])
+            info_dict['u_name'] = i[7]
+            info_dict['phone'] = i[10]
+            info_dict['url'] = i[11]
+            info_dict['middle_name'] = i[13]
+            info_dict['pic_json'] = i[14]
+            info_dict['status'] = i[16]
+            info_list.append(info_dict)
+        return info_list
+
+    def search_account_reg_field(self, field, pay_time, u_name):
+        sql = "SELECT {} FROM account_reg WHERE pay_time='{}' AND u_name='{}'".format(field, pay_time, u_name)
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return False
+        else:
+            return rows[0][0]
+
+    def update_account_reg_field(self, field, value, pay_time, u_name):
+        sql = "UPDATE account_reg SET {}='{}' WHERE pay_time='{}' AND u_name='{}'".format(field, value, pay_time, u_name)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("确认注册状态失败!" + str(e))
+            self.connect.rollback()
 
 
 if __name__ == "__main__":

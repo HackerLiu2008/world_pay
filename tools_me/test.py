@@ -1,4 +1,5 @@
 import poplib
+import random
 import re
 from email.parser import Parser
 
@@ -63,14 +64,9 @@ msg = Parser().parsestr(msg_content)
 # 关闭连接:
 server.quit()
 '''
-resp_code = ''
-top_num = 0
-def run(top_num):
-    while True:
-        print(top_num)
-        top_num += 1
-        if top_num == 5:
-            return
-run(top_num)
+
+s = "http://127.0.0.1:5000/user/register/?middle_key=eWFuZ2ppbmxp"
+
+
 
 

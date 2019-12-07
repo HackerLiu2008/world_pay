@@ -29,8 +29,10 @@
 
 <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
   <ul class="layui-tab-title">
-    <li class="layui-this" lay-id="1">待确认充值</li>
-    <li lay-id="2">已确认充值</li>
+    <li class="layui-this" lay-id="1">待确认充值(账户)</li>
+    <li lay-id="2">已确认充值(账户)</li>
+    <li lay-id="3">待确认注册</li>
+    <li lay-id="4">已确认注册</li>
   </ul>
   <div class="layui-tab-content" style="height: 100px;">
     <div class="layui-tab-item layui-show">
@@ -55,6 +57,16 @@
 
         <table class="layui-hide" id="payed" lay-filter="payed"></table>
     </div>
+      <div class="layui-tab-item">
+        <table class="layui-hide" id="register" lay-filter="reged"></table>
+          <script type="text/html" id="barDemo_1">
+            <a class="layui-btn layui-btn-xs" lay-event="ver_reg">确认注册</a>
+            <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="del">删除</a>
+      </script>
+      </div>
+      <div class="layui-tab-item">
+        <table class="layui-hide" id="reged" lay-filter="reged"></table>
+      </div>
   </div>
 </div>
 
@@ -88,6 +100,162 @@
 
 
         element.tabChange('docDemoTabBrief', getPicTabNum);
+
+        table.on('rowDouble(reged)', function(obj){
+            var data = obj.data;
+            $.ajax({
+                type : 'GET',
+                url : '/verify_pay/photo_base/?file_name='+data.pic_json,
+                dataType : 'json',
+                success : function(data) {
+                    // 成功提示框
+                    if (data.code == 0){
+                        layer.open({
+                        type: 1
+                        ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                        ,skin:'layui-layer-demo'
+                        ,id: 'layerUser'//防止重复弹出
+                        ,title: '支付截图'
+                        ,area: ['600px','800px']
+                        ,anim: 2
+                        ,shadeClose:true
+                        ,content: data.data
+                        ,btn: '关闭全部'
+                        ,btnAlign: 'c' //按钮居中a
+                        ,shade:  [0.8, '#393D49'] //弹框背景选项
+                      });
+
+                        //标注选中样式
+                        obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+
+
+                    }else if(data.code == 502){
+                        parent.layer.msg(data.msg, {
+                        icon : 5
+                    });
+                    }
+
+                }
+            });
+        });
+
+        table.render({
+            elem: '#reged'
+            , height: 'full-143'
+            , cellMinWidth: '80'
+            , url: '/verify_pay/account_reg/?status=已确认' //数据接口
+            , title: '已确认充值信息表'
+            , limit: 100
+            , limits: [100,200,300,400,500,600,700,800,900,1000]
+            , toolbar: "r" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'package', title: '注册套餐', align: 'center',}
+                , {field: 'pay_time', title: '下单时间', align: 'center',}
+                , {field: 'start_time', title: '注册时间时间', align: 'center', }
+                , {field: 'reg_money', title: '收费金额', align: 'center',style:'color: #CD3700' }
+                , {field: 'reg_days', title: '有效期(天)', align: 'center', style:'color: #8B0A50'}
+                , {field: 'stop_time', title: '到期时间', align: 'center', style:'color: #00868B' }
+                , {field: 'u_name', title: '用户名', align: 'center', }
+                , {field: 'phone', title: '电话', align: 'center', }
+                , {field: 'url', title: '收款码', width:'20%', align: 'center',templet: function (res) {
+                            return '<div><img src="' + res.url + '"></div>'
+                        }}
+                , {field: 'middle_name', title: '中介名', align: 'center', }
+                , {field: 'status', title: '状态', align: 'center', }
+            ]]
+            , id: 'reged'
+            , page: true
+        });
+
+
+        table.render({
+            elem: '#register'
+            , height: 'full-143'
+            , cellMinWidth: '80'
+            , url: '/verify_pay/account_reg/?status=' //数据接口
+            , title: '已确认充值信息表'
+            , limit: 100
+            , limits: [100,200,300,400,500,600,700,800,900,1000]
+            , toolbar: "r" //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , totalRow: true //开启合计行
+            , cols: [[ //表头
+                {type:'numbers'}
+                , {field: 'package', title: '注册套餐', align: 'center',}
+                , {field: 'pay_time', title: '下单时间', align: 'center',}
+                , {field: 'start_time', title: '注册时间时间', align: 'center', }
+                , {field: 'reg_money', title: '收费金额', align: 'center',style:'color: #CD3700' }
+                , {field: 'reg_days', title: '有效期(天)', align: 'center', style:'color: #8B0A50'}
+                , {field: 'stop_time', title: '到期时间', align: 'center', style:'color: #00868B' }
+                , {field: 'u_name', title: '用户名', align: 'center', }
+                , {field: 'phone', title: '电话', align: 'center', }
+                , {field: 'url', title: '收款码', width:'20%', align: 'center',templet: function (res) {
+                            return '<div><img src="' + res.url + '"></div>'
+                        }}
+                , {field: 'middle_name', title: '中介名', align: 'center', }
+                , {fixed: 'right', width: 220, align: 'center', toolbar: '#barDemo_1'}
+            ]]
+            , id: 'register'
+            , page: true
+        });
+
+        table.on('tool(register)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据
+                , layEvent = obj.event; //获得 lay-event 对应的值
+
+            if (layEvent === 'del'){
+
+                layer.confirm('确认删除该充值信息?', function(index){
+
+                    data_info = {data: JSON.stringify({user_name:data.cus_name,pay_time:data.pay_time})};
+                    $.ajax({
+                    type : 'POST',
+                    url : '/verify_pay/del_pay/',
+                    data : data_info,
+                    dataType : 'json',
+                    success : function(data) {
+                        // 成功提示框
+                        if (data.code == 0){
+                            parent.layer.msg(data.msg, {
+                            icon : 6,
+                        },obj.del());
+
+                        }else if(data.code == 502){
+                            parent.layer.msg(data.msg, {
+                            icon : 5
+                        });
+                        }
+
+                    },
+                    error : function(data) {
+                        // 异常提示
+                        parent.layer.msg('出现网络故障', {
+                            icon : 5
+                        });
+                        parent.layer.closeAll('iframe'); //关闭弹框
+                    }
+                });
+                })
+
+            } else if (layEvent === 'ver_reg') {
+                layui.layer.open({
+                    title: '确认客户为 [ ' + data.u_name + ' ] 的注册信息',
+                    type: 2,
+                    anim: 3,
+                    area: ['400px', '330px'],//宽高
+                    shadeClose: true, //点击遮罩关闭
+                    content: '/verify_pay/reg_check/?pay_time='+ data.pay_time + "&u_name=" + data.u_name + "&package=" + data.package,
+                    success: function(layer, index) {
+                        var body = layer.getChildFrame('body', index);
+                    },
+                    end: function () {
+                        location.reload()
+                    }
+                });
+                return false
+            }
+        });
 
 
         laydate.render({

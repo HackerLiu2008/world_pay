@@ -1,14 +1,75 @@
 import json
 import logging
 import operator
+import re
+import uuid
 import xlrd
-from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, sum_code, save_file
+from config import cache
+from send_email import send
+from tools_me.other_tools import xianzai_time, login_required, check_float, make_name, sum_code, save_file, is_chinese, \
+    verify_code, Base64Code, get_day_after, verify_login_time
 from tools_me.parameter import RET, MSG, TRANS_STATUS, TRANS_TYPE, DO_TYPE, DIR_PATH
-from tools_me.RSA_NAME.helen import QuanQiuFu
+from tools_me.helen import QuanQiuFu
 from tools_me.remain import get_card_remain
 from . import user_blueprint
+from tools_me.send_sms.send_sms import CCP
 from flask import render_template, request, jsonify, session, g, redirect, send_file
 from tools_me.mysql_tools import SqlData
+
+
+@user_blueprint.route('/push_log/', methods=['GET'])
+@login_required
+def push_log():
+    try:
+        user_id = g.user_id
+        page = request.args.get('page')
+        limit = request.args.get('limit')
+        range_time = request.args.get('range_time')
+        card_no = request.args.get('card_no')
+        trans_type = request.args.get('trans_type')
+        if range_time:
+            start_time = range_time.split(" - ")[0]
+            end_time = range_time.split(" - ")[1] + ' 23:59:59'
+            time_sql = " AND timestamp BETWEEN '" + start_time + "' AND '" + end_time + "'"
+
+            card_sql = ""
+            if card_no:
+                card_sql = " AND card_no LIKE '%" + card_no + "%'"
+
+            trans_sql = ""
+            if trans_type:
+                trans_sql = " AND trans_type ='" + trans_type + "'"
+
+            sql = time_sql + card_sql + trans_sql
+        else:
+            start_index = (int(page) - 1) * int(limit)
+            sql = ' ORDER BY push_log.id desc limit ' + str(start_index) + ", " + limit + ';'
+
+        results = dict()
+        results['msg'] = MSG.OK
+        results['code'] = RET.OK
+        info = SqlData().search_user_push(user_id, sql)
+        if not info:
+            results['msg'] = MSG.NODATA
+            return jsonify(results)
+        task_info = info
+        page_list = list()
+
+        if 'limit' in sql:
+            s = 'push_log WHERE account_id={}'.format(user_id)
+            results['data'] = task_info
+        else:
+            # 分页显示
+            task_info = list(reversed(task_info))
+            for i in range(0, len(task_info), int(limit)):
+                page_list.append(task_info[i:i + int(limit)])
+            results['data'] = page_list[int(page) - 1]
+            s = 'push_log WHERE account_id={}'.format(user_id) + sql
+        results['count'] = SqlData().search_table_count(s)
+        return jsonify(results)
+    except Exception as e:
+        logging.error('查询卡交易推送失败:' + str(e))
+        return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
 
 
 @user_blueprint.route('/xls_top/', methods=['POST'])
@@ -592,9 +653,13 @@ def top_history():
 @user_blueprint.route('/', methods=['GET'])
 @login_required
 def account_html():
+
     '''
-    :return:  "系统临时升级，预计今晚12点前能恢复。做生成的卡可以继续使用。有问题可以联系各自管理员"
+    #关闭系统时,返回的信息
+    return "<html><div style='position:absolute;z-index:99;padding-top:346px;left:50%;margin-left:-600px;'>" \
+           "<h1>{}</h1><div></html>".format('系统临时升级，预计今晚12点前能恢复。做生成的卡可以继续使用。有问题可以联系各自管理员')
     '''
+
     user_name = g.user_name
     user_id = g.user_id
     dict_info = SqlData().search_user_index(user_id)
@@ -612,6 +677,14 @@ def account_html():
     hand = SqlData().search_admin_field('hand')
     notice = SqlData().search_admin_field('notice')
     pay_money = SqlData().search_card_remain(user_id)
+
+    # 根据推送信息计算失败率
+    all_payed = SqlData().search_table_count("push_log WHERE account_id={} AND trans_type!='手续费'".format(user_id))
+    fail = SqlData().search_table_count("push_log WHERE account_id={} AND trans_status='交易失败'".format(user_id))
+    if all_payed == 0:
+        fail_pro = '0.00%'
+    else:
+        fail_pro = "%.2f%%" % ((fail / all_payed) * 100)
     context = dict()
     context['user_name'] = user_name
     context['balance'] = balance
@@ -627,6 +700,7 @@ def account_html():
     context['hand'] = hand
     context['notice'] = notice
     context['free'] = free
+    context['fail_pro'] = fail_pro
     return render_template('user/index.html', **context)
 
 
@@ -846,32 +920,260 @@ def logout():
     return redirect('/user/')
 
 
+@user_blueprint.route('/package/', methods=['GET'])
+def package():
+    key = request.args.get('key')
+    data = SqlData().search_reg_money(key)
+    money = data.get('money')
+    days = data.get('days')
+    price = data.get('price')
+    return jsonify({'code': RET.OK, 'money': money, 'days': days, 'price': price})
+
+
+@user_blueprint.route('/register_pay/', methods=['GET', 'POST'])
+def pay_pic():
+    if request.method == 'GET':
+        u_name = request.args.get('u_name')
+        u_acc = request.args.get('u_acc')
+        u_pass = request.args.get('u_pass')
+        phone = request.args.get('phone')
+        middle_key = request.args.get('middle_key')
+        package = SqlData().search_reg_package()
+        # 取出目前当前收款金额最低的收款码
+        qr_info = SqlData().search_qr_code('WHERE status=0')
+        if not qr_info:
+            url = ''
+        else:
+            url = ''
+            value_list = list()
+            for i in qr_info:
+                value_list.append(i.get('sum_money'))
+            value = min(value_list)
+            for n in qr_info:
+                money = n.get('sum_money')
+                if value == money:
+                    url = n.get('qr_code')
+                    break
+
+        context = dict()
+        context['u_name'] = u_name
+        context['u_acc'] = u_acc
+        context['u_pass'] = u_pass
+        context['phone'] = phone
+        context['url'] = url
+        context['middle_key'] = middle_key
+        context['package_list'] = package
+        return render_template('user/register_pay.html', **context)
+    if request.method == 'POST':
+        '''
+        获取充值金额, 保存付款截图. 发送邮件通知管理员
+        '''
+        try:
+            # 两组数据,1,表单信息充值金额,等一下客户信息 2,截图凭证最多可上传5张
+            # print(request.form)
+            # print(request.files)
+            data = json.loads(request.form.get('data'))
+            u_name = data.get('u_name')
+            u_acc = data.get('u_acc')
+            u_pass = data.get('u_pass')
+            phone = data.get('phone')
+            middle_key = data.get('middle_key')
+            url = json.loads(request.form.get('url'))
+            package = json.loads(request.form.get('package'))
+            results = {'code': RET.OK, 'msg': MSG.OK}
+
+            if not request.files:
+                results['code'] = RET.SERVERERROR
+                results['msg'] = '请选择支付截图后提交!'
+                return jsonify(results)
+
+            data = SqlData().search_reg_money(package)
+            reg_money = data.get('money')
+            reg_days = data.get('days')
+
+            # 判断是否是用中介的介绍链接进行注册的
+            middle_name = ''
+            middle_id = 0
+            if middle_key:
+                try:
+                    string = Base64Code().base_decrypt(middle_key.strip())
+                    info_list = string.split('_')
+                    middle_id = int(info_list[0])
+                    middle_name = SqlData().search_middle_field('name', middle_id)
+                    account = SqlData().search_middle_field('account', middle_id)
+                    if info_list[1] != middle_name or info_list[2] != account:
+                        return jsonify({'code': RET.SERVERERROR, 'msg': '请使用正确链接注册!'})
+                except Exception as e:
+                    logging.error(str(e))
+                    return jsonify({'code': RET.SERVERERROR, 'msg': '请使用正确链接注册!'})
+
+            # 保存所有图片
+            file_n = 'file_'
+            pic_list = list()
+            for i in range(5):
+                file_name = file_n + str(i+1)
+                file_img = request.files.get(file_name)
+                if file_img:
+                    now_time = sum_code()
+                    file_name = u_acc + "_" + now_time + str(i) + ".png"
+                    file_path = DIR_PATH.PHOTO_DIR + file_name
+                    file_img.save(file_path)
+                    pic_list.append(file_name)
+            n_time = xianzai_time()
+            pic_json = json.dumps(pic_list)
+            ver_code = str(uuid.uuid1())[:6]
+            context = "客户:  " + u_acc + " , 于" + n_time + "申请注册全球付客户端账号: 金额" + str(reg_money) + "元, 有效使用期为 " + \
+                      str(reg_days) + "天。 验证码为: " + ver_code
+            stop_time = get_day_after(reg_days)
+            SqlData().insert_account_reg(package, n_time, n_time, reg_money, reg_days, stop_time, u_name, u_acc, u_pass, phone, url, middle_id, middle_name, pic_json, ver_code)
+
+            # 获取要推送邮件的邮箱
+            top_push = SqlData().search_admin_field('top_push')
+            top_dict = json.loads(top_push)
+            email_list = list()
+            for i in top_dict:
+                email_list.append(top_dict.get(i))
+            for p in email_list:
+                send(context, pic_list, p)
+
+            return jsonify(results)
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@user_blueprint.route('/register/', methods=['GET', 'POST'])
+def register():
+    if request.method == 'GET':
+        middle_key = request.args.get('middle_key')
+        if middle_key:
+            try:
+                string = Base64Code().base_decrypt(middle_key.strip())
+                #  验证解密后的参数是否是符合要求(id_用户名_账号)
+                info_list = string.split('_')
+                middle_id = info_list[0]
+                name = SqlData().search_middle_field('name', middle_id)
+                account = SqlData().search_middle_field('account', middle_id)
+                if info_list[1] != name or info_list[2] != account:
+                    return  "<html><div style='position:absolute;z-index:99;padding-top:346px;left:50%;margin-left:-600px;'>" \
+                            "<h1>{}</h1><div></html>".format('链接残缺请使用正确的介绍链接注册!!')
+
+            except:
+                return "<html><div style='position:absolute;z-index:99;padding-top:346px;left:50%;margin-left:-600px;'>" \
+                       "<h1>{}</h1><div></html>".format('链接残缺请使用正确的介绍链接注册!')
+
+        # 给界面设置一个使用cache的key,设置唯一的key核对验证码
+        ver_key = verify_code(18)
+        context = dict()
+        context['ver_key'] = ver_key
+        context['middle_key'] = middle_key if middle_key else ''
+        return render_template('user/register.html', **context)
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.form.get('data'))
+            u_name = data.get('u_name')
+            u_acc = data.get('u_acc')
+            u_pass = data.get('u_pass')
+            phone = data.get('phone')
+            ver_code = data.get('ver_code')
+            ver_key = data.get('ver_key')
+            # 取出缓存中验证码
+            # server_code = cache.get(ver_key)
+            server_code = '111'
+
+            # 以下是对注册参数的校验
+            if not all([u_name, u_pass, phone, ver_code, ver_key]):
+                return jsonify({'code': RET.SERVERERROR, 'msg': '请补全信息后提交!'})
+            chinese = is_chinese(u_acc)
+            if chinese:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '账号中包含中文!'})
+            # 检验用户名和账号是否存在
+            res1 = SqlData().search_user_field_name('id', u_name)
+            # 每天用户名默认电话,所以没有用户名就检验电话
+            if not u_acc:
+                u_acc = phone
+            res2 = SqlData().search_user_info(u_acc)
+            if res1 or res2:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '用户名或账号已存在!'})
+            if not 6 <= len(u_pass) <= 12:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '密码长度不符合要求!'})
+            if 8 < len(u_name):
+                return jsonify({'code': RET.SERVERERROR, 'msg': '用户名过长!'})
+            if 18 < len(u_acc):
+                return jsonify({'code': RET.SERVERERROR, 'msg': '账号长度过长!'})
+            if server_code is None:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '验证码过期!请重新获取!'})
+            if ver_code != server_code:
+                return jsonify({'code': RET.SERVERERROR, 'msg': '验证码错误请刷新后重试!'})
+            else:
+                return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        except Exception as e:
+            logging.error(str(e))
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@user_blueprint.route('/ver_code/', methods=['POST'])
+def ver_code_send():
+    if request.method == 'POST':
+        data = json.loads(request.form.get('data'))
+        phone = data.get('phone')
+        ver_key = data.get('ver_key')
+
+        _code = verify_code(6, False)
+        res = CCP().send_Template_sms(phone, [_code, '60s'], 488547,)
+        if res == 0:
+            cache.set(ver_key, _code, timeout=120)
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        else:
+            return jsonify({'code': RET.SERVERERROR, 'msg': '短信发送失败!请检查号码是否正确!'})
+
+
 @user_blueprint.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'GET':
-        return render_template('user/login.html')
+        context = dict()
+        # 判断是否是通过中介链接过来的,是则保留middle_key
+        referer = request.headers.get('Referer')
+        if referer:
+            results = re.findall('middle_key=(.*)', referer)
+            if results:
+                context['middle_key'] = '?middle_key=' + results[0]
+
+        return render_template('user/login.html', **context)
 
     if request.method == 'POST':
-        data = json.loads(request.form.get('data'))
-        user_name = data.get('user_name')
-        user_pass = data.get('pass_word')
+        user_name = request.form.get('uname')
+        user_pass = request.form.get('upwd')
+        if not all([user_name, user_pass]):
+            return jsonify({'code': RET.SERVERERROR, 'msg': '请完善登录信息后重试!'})
         results = {'code': RET.OK, 'msg': MSG.OK}
         user_data = SqlData().search_user_info(user_name)
         try:
-            user_id = user_data.get('user_id')
-            pass_word = user_data.get('password')
-            name = user_data.get('name')
-            if user_pass == pass_word:
-                session['user_id'] = user_id
-                session['name'] = name
-                return jsonify(results)
+            if user_data:
+                user_id = user_data.get('user_id')
+                pass_word = user_data.get('password')
+                name = user_data.get('name')
+                stop_time = user_data.get('stop_time')
+                n_time = xianzai_time()
+                if not verify_login_time(n_time, stop_time):
+                    results['code'] = RET.SERVERERROR
+                    results['msg'] = '账号已到期,请联系管理员处理!'
+                    return jsonify(results)
+                if user_pass == pass_word:
+                    session['user_id'] = user_id
+                    session['name'] = name
+                    return jsonify(results)
+                else:
+                    results['code'] = RET.SERVERERROR
+                    results['msg'] = '账号密码错误!'
+                    return jsonify(results)
             else:
                 results['code'] = RET.SERVERERROR
-                results['msg'] = MSG.PSWDERROR
+                results['msg'] = '账号密码错误!'
                 return jsonify(results)
 
         except Exception as e:
             logging.error(str(e))
             results['code'] = RET.SERVERERROR
-            results['msg'] = MSG.DATAERROR
+            results['msg'] = '账号密码错误!'
             return jsonify(results)

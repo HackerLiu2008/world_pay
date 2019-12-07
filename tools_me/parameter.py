@@ -1,27 +1,29 @@
 # coding:utf-8
 # 以下是一些常用参数
+import os
 
-# 保存excel文件的路径
+# 获取项目的文件的绝对路径,使配置文件路径为绝对路径,避免card_remain模块单独使用异常
+file_pwd = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 
 class DIR_PATH:
-    LOG_PATH = "G:/world_pay/static/log/card.log"
+    LOG_PATH = file_pwd + "/static/log/card.log"
     # LOG_PATH = "static/log/card.log"
 
-    PRI_PEM = "G:\\world_pay\\tools_me\\RSA_NAME\\privkey_henry.pem"
-    # PRI_PEM = "tools_me/RSA_NAME/privkey_henry.pem"
+    # PRI_PEM = "G:\\world_pay\\static\\api_key\\privkey_henry.pem"
+    PRI_PEM = file_pwd + "/static/api_key/privkey_henry.pem"
 
-    PUB_PEM = 'G:\\world_pay\\tools_me\\RSA_NAME\\pro_epaylinks_publickey.pem'
-    # PUB_PEM = "tools_me/RSA_NAME/pro_epaylinks_publickey.pem"
+    # PUB_PEM = 'G:\\world_pay\\static\\api_key\\pro_epaylinks_publickey.pem'
+    PUB_PEM = file_pwd + "/static/api_key/pro_epaylinks_publickey.pem"
 
-    PHOTO_DIR = 'G:/world_pay/static/pay_pic/'
-    # PHOTO_DIR = "static/pay_pic/"
+    # PHOTO_DIR = 'G:/world_pay/static/pay_pic/'
+    PHOTO_DIR = file_pwd + "/static/pay_pic/"
+    #
+    # XLS_PATH = '/world_pay/static/top_xls/'
+    XLS_PATH = file_pwd + '/static/top_xls/'
 
-    XLS_PATH = '/world_pay/static/top_xls/'
-    # XLS_PATH = '/static/top_xls/'
-
-    DOWNLOAD = 'G:\world_pay\static\download\world_pay_demo.xls'
-    # DOWNLOAD = 'static/download/world_pay_demo.xls'
+    # DOWNLOAD = 'G:\world_pay\static\download\world_pay_demo.xls'
+    DOWNLOAD = file_pwd + '/static/download/world_pay_demo.xls'
 
 
 class RET:

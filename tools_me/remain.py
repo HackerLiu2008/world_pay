@@ -3,7 +3,7 @@
 from threading import Lock
 import operator
 import threading
-from tools_me.RSA_NAME.helen import QuanQiuFu
+from tools_me.helen import QuanQiuFu
 
 
 info = list()

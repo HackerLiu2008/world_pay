@@ -70,7 +70,7 @@ def push_log():
         results['count'] = SqlData().search_table_count(s)
         return jsonify(results)
     except Exception as e:
-        logging.error('查询卡交易推送失败1' + str(e))
+        logging.error('查询卡交易推送失败:' + str(e))
         return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
 
 
@@ -88,7 +88,7 @@ def transation():
         trans_currency_type = data.get('trans_currency_type')
 
         # 商户名称
-        local_merchant_name = data.get('local_merchant_name')
+        local_merchant_name = data.get('local_merchant_name').replace('\\', ' ')
 
         # 卡号
         card_no = data.get('card_no')
@@ -524,6 +524,7 @@ def add_account():
         account = data.get('account')
         password = data.get('password')
         phone_num = data.get('phone_num')
+        stop_time = data.get('stop_time')
         create_price = float(data.get('create_price'))
         refund = float(data.get('refund'))
         min_top = float(data.get('min_top'))
@@ -541,7 +542,8 @@ def add_account():
                 return jsonify(results)
         else:
             phone_num = ""
-        SqlData().insert_account(account, password, phone_num, name, create_price, refund, min_top, max_top)
+        start_time = xianzai_time()
+        SqlData().insert_account(account, password, phone_num, name, create_price, refund, min_top, max_top, start_time, stop_time)
         # 添加默认充值记录0元(用于单独充值结算总充值金额避免BUG)
         n_time = xianzai_time()
         account_id = SqlData().search_user_field_name('id', name)

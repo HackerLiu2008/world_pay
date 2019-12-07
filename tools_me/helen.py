@@ -1,12 +1,19 @@
 import hashlib
 import logging
-
+import os
 import rsa
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
 from Crypto.Hash import MD5
 import base64, requests, datetime, time
-from tools_me.parameter import DIR_PATH
+
+
+file_pwd = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
+
+class DIR_PATH(object):
+    PRI_PEM = file_pwd + "/static/api_key/privkey_henry.pem"
+    PUB_PEM = file_pwd + "/static/api_key/pro_epaylinks_publickey.pem"
 
 
 class QuanQiuFu(object):
@@ -18,6 +25,9 @@ class QuanQiuFu(object):
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
+        # proxies = {
+        #     'http': 'http://159.138.55.160:27926'
+        # }
         res = requests.post(self.url, data=data, headers=headers, timeout=20)
         return res
 
@@ -280,7 +290,7 @@ if __name__ == '__main__':
     pay_passwd = '04A5E788'
     card_no = '64823085058061'
 
-    resp = qqf.query_card_info('5295871075114527')
+    resp = qqf.api_requests({})
     print(resp)
     # resp = qqf.trans_account_recharge('5295871079074495', '2000')
 
