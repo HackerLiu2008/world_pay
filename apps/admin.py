@@ -147,7 +147,7 @@ def transation():
         trans_currency_type = data.get('trans_currency_type')
 
         # 商户名称
-        local_merchant_name = data.get('local_merchant_name').replace('\\', ' ')
+        local_merchant_name = data.get('local_merchant_name')
 
         # 卡号
         card_no = data.get('card_no')
