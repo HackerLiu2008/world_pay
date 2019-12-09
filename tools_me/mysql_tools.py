@@ -43,7 +43,7 @@ class SqlData(object):
 
     # 查询用户首页数据信息
     def search_user_index(self, user_id):
-        sql = "SELECT create_price, refund, min_top, max_top, balance, sum_balance, free FROM account WHERE id = {}".format(
+        sql = "SELECT create_price, refund, min_top, max_top, balance, sum_balance, free, stop_time FROM account WHERE id = {}".format(
             user_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
@@ -55,6 +55,7 @@ class SqlData(object):
         user_info['balance'] = rows[0][4]
         user_info['sum_balance'] = rows[0][5]
         user_info['free'] = rows[0][6]
+        user_info['stop_time'] = str(rows[0][7])
         return user_info
 
     # 用户基本信息资料
@@ -268,8 +269,7 @@ class SqlData(object):
 
     def search_trans_sum(self, account_id):
         # 2019-11-01 20:50:00 更该计费方式,退款不增加总充值金额,只变动账号余额和以消费金额,所以要按两个条件段搜索
-        sql = "SELECT SUM(do_money) FROM account_trans WHERE (account_id={} AND trans_type='收入' AND " \
-              "do_date>'2019-11-01 20:50:00' ) OR ( account_id={} AND trans_type='支出')".format(account_id, account_id)
+        sql = "SELECT SUM(do_money) FROM account_trans WHERE account_id={} ".format(account_id)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         if not rows[0][0]:
@@ -770,7 +770,7 @@ class SqlData(object):
         self.close_connect()
 
     def search_card_info_admin(self, sql_line):
-        sql = "SELECT * FROM card_info {};".format(sql_line)
+        sql = "SELECT * FROM card_info ORDER BY act_time DESC {}".format(sql_line)
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         info_list = list()
@@ -835,10 +835,10 @@ class SqlData(object):
         return sum_money
 
     def search_user_sum_balance(self):
-        sql = "SELECT SUM(sum_balance) FROM account"
+        sql = "SELECT  SUM(balance),SUM(sum_balance) FROM account"
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
-        return rows[0][0]
+        return rows[0][0], rows[0][1]
 
     def insert_account_log(self, n_time, customer, balance, out_money, sum_balance):
         sql = "INSERT INTO account_log(log_time, customer, balance, out_money, sum_balance) VALUES ('{}','{}',{},{},{})".format(
@@ -873,6 +873,23 @@ class SqlData(object):
         self.cursor.execute(sql)
         rows = self.cursor.fetchall()
         return rows[0][0]
+
+    def search_card_remain_admin(self):
+        sql = "SELECT SUM(remain) FROM card_info"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return 0
+        return rows[0][0]
+
+    def search_trans_sum_admin(self):
+        sql = "SELECT SUM(do_money) FROM account_trans"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows[0][0]:
+            return 0
+        sum_money = round(rows[0][0], 2)
+        return sum_money
 
     # 以下是带充值需要使用的方法----------------------------------------------------------------------------------------
     def search_pay_log(self, status, sql_time=''):
@@ -1141,6 +1158,31 @@ class SqlData(object):
             info_list.append(i[0])
         return info_list
 
+    def update_reg_field(self, field, value, package):
+        sql = "UPDATE reg_money SET {}={} WHERE package='{}'".format(field, value, package)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("更新注册金额失败!" + str(e))
+            self.connect.rollback()
+
+    def insert_reg_package(self, package, money, days, price, refund, min_top, max_top):
+        sql = "INSERT  INTO reg_money(package, money, days, price, refund, min_top, max_top) VALUES('{}', {},{}," \
+              "{},{},{},{})".format(package, money, days, price, refund, min_top, max_top)
+        try:
+            self.cursor.execute(sql)
+            self.connect.commit()
+        except Exception as e:
+            logging.error("添加注册套餐失败!" + str(e))
+            self.connect.rollback()
+
+    def del_reg_package(self, package):
+        sql = "DELETE FROM reg_money WHERE package = '{}'".format(package)
+        self.cursor.execute(sql)
+        self.connect.commit()
+        self.close_connect()
+
     def search_reg_money(self, package):
         sql = "SELECT * FROM reg_money WHERE package='{}'".format(package)
         self.cursor.execute(sql)
@@ -1157,6 +1199,25 @@ class SqlData(object):
             info_dict['min_top'] = rows[0][6]
             info_dict['max_top'] = rows[0][7]
             return info_dict
+
+    def search_reg_all(self):
+        sql = "SELECT * FROM reg_money"
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return {}
+        info_list = list()
+        for row in rows:
+            info_dict = dict()
+            info_dict['package'] = row[1]
+            info_dict['money'] = row[2]
+            info_dict['days'] = row[3]
+            info_dict['price'] = row[4]
+            info_dict['refund'] = row[5]
+            info_dict['min_top'] = row[6]
+            info_dict['max_top'] = row[7]
+            info_list.append(info_dict)
+        return info_list
 
     def search_account_reg(self, status, sql_line=''):
         sql = "SELECT * FROM account_reg WHERE status='{}' {}".format(status, sql_line)

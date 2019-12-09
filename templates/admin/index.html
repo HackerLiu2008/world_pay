@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
     <script src="/static/layui/layui.js"></script>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="/static/js/highcharts.js"></script>
     <style>
         .divForm{
             width: 500px;
@@ -31,8 +31,8 @@
   <div class="layui-header layui-bg-black" >
     <div class="layui-logo">WORLD_PAY[全球付]</div>
     <ul class="layui-nav layui-layout-right">
-        <li class="layui-nav-item"><span style="font-weight: normal;font-size: 16px;color: ghostwhite;">账户消费信息: </span><span style="font-weight: normal;font-size: 16px;color: lightgoldenrodyellow"> SPENT: {{ spent }} / ADVANCE: {{ advance }}</span></li>
-      <li class="layui-nav-item">
+        <li class="layui-nav-item"  title="可分配余额 = 累计充值 - 累计消费"><span style="font-weight: normal;font-size: 16px;color: ghostwhite;">可分配余额: </span><span style="font-weight: normal;font-size: 16px;color: gold"> {{ balance }}</span> 累计消费: <span style="font-weight: normal;font-size: 16px;color: palegreen"> {{ out_money }}</span> 卡余额: <span style="font-weight: normal;font-size: 16px;color: #E6E6FA"> {{ card_remain }}</span> 累计充值: <span style="font-weight: normal;font-size: 16px;color: darkkhaki"> {{ sum_balance }}</span></li>
+        <li class="layui-nav-item">
         <a href="javascript:">
           {{ admin_name }}
         </a>
@@ -58,6 +58,17 @@
             <dl class="layui-nav-child">
                 <dd id="qr_code"><a href="javascript:">收款码</a></dd>
                 <dd id="top_msg"><a href="javascript:">充值通知</a></dd>
+            </dl>
+        </li>
+
+
+        <li class="layui-nav-item">
+            <a href="javascript:">
+                注册
+            </a>
+            <dl class="layui-nav-child">
+                <dd id="reg_money"><a href="javascript:">编辑套餐</a></dd>
+                <dd id="add_package"><a href="javascript:">添加套餐</a></dd>
             </dl>
         </li>
 
@@ -355,7 +366,7 @@
 {#            <a class="layui-btn layui-btn-xs" lay-event="top_up">充值</a>#}
 {#            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">编辑</a>#}
             <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="mid_edit">编辑</a>
-            <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="del">提成</a>
+            <a class="layui-btn layui-btn-xs" lay-event="middle_link">生成链接</a>
         </script>
       </div>
 
@@ -1171,6 +1182,42 @@
               });
         });
 
+        //自动注册的收费标准
+        $('#reg_money').on('click', function () {
+            layer.open({
+                type: 2
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: ['1000px','350px']
+                ,shade: 0.8
+                ,id: 'user_detail' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,shadeClose: true
+                ,btnAlign: 'c'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/admin/reg_package/'
+
+              });
+        });
+
+        //添加注册的收费标准
+        $('#add_package').on('click', function () {
+            layer.open({
+                type: 2
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: ['500px','600px']
+                ,shade: 0.8
+                ,id: 'user_detail' //设定一个id，防止重复弹出
+                ,btn: ['关闭']
+                ,shadeClose: true
+                ,btnAlign: 'c'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '/admin/add_package/'
+
+              });
+        });
+
         //监听行工具事件
         table.on('tool(account_all)', function (obj) { //注：tool 是工具条事件名，test_all 是 table 原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
@@ -1287,22 +1334,28 @@
                         body.contents().find("#name").val(data.name)
                     }
                 });
-            } else if (layEvent === 'lock'){
-                layer.msg('冻结卡操作!')
-            } else if (layEvent === 'edit') {
-                layui.layer.open({
-                    title: '修改卡号为 [ ' + data.name + ' ] 的相关信息',
-                    type: 2,
-                    anim: 3,
-                    area: ['20%', '35%'],//宽高
-                    shadeClose: true, //点击遮罩关闭
-                    content: '/admin/edit_parameter',
-                    success: function(layero, index) {
-                        var body = layer.getChildFrame('body', index);
-                        body.contents().find("#name_str").val(data.name)
+            } else if (layEvent === 'middle_link'){
+                $.ajax({
+                    type:'GET',
+                    url:'/admin/middle_link/?middle_name='+data.name + '&middle_account=' + data.account,
+                    dataType : 'json',
+                    success:function (data) {
+                        if (data.code==0){
+                            layer.open({
+                                type:1,
+                                title:'中介客户注册链接',
+                                closeBtn:false,
+                                area:'700px',
+                                shade:0.8,
+                                btn:['我知道了'],
+                                btnAlign:'c',
+                                content: '<div style=\"padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;\">' + data.msg + '</div>'
+                            })
+                        }else{
+                            layer.msg(data.msg)
+                        }
                     }
-                });
-                return false
+                })
             }
         });
 

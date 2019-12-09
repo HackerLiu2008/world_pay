@@ -17,7 +17,7 @@ def verify_login():
         data = request.values.to_dict()
         user_name = data.get('username')
         pass_word = data.get('password')
-        if user_name == "GUTE123" and pass_word == "trybest":
+        if user_name == "GUTE123" and pass_word == "think988&":
             session['verify_pay'] = 'T'
             return jsonify({'code': RET.OK, 'msg': MSG.OK})
         else:

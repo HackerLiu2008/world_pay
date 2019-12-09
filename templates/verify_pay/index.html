@@ -58,7 +58,7 @@
         <table class="layui-hide" id="payed" lay-filter="payed"></table>
     </div>
       <div class="layui-tab-item">
-        <table class="layui-hide" id="register" lay-filter="reged"></table>
+        <table class="layui-hide" id="register" lay-filter="register"></table>
           <script type="text/html" id="barDemo_1">
             <a class="layui-btn layui-btn-xs" lay-event="ver_reg">确认注册</a>
             <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="del">删除</a>
@@ -100,6 +100,44 @@
 
 
         element.tabChange('docDemoTabBrief', getPicTabNum);
+
+        table.on('rowDouble(register)', function(obj){
+            var data = obj.data;
+            $.ajax({
+                type : 'GET',
+                url : '/verify_pay/photo_base/?file_name='+data.pic_json,
+                dataType : 'json',
+                success : function(data) {
+                    // 成功提示框
+                    if (data.code == 0){
+                        layer.open({
+                        type: 1
+                        ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                        ,skin:'layui-layer-demo'
+                        ,id: 'layerUser'//防止重复弹出
+                        ,title: '支付截图'
+                        ,area: ['600px','800px']
+                        ,anim: 2
+                        ,shadeClose:true
+                        ,content: data.data
+                        ,btn: '关闭全部'
+                        ,btnAlign: 'c' //按钮居中a
+                        ,shade:  [0.8, '#393D49'] //弹框背景选项
+                      });
+
+                        //标注选中样式
+                        obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+
+
+                    }else if(data.code == 502){
+                        parent.layer.msg(data.msg, {
+                        icon : 5
+                    });
+                    }
+
+                }
+            });
+        });
 
         table.on('rowDouble(reged)', function(obj){
             var data = obj.data;

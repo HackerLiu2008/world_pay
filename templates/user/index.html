@@ -59,8 +59,13 @@
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
     <div class="layui-logo">WORLD_PAY[全球付]</div>
+      <ul class="layui-nav layui-layout-left">
+          <li class="layui-nav-item" title="账号在一个月内过期,请及时续费!"><span style="font-weight: normal;font-size: 16px;color: red">{{ stop_time }}</span></li>
+      </ul>
     <ul class="layui-nav layui-layout-right">
-        <li class="layui-nav-item"  title="所剩余额 = 累计充值 - 累计消费"><span style="font-weight: normal;font-size: 16px;color: ghostwhite;">所剩余额: </span><span style="font-weight: normal;font-size: 16px;color: gold"> {{ balance }}</span> 累计消费: <span style="font-weight: normal;font-size: 16px;color: palegreen"> {{ out_money }}</span> 卡余额: <span style="font-weight: normal;font-size: 16px;color: #E6E6FA"> {{ pay_money }}</span> 累计充值: <span style="font-weight: normal;font-size: 16px;color: darkkhaki"> {{ sum_balance }}</span></li>
+
+        <li class="layui-nav-item"  title="可分配余额 = 累计充值 - 累计消费"><span style="font-weight: normal;font-size: 16px;color: ghostwhite;">可分配余额: </span><span style="font-weight: normal;font-size: 16px;color: gold"> {{ balance }}</span> 累计消费: <span style="font-weight: normal;font-size: 16px;color: palegreen"> {{ out_money }}</span> 卡余额: <span style="font-weight: normal;font-size: 16px;color: #E6E6FA"> {{ pay_money }}</span> 累计充值: <span style="font-weight: normal;font-size: 16px;color: darkkhaki"> {{ sum_balance }}</span></li>
+
       <li class="layui-nav-item">
         <a href="javascript:">
           {{ user_name }}
@@ -334,7 +339,9 @@
 
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    可平移卡数量: <span style="font-weight: normal;font-size: 16px;color: red"> {{ free }}</span>
+      <div>
+              可平移卡数量: <span style="font-weight: normal;font-size: 16px;color: red"> {{ free }}</span>
+      </div>
   </div>
 </div>
 </div>

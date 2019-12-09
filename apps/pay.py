@@ -173,7 +173,6 @@ def pay_pic():
             exchange = data.get('exchange')
             url = json.loads(request.form.get('url'))
             results = {'code': RET.OK, 'msg': MSG.OK}
-
             # 保存所有图片
             file_n = 'file_'
             pic_list = list()
@@ -188,8 +187,17 @@ def pay_pic():
                     pic_list.append(file_name)
             n_time = xianzai_time()
             vir_code = str(uuid.uuid1())[:6]
-            context = "客户:  " + cus_name + " , 于" + n_time + "在线申请充值: " + top_money + "美元, 折和人民币: " + \
-                      sum_money + "元。本次计算汇率为: " + exchange + ", 验证码为: " + vir_code
+            ex_range = SqlData().search_admin_field('ex_range')
+            hand = SqlData().search_admin_field('hand')
+            if exchange != 'None':
+                top_exchange = round((float(exchange) + ex_range) * (hand + 1), 5)
+                top_exchange_str = ' 充值汇率为: ' + str(top_exchange) + ", "
+                money_type = '人民币'
+            else:
+                money_type = '美元'
+                top_exchange_str = ''
+            context = "客户:  " + cus_name + " , 于" + n_time + "在线申请充值: " + top_money + "美元, 折和" + money_type + ": " + \
+                      sum_money + "元。本次计算汇率为: " + exchange + "," + top_exchange_str + " 验证码为: " + vir_code
 
             cus_id = SqlData().search_user_check(cus_name, cus_account)
             sum_money = float(sum_money)

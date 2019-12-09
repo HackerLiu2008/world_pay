@@ -671,6 +671,15 @@ def account_html():
     balance = dict_info.get('balance')
     sum_balance = dict_info.get('sum_balance')
     free = dict_info.get('free')
+
+    # 判断账号有效期是否大于30天
+    stop_time = dict_info.get('stop_time')
+    s = xianzai_time()
+    res = verify_login_time(s, stop_time, range_s=2592000)
+    if not res:
+        stop_string = '到期时间: ' + stop_time
+    else:
+        stop_string = ''
     out_money = SqlData().search_trans_sum(user_id)
     ex_change = SqlData().search_admin_field('ex_change')
     ex_range = SqlData().search_admin_field('ex_range')
@@ -701,6 +710,8 @@ def account_html():
     context['notice'] = notice
     context['free'] = free
     context['fail_pro'] = fail_pro
+    # print(context)
+    context['stop_time'] = stop_string
     return render_template('user/index.html', **context)
 
 
@@ -1078,8 +1089,8 @@ def register():
             ver_code = data.get('ver_code')
             ver_key = data.get('ver_key')
             # 取出缓存中验证码
-            # server_code = cache.get(ver_key)
-            server_code = '111'
+            server_code = cache.get(ver_key)
+            # server_code = '111'
 
             # 以下是对注册参数的校验
             if not all([u_name, u_pass, phone, ver_code, ver_key]):

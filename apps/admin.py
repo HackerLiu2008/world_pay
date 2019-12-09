@@ -6,11 +6,70 @@ import re
 from flask import request, render_template, jsonify, session, g, redirect
 from config import cache
 from tools_me.mysql_tools import SqlData
-from tools_me.other_tools import admin_required, xianzai_time, get_nday_list, sum_code
+from tools_me.other_tools import admin_required, xianzai_time, get_nday_list, sum_code, Base64Code
 from tools_me.parameter import RET, MSG, DIR_PATH, TRANS_TYPE_LOG, TRANS_STATUS
 from tools_me.send_sms.send_sms import CCP
 from tools_me.sm_photo import sm_photo
 from . import admin_blueprint
+
+
+@admin_blueprint.route('/add_package/', methods=['GET', 'POST'])
+@admin_required
+def add_package():
+    if request.method == 'GET':
+        return render_template('admin/add_package.html')
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.form.get('data'))
+            package = data.get('package')
+            money = int(data.get('money'))
+            days = int(data.get('days'))
+            price = float(data.get('price'))
+            refund = float(data.get('refund'))
+            min_top = int(data.get('min_top'))
+            max_top = int(data.get('max_top'))
+            SqlData().insert_reg_package(package, money, days, price, refund, min_top, max_top)
+            return jsonify({'code': RET.OK, 'msg': MSG.OK})
+        except Exception as e:
+            logging.error(e)
+            return jsonify({'code': RET.SERVERERROR, 'msg': MSG.SERVERERROR})
+
+
+@admin_blueprint.route('/package_change/', methods=['GET', 'POST'])
+@admin_required
+def package_change():
+    if request.method == 'GET':
+        package = request.args.get('package')
+        field = request.args.get('field')
+        value = request.args.get('value')
+        if field == 'package':
+            return jsonify({'code': RET.SERVERERROR, 'msg': '套餐名不可修改!'})
+        SqlData().update_reg_field(field, float(value), package)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+    if request.method == 'POST':
+        data = json.loads(request.form.get('data'))
+        package = data.get('package')
+        SqlData().del_reg_package(package)
+        return jsonify({'code': RET.OK, 'msg': MSG.OK})
+
+
+@admin_blueprint.route('/reg_money.json', methods=['GET', 'POST'])
+@admin_required
+def reg_money():
+    if request.method == 'GET':
+        data = SqlData().search_reg_all()
+        results = dict()
+        results['data'] = data
+        results['count'] = len(data)
+        results['code'] = RET.OK
+        return jsonify(results)
+
+
+@admin_blueprint.route('/reg_package/', methods=['GET', 'POST'])
+@admin_required
+def reg_package():
+    if request.method == 'GET':
+        return render_template('admin/reg_package.html')
 
 
 @admin_blueprint.route('/vice_index/', methods=['GET'])
@@ -460,6 +519,19 @@ def acc_to_middle():
                     return jsonify(results)
                 SqlData().update_user_field_int('middle_id', 'NULL', user_id)
         return jsonify(results)
+
+
+@admin_blueprint.route('/middle_link/', methods=['GET'])
+@admin_required
+def middle_link():
+    middle_name = request.args.get('middle_name')
+    middle_account = request.args.get('middle_account')
+    middle_id = SqlData().search_middle_name('id', middle_name)
+    # 拼接成定义好的格式(id_name_account)
+    string = str(middle_id) + "_" + middle_name + "_" + middle_account
+    key = Base64Code().base_encrypt(string)
+    ip = 'http://114.116.236.27/user/register/?middle_key=' + key
+    return jsonify({'code': RET.OK, 'msg': ip})
 
 
 @admin_blueprint.route('/middle_info/', methods=['GET'])
@@ -983,7 +1055,9 @@ def index():
     if admin_name != 'Juno':
         return '没有权限访问!'
     spent = SqlData().search_trans_sum_admin()
-    sum_balance = SqlData().search_user_sum_balance()
+    balance, sum_balance = SqlData().search_user_sum_balance()
+    card_remain = SqlData().search_card_remain_admin()
+    out_money = SqlData().search_trans_sum_admin()
     card_use = SqlData().search_card_status("WHERE account_id != ''")
     card_no = SqlData().search_card_status("WHERE account_id is null AND activation != ''")
     ex_change = SqlData().search_admin_field('ex_change')
@@ -993,11 +1067,14 @@ def index():
     context = dict()
     context['admin_name'] = admin_name
     context['spent'] = spent
-    context['advance'] = sum_balance
+    context['sum_balance'] = sum_balance
     context['card_use'] = card_use
     context['card_no'] = card_no
     context['ex_change'] = ex_change
     context['ex_range'] = ex_range
     context['hand'] = hand
     context['dollar_hand'] = dollar_hand
+    context['balance'] = balance
+    context['card_remain'] = card_remain
+    context['out_money'] = out_money
     return render_template('admin/index.html', **context)

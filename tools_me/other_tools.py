@@ -105,12 +105,12 @@ def datatime_to_timenum(tss1):
 
 
 # 验证两个日期大小
-def verify_login_time(before_time, now_time):
+def verify_login_time(before_time, now_time, range_s =0):
     seconds = datatime_to_timenum(now_time) - datatime_to_timenum(before_time) + 1
-    if seconds > 0:
+    if seconds > range_s:
         return True
     else:
-        return
+        return False
 
 
 def choke_required(view_func):
@@ -382,4 +382,5 @@ def get_day_after(day):
     delta = datetime.timedelta(days=day)
     n_days_after = now + delta
     return n_days_after.strftime("%Y-%m-%d %H:%M:%S")
+
 
